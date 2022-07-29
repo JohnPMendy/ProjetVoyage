@@ -1,4 +1,4 @@
-package PartieMahmoud;
+package fr.projetjeu.model;
 
 public class Objet {
 private String nom;
