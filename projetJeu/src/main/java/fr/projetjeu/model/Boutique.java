@@ -17,6 +17,6 @@ public void achatObjets(Events e, Inventaire i,int idx) {
 public void venteObjets(Inventaire i, int idx) {
 	//idx c'est l'indice de l'objet a vendre a la boutique
 	i.getListeObjetInventaire().remove(idx);
-	
+	///////////////
 }
 }
