@@ -1,4 +1,4 @@
-package projetJeu.model;
+package fr.projetjeu.model;
 
 public class Objet {
 	private int quantite;
