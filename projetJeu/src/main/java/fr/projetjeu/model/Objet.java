@@ -30,6 +30,6 @@ public int getQuantite() {
 public void setQuantite(int quantite) {
 	this.quantite = quantite;
 }
-/////////
+/////////////////////////////////////////
 
 }
