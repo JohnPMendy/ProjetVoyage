@@ -60,8 +60,6 @@ public class Environnement {
 		case MER:
 			System.out.println("Vous êtes actuellement en Mer");
 			break;
-		default:
-			break;
 		}
 		return environnement;
 	}
