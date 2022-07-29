@@ -1,9 +1,15 @@
 package fr.projetjeu.model;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Events {
 	static Scanner sc = new Scanner(System.in);
+	private static int id;
+	private static boolean estmort;
+	private ArrayList<Objet> listeObjetEvent = new ArrayList<>();
+	public static int reponse;
+	private String question;
 
 	public static boolean isEstmort() {
 		return estmort;
@@ -13,9 +19,7 @@ public class Events {
 		Events.estmort = estmort;
 	}
 
-	private static int id;
-	private static boolean estmort;
-
+	
 	public static int getId() {
 		return id;
 	}
@@ -32,15 +36,30 @@ public class Events {
 		this.question = question;
 	}
 
-	private String question;
 
-	// Je sais pas trop cmb de situations on aura...
+	public static Scanner getSc() {
+		return sc;
+	}
 
-	// 4 réponses max me parait pas trop excessif.
-	public static int reponse;
+	public static void setSc(Scanner sc) {
+		Events.sc = sc;
+	}
 
-	// Mis en commentaire parce que j'ai pas encore la classe Objet (Mahmoud)
-	// private ArrayList<Objet> listeObjetEvent = new ArrayList<Objet>();
+	public static int getReponse() {
+		return reponse;
+	}
+
+	public static void setReponse(int reponse) {
+		Events.reponse = reponse;
+	}
+
+	public ArrayList<Objet> getListeObjetEvent() {
+		return listeObjetEvent;
+	}
+
+	public void setListeObjetEvent(ArrayList<Objet> listeObjetEvent) {
+		this.listeObjetEvent = listeObjetEvent;
+	}
 
 	public static void affichageSituation() {
 
@@ -116,7 +135,7 @@ public class Events {
 			}
 
 		}
-		
+
 		else {
 			System.out.println("D'autres questions à venir... FIN");
 			setEstmort(true);
