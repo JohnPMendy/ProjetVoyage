@@ -1,4 +1,4 @@
-package Badis;
+package fr.projetjeu.model;
 
 import java.util.Scanner;
 
