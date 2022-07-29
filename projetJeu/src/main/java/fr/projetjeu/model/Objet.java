@@ -3,7 +3,7 @@ package fr.projetjeu.model;
 public class Objet {
 private String nom;
 private boolean typeObjetAlimentaire;
-private enum typeObjetEnum {Boisson,Nouritture,Arme,Vetements,Chaussures,Outils};
+public enum typeObjetEnum {Boisson,Nouritture,Arme,Vetements,Chaussures,Outils};
 private float prix;
 private int quantite;
 public String getNom() {
