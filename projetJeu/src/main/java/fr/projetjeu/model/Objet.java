@@ -3,7 +3,7 @@ package fr.projetjeu.model;
 public class Objet {
 private String nom;
 private boolean typeObjetAlimentaire;
-public enum typeObjetEnum {Boisson,Nouritture,Arme,Vetements,Chaussures,Outils};
+private TypeObjets typeObjets;
 private float prix;
 private int quantite;
 public String getNom() {
@@ -30,6 +30,7 @@ public int getQuantite() {
 public void setQuantite(int quantite) {
 	this.quantite = quantite;
 }
-/////////////////////////////////////////
-
+public String toString() {
+	return this.nom +"--Prix="+ this.prix+"--Qte="+this.quantite ;
+}
 }
