@@ -4,53 +4,46 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Events {
-	static Scanner sc = new Scanner(System.in);
-	private static int id;
-	private static boolean estmort;
+
+	// Variables
+	private Scanner sc = new Scanner(System.in);
+	private int id;
+	private int reponse;
+	// Liste des objets pour un evenement particulier
 	private ArrayList<Objet> listeObjetEvent = new ArrayList<>();
-	public static int reponse;
-	private String question;
+	Personnage perso = new Personnage();
 
-	public static boolean isEstmort() {
-		return estmort;
+	// Getters et setters
+	public Personnage getPerso() {
+		return perso;
 	}
 
-	public static void setEstmort(boolean estmort) {
-		Events.estmort = estmort;
+	public void setPerso(Personnage perso) {
+		this.perso = perso;
 	}
 
-	
-	public static int getId() {
-		return id;
-	}
-
-	public static void setId(int id) {
-		Events.id = id;
-	}
-
-	public String getQuestion() {
-		return question;
-	}
-
-	public void setQuestion(String question) {
-		this.question = question;
-	}
-
-
-	public static Scanner getSc() {
+	public Scanner getSc() {
 		return sc;
 	}
 
-	public static void setSc(Scanner sc) {
-		Events.sc = sc;
+	public void setSc(Scanner sc) {
+		this.sc = sc;
 	}
 
-	public static int getReponse() {
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public int getReponse() {
 		return reponse;
 	}
 
-	public static void setReponse(int reponse) {
-		Events.reponse = reponse;
+	public void setReponse(int reponse) {
+		this.reponse = reponse;
 	}
 
 	public ArrayList<Objet> getListeObjetEvent() {
@@ -61,7 +54,7 @@ public class Events {
 		this.listeObjetEvent = listeObjetEvent;
 	}
 
-	public static void affichageSituation() {
+	public void affichageSituation() {
 
 		if (id == 0)
 		// Exemple,
@@ -79,7 +72,8 @@ public class Events {
 
 			else if (reponse == 3) {
 				System.out.println("Vous êtes mort");
-				setEstmort(true);
+
+				perso.setAlive(false);
 
 			}
 
@@ -99,7 +93,8 @@ public class Events {
 
 			if (reponse == 1) {
 				System.out.println("Vous êtes mort");
-				setEstmort(true);
+
+				perso.setAlive(false);
 			}
 
 			else if (reponse == 2) {
@@ -122,7 +117,7 @@ public class Events {
 
 			if (reponse == 1) {
 				System.out.println("Vous êtes mort");
-				setEstmort(true);
+				perso.setAlive(false);
 			}
 
 			else if (reponse == 2) {
@@ -138,7 +133,8 @@ public class Events {
 
 		else {
 			System.out.println("D'autres questions à venir... FIN");
-			setEstmort(true);
+			perso.setAlive(false);
+
 		}
 
 	}
