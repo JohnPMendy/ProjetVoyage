@@ -1,18 +1,17 @@
 package fr.projetjeu;
 
-import java.util.Scanner;
-
 import fr.projetjeu.model.Events;
 
 public class Application {
 
 	public static void main(String[] args) {
-		Events.setId(0);
-		Events.setEstmort(false);
+		Events events = new Events();
+		events.setId(0);
+		events.getPerso().setAlive(true);
 
 		do {
-			Events.affichageSituation();
-		} while (Events.isEstmort() == false);
+			events.affichageSituation();
+		} while (events.getPerso().isAlive()==true);
 
 	}
 }
