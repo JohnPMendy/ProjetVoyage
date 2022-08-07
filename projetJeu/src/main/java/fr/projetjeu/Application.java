@@ -1,27 +1,26 @@
 package fr.projetjeu;
 
-import java.awt.event.ActionEvent;
-
 import fr.projetjeu.model.Events;
 
 public class Application {
 
-	//static ActionEvent ae;
-	
+	// static ActionEvent ae;
+
 	public static void main(String[] args) {
 
 		Events events = new Events();
-		ActionEvent ae = new ActionEvent(args, 0, null);
+
 		events.setId(0);
 		events.getPerso().setAlive(true);
-
+		
+		// pas sur si le do while serve a quelque chose maintenant...
 		do {
-			events.CreationInterface();
-			events.actionPerformed(ae);
-			events.testApplication();
+			events.TestApp();
+			// events.actionPerformed(ae);
 		} while (events.getPerso().isAlive() == true);
 
+		System.out.println("Partie terminée");
+		System.exit(0);
 	}
-
 
 }
