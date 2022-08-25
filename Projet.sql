@@ -33,7 +33,7 @@ CREATE TABLE evenement(
 );
 
 CREATE TABLE reponse (
-  rep_id int [pk,increment]
+  rep_id SERIAL PRIMARY KEY,
   rep_texte  VARCHAR(100),
   rep_evenement_id INT,
   rep_prochain_evenement_id INT
