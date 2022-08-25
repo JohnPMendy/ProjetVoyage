@@ -1,3 +1,5 @@
+--DROP DATABASE projet;
+
 --CREATE DATABASE projet;
 
 
