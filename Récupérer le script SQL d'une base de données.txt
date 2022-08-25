@@ -1,6 +1,6 @@
 1) Rechercher sur Windows : "cmd"
 2) Clique droit -> Executer en tant qu'administrateur
-3) Coller -> C:\Program Files\PostgreSQL\14\bin
+3) Coller -> cd C:\Program Files\PostgreSQL\14\bin
 4) Coller -> pg_dump -U postgres -f C:\projet.sql projet
 5) Mettre le mot de passe que vous avez sur BeekeeperStudio
 6) Récupérer le project.sql dans C:
