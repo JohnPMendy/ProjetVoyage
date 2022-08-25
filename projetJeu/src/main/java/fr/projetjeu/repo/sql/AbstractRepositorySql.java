@@ -10,7 +10,7 @@ public abstract class AbstractRepositorySql<T> {
 protected Connection connection = null;
 	
 	protected Connection connect() throws SQLException {
-		this.connection = DriverManager.getConnection("jdbc:postgresql://127.0.0.1:5432/projet", "postgres", "mendyDb");
+		this.connection = DriverManager.getConnection("jdbc:postgresql://127.0.0.1:5432/projet", "postgres", "root");
 		
 		return this.connection;
 	}

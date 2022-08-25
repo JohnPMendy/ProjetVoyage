@@ -1,3 +1,6 @@
+projetJeu\src\main\java\fr\projetjeu\ApplicationClotilde.java
+projetJeu\src\main\java\fr\projetjeu\repo\sql\AbstractRepositorySql.java
+
 build/
 bin/
 target/

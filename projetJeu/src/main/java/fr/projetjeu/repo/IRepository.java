@@ -3,9 +3,9 @@ package fr.projetjeu.repo;
 import java.util.List;
 import java.util.Optional;
 
-public interface IRepository<T, ID> {
+public interface IRepository<T> {
 	public List<T> findAll();
-	public T findById(ID id);
+	public T findById(int id);
 	public void save(T entity);
-	public void deleteById(ID id);
+	public void deleteById(int id);
 }
