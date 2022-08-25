@@ -9,11 +9,11 @@ public class Boutique extends Events {
 	private TypeBoutique typeBoutique;
 	static Scanner sc = new Scanner(System.in);
 
-	public static Scanner getSc() {
+	public  Scanner getSc() {
 		return sc;
 	}
 
-	public static void setSc(Scanner sc) {
+	public  void setSc(Scanner sc) {
 		Boutique.sc = sc;
 	}
 
