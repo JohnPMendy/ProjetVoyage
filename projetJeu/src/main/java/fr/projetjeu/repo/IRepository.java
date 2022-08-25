@@ -6,6 +6,6 @@ import java.util.Optional;
 public interface IRepository<T, ID> {
 	public List<T> findAll();
 	public T findById(ID id);
-	public T save(T entity);
+	public void save(T entity);
 	public void deleteById(ID id);
 }
