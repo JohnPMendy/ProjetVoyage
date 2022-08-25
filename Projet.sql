@@ -32,12 +32,14 @@ CREATE TABLE evenement(
   evt_nombre_reponse INT
 );
 
-Table reponse {
+CREATE TABLE reponse (
   rep_id int [pk,increment]
-  rep_texte  VARCHAR(100)
-  rep_evenement_id INT
+  rep_texte  VARCHAR(100),
+  rep_evenement_id INT,
   rep_prochain_evenement_id INT
-}
+);
+
+
 
 CREATE TABLE environnement(
   env_id SERIAL PRIMARY KEY,
