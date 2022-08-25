@@ -14,21 +14,36 @@ import javax.swing.SwingConstants;
 
 public class Events {
 
+
 	// Variables
 	private Scanner sc = new Scanner(System.in);
 	private static int id;
-	private static int reponse;
-	private static int answer;
+	private static int numReponse;
 	private static String histoire ="";
-	private static String r1 = "";
-	private static String r2 = "";
-	private static String r3 = "";
+	private static ArrayList<String> reponse = new ArrayList<String>();
 	
 	// Liste des objets pour un evenement particulier
 	private ArrayList<Objet> listeObjetEvent = new ArrayList<>();
 	Personnage perso = new Personnage();
 
 	// Getters et setters
+	
+	public static int getNumReponse() {
+		return numReponse;
+	}
+
+	public static void setNumReponse(int numReponse) {
+		Events.numReponse = numReponse;
+	}
+
+	public static ArrayList<String> getReponse() {
+		return reponse;
+	}
+
+	public static void setReponse(ArrayList<String> reponse) {
+		Events.reponse = reponse;
+	}
+	
 	public Personnage getPerso() {
 		return perso;
 	}
@@ -81,14 +96,14 @@ public class Events {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				histoire = "Question 0: Vous devez voyager, quel moyen de locomotion?";
-				r1 = "En avion";
-				r2 = "En bateau";
-				r3 = "À la nage";
+				reponse.add(0, "En avion");
+				reponse.add(1, "En bateau");
+				reponse.add(2, "À la nage");
 				testApplication();
 				label.setText(histoire);
-				btn1.setText(r1);
-				btn2.setText(r2);
-				btn3.setText(r3);
+				btn1.setText((String) reponse.get(0));
+				btn2.setText((String) reponse.get(1));
+				btn3.setText((String) reponse.get(2));
 				id = 0;
 				labelID.setText("Events: " + id);
 				rd(3);
@@ -101,13 +116,13 @@ public class Events {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				reponse = 1;
+				numReponse = 1;
 				testApplication();
 				labelID.setText("Events: " + id);
 				label.setText(histoire);
-				btn1.setText(r1);
-				btn2.setText(r2);
-				btn3.setText(r3);
+				btn1.setText((String) reponse.get(0));
+				btn2.setText((String) reponse.get(1));
+				btn3.setText((String) reponse.get(2));
 
 			}
 		});
@@ -117,13 +132,13 @@ public class Events {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				reponse = 2;
+				numReponse = 2;
 				testApplication();
 				labelID.setText("Events: " + id);
 				label.setText(histoire);
-				btn1.setText(r1);
-				btn2.setText(r2);
-				btn3.setText(r3);
+				btn1.setText((String) reponse.get(0));
+				btn2.setText((String) reponse.get(1));
+				btn3.setText((String) reponse.get(2));
 
 			}
 		});
@@ -133,13 +148,13 @@ public class Events {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				reponse = 3;
+				numReponse = 3;
 				testApplication();
 				labelID.setText("Events: " + id);
 				label.setText(histoire);
-				btn1.setText(r1);
-				btn2.setText(r2);
-				btn3.setText(r3);
+				btn1.setText((String) reponse.get(0));
+				btn2.setText((String) reponse.get(1));
+				btn3.setText((String) reponse.get(2));
 
 			}
 		});
@@ -205,30 +220,30 @@ public class Events {
 		if (id == 0) 
 
 		{
-			if (reponse == 1) {
+			if (numReponse == 1) {
 				id = 1;
 				rd(2);
 
 				histoire = "Question 1: Durant le trajet en avion, ouvrir le cockpit?";
-				r1 = "Oui";
-				r2 = "Non";
-				r3 = "";
 				
-				
+				reponse.add(0, "Oui");
+				reponse.add(1, "Non");
+				reponse.add(2, "");
+	
 				
 			}
 
-			else if (reponse == 2) {
+			else if (numReponse == 2) {
 				id = 2;
 				rd(2);
 				
 				histoire = "Question 1: Durant le trajet en bateau, sauter par dessus bord?";
-				r1 = "Oui";
-				r2 = "Non";
-				r3 = "";
+				reponse.add(0, "Oui");
+				reponse.add(1, "Non");
+				reponse.add(2, "");
 			}
 
-			else if (reponse == 3) { 
+			else if (numReponse == 3) { 
 				id = 3;
 				rd(0);
 				perso.setAlive(false);
@@ -242,7 +257,7 @@ public class Events {
 		else if (id == 1) {
 
 			
-			if (reponse == 1) {
+			if (numReponse == 1) {
 				id = 4;
 				rd(0);
 				histoire = "Vous êtes mort.";
@@ -250,7 +265,7 @@ public class Events {
 
 			}
 
-			else if (reponse == 2) {
+			else if (numReponse == 2) {
 				id = 5;
 				rd(0);
 				histoire = "A suivre...";
@@ -261,14 +276,14 @@ public class Events {
 
 		else if (id == 2) {
 
-			if (reponse == 1) {
+			if (numReponse == 1) {
 				id = 6;
 				rd(0);
 				histoire = "Vous êtes mort.";
 				perso.setAlive(false);
 			}
 
-			else if (reponse == 2) {
+			else if (numReponse == 2) {
 				id = 7;
 				rd(0);
 				histoire = "A suivre...";
