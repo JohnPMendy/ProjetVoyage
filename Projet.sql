@@ -28,7 +28,8 @@ CREATE TABLE partie(
 
 CREATE TABLE evenement(
   evt_id SERIAL PRIMARY KEY,
-  evt_histoire VARCHAR(100)
+  evt_histoire VARCHAR(100),
+  evt_nombre_reponse INT
 );
 
 Table reponse {
