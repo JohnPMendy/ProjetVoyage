@@ -4,7 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Inventaire {
+	private int id;
 	private List<Objet> listeObjetInventaire = new ArrayList<>();
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public List<Objet> getListeObjetInventaire() {
 		System.out.println("Voici la liste des objets disponible dans votre inventaire :");
