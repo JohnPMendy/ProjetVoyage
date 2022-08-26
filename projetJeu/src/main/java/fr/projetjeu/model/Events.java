@@ -14,6 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
 import fr.projetjeu.exception.NegativeIdException;
+import fr.projetjeu.exception.ReponseNotFoundException;
 import fr.projetjeu.repo.sql.EventsRepositorySql;
 import fr.projetjeu.service.EventsService;
 import fr.projetjeu.service.ReponseService;
@@ -26,12 +27,11 @@ public class Events {
 	private static int numReponse;
 	private static String histoire = "";
 	private static ArrayList<String> reponse = new ArrayList<String>();
-	
-	// Instantiations 
+
+	// Instantiations
 	EventsService es = new EventsService();
 	Inventaire i = new Inventaire();
 	ReponseService rs = new ReponseService();
-	
 
 	// Liste des objets pour un evenement particulier
 	private ArrayList<Objet> listeObjetEvent = new ArrayList<>();
@@ -118,16 +118,15 @@ public class Events {
 				histoire = es.findById(id).getHistoire();
 
 				try {
-					System.out.println(rs.findByEvenementId(id).size());
 					reponse.add(0, rs.findByEvenementId(id).get(0).getTexte());
 					reponse.add(1, rs.findByEvenementId(id).get(1).getTexte());
 					reponse.add(2, rs.findByEvenementId(id).get(2).getTexte());
-					
+
 				} catch (NegativeIdException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-			//	testApplication();
+				// testApplication();
 				label.setText(histoire);
 				btn1.setText((String) reponse.get(0));
 				btn2.setText((String) reponse.get(1));
@@ -135,12 +134,7 @@ public class Events {
 				labelID.setText("id " + id);
 				rd(3);
 				btninventaire.setVisible(true);
-				
-			}
 
-			private char[] length(List<Reponse> findByEvenementId) {
-				// TODO Auto-generated method stub
-				return null;
 			}
 
 		});
@@ -154,7 +148,6 @@ public class Events {
 				testApplication();
 				labelID.setText("id " + id);
 				label.setText(histoire);
-
 
 			}
 		});
@@ -188,7 +181,7 @@ public class Events {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+
 				i.getListeObjetInventaire();
 			}
 		});
@@ -220,37 +213,36 @@ public class Events {
 
 	public void rd(int i) { // RD = Réponses Disponibles
 
-
 		if (i == 0) {
 			btn1.setVisible(false);
 			btn2.setVisible(false);
 			btn3.setVisible(false);
-			
+
 			histoire = es.findById(id).getHistoire();
-			
+
 		}
 
 		else if (i == 1) {
-			
+
 			// Les bouttons
 			btn1.setVisible(true);
 			btn1.setBounds(130, 350, 450, 50);
 			btn2.setVisible(false);
 			btn3.setVisible(false);
-			
+
 			// Recup de la réponse depuis la BDD
 			try {
 				reponse.add(0, rs.findByEvenementId(id).get(0).getTexte());
-				
+
 			} catch (NegativeIdException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-			
+
 			// Ajout de la réponse dans un bouton
 			btn1.setText((String) reponse.get(0));
-			
-			//Recup de l'histoire depuis la BDD
+
+			// Recup de l'histoire depuis la BDD
 			histoire = es.findById(id).getHistoire();
 		}
 
@@ -260,21 +252,21 @@ public class Events {
 			btn2.setVisible(true);
 			btn2.setBounds(370, 350, 200, 50);
 			btn3.setVisible(false);
-			
+
 			try {
 				reponse.add(0, rs.findByEvenementId(id).get(0).getTexte());
 				reponse.add(1, rs.findByEvenementId(id).get(1).getTexte());
-				
+
 			} catch (NegativeIdException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-			
+
 			btn1.setText((String) reponse.get(0));
 			btn2.setText((String) reponse.get(1));
-			
+
 			histoire = es.findById(id).getHistoire();
-			
+
 		}
 
 		else {
@@ -285,96 +277,44 @@ public class Events {
 			btn1.setBounds(70, 350, 150, 50);
 			btn2.setBounds(270, 350, 150, 50);
 			btn3.setBounds(470, 350, 150, 50);
-			
+
 			try {
 				reponse.add(0, rs.findByEvenementId(id).get(0).getTexte());
 				reponse.add(1, rs.findByEvenementId(id).get(1).getTexte());
 				reponse.add(2, rs.findByEvenementId(id).get(2).getTexte());
-				
+
 			} catch (NegativeIdException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-			
+
 			btn1.setText((String) reponse.get(0));
 			btn2.setText((String) reponse.get(1));
 			btn3.setText((String) reponse.get(2));
-			
+
 			histoire = es.findById(id).getHistoire();
 
 		}
 	}
 
-	
 	public void testApplication() {
 
-		if (id == 1)
+		try {
+			id = rs.findByEvenementId(id).get(numReponse - 1).getProchainEvenementId();
+		} catch (NegativeIdException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
 
-		{
-			if (numReponse == 1) {
-				
-				try {
-					id = rs.findByEvenementId(id).get(0).getProchainEvenementId();
-				} catch (NegativeIdException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				try {
-					rd(rs.findByEvenementId(id).size());
-				} catch (NegativeIdException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-
-			}
-
-			else if (numReponse == 2) {
-				id = 5;
-				rd(2);
-
-			
-			}
-
-			else if (numReponse == 3) {
-				id = 8;
-				rd(0);
-				perso.setAlive(false);
-
-
-			}
-
+			rd(rs.findByEvenementId(id).size());
+		} catch (NegativeIdException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
-		else if (id == 2) {
-
-			if (numReponse == 1) {
-				id = 3;
-				rd(0);
-				perso.setAlive(false);
-
-			}
-
-			else if (numReponse == 2) {
-				id = 4;
-				rd(0);
-
-			}
-
-		}
-
-		else if (id == 5) {
-
-			if (numReponse == 1) {
-				id = 7;
-				rd(0);
-				perso.setAlive(false);
-			}
-
-			else if (numReponse == 2) {
-				id = 8;
-				rd(0);
-			}
-
+		catch (ReponseNotFoundException e) {
+			rd(0);
 		}
 
 	}
