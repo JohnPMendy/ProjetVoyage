@@ -32,21 +32,6 @@ public class Environnement {
 	}
 
 	public Meteo getMeteo() {
-		switch (this.meteo) {
-		case SOLEIL:
-			System.out.println("Le temps est ensoleillé");
-			break;
-		case PLUIE:
-			System.out.println("Le temps est pluvieux");
-			break;
-		case NEIGE:
-			System.out.println("Le temps est neigeux");
-			break;
-
-		case ORAGE:
-			System.out.println("Le temps est orageux");
-			break;
-		}
 		return meteo;
 	}
 
@@ -55,26 +40,13 @@ public class Environnement {
 	}
 
 	public TypeEnvironnement getEnvironnement() {
-		switch (this.environnement) {
-		case VILLE:
-			System.out.println("Vous êtes actuellement en ville");
-			break;
-		case DESERT:
-			System.out.println("Vous êtes actuellement dans un désert");
-			break;
-		case FORET:
-			System.out.println("Vous êtes actuellement dans une foret");
-			break;
-
-		case MER:
-			System.out.println("Vous êtes actuellement en Mer");
-			break;
-		}
 		return environnement;
 	}
 
 	public void setEnvironnement(TypeEnvironnement environnement) {
 		this.environnement = environnement;
 	}
+
+
 
 }
