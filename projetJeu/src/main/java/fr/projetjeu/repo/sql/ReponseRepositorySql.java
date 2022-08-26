@@ -51,15 +51,16 @@ public class ReponseRepositorySql extends AbstractRepositorySql<Reponse> impleme
 				
 			}
 			
-			return reponses;
+			
 			
 		}
 		catch(SQLException e) {
-			
+			e.printStackTrace();
 		}
 		finally {
 			this.disconnect();
 		}
+		return reponses;
 		
 	}
 

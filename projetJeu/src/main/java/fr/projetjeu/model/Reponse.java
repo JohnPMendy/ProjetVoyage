@@ -29,6 +29,9 @@ public class Reponse {
 	public void setProchainEvenementId(int prochainEvenementId) {
 		this.prochainEvenementId = prochainEvenementId;
 	}
-	
+	@Override
+	public String toString() {
+		return "Reponse : "+this.getTexte()+", Evenemement d'origine : "+getEvenementId()+", Evenement suivant "+getProchainEvenementId();
+	}
 	
 }
