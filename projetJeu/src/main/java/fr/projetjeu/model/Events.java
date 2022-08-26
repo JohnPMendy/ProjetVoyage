@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import javax.swing.JButton;
@@ -12,8 +13,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
+import fr.projetjeu.exception.NegativeIdException;
 import fr.projetjeu.repo.sql.EventsRepositorySql;
 import fr.projetjeu.service.EventsService;
+import fr.projetjeu.service.ReponseService;
 
 public class Events {
 
@@ -25,8 +28,10 @@ public class Events {
 	private static ArrayList<String> reponse = new ArrayList<String>();
 	
 	// Instantiations 
-	EventsRepositorySql ers = new EventsRepositorySql();
+	EventsService es = new EventsService();
 	Inventaire i = new Inventaire();
+	ReponseService rs = new ReponseService();
+	
 
 	// Liste des objets pour un evenement particulier
 	private ArrayList<Objet> listeObjetEvent = new ArrayList<>();
@@ -110,10 +115,18 @@ public class Events {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				id = 1;
-				histoire = ers.findById(1).getHistoire();
-				reponse.add(0, "En avion");
-				reponse.add(1, "En bateau");
-				reponse.add(2, "À la nage");
+				histoire = es.findById(id).getHistoire();
+
+				try {
+					System.out.println(rs.findByEvenementId(id).size());
+					reponse.add(0, rs.findByEvenementId(id).get(0).getTexte());
+					reponse.add(1, rs.findByEvenementId(id).get(1).getTexte());
+					reponse.add(2, rs.findByEvenementId(id).get(2).getTexte());
+					
+				} catch (NegativeIdException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			//	testApplication();
 				label.setText(histoire);
 				btn1.setText((String) reponse.get(0));
@@ -123,6 +136,11 @@ public class Events {
 				rd(3);
 				btninventaire.setVisible(true);
 				
+			}
+
+			private char[] length(List<Reponse> findByEvenementId) {
+				// TODO Auto-generated method stub
+				return null;
 			}
 
 		});
@@ -136,9 +154,7 @@ public class Events {
 				testApplication();
 				labelID.setText("id " + id);
 				label.setText(histoire);
-				btn1.setText((String) reponse.get(0));
-				btn2.setText((String) reponse.get(1));
-				btn3.setText((String) reponse.get(2));
+
 
 			}
 		});
@@ -152,9 +168,6 @@ public class Events {
 				testApplication();
 				labelID.setText("id " + id);
 				label.setText(histoire);
-				btn1.setText((String) reponse.get(0));
-				btn2.setText((String) reponse.get(1));
-				btn3.setText((String) reponse.get(2));
 
 			}
 		});
@@ -168,10 +181,6 @@ public class Events {
 				testApplication();
 				labelID.setText("id " + id);
 				label.setText(histoire);
-				btn1.setText((String) reponse.get(0));
-				btn2.setText((String) reponse.get(1));
-				btn3.setText((String) reponse.get(2));
-
 			}
 		});
 
@@ -216,18 +225,33 @@ public class Events {
 			btn1.setVisible(false);
 			btn2.setVisible(false);
 			btn3.setVisible(false);
-			reponse.add(0, "");
-			reponse.add(1, "");
-			reponse.add(2, "");
 			
+			histoire = es.findById(id).getHistoire();
 			
 		}
 
 		else if (i == 1) {
+			
+			// Les bouttons
 			btn1.setVisible(true);
 			btn1.setBounds(130, 350, 450, 50);
 			btn2.setVisible(false);
 			btn3.setVisible(false);
+			
+			// Recup de la réponse depuis la BDD
+			try {
+				reponse.add(0, rs.findByEvenementId(id).get(0).getTexte());
+				
+			} catch (NegativeIdException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
+			// Ajout de la réponse dans un bouton
+			btn1.setText((String) reponse.get(0));
+			
+			//Recup de l'histoire depuis la BDD
+			histoire = es.findById(id).getHistoire();
 		}
 
 		else if (i == 2) {
@@ -236,6 +260,21 @@ public class Events {
 			btn2.setVisible(true);
 			btn2.setBounds(370, 350, 200, 50);
 			btn3.setVisible(false);
+			
+			try {
+				reponse.add(0, rs.findByEvenementId(id).get(0).getTexte());
+				reponse.add(1, rs.findByEvenementId(id).get(1).getTexte());
+				
+			} catch (NegativeIdException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
+			btn1.setText((String) reponse.get(0));
+			btn2.setText((String) reponse.get(1));
+			
+			histoire = es.findById(id).getHistoire();
+			
 		}
 
 		else {
@@ -246,6 +285,23 @@ public class Events {
 			btn1.setBounds(70, 350, 150, 50);
 			btn2.setBounds(270, 350, 150, 50);
 			btn3.setBounds(470, 350, 150, 50);
+			
+			try {
+				reponse.add(0, rs.findByEvenementId(id).get(0).getTexte());
+				reponse.add(1, rs.findByEvenementId(id).get(1).getTexte());
+				reponse.add(2, rs.findByEvenementId(id).get(2).getTexte());
+				
+			} catch (NegativeIdException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
+			btn1.setText((String) reponse.get(0));
+			btn2.setText((String) reponse.get(1));
+			btn3.setText((String) reponse.get(2));
+			
+			histoire = es.findById(id).getHistoire();
+
 		}
 	}
 
@@ -256,33 +312,34 @@ public class Events {
 
 		{
 			if (numReponse == 1) {
-				id = 2;
-				rd(2);
-
-				histoire = ers.findById(id).getHistoire();
-
-				reponse.add(0, "Oui");
-				reponse.add(1, "Non");
-				reponse.add(2, "");
+				
+				try {
+					id = rs.findByEvenementId(id).get(0).getProchainEvenementId();
+				} catch (NegativeIdException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				try {
+					rd(rs.findByEvenementId(id).size());
+				} catch (NegativeIdException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 
 			}
 
 			else if (numReponse == 2) {
-				id = 3;
+				id = 5;
 				rd(2);
 
-				histoire = ers.findById(id).getHistoire();
-				reponse.add(0, "Oui");
-				reponse.add(1, "Non");
-				reponse.add(2, "");
+			
 			}
 
 			else if (numReponse == 3) {
-				id = 4;
+				id = 8;
 				rd(0);
 				perso.setAlive(false);
 
-				histoire = ers.findById(id).getHistoire();
 
 			}
 
@@ -291,35 +348,31 @@ public class Events {
 		else if (id == 2) {
 
 			if (numReponse == 1) {
-				id = 5;
+				id = 3;
 				rd(0);
-				histoire = ers.findById(id).getHistoire();
 				perso.setAlive(false);
 
 			}
 
 			else if (numReponse == 2) {
-				id = 6;
+				id = 4;
 				rd(0);
-				histoire = ers.findById(id).getHistoire();
 
 			}
 
 		}
 
-		else if (id == 3) {
+		else if (id == 5) {
 
 			if (numReponse == 1) {
 				id = 7;
 				rd(0);
-				histoire = ers.findById(id).getHistoire();
 				perso.setAlive(false);
 			}
 
 			else if (numReponse == 2) {
 				id = 8;
 				rd(0);
-				histoire = ers.findById(id).getHistoire();
 			}
 
 		}
