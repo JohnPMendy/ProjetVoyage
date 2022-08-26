@@ -26,23 +26,22 @@ CREATE TABLE partie(
 
 CREATE TABLE evenement(
   evt_id SERIAL PRIMARY KEY,
-  evt_histoire VARCHAR(2000)
+  evt_histoire VARCHAR(2000) NOT NULL
 );
 
 CREATE TABLE reponse (
   rep_id SERIAL PRIMARY KEY,
   rep_texte  VARCHAR(200),
-  rep_evenement_id INT,
-  rep_prochain_evenement_id INT
+  rep_evenement_id INT NULL,
+  rep_prochain_evenement_id INT NULL
 );
-
 
 
 CREATE TABLE environnement(
   env_id SERIAL PRIMARY KEY,
   env_temperature FLOAT,
-  env_type_environnement VARCHAR(100),
-  env_type_meteo VARCHAR(100)
+  env_type_environnement INT NOT NULL,
+  env_type_meteo INT NOT NULL
 );
 
 CREATE TABLE inventaire(
@@ -67,7 +66,6 @@ CREATE TABLE boutique(
    btq_nom VARCHAR(100) NOT NULL,
    btq_type VARCHAR(100) NOT NULL
  );
-
 
 ALTER TABLE partie
     ADD CONSTRAINT FK_PartiePerso
@@ -124,6 +122,14 @@ ALTER TABLE reponse
       REFERENCES evenement(evt_id)
           ON UPDATE CASCADE
           ON DELETE CASCADE;
+
+ALTER TABLE environnement
+  ADD CONSTRAINT chk_meteo
+  CHECK (env_type_meteo [0-4]);
+
+  ALTER TABLE environnement
+  ADD CONSTRAINT chk_environnement
+  CHECK (env_type_environnement [0-4]);
           
 --Exemples pour faire des tests (Questions/Reponses)
 INSERT INTO evenement (evt_histoire) VALUES ('Event 1 : Locomotion?');
