@@ -60,8 +60,9 @@ public class EnvironnementRepositorySql extends AbstractRepositorySql<Environnem
 			Environnement env = new Environnement();
 			env.setId(result.getInt("env_id"));
 			env.setTemperature(result.getFloat("env_temperature"));
-			env.setEnvironnement(TypeEnvironnement.valueOf(result.getString("env_type_environnement")));
-			env.setMeteo(Meteo.valueOf(result.getString("env_type_meteo")));
+			env.setEnvironnement(TypeEnvironnement.values()[result.getInt("env_type_environnement")]);
+			env.setMeteo(Meteo.values()[result.getInt("env_type_meteo")]);
+			
 			return env;
 			
 		} catch (SQLException e) {
