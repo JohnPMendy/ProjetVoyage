@@ -18,7 +18,7 @@ public class EventsRepositorySql extends AbstractRepositorySql<Events> implement
 	}
 
 	@Override
-	public Events findById(Integer id) {
+	public Events findById(int id) {
 		try {
 			PreparedStatement myStatement = this.prepare("SELECT * FROM evenement WHERE evt_id = ?");
 			myStatement.setInt(1, id);
@@ -67,7 +67,7 @@ public class EventsRepositorySql extends AbstractRepositorySql<Events> implement
 	}
 
 	@Override
-	public void deleteById(Integer id) {
+	public void deleteById(int id) {
 		// TODO Auto-generated method stub
 		
 	}

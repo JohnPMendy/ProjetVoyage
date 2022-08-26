@@ -19,7 +19,7 @@ public class EnvironnementRepositorySql extends AbstractRepositorySql<Environnem
 	}
 
 	@Override
-	public Environnement findById(Integer id) {
+	public Environnement findById(int id) {
 		try {
 			PreparedStatement myStatement = this.prepare("SELECT * FROM environnement WHERE env_id = ?");
 			myStatement.setInt(1,id);
@@ -49,7 +49,7 @@ public class EnvironnementRepositorySql extends AbstractRepositorySql<Environnem
 	}
 
 	@Override
-	public void deleteById(Integer id) {
+	public void deleteById(int id) {
 		// TODO Auto-generated method stub
 		
 	}
