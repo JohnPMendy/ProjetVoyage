@@ -1,4 +1,4 @@
-package fr.projet.service;
+package fr.projetjeu.service;
 
 import java.util.ArrayList;
 import java.util.List;
