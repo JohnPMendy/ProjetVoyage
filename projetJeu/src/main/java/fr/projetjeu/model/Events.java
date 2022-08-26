@@ -32,6 +32,14 @@ public class Events {
 		return numReponse;
 	}
 
+	public static String getHistoire() {
+		return histoire;
+	}
+
+	public static void setHistoire(String histoire) {
+		Events.histoire = histoire;
+	}
+
 	public static void setNumReponse(int numReponse) {
 		Events.numReponse = numReponse;
 	}
