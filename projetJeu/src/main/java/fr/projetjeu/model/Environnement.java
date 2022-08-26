@@ -1,10 +1,19 @@
 package fr.projetjeu.model;
 
 public class Environnement {
+	private int id;
 	private String nom;
 	private float temperature;
 	private Meteo meteo;
 	private TypeEnvironnement environnement;
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public String getNom() {
 		return nom;
