@@ -1,5 +1,11 @@
 package fr.projetjeu.repo;
 
-public interface IObjetRepository {
+import java.util.List;
 
+import fr.projetjeu.model.Objet;
+
+public interface IObjetRepository extends IRepository<Objet> {
+	
+	List<Objet> findAllByInventaireId(int id);
+	List<Objet> findAllByBoutiqueId(int id);
 }
