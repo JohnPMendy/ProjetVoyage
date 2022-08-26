@@ -271,7 +271,7 @@ public class Events {
 				id = 3;
 				rd(2);
 
-				histoire = ers.findById(id).getHistoire();;
+				histoire = ers.findById(id).getHistoire();
 				reponse.add(0, "Oui");
 				reponse.add(1, "Non");
 				reponse.add(2, "");
@@ -282,7 +282,7 @@ public class Events {
 				rd(0);
 				perso.setAlive(false);
 
-				histoire = ers.findById(id).getHistoire();;
+				histoire = ers.findById(id).getHistoire();
 
 			}
 
@@ -293,7 +293,7 @@ public class Events {
 			if (numReponse == 1) {
 				id = 5;
 				rd(0);
-				histoire = ers.findById(id).getHistoire();;
+				histoire = ers.findById(id).getHistoire();
 				perso.setAlive(false);
 
 			}
@@ -301,7 +301,7 @@ public class Events {
 			else if (numReponse == 2) {
 				id = 6;
 				rd(0);
-				histoire = ers.findById(id).getHistoire();;
+				histoire = ers.findById(id).getHistoire();
 
 			}
 
@@ -312,14 +312,14 @@ public class Events {
 			if (numReponse == 1) {
 				id = 7;
 				rd(0);
-				histoire = ers.findById(id).getHistoire();;
+				histoire = ers.findById(id).getHistoire();
 				perso.setAlive(false);
 			}
 
 			else if (numReponse == 2) {
 				id = 8;
 				rd(0);
-				histoire = ers.findById(id).getHistoire();;
+				histoire = ers.findById(id).getHistoire();
 			}
 
 		}
