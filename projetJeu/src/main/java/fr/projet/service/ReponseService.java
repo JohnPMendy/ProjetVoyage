@@ -3,8 +3,8 @@ package fr.projet.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import fr.projet.exception.NegativeIdException;
-import fr.projet.exception.ReponseNotFoundException;
+import fr.projetjeu.exception.NegativeIdException;
+import fr.projetjeu.exception.ReponseNotFoundException;
 import fr.projetjeu.model.Reponse;
 import fr.projetjeu.repo.IReponseRepository;
 import fr.projetjeu.repo.sql.ReponseRepositorySql;

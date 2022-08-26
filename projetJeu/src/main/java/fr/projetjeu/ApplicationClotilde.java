@@ -3,8 +3,8 @@ package fr.projetjeu;
 import java.util.ArrayList;
 import java.util.List;
 
-import fr.projet.exception.NegativeIdException;
 import fr.projet.service.ReponseService;
+import fr.projetjeu.exception.NegativeIdException;
 import fr.projetjeu.model.Reponse;
 
 public class ApplicationClotilde {

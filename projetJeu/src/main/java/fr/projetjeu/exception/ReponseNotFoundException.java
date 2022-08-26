@@ -1,4 +1,4 @@
-package fr.projet.exception;
+package fr.projetjeu.exception;
 
 public class ReponseNotFoundException extends RuntimeException{
 
