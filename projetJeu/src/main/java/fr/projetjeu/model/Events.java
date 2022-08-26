@@ -12,14 +12,20 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
+import fr.projetjeu.repo.sql.EventsRepositorySql;
+import fr.projetjeu.service.EventsService;
+
 public class Events {
 
 	// Variables
 	private Scanner sc = new Scanner(System.in);
-	private static int id;
+	private int id;
 	private static int numReponse;
 	private static String histoire = "";
 	private static ArrayList<String> reponse = new ArrayList<String>();
+	
+	// Instantiations 
+	EventsRepositorySql ers = new EventsRepositorySql();
 	Inventaire i = new Inventaire();
 
 	// Liste des objets pour un evenement particulier
@@ -95,7 +101,7 @@ public class Events {
 		dialog = new JDialog(frame, "Jeu : Le voyageur malchanceux.", true);
 		dialog.setLayout(null);
 		JLabel label = new JLabel("Bienvenue, veuillez commencer la partie.", SwingConstants.CENTER);
-		JLabel labelID = new JLabel("Events: " + id);
+		JLabel labelID = new JLabel("id " + id);
 
 		JButton startgame = new JButton("Commencer Partie");
 
@@ -103,17 +109,17 @@ public class Events {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				histoire = "Question 0: Vous devez voyager, quel moyen de locomotion?";
+				id = 1;
+				histoire = ers.findById(1).getHistoire();
 				reponse.add(0, "En avion");
 				reponse.add(1, "En bateau");
 				reponse.add(2, "À la nage");
-				testApplication();
+			//	testApplication();
 				label.setText(histoire);
 				btn1.setText((String) reponse.get(0));
 				btn2.setText((String) reponse.get(1));
 				btn3.setText((String) reponse.get(2));
-				id = 0;
-				labelID.setText("Events: " + id);
+				labelID.setText("id " + id);
 				rd(3);
 				btninventaire.setVisible(true);
 				
@@ -128,7 +134,7 @@ public class Events {
 
 				numReponse = 1;
 				testApplication();
-				labelID.setText("Events: " + id);
+				labelID.setText("id " + id);
 				label.setText(histoire);
 				btn1.setText((String) reponse.get(0));
 				btn2.setText((String) reponse.get(1));
@@ -144,7 +150,7 @@ public class Events {
 
 				numReponse = 2;
 				testApplication();
-				labelID.setText("Events: " + id);
+				labelID.setText("id " + id);
 				label.setText(histoire);
 				btn1.setText((String) reponse.get(0));
 				btn2.setText((String) reponse.get(1));
@@ -160,7 +166,7 @@ public class Events {
 
 				numReponse = 3;
 				testApplication();
-				labelID.setText("Events: " + id);
+				labelID.setText("id " + id);
 				label.setText(histoire);
 				btn1.setText((String) reponse.get(0));
 				btn2.setText((String) reponse.get(1));
@@ -205,10 +211,16 @@ public class Events {
 
 	public void rd(int i) { // RD = Réponses Disponibles
 
+
 		if (i == 0) {
 			btn1.setVisible(false);
 			btn2.setVisible(false);
 			btn3.setVisible(false);
+			reponse.add(0, "");
+			reponse.add(1, "");
+			reponse.add(2, "");
+			
+			
 		}
 
 		else if (i == 1) {
@@ -237,16 +249,17 @@ public class Events {
 		}
 	}
 
+	
 	public void testApplication() {
 
-		if (id == 0)
+		if (id == 1)
 
 		{
 			if (numReponse == 1) {
-				id = 1;
+				id = 2;
 				rd(2);
 
-				histoire = "Question 1: Durant le trajet en avion, ouvrir le cockpit?";
+				histoire = ers.findById(id).getHistoire();
 
 				reponse.add(0, "Oui");
 				reponse.add(1, "Non");
@@ -255,40 +268,21 @@ public class Events {
 			}
 
 			else if (numReponse == 2) {
-				id = 2;
+				id = 3;
 				rd(2);
 
-				histoire = "Question 1: Durant le trajet en bateau, sauter par dessus bord?";
+				histoire = ers.findById(id).getHistoire();;
 				reponse.add(0, "Oui");
 				reponse.add(1, "Non");
 				reponse.add(2, "");
 			}
 
 			else if (numReponse == 3) {
-				id = 3;
-				rd(0);
-				perso.setAlive(false);
-
-				histoire = "Vous êtes mort.";
-
-			}
-
-		}
-
-		else if (id == 1) {
-
-			if (numReponse == 1) {
 				id = 4;
 				rd(0);
-				histoire = "Vous êtes mort.";
 				perso.setAlive(false);
 
-			}
-
-			else if (numReponse == 2) {
-				id = 5;
-				rd(0);
-				histoire = "A suivre...";
+				histoire = ers.findById(id).getHistoire();;
 
 			}
 
@@ -297,16 +291,35 @@ public class Events {
 		else if (id == 2) {
 
 			if (numReponse == 1) {
+				id = 5;
+				rd(0);
+				histoire = ers.findById(id).getHistoire();;
+				perso.setAlive(false);
+
+			}
+
+			else if (numReponse == 2) {
 				id = 6;
 				rd(0);
-				histoire = "Vous êtes mort.";
+				histoire = ers.findById(id).getHistoire();;
+
+			}
+
+		}
+
+		else if (id == 3) {
+
+			if (numReponse == 1) {
+				id = 7;
+				rd(0);
+				histoire = ers.findById(id).getHistoire();;
 				perso.setAlive(false);
 			}
 
 			else if (numReponse == 2) {
-				id = 7;
+				id = 8;
 				rd(0);
-				histoire = "A suivre...";
+				histoire = ers.findById(id).getHistoire();;
 			}
 
 		}
