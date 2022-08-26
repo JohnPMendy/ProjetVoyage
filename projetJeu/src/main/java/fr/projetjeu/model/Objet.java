@@ -1,6 +1,7 @@
 package fr.projetjeu.model;
 
 public class Objet {
+private int id;
 private String nom;
 private boolean typeObjetAlimentaire;
 private TypeObjets typeObjets;
@@ -12,6 +13,12 @@ public String getNom() {
 public void setNom(String nom) {
 	this.nom = nom;
 }
+public int getId() {
+	return id;
+}
+public void setId(int id) {
+	this.id = id;
+}
 public boolean isTypeObjetAlimentaire() {
 	return typeObjetAlimentaire;
 }
@@ -20,6 +27,13 @@ public void setTypeObjetAlimentaire(boolean typeObjetAlimentaire) {
 }
 public float getPrix() {
 	return prix;
+}
+
+public TypeObjets getTypeObjets() {
+	return typeObjets;
+}
+public void setTypeObjets(TypeObjets typeObjets) {
+	this.typeObjets = typeObjets;
 }
 public void setPrix(float prix) {
 	this.prix = prix;
