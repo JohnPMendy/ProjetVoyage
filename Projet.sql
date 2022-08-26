@@ -1,7 +1,5 @@
 --DROP DATABASE projet;
-
 --CREATE DATABASE projet;
-
 
 CREATE TABLE personnage( 
   per_id SERIAL PRIMARY KEY,
@@ -126,4 +124,21 @@ ALTER TABLE reponse
       REFERENCES evenement(evt_id)
           ON UPDATE CASCADE
           ON DELETE CASCADE;
+          
+--Exemples pour faire des tests (Questions/Reponses)
+INSERT INTO evenement (evt_histoire) VALUES ('Event 1 : Locomotion?');
+INSERT INTO evenement (evt_histoire) VALUES ('Event 2 : Ouverture cockpit?');
+INSERT INTO evenement (evt_histoire) VALUES ('Event 3 : Vous êtes mort (FIN)');
+INSERT INTO evenement (evt_histoire) VALUES ('Event 4 : A suivre... (FIN)');
+INSERT INTO evenement (evt_histoire) VALUES ('Event 5 : Sauter du bateau?');
+INSERT INTO evenement (evt_histoire) VALUES ('Event 6 : Vous êtes mort (FIN)');
+INSERT INTO evenement (evt_histoire) VALUES ('Event 7 : A suivre... (FIN)');
+INSERT INTO evenement (evt_histoire) VALUES ('Event 8 : Vous êtes mort (FIN)');
 
+INSERT INTO reponse (rep_texte, rep_evenement_id, rep_prochain_evenement_id) VALUES ('R1 : Avion', 1, 2 );
+INSERT INTO reponse (rep_texte, rep_evenement_id, rep_prochain_evenement_id) VALUES ('R2 : Bateau', 1, 5 );
+INSERT INTO reponse (rep_texte, rep_evenement_id, rep_prochain_evenement_id) VALUES ('R3 : Nage', 1, 8 );
+INSERT INTO reponse (rep_texte, rep_evenement_id, rep_prochain_evenement_id) VALUES ('R1 : Oui', 2, 3 );
+INSERT INTO reponse (rep_texte, rep_evenement_id, rep_prochain_evenement_id) VALUES ('R2 : Non', 2, 4 );
+INSERT INTO reponse (rep_texte, rep_evenement_id, rep_prochain_evenement_id) VALUES ('R1 : Oui', 5, 6 );
+INSERT INTO reponse (rep_texte, rep_evenement_id, rep_prochain_evenement_id) VALUES ('R2 : Non', 5, 7 );
