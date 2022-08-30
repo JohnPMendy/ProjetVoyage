@@ -23,7 +23,7 @@ public int getId() {
 public void setId(int id) {
 	this.id = id;
 }
-public boolean isTypeObjetAlimentaire() {
+public boolean getTypeObjetAlimentaire() {
 	return typeObjetAlimentaire;
 }
 public void setTypeObjetAlimentaire(boolean typeObjetAlimentaire) {
