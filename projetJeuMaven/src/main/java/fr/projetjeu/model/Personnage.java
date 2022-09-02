@@ -1,6 +1,18 @@
 package fr.projetjeu.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "personnage")
 public class Personnage {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // Auto-increment
+	@Column(name = "per_id")
 	private int id;
 	private String nom;
 	private String prenom;

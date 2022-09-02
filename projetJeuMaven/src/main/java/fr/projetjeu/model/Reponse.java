@@ -7,7 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -25,10 +25,11 @@ public class Reponse {
 	private String texte;
 	
 	@ManyToOne
-	@JoinColumn(name="rep_evenement_id")
+	@JoinColumn(name="rep_evenement_id", nullable = false)
 	private Events evenementId;
 	
-	@OneToMany(mappedBy = "reponse")
+	@OneToOne
+	@JoinColumn(name = "rep_prochain_evenement_id", nullable = false)
 	private Events prochainEvenementId;
 	
 	
