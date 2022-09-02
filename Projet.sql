@@ -9,6 +9,7 @@ CREATE TABLE personnage(
   per_argent FLOAT,
   per_energie FLOAT,
   per_humeur VARCHAR(50),
+  per_competences INT,
   per_faim FLOAT,
   per_force FLOAT,
   per_covid BOOLEAN,
@@ -55,7 +56,7 @@ CREATE TABLE objet(
     obj_nom VARCHAR(100) NOT NULL,
     obj_type_alimentaire BOOLEAN NOT NULL,
     obj_prix FLOAT NOT NULL,
-    obj_type VARCHAR(100) NOT NULL,
+    obj_type INT NOT NULL,
     obj_quantite_inventaire INT NULL,
     obj_quantite_boutique INT NULL,
     obj_boutique_id INT NULL,
@@ -65,7 +66,7 @@ CREATE TABLE objet(
 CREATE TABLE boutique(
    btq_id SERIAL primary key,
    btq_nom VARCHAR(100) NOT NULL,
-   btq_type VARCHAR(100) NOT NULL
+   btq_type INT NOT NULL
  );
 
 ALTER TABLE partie
