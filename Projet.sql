@@ -39,6 +39,7 @@ CREATE TABLE reponse (
 
 CREATE TABLE environnement(
   env_id SERIAL PRIMARY KEY,
+  env_nom VARCHAR(100) NOT NULL,
   env_temperature FLOAT,
   env_type_environnement INT NOT NULL,
   env_type_meteo INT NOT NULL
