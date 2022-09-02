@@ -2,7 +2,7 @@ package fr.projetjeu.repo.sql;
 
 public class SqlProperties {
 	
-	static private String mdp="mendyDb";
+	static private String mdp="root";
 
 	public static String getMdp() {
 		return mdp;

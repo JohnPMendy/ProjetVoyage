@@ -97,6 +97,7 @@ public class ReponseRepositorySql extends AbstractRepositorySql<Reponse> impleme
 			}
 			else {
 				//Update
+				String query = "UPDATE reponse SET rep_texte= ?, "
 			}
 		}
 		catch(SQLException e) {
