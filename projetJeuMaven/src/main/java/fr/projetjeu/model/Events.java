@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import javax.persistence.Column;
@@ -59,6 +60,10 @@ public class Events {
 	// Liste des objets pour un evenement particulier
 	private ArrayList<Objet> listeObjetEvent = new ArrayList<>();
 	Personnage perso = new Personnage();
+	
+	//Parties utilisant l'event
+	@OneToMany(mappedBy ="eventRunning")
+	private List<Partie> parties;
 
 	// Getters et setters
 
@@ -117,6 +122,94 @@ public class Events {
 	public void setListeObjetEvent(ArrayList<Objet> listeObjetEvent) {
 		this.listeObjetEvent = listeObjetEvent;
 	}
+	
+	
+
+	public ArrayList<Reponse> getReponses() {
+		return reponses;
+	}
+
+	public void setReponses(ArrayList<Reponse> reponses) {
+		this.reponses = reponses;
+	}
+
+	public EventsService getEs() {
+		return es;
+	}
+
+	public void setEs(EventsService es) {
+		this.es = es;
+	}
+
+	public Inventaire getI() {
+		return i;
+	}
+
+	public void setI(Inventaire i) {
+		this.i = i;
+	}
+
+	public ReponseService getRs() {
+		return rs;
+	}
+
+	public void setRs(ReponseService rs) {
+		this.rs = rs;
+	}
+
+	public List<Partie> getParties() {
+		return parties;
+	}
+
+	public void setParties(List<Partie> parties) {
+		this.parties = parties;
+	}
+
+	public static JDialog getDialog() {
+		return dialog;
+	}
+
+	public static void setDialog(JDialog dialog) {
+		Events.dialog = dialog;
+	}
+
+	public static JButton getBtn1() {
+		return btn1;
+	}
+
+	public static void setBtn1(JButton btn1) {
+		Events.btn1 = btn1;
+	}
+
+	public static JButton getBtn2() {
+		return btn2;
+	}
+
+	public static void setBtn2(JButton btn2) {
+		Events.btn2 = btn2;
+	}
+
+	public static JButton getBtn3() {
+		return btn3;
+	}
+
+	public static void setBtn3(JButton btn3) {
+		Events.btn3 = btn3;
+	}
+
+	public static JButton getBtninventaire() {
+		return btninventaire;
+	}
+
+	public static void setBtninventaire(JButton btninventaire) {
+		Events.btninventaire = btninventaire;
+	}
+
+	public void setReponse(Reponse reponse) {
+		this.reponse = reponse;
+	}
+
+
 
 	private static JDialog dialog;
 	private static JButton btn1 = new JButton(""); // Réponse 1

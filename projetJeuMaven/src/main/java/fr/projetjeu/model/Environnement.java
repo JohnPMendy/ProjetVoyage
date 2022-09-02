@@ -7,6 +7,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -31,6 +32,9 @@ public class Environnement {
 	@Enumerated(EnumType.ORDINAL)
 	@Column(name="env_type_environnement",nullable=false)
 	private TypeEnvironnement environnement;
+	
+	@OneToMany(mappedBy="environnement")
+	private Partie partie;
 	
 	public int getId() {
 		return id;

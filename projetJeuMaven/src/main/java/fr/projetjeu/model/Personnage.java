@@ -7,6 +7,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -51,6 +52,10 @@ public class Personnage {
 	@Enumerated(EnumType.ORDINAL)
 	@Column(name="per_competences",nullable=false)
 	private Competences competences;
+	
+	@OneToOne(mappedBy  ="personnage")
+	private Partie partie;
+	
 
 	public int getId() {
 		return id;
