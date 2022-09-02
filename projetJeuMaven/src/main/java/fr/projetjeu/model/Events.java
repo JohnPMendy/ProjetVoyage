@@ -4,9 +4,17 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
@@ -15,18 +23,33 @@ import javax.swing.SwingConstants;
 
 import fr.projetjeu.exception.NegativeIdException;
 import fr.projetjeu.exception.ReponseNotFoundException;
-import fr.projetjeu.repo.sql.EventsRepositorySql;
 import fr.projetjeu.service.EventsService;
 import fr.projetjeu.service.ReponseService;
 
+@Entity
+@Table(name = "evenement")
 public class Events {
 
-	// Variables
-	private Scanner sc = new Scanner(System.in);
+	// Variables (SQL)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "evt_id")
 	private int id;
-	private static int numReponse;
+	
+	@Column(name = "evt_histoire", length = 2000, nullable = true)
 	private static String histoire = "";
-	private static ArrayList<String> reponse = new ArrayList<String>();
+	
+	@OneToMany(mappedBy = "evenementId")
+	private ArrayList<Reponse> reponses = new ArrayList<Reponse>();
+	
+	@OneToOne(mappedBy = "prochainEvenementId")
+	private Reponse reponse;
+	
+	// Variables (Java)
+	private Scanner sc = new Scanner(System.in);
+	//private static int numReponse;
+	
+	//private static ArrayList<String> reponse = new ArrayList<String>();
 
 	// Instantiations
 	EventsService es = new EventsService();
