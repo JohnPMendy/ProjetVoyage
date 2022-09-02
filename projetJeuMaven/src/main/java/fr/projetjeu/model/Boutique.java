@@ -4,9 +4,30 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+
+@Entity
+@Table(name="boutique")
 public class Boutique extends Events {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "btq_id")
 	private String nom;
+	
+	@Enumerated(EnumType.ORDINAL)
+	@Column(name="btq_type",nullable=false)
 	private TypeBoutique typeBoutique;
+	
+	
 	static Scanner sc = new Scanner(System.in);
 
 	public Scanner getSc() {
