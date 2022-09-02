@@ -3,26 +3,27 @@
 
 CREATE TABLE personnage( 
   per_id SERIAL PRIMARY KEY,
-  per_nom VARCHAR(50),
-  per_prenom VARCHAR(50),
-  per_poids FLOAT,
-  per_argent FLOAT,
-  per_energie FLOAT,
-  per_humeur VARCHAR(50),
-  per_competences INT,
-  per_faim FLOAT,
-  per_force FLOAT,
-  per_covid BOOLEAN,
-  per_vivant BOOLEAN
+  per_nom VARCHAR(50) not null,
+  per_prenom VARCHAR(50) NOT NULL,
+  per_poids FLOAT NOT NULL,
+  per_argent FLOAT NOT NULL,
+  per_energie FLOAT NOT NULL,
+  per_humeur INT NOT NULL,
+  per_competences INT NOT NULL,
+  per_faim FLOAT NOT NULL,
+  per_force FLOAT NOT NULL,
+  per_covid BOOLEAN NOT NULL,
+  per_vivant BOOLEAN NOT NULL
  );
 
 CREATE TABLE partie(
   par_id SERIAL PRIMARY KEY,
-  par_personnage_id INT,
-  par_event_id INT,
-  par_date DATE,
-  par_heure TIME,
-  par_environnement_id INT
+  par_personnage_id INT NOT NULL,
+  par_event_id INT NOT NULL,
+  par_date DATE NOT NULL,
+  par_heure TIME NOT NULL,
+  par_environnement_id INT NOT NULL,
+  par_inventaire_id INT NOT NULL
   );
 
 CREATE TABLE evenement(
