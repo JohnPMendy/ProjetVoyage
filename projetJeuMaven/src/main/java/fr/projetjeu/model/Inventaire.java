@@ -35,6 +35,16 @@ public class Inventaire {
 	public void setId(int id) {
 		this.id = id;
 	}
+	
+	
+
+	public Partie getPartie() {
+		return partie;
+	}
+
+	public void setPartie(Partie partie) {
+		this.partie = partie;
+	}
 
 	public List<Objet> getListeObjetInventaire() {
 		System.out.println("Voici la liste des objets disponible dans votre inventaire :");
