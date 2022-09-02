@@ -1,9 +1,9 @@
 package fr.projetjeu.exception;
 
-public class InvalidArgsException extends RuntimeException {
+public class CantDeleteException extends RuntimeException {
 	private static final long serialVersionUID = 1L;
 	
-	public InvalidArgsException(String message) {
+	public CantDeleteException(String message) {
 		super(message);
 	}
 }
