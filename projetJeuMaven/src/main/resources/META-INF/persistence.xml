@@ -5,16 +5,16 @@
 				xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
 	
 	
-	<persistence-unit name="EshopUnit" transaction-type="RESOURCE_LOCAL">
+	<persistence-unit name="ProjetUnit" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
-		<class>fr.formation.model.Boutique</class>
-		<class>fr.formation.model.Environnement</class>
-		<class>fr.formation.model.Events</class>
-		<class>fr.formation.model.Inventaire</class>
-		<class>fr.formation.model.Objet</class>
-		<class>fr.formation.model.Personnage</class>
-		<class>fr.formation.model.Reponse</class>
+		<class>fr.projetjeu.model.Boutique</class>
+		<class>fr.projetjeu.model.Environnement</class>
+		<class>fr.projetjeu.model.Events</class>
+		<class>fr.projetjeu.model.Inventaire</class>
+		<class>fr.projetjeu.model.Objet</class>
+		<class>fr.projetjeu.model.Personnage</class>
+		<class>fr.projetjeu.model.Reponse</class>
 
 		<properties>
       		<!-- Listes des propriétés liées à l’implémentation (Hibernate, OpenJPA, ...) -->
