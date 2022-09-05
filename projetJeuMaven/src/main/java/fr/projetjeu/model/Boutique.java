@@ -17,7 +17,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="boutique")
-public class Boutique extends Events {
+public class Boutique {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
