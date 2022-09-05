@@ -128,11 +128,11 @@ ALTER TABLE reponse
 
 ALTER TABLE environnement
   ADD CONSTRAINT chk_meteo
-  CHECK (env_type_meteo [0-4]);
+  CHECK (env_type_meteo BETWEEN 0 AND 4);
 
   ALTER TABLE environnement
   ADD CONSTRAINT chk_environnement
-  CHECK (env_type_environnement [0-4]);
+  CHECK (env_type_environnement BETWEEN 0 AND 4);
           
 --Exemples pour faire des tests (Questions/Reponses)
 INSERT INTO evenement (evt_histoire) VALUES ('Event 1 : Locomotion?');
