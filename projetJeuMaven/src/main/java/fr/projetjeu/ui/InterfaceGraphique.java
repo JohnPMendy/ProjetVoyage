@@ -3,6 +3,7 @@ package fr.projetjeu.ui;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JButton;
@@ -29,7 +30,8 @@ public class InterfaceGraphique {
 	private int numReponse;
 	int id = events.getId();
 	String histoire = events.getHistoire();
-	List<Reponse> reponse = events.getReponses();
+	List<Reponse> reponse = new ArrayList<Reponse>();
+
 	
 	private static JDialog dialog;
 	private static JButton btn1 = new JButton(""); // Réponse 1
@@ -54,6 +56,7 @@ public class InterfaceGraphique {
 				histoire = es.findById(id).getHistoire();
 
 				try {
+					System.out.println(rs.findByEvenementId(id).get(0).getTexte());
 					reponse.add(0, rs.findByEvenementId(id).get(0));
 					reponse.add(1, rs.findByEvenementId(id).get(1));
 					reponse.add(2, rs.findByEvenementId(id).get(2));
@@ -65,8 +68,8 @@ public class InterfaceGraphique {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				// testApplication();
-				label.setText(events.getHistoire());
+				//testApplication();
+				label.setText(histoire);
 				btn1.setText(reponse.get(0).getTexte());
 				btn2.setText(reponse.get(1).getTexte());
 				btn3.setText(reponse.get(2).getTexte());
