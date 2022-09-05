@@ -6,27 +6,29 @@ import fr.projetjeu.exception.InvalidArgsException;
 import fr.projetjeu.model.Events;
 import fr.projetjeu.repo.IEventRepository;
 import fr.projetjeu.repo.IReponseRepository;
+import fr.projetjeu.repo.jpa.EventsRepositoryJpa;
+import fr.projetjeu.repo.jpa.ReponseRepositoryJpa;
 import fr.projetjeu.repo.sql.EventsRepositorySql;
 import fr.projetjeu.repo.sql.ReponseRepositorySql;
 
 public class EventsService {
-	 IEventRepository repoEvent = new EventsRepositorySql();
-	 IReponseRepository repoReponse = new ReponseRepositorySql();
+	 IEventRepository repoEvent = new EventsRepositoryJpa();
+	 IReponseRepository repoReponse = new ReponseRepositoryJpa();
 	
 	public Events findById(int id) {
 		if (id <= 0) {
-			throw new InvalidArgsException();
+			throw new InvalidArgsException("id");
 		}
 		
 		Events event = this.repoEvent.findById(id);
-		event.setReponse(repoReponse.findByEvenementId(id));
+		event.setReponses(repoReponse.findByEvenementId(id));
 		
 		return event;
 	}
 	
 	public void save(Events event) {
 		if(event==null) {
-			throw new InvalidArgsException();
+			throw new InvalidArgsException("id");
 		}
 		
 		if(event.getHistoire()==null||event.getHistoire().isBlank()) {
