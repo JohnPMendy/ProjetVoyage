@@ -67,9 +67,6 @@ public class Events {
 
 	// Getters et setters
 
-	public static int getNumReponse() {
-		return numReponse;
-	}
 
 	public static String getHistoire() {
 		return histoire;
@@ -79,16 +76,9 @@ public class Events {
 		Events.histoire = histoire;
 	}
 
-	public static void setNumReponse(int numReponse) {
-		Events.numReponse = numReponse;
-	}
 
-	public static ArrayList<String> getReponse() {
+	public Reponse getReponse() {
 		return reponse;
-	}
-
-	public static void setReponse(ArrayList<String> reponse) {
-		Events.reponse = reponse;
 	}
 
 	public Personnage getPerso() {

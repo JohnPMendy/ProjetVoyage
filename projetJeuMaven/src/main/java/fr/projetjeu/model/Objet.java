@@ -1,5 +1,7 @@
 package fr.projetjeu.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -8,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -38,13 +42,21 @@ public class Objet {
 	@Column(name="obj_quantite_boutique")
 	private int quantiteBoutique;
 	
-	@ManyToOne
-	@JoinColumn(name="obj_boutique_id")
-	private Boutique boutique;
+	@ManyToMany
+	@JoinTable(
+			name = "boutique_objet",
+			joinColumns = @JoinColumn(name  ="btob_objet_id"),
+			inverseJoinColumns = @JoinColumn(name = "btob_boutique_id")
+		)
+	private List<Boutique> boutiques;
 	
-	@ManyToOne
-	@JoinColumn(name="obj_inventaire_id")
-	private Inventaire inventaire;
+	@ManyToMany
+	@JoinTable(
+			name = "inventaire_objet",
+			joinColumns = @JoinColumn(name  ="invobj_objet_id"),
+			inverseJoinColumns = @JoinColumn(name = "invobj_inventaire_id")
+		)
+	private List<Inventaire> inventaires;
 
 	public String getNom() {
 		return nom;
@@ -102,20 +114,24 @@ public class Objet {
 		this.quantiteBoutique = quantiteBoutique;
 	}
 
-	public Boutique getBoutique() {
-		return boutique;
+
+
+	public List<Boutique> getBoutiques() {
+		return boutiques;
 	}
 
-	public void setBoutique(Boutique boutique) {
-		this.boutique = boutique;
+	public void setBoutiques(List<Boutique> boutiques) {
+		this.boutiques = boutiques;
 	}
 
-	public Inventaire getInventaire() {
-		return inventaire;
+
+
+	public List<Inventaire> getInventaires() {
+		return inventaires;
 	}
 
-	public void setInventaire(Inventaire inventaire) {
-		this.inventaire = inventaire;
+	public void setInventaires(List<Inventaire> inventaires) {
+		this.inventaires = inventaires;
 	}
 
 	public String toString() {

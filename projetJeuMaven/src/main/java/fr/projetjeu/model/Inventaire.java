@@ -22,7 +22,7 @@ public class Inventaire {
 	@Column(name = "inv_id")
 	private int id;
 	
-	@OneToMany(mappedBy = "inventaire")
+	@OneToMany(mappedBy = "inventaires")
 	private List<Objet> listeObjetInventaire = new ArrayList<>();
 	
 	@OneToOne(mappedBy = "inventaire")
