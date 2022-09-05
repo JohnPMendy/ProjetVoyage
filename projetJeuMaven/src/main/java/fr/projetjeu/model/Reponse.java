@@ -24,12 +24,12 @@ public class Reponse {
 	@Column(name = "rep_texte", nullable = false)
 	private String texte;
 	
-	@ManyToOne
-	@JoinColumn(name="rep_evenement_id", nullable = false)
+	//@ManyToOne
+	//@JoinColumn(name="rep_evenement_id", nullable = false)
 	private Events evenementId;
 	
-	@OneToOne
-	@JoinColumn(name = "rep_prochain_evenement_id", nullable = false)
+	//@OneToOne
+	//@JoinColumn(name = "rep_prochain_evenement_id", nullable = false)
 	private Events prochainEvenementId;
 	
 	

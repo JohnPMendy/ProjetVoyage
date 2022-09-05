@@ -1,5 +1,7 @@
 package fr.projetjeu.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -7,6 +9,9 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -25,33 +30,38 @@ public class Personnage {
 	private String prenom;
 
 	@Column(name = "per_poids", nullable = false)
-	private float poids;
+	private float poids  =0;
 	
 	@Column(name = "per_argent", nullable = false)
-	private float argent;
+	private float argent=0;
 	
 	@Column(name = "per_energie", nullable = false)
-	private float energie;
+	private float energie=0;
 	
 	@Column(name = "per_faim", nullable = false)
-	private float faim;
+	private float faim=0;
 	
 	@Column(name = "per_force", nullable = false)
-	private float force;
+	private float force=0;
 	
 	@Column(name = "per_covid", nullable = false )
-	private boolean isCovided;
+	private boolean isCovided=false;
 	
 	@Column(name = "per_vivant", nullable = false)
-	private boolean isAlive;
+	private boolean isAlive=true;
 
 	@Enumerated(EnumType.ORDINAL)
 	@Column(name="per_humeur",nullable=false)
 	private Humeur humeur;
 	
-	@Enumerated(EnumType.ORDINAL)
-	@Column(name="per_competences",nullable=false)
-	private Competences competences;
+
+	@ManyToMany
+	@JoinTable(
+			name = "competence_personnage",
+			joinColumns = @JoinColumn(name  ="comper_personnage_id"),
+			inverseJoinColumns = @JoinColumn(name = "comper_competence_id")
+		)
+	private List<Competence> competences;
 	
 	@OneToOne(mappedBy  ="personnage")
 	private Partie partie;
@@ -137,12 +147,22 @@ public class Personnage {
 		this.humeur = humeur;
 	}
 
-	public Competences getCompetences() {
+
+
+	public List<Competence> getCompetences() {
 		return competences;
 	}
 
-	public void setCompetences(Competences competences) {
+	public void setCompetences(List<Competence> competences) {
 		this.competences = competences;
+	}
+
+	public Partie getPartie() {
+		return partie;
+	}
+
+	public void setPartie(Partie partie) {
+		this.partie = partie;
 	}
 
 	public boolean isAlive() {

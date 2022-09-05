@@ -8,7 +8,9 @@ import org.junit.jupiter.api.Test;
 import fr.projetjeu.model.Reponse;
 import fr.projetjeu.repo.jpa.ReponseRepositoryJpa;
 
-public class RepositoryReponseTests {
+public class ReponseRepositoryTests {
+	
+	//Attendre reparation Event
 	private IReponseRepository repoReponse = new ReponseRepositoryJpa();
 
 	List<Reponse> reponses = this.repoReponse.findAll();

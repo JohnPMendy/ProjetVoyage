@@ -27,7 +27,7 @@ import fr.projetjeu.exception.ReponseNotFoundException;
 import fr.projetjeu.service.EventsService;
 import fr.projetjeu.service.ReponseService;
 
-@Entity
+//@Entity
 @Table(name = "evenement")
 public class Events {
 
@@ -41,7 +41,7 @@ public class Events {
 	private static String histoire = "";
 	
 	@OneToMany(mappedBy = "evenementId")
-	private ArrayList<Reponse> reponses = new ArrayList<Reponse>();
+	private List<Reponse> reponses;
 	
 	@OneToOne(mappedBy = "prochainEvenementId")
 	private Reponse reponse;
@@ -115,7 +115,7 @@ public class Events {
 	
 	
 
-	public ArrayList<Reponse> getReponses() {
+	public List<Reponse> getReponses() {
 		return reponses;
 	}
 
