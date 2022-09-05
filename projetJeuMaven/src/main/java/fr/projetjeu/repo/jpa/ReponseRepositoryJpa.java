@@ -31,7 +31,7 @@ public class ReponseRepositoryJpa extends AbstractRepositoryJpa<Reponse> impleme
 
 			em.getTransaction().begin();
 
-			em.createQuery("SELECT * FROM reponse WHERE rep_evenement_id = ?1").setParameter(1, id).executeUpdate();
+			em.createQuery("SELECT r FROM Reponse r WHERE r.evenementId = ?1").setParameter(1, id).executeUpdate();
 
 			em.getTransaction().commit();
 
