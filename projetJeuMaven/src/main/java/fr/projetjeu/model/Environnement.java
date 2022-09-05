@@ -1,5 +1,7 @@
 package fr.projetjeu.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -34,7 +36,7 @@ public class Environnement {
 	private TypeEnvironnement environnement;
 	
 	@OneToMany(mappedBy="environnement")
-	private Partie partie;
+	private List<Partie> parties;
 	
 	public int getId() {
 		return id;
@@ -74,6 +76,14 @@ public class Environnement {
 
 	public void setEnvironnement(TypeEnvironnement environnement) {
 		this.environnement = environnement;
+	}
+
+	public List<Partie> getParties() {
+		return parties;
+	}
+
+	public void setParties(List<Partie> parties) {
+		this.parties = parties;
 	}
 
 
