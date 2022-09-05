@@ -1,20 +1,61 @@
 package fr.projetjeu.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "personnage")
 public class Personnage {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // Auto-increment
+	@Column(name = "per_id")
 	private int id;
+	
+	@Column(name = "per_nom", length=50, nullable = false)
 	private String nom;
+	
+	@Column(name = "per_prenom", length=50, nullable = false)
 	private String prenom;
 
+	@Column(name = "per_poids", nullable = false)
 	private float poids;
+	
+	@Column(name = "per_argent", nullable = false)
 	private float argent;
+	
+	@Column(name = "per_energie", nullable = false)
 	private float energie;
+	
+	@Column(name = "per_faim", nullable = false)
 	private float faim;
+	
+	@Column(name = "per_force", nullable = false)
 	private float force;
+	
+	@Column(name = "per_covid", nullable = false )
 	private boolean isCovided;
+	
+	@Column(name = "per_vivant", nullable = false)
 	private boolean isAlive;
 
+	@Enumerated(EnumType.ORDINAL)
+	@Column(name="per_humeur",nullable=false)
 	private Humeur humeur;
+	
+	@Enumerated(EnumType.ORDINAL)
+	@Column(name="per_competences",nullable=false)
 	private Competences competences;
+	
+	@OneToOne(mappedBy  ="personnage")
+	private Partie partie;
+	
 
 	public int getId() {
 		return id;

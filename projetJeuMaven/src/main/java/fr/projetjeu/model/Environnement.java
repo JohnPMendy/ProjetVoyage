@@ -1,11 +1,42 @@
 package fr.projetjeu.model;
 
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="environnement")
 public class Environnement {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "env_id")
 	private int id;
+	
+	@Column(name="env_nom",nullable=false)
 	private String nom;
+	
+	@Column(name="env_temperature")
 	private float temperature;
+	
+	@Enumerated(EnumType.ORDINAL)
+	@Column(name="env_type_meteo",nullable=false)
 	private Meteo meteo;
+	
+	@Enumerated(EnumType.ORDINAL)
+	@Column(name="env_type_environnement",nullable=false)
 	private TypeEnvironnement environnement;
+	
+	@OneToMany(mappedBy="environnement")
+	private List<Partie> parties;
 	
 	public int getId() {
 		return id;
@@ -45,6 +76,14 @@ public class Environnement {
 
 	public void setEnvironnement(TypeEnvironnement environnement) {
 		this.environnement = environnement;
+	}
+
+	public List<Partie> getParties() {
+		return parties;
+	}
+
+	public void setParties(List<Partie> parties) {
+		this.parties = parties;
 	}
 
 
