@@ -23,17 +23,11 @@ public class ReponseRepositoryJpa extends AbstractRepositoryJpa<Reponse> impleme
 
 	@Override
 	public List<Reponse> findByEvenementId(int id) {
-		// TODO Auto-generated method stub
-		List<Reponse> reponses = new ArrayList<>();
 		EntityManager em = emf.createEntityManager();
 
 		try {
-
-			em.getTransaction().begin();
-
-			em.createQuery("SELECT r FROM Reponse r WHERE r.evenementId = ?1").setParameter(1, id).executeUpdate();
-
-			em.getTransaction().commit();
+			return em.createQuery("select r from Reponse r where r.evenementId = 1", Reponse.class)
+					.getResultList();
 
 		}
 
@@ -42,7 +36,6 @@ public class ReponseRepositoryJpa extends AbstractRepositoryJpa<Reponse> impleme
 		} finally {
 			em.close();
 		}
-		return reponses;
 	}
 
 }
