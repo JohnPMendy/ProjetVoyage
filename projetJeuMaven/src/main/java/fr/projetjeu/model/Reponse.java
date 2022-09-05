@@ -18,9 +18,6 @@ public class Reponse {
 	@Column(name = "rep_id")
 	private int id;
 	
-	//Pour applet de Badis
-	private int numeroReponse; 
-	
 	@Column(name = "rep_texte", nullable = false)
 	private String texte;
 	
@@ -57,15 +54,6 @@ public class Reponse {
 	public void setProchainEvenementId(Events prochainEvenementId) {
 		this.prochainEvenementId = prochainEvenementId;
 	}
-	@Override
-	public String toString() {
-		return "Reponse : "+this.getTexte()+", Evenemement d'origine : "+getEvenementId()+", Evenement suivant "+getProchainEvenementId();
-	}
-	public int getNumeroReponse() {
-		return numeroReponse;
-	}
-	public void setNumeroReponse(int numeroReponse) {
-		this.numeroReponse = numeroReponse;
-	}
+	
 	
 }
