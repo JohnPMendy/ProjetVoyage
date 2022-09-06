@@ -26,7 +26,7 @@ public class ReponseRepositoryJpa extends AbstractRepositoryJpa<Reponse> impleme
 		EntityManager em = emf.createEntityManager();
 
 		try {
-			return em.createQuery("select r from Reponse r where r.evenementId = 1", Reponse.class)
+			return em.createQuery("select r from Reponse r where r.evenementId =" + id, Reponse.class)
 					.getResultList();
 
 		}
