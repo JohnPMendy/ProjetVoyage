@@ -7,6 +7,7 @@ target/
 .settings/
 .classpath
 .project
+SqlProperties.java
 
 # Compiled class file
 *.class

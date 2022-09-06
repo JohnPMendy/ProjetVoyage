@@ -3,25 +3,27 @@
 
 CREATE TABLE personnage( 
   per_id SERIAL PRIMARY KEY,
-  per_nom VARCHAR(50),
-  per_prenom VARCHAR(50),
-  per_poids FLOAT,
-  per_argent FLOAT,
-  per_energie FLOAT,
-  per_humeur VARCHAR(50),
-  per_faim FLOAT,
-  per_force FLOAT,
-  per_covid BOOLEAN,
-  per_vivant BOOLEAN
+  per_nom VARCHAR(50) not null,
+  per_prenom VARCHAR(50) NOT NULL,
+  per_poids FLOAT NOT NULL,
+  per_argent FLOAT NOT NULL,
+  per_energie FLOAT NOT NULL,
+  per_humeur INT NOT NULL,
+  per_competences INT NOT NULL,
+  per_faim FLOAT NOT NULL,
+  per_force FLOAT NOT NULL,
+  per_covid BOOLEAN NOT NULL,
+  per_vivant BOOLEAN NOT NULL
  );
 
 CREATE TABLE partie(
   par_id SERIAL PRIMARY KEY,
-  par_personnage_id INT,
-  par_event_id INT,
-  par_date DATE,
-  par_heure TIME,
-  par_environnement_id INT
+  par_personnage_id INT NOT NULL,
+  par_event_id INT NOT NULL,
+  par_date DATE NOT NULL,
+  par_heure TIME NOT NULL,
+  par_environnement_id INT NOT NULL,
+  par_inventaire_id INT NOT NULL
   );
 
 CREATE TABLE evenement(
@@ -39,6 +41,7 @@ CREATE TABLE reponse (
 
 CREATE TABLE environnement(
   env_id SERIAL PRIMARY KEY,
+  env_nom VARCHAR(100) NOT NULL,
   env_temperature FLOAT,
   env_type_environnement INT NOT NULL,
   env_type_meteo INT NOT NULL
@@ -54,7 +57,7 @@ CREATE TABLE objet(
     obj_nom VARCHAR(100) NOT NULL,
     obj_type_alimentaire BOOLEAN NOT NULL,
     obj_prix FLOAT NOT NULL,
-    obj_type VARCHAR(100) NOT NULL,
+    obj_type INT NOT NULL,
     obj_quantite_inventaire INT NULL,
     obj_quantite_boutique INT NULL,
     obj_boutique_id INT NULL,
@@ -64,7 +67,7 @@ CREATE TABLE objet(
 CREATE TABLE boutique(
    btq_id SERIAL primary key,
    btq_nom VARCHAR(100) NOT NULL,
-   btq_type VARCHAR(100) NOT NULL
+   btq_type INT NOT NULL
  );
 
 ALTER TABLE partie
@@ -125,11 +128,11 @@ ALTER TABLE reponse
 
 ALTER TABLE environnement
   ADD CONSTRAINT chk_meteo
-  CHECK (env_type_meteo [0-4]);
+  CHECK (env_type_meteo BETWEEN 0 AND 4);
 
   ALTER TABLE environnement
   ADD CONSTRAINT chk_environnement
-  CHECK (env_type_environnement [0-4]);
+  CHECK (env_type_environnement BETWEEN 0 AND 4);
           
 --Exemples pour faire des tests (Questions/Reponses)
 INSERT INTO evenement (evt_histoire) VALUES ('Event 1 : Locomotion?');
