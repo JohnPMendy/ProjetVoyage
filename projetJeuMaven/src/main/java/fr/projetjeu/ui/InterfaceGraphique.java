@@ -237,7 +237,6 @@ public class InterfaceGraphique {
 		try {
 
 			rd(rs.findByEvenementId(id).size());
-			System.out.println(rs.findByEvenementId(id).size());
 		} catch (NegativeIdException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
