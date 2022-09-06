@@ -1,6 +1,7 @@
 package fr.projetjeu.ui;
 
 import java.awt.Color;
+import java.awt.Dialog;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -33,47 +34,25 @@ public class InterfaceGraphique {
 	List<Reponse> reponse = new ArrayList<Reponse>();
 
 	
-	private static JDialog dialog;
-	private static JButton btn1 = new JButton(""); // Réponse 1
-	private static JButton btn2 = new JButton(""); // Réponse 2
-	private static JButton btn3 = new JButton(""); // Réponse 3
-	private static JButton btninventaire = new JButton("Inventaire"); // Bouton Inventaire
-
+	private Dialog dialog;
+	private JButton btn1 = new JButton(""); // Réponse 1
+	private JButton btn2 = new JButton(""); // Réponse 2
+	private JButton btn3 = new JButton(""); // Réponse 3
+	private JButton startgame = new JButton("Commencer Partie");
+	private JButton btninventaire = new JButton("Inventaire"); // Bouton Inventaire
+	private JFrame frame = new JFrame();
+	private JLabel label = new JLabel("Bienvenue, veuillez commencer la partie.", SwingConstants.CENTER);
+	private JLabel labelID = new JLabel("id " + events.getId());
+	
 	public void TestApp() {
-		JFrame frame = new JFrame();
 		dialog = new JDialog(frame, "Jeu : Le voyageur malchanceux.", true);
 		dialog.setLayout(null);
-		JLabel label = new JLabel("Bienvenue, veuillez commencer la partie.", SwingConstants.CENTER);
-		JLabel labelID = new JLabel("id " + events.getId());
-
-		JButton startgame = new JButton("Commencer Partie");
 
 		startgame.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				id = 1;
-				histoire = es.findById(id).getHistoire();
-
-				try {
-					System.out.println(rs.findByEvenementId(id).get(0).getTexte());
-					reponse.add(0, rs.findByEvenementId(id).get(0));
-					reponse.add(1, rs.findByEvenementId(id).get(1));
-					reponse.add(2, rs.findByEvenementId(id).get(2));
-					//reponse.add(0, rs.findByEvenementId(id).get(0).getTexte());
-					//reponse.add(1, rs.findByEvenementId(id).get(1).getTexte());
-					//reponse.add(2, rs.findByEvenementId(id).get(2).getTexte());
-
-				} catch (NegativeIdException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				//testApplication();
-				label.setText(histoire);
-				btn1.setText(reponse.get(0).getTexte());
-				btn2.setText(reponse.get(1).getTexte());
-				btn3.setText(reponse.get(2).getTexte());
-				labelID.setText("id " + id);
 				rd(3);
 				btninventaire.setVisible(true);
 
@@ -213,6 +192,8 @@ public class InterfaceGraphique {
 		}
 
 		else {
+			
+			
 			btn1.setVisible(true);
 			btn2.setVisible(true);
 			btn3.setVisible(true);
@@ -233,9 +214,14 @@ public class InterfaceGraphique {
 
 			btn1.setText(reponse.get(0).getTexte());
 			btn2.setText(reponse.get(1).getTexte());
-			btn1.setText(reponse.get(2).getTexte());
+			btn3.setText(reponse.get(2).getTexte());
 
 			histoire = es.findById(id).getHistoire();
+			
+			labelID.setText("id " + id);
+			label.setText(histoire);
+			
+			
 
 		}
 	}
@@ -251,6 +237,7 @@ public class InterfaceGraphique {
 		try {
 
 			rd(rs.findByEvenementId(id).size());
+			System.out.println(rs.findByEvenementId(id).size());
 		} catch (NegativeIdException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
