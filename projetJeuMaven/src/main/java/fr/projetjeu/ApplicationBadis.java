@@ -1,6 +1,8 @@
 package fr.projetjeu;
 
 import fr.projetjeu.model.Events;
+import fr.projetjeu.model.Personnage;
+import fr.projetjeu.ui.InterfaceGraphique;
 
 public class ApplicationBadis {
 
@@ -8,16 +10,19 @@ public class ApplicationBadis {
 
 	public static void main(String[] args) {
 
+		InterfaceGraphique ig = new InterfaceGraphique();
 		Events events = new Events();
+		Personnage perso = new Personnage();
+		
+		perso.setAlive(true);
 
 		events.setId(0);
-		events.getPerso().setAlive(true);
 		
 		// pas sur si le do while serve a quelque chose maintenant...
 		do {
-			events.TestApp();
+			ig.TestApp();
 			// events.actionPerformed(ae);
-		} while (events.getPerso().isAlive() == true);
+		} while (perso.isAlive() == true);
 
 		System.out.println("Partie terminée");
 		System.exit(0);

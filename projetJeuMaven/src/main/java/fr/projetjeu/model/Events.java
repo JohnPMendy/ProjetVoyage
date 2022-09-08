@@ -3,25 +3,14 @@ package fr.projetjeu.model;
 
 import java.util.List;
 
-import java.util.Scanner;
-
 import javax.persistence.Column;
-
 import javax.persistence.Entity;
-
 import javax.persistence.GeneratedValue;
-
 import javax.persistence.GenerationType;
-
 import javax.persistence.Id;
-
 import javax.persistence.OneToMany;
-
 import javax.persistence.OneToOne;
-
 import javax.persistence.Table;
-
-import javax.persistence.Transient;
 
 @Entity
 
@@ -41,102 +30,25 @@ public class Events {
 
 	@Column(name = "evt_histoire", length = 2000, nullable = true)
 
-	private static String histoire = "";
-
+	private String histoire = "";
+	
 	@OneToMany(mappedBy = "evenementId")
-
 	private List<Reponse> reponses;
-
+	
 	@OneToOne(mappedBy = "prochainEvenementId")
-
 	private Reponse reponse;
 
-	// Variables (Java)
 
-	@Transient
-
-	private Scanner sc = new Scanner(System.in);
-
-	// private static int numReponse;
-
-	// private static ArrayList<String> reponse = new ArrayList<String>();
-
-	// Instantiations
-
-//	@Transient
-
-//	EventsService es = new EventsService();
-
-//	@Transient
-
-//	Inventaire i = new Inventaire();
-
-//	@Transient
-
-//	ReponseService rs = new ReponseService();
-
-	// Liste des objets pour un evenement particulier
-
-//	@Transient
-
-//	private ArrayList<Objet> listeObjetEvent = new ArrayList<>();
-
-//	@Transient
-
-//	Personnage perso = new Personnage();
-
-	// Parties utilisant l'event
-
-	@OneToMany(mappedBy = "eventRunning")
-
+	
+	//Parties utilisant l'event
+	@OneToMany(mappedBy ="eventRunning")
 	private List<Partie> parties;
+	
+	
 
 	// Getters et setters
-
-	public static String getHistoire() {
-
-		return histoire;
-
-	}
-
-	public static void setHistoire(String histoire) {
-
-		Events.histoire = histoire;
-
-	}
-
-	public Reponse getReponse() {
-
-		return reponse;
-
-	}
-
-//	public Personnage getPerso() {
-
-//		return perso;
-
-//	}
-
-//
-
-//	public void setPerso(Personnage perso) {
-
-//		this.perso = perso;
-
-//	}
-
-	public Scanner getSc() {
-
-		return sc;
-
-	}
-
-	public void setSc(Scanner sc) {
-
-		this.sc = sc;
-
-	}
-
+	
+	
 	public int getId() {
 
 		return id;
@@ -148,6 +60,40 @@ public class Events {
 		this.id = id;
 
 	}
+
+	public String getHistoire() {
+		return histoire;
+	}
+
+	public void setHistoire(String histoire) {
+		this.histoire = histoire;
+	}
+
+	public List<Reponse> getReponses() {
+		return reponses;
+	}
+
+	public void setReponses(List<Reponse> reponses) {
+		this.reponses = reponses;
+	}
+
+	public Reponse getReponse() {
+		return reponse;
+	}
+
+	public void setReponse(Reponse reponse) {
+		this.reponse = reponse;
+	}
+
+	public List<Partie> getParties() {
+		return parties;
+	}
+
+	public void setParties(List<Partie> parties) {
+		this.parties = parties;
+	}
+
+		
 
 //	public ArrayList<Objet> getListeObjetEvent() {
 
@@ -165,35 +111,10 @@ public class Events {
 
 //	
 
-	public List<Reponse> getReponses() {
 
-		return reponses;
-
-	}
-
-	public void setReponses(List<Reponse> reponses) {
-
-		this.reponses = reponses;
-
-	}
-
-	public List<Partie> getParties() {
-
-		return parties;
-
-	}
-
-	public void setParties(List<Partie> parties) {
-
-		this.parties = parties;
-
-	}
-
-	public void setReponse(Reponse reponse) {
-
-		this.reponse = reponse;
-
-	}
+	
+	
+	
 
 
 //	
@@ -781,6 +702,7 @@ public class Events {
 //
 
 }
+
 
 
 
