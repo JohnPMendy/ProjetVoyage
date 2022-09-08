@@ -9,12 +9,20 @@ CREATE TABLE personnage(
   per_argent FLOAT NOT NULL,
   per_energie FLOAT NOT NULL,
   per_humeur INT NOT NULL,
+
   per_competences INT NOT NULL,
+
   per_faim FLOAT NOT NULL,
   per_force FLOAT NOT NULL,
   per_covid BOOLEAN NOT NULL,
   per_vivant BOOLEAN NOT NULL
  );
+
+CREATE TABLE competence(
+  com_id SERIAL PRIMARY KEY,
+  com_nom VARCHAR(50) NOT NULL,
+  com_des VARCHAR(500) 
+);
 
 CREATE TABLE partie(
   par_id SERIAL PRIMARY KEY,
@@ -151,3 +159,5 @@ INSERT INTO reponse (rep_texte, rep_evenement_id, rep_prochain_evenement_id) VAL
 INSERT INTO reponse (rep_texte, rep_evenement_id, rep_prochain_evenement_id) VALUES ('R2 : Non', 2, 4 );
 INSERT INTO reponse (rep_texte, rep_evenement_id, rep_prochain_evenement_id) VALUES ('R1 : Oui', 5, 6 );
 INSERT INTO reponse (rep_texte, rep_evenement_id, rep_prochain_evenement_id) VALUES ('R2 : Non', 5, 7 );
+
+INSERT INTO competence(com_nom, com_des) VALUES ('Négociation', 'Permet de négocier des prix lors des achats');

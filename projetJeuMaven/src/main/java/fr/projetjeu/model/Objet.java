@@ -12,16 +12,16 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="objet")
+@Table(name = "objet")
 public class Objet {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "obj_id")
 	private int id;
+
 	
 	@Column(name="obj_nom",length=100,nullable=false)
 	private String nom;
@@ -114,25 +114,8 @@ public class Objet {
 		this.quantiteBoutique = quantiteBoutique;
 	}
 
+	
 
-
-	public List<Boutique> getBoutiques() {
-		return boutiques;
-	}
-
-	public void setBoutiques(List<Boutique> boutiques) {
-		this.boutiques = boutiques;
-	}
-
-
-
-	public List<Inventaire> getInventaires() {
-		return inventaires;
-	}
-
-	public void setInventaires(List<Inventaire> inventaires) {
-		this.inventaires = inventaires;
-	}
 
 	public String toString() {
 		return this.nom + "--Prix=" + this.prix + "--Qte dans boutique=" + this.quantiteBoutique

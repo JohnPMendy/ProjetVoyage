@@ -1,17 +1,11 @@
+
 package fr.projetjeu.repo.jpa;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 
-import fr.projetjeu.exception.CantDeleteException;
-import fr.projetjeu.model.Events;
 import fr.projetjeu.model.Reponse;
-import fr.projetjeu.repo.IEventRepository;
 import fr.projetjeu.repo.IReponseRepository;
 
 public class ReponseRepositoryJpa extends AbstractRepositoryJpa<Reponse> implements IReponseRepository {
@@ -23,17 +17,11 @@ public class ReponseRepositoryJpa extends AbstractRepositoryJpa<Reponse> impleme
 
 	@Override
 	public List<Reponse> findByEvenementId(int id) {
-		// TODO Auto-generated method stub
-		List<Reponse> reponses = new ArrayList<>();
 		EntityManager em = emf.createEntityManager();
 
 		try {
-
-			em.getTransaction().begin();
-
-			em.createQuery("SELECT * FROM reponse WHERE rep_evenement_id = ?1").setParameter(1, id).executeUpdate();
-
-			em.getTransaction().commit();
+			return em.createQuery("select r from Reponse r where r.evenementId =" + id, Reponse.class)
+					.getResultList();
 
 		}
 
@@ -42,7 +30,7 @@ public class ReponseRepositoryJpa extends AbstractRepositoryJpa<Reponse> impleme
 		} finally {
 			em.close();
 		}
-		return reponses;
 	}
 
 }
+

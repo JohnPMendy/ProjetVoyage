@@ -16,6 +16,10 @@
 		<class>fr.projetjeu.model.Personnage</class>
 		<class>fr.projetjeu.model.Reponse</class>
 
+		<class>fr.projetjeu.model.Partie</class>
+		<class>fr.projetjeu.model.Competence</class>
+
+
 		<properties>
       		<!-- Listes des propriétés liées à l’implémentation (Hibernate, OpenJPA, ...) -->
       		

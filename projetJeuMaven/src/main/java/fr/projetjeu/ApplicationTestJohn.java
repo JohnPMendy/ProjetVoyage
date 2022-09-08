@@ -31,21 +31,21 @@ public class ApplicationTestJohn {
 	}
 	
 	private static void story(Events event) {
-		System.out.println(event.getHistoire());
-		
-		if(event.getReponse().size()==0) {
-			return;
-		}
-		for (int i = 0; i < event.getReponse().size(); i++) {
-			System.out.println((i + 1) + ". " + event.getReponse().get(i).getTexte());
-		}
-		int choix = sc.nextInt();
-		
-		if(choix>0 && choix<=event.getReponse().size()) {
-			Reponse proposition =event.getReponse().get(choix-1);
-			event=srvEvent.findById(proposition.getProchainEvenementId());
-		}
-		
-		story(event);
+//		System.out.println(event.getHistoire());
+//		
+//		if(event.getReponse().size()==0) {
+//			return;
+//		}
+//		for (int i = 0; i < event.getReponse().size(); i++) {
+//			System.out.println((i + 1) + ". " + event.getReponse().get(i).getTexte());
+//		}
+//		int choix = sc.nextInt();
+//		
+//		if(choix>0 && choix<=event.getReponse().size()) {
+//			Reponse proposition =event.getReponse().get(choix-1);
+//			event=srvEvent.findById(proposition.getProchainEvenementId());
+//		}
+//		
+//		story(event);
 	}
 }
