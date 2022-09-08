@@ -8,6 +8,7 @@ target/
 .classpath
 .project
 SqlProperties.java
+datasource.properties
 
 # Compiled class file
 *.class
