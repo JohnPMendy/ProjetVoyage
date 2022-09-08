@@ -25,8 +25,8 @@ public class Partie {
 	@JoinColumn(name="par_personnage_id", nullable = false)
 	private Personnage personnage;
 	
-	//@ManyToOne
-	//@JoinColumn(name="par_event_id", nullable = false)
+	@ManyToOne
+	@JoinColumn(name="par_event_id", nullable = false)
 	private Events eventRunning;
 	
 	@Column(name="par_date", nullable=false)
