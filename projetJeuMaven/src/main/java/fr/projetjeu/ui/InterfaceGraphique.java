@@ -13,6 +13,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import fr.projetjeu.config.AppConfig;
 import fr.projetjeu.exception.NegativeIdException;
 import fr.projetjeu.exception.ReponseNotFoundException;
 import fr.projetjeu.model.Events;
@@ -23,9 +26,14 @@ import fr.projetjeu.service.ReponseService;
 
 public class InterfaceGraphique {
 	
-	EventsService es = new EventsService();
+	AnnotationConfigApplicationContext ctx =
+			new AnnotationConfigApplicationContext(AppConfig.class);
+	//EventsService es = new EventsService();
+	EventsService es = ctx.getBean(EventsService.class);
 	Inventaire i = new Inventaire();
-	ReponseService rs = new ReponseService();
+	
+	ReponseService rs = ctx.getBean(ReponseService.class);
+	//ReponseService rs = new ReponseService();
 	Events events = new Events();
 	
 	private int numReponse;
@@ -38,11 +46,13 @@ public class InterfaceGraphique {
 	private JButton btn1 = new JButton(""); // Réponse 1
 	private JButton btn2 = new JButton(""); // Réponse 2
 	private JButton btn3 = new JButton(""); // Réponse 3
+	private JButton fermerBoutton = new JButton("Fermer la fenêtre");
 	private JButton startgame = new JButton("Commencer Partie");
 	private JButton btninventaire = new JButton("Inventaire"); // Bouton Inventaire
 	private JFrame frame = new JFrame();
 	private JLabel label = new JLabel("Bienvenue, veuillez commencer la partie.", SwingConstants.CENTER);
 	private JLabel labelID = new JLabel("id " + events.getId());
+	
 	
 	public void TestApp() {
 		dialog = new JDialog(frame, "Jeu : Le voyageur malchanceux.", true);
@@ -118,6 +128,7 @@ public class InterfaceGraphique {
 		btn3.setBounds(470, 350, 150, 50);
 		startgame.setBounds(500, 30, 200, 30);
 		btninventaire.setBounds(10, 30, 200, 30);
+		fermerBoutton.setBounds(40, 70, 200, 30);
 		label.setBounds(100, 100, 500, 200);
 		labelID.setBounds(10, 2, 150, 30);
 		// label.setForeground(new Color(100, 100, 100)); //Couleur du texte
