@@ -46,12 +46,14 @@ public class Events {
 		this.id = id;
 	}
 
-	public static String getHistoire() {
+
+
+	public String getHistoire() {
 		return histoire;
 	}
 
-	public static void setHistoire(String histoire) {
-		Events.histoire = histoire;
+	public void setHistoire(String histoire) {
+		this.histoire = histoire;
 	}
 
 	public List<Reponse> getReponses() {
