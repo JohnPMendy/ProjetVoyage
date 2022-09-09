@@ -24,9 +24,6 @@ public class EventsService {
 			throw new InvalidArgsException("id");
 		}
 		
-		//Events event = this.repoEvent.findById(id);
-		//event.setReponses(repoReponse.findByEvenementId(id));
-		
 		return repoEvent.findById(id).orElseThrow(EventNotFoundException::new);
 
 	}
