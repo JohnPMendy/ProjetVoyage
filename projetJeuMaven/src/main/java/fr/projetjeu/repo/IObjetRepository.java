@@ -3,9 +3,12 @@ package fr.projetjeu.repo;
 import java.util.List;
 import java.util.Optional;
 
-import fr.projetjeu.model.Objet;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface IObjetRepository extends IRepository<Objet> {
-	public List<Objet> findAllInventaire(int id);
-	public List<Objet> findAllBoutique(int id);
+import fr.projetjeu.model.Objet;
+import fr.projetjeu.model.Personnage;
+
+public interface IObjetRepository extends JpaRepository<Objet, Integer> {
+	//public List<Objet> findAllInventaire(int id);
+	//public List<Objet> findAllBoutique(int id);
 }
