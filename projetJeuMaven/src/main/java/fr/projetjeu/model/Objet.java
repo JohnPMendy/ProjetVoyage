@@ -24,24 +24,21 @@ public class Objet {
 	@Column(name = "obj_id")
 	private int id;
 
-	@Column(name = "obj_nom", length = 100, nullable = false)
+	
+	@Column(name="obj_nom",length=100,nullable=false)
 	private String nom;
-
-	@Column(name = "obj_type_alimentaire", nullable = false)
+	
+	@Column(name="obj_type_alimentaire",nullable=false)
 	private boolean typeObjetAlimentaire;
-
-	@Column(name = "obj_prix", nullable = false)
+	
+	@Column(name="obj_prix",nullable=false)
 	private float prix;
-
+	
 	@Enumerated(EnumType.ORDINAL)
-	@Column(name = "obj_type", nullable = false)
+	@Column(name="obj_type",nullable=false)
 	private TypeObjets typeObjets;
+	
 
-	@Column(name = "obj_quantite_inventaire")
-	private int quantiteInventaire;
-
-	@Column(name = "obj_quantite_boutique")
-	private int quantiteBoutique;
 
 	
 	/*@ManyToMany
@@ -95,21 +92,6 @@ public class Objet {
 		this.prix = prix;
 	}
 
-	public int getQuantiteInventaire() {
-		return quantiteInventaire;
-	}
-
-	public void setQuantiteInventaire(int quantiteInventaire) {
-		this.quantiteInventaire = quantiteInventaire;
-	}
-
-	public int getQuantiteBoutique() {
-		return quantiteBoutique;
-	}
-
-	public void setQuantiteBoutique(int quantiteBoutique) {
-		this.quantiteBoutique = quantiteBoutique;
-	}
 
 
 
@@ -130,8 +112,9 @@ public class Objet {
 		ObjetInventaires = objetInventaires;
 	}
 
+
 	public String toString() {
-		return this.nom + "--Prix=" + this.prix + "--Qte dans boutique=" + this.quantiteBoutique
-				+ "--Qte votre inventaire=" + this.quantiteInventaire;
+		return this.nom + "--Prix=" + this.prix ;
+				
 	}
 }

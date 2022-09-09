@@ -54,6 +54,5 @@ public class Reponse {
 	public void setProchainEvenementId(Events prochainEvenementId) {
 		this.prochainEvenementId = prochainEvenementId;
 	}
-	
-	
+
 }

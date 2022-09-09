@@ -17,6 +17,7 @@ import javax.persistence.Table;
 @Table(name = "inventaire")
 public class Inventaire {
 
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "inv_id")
@@ -24,6 +25,7 @@ public class Inventaire {
 
 	@OneToMany(mappedBy = "inventaire")
 	private List<ObjetInventaire> listeObjetInventaire;
+
 
 	@OneToOne(mappedBy = "inventaire")
 	private Partie partie;
@@ -36,6 +38,7 @@ public class Inventaire {
 		this.id = id;
 	}
 
+
 	public Partie getPartie() {
 		return partie;
 	}
@@ -44,6 +47,7 @@ public class Inventaire {
 		this.partie = partie;
 	}
 
+
 	public List<ObjetInventaire> getListeObjetInventaire() {
 		return listeObjetInventaire;
 	}
@@ -51,6 +55,7 @@ public class Inventaire {
 	public void setListeObjetInventaire(List<ObjetInventaire> listeObjetInventaire) {
 		this.listeObjetInventaire = listeObjetInventaire;
 	}
+
 
 
 }

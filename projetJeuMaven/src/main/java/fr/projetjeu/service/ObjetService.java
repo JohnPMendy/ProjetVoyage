@@ -20,10 +20,12 @@ import fr.projetjeu.repo.jpa.ObjetRepositoryJpa;
 public class ObjetService {
 	@Autowired 
 	private IObjetRepository repoObjet;
+	
+	@Autowired
 	private IInventaireRepository repoInventaire;
 
 	
-	@Autowired 
+
 	static Scanner sc = new Scanner(System.in);
 	
 	public Scanner getSc() {
@@ -40,7 +42,7 @@ public class ObjetService {
 		// nécessaire de vérifier si l'objet est déjà présent dans l'invetnaire, si
 		// c'est le cas
 		// on augmente juste la quantité présente sinon on crée un objet
-obj.
+//obj.
 	   if (obj.getId() != 0) {   
 			obj.setQuantiteInventaire(obj.getQuantiteInventaire() + quantite);
 	   }

@@ -9,6 +9,9 @@ CREATE TABLE personnage(
   per_argent FLOAT NOT NULL,
   per_energie FLOAT NOT NULL,
   per_humeur INT NOT NULL,
+
+  per_competences INT NOT NULL,
+
   per_faim FLOAT NOT NULL,
   per_force FLOAT NOT NULL,
   per_covid BOOLEAN NOT NULL,
