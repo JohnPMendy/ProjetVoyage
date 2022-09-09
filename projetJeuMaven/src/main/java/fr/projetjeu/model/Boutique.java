@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -28,8 +29,8 @@ public class Boutique {
 	@Column(name = "btq_type", nullable = false)
 	private TypeBoutique typeBoutique;
 
-	@ManyToMany(mappedBy = "boutiques")
-	List<Objet> objets;
+	@OneToMany(mappedBy = "boutique")
+	List<ObjetBoutique> objets;
 
 	public int getId() {
 		return id;
@@ -39,11 +40,13 @@ public class Boutique {
 		this.id = id;
 	}
 
-	public List<Objet> getObjets() {
+
+
+	public List<ObjetBoutique> getObjets() {
 		return objets;
 	}
 
-	public void setObjets(List<Objet> objets) {
+	public void setObjets(List<ObjetBoutique> objets) {
 		this.objets = objets;
 	}
 

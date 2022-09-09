@@ -5,11 +5,13 @@ import java.util.Scanner;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import fr.projetjeu.model.Boutique;
 import fr.projetjeu.model.Inventaire;
 import fr.projetjeu.model.Objet;
 import fr.projetjeu.model.Personnage;
+import fr.projetjeu.repo.IInventaireRepository;
 import fr.projetjeu.repo.IObjetRepository;
 import fr.projetjeu.repo.jpa.ObjetRepositoryJpa;
 
@@ -17,11 +19,11 @@ import fr.projetjeu.repo.jpa.ObjetRepositoryJpa;
 @Service
 public class ObjetService {
 	@Autowired 
-	private IObjetRepository repoObjet = new ObjetRepositoryJpa();
+	private IObjetRepository repoObjet;
+	private IInventaireRepository repoInventaire;
 
 	
 	@Autowired 
-
 	static Scanner sc = new Scanner(System.in);
 	
 	public Scanner getSc() {
@@ -33,27 +35,30 @@ public class ObjetService {
 	}
 	
 	
-	
+	@Transactional
 	public void ajoutObjetInventaire(Objet obj, int quantite) {
 		// nécessaire de vérifier si l'objet est déjà présent dans l'invetnaire, si
 		// c'est le cas
 		// on augmente juste la quantité présente sinon on crée un objet
-
-		if (obj.getId() != 0) {
+obj.
+	   if (obj.getId() != 0) {   
 			obj.setQuantiteInventaire(obj.getQuantiteInventaire() + quantite);
-		}
-		this.repoObjet.save(obj);
+	   }
+		repoObjet.save(obj);
 		System.out.println(obj.getQuantiteInventaire() + " " + obj.getNom() + " ajouté dans l'inventaire ! ");
 	}
-
+	
+	@Transactional
 	public void supprimerObjetInventaire(Objet obj, int quantite) {
-
+        
 		if (quantite == obj.getQuantiteInventaire()) {
 			obj.setQuantiteInventaire(0);
+			repoObjet.save(obj);
 			System.out.println(obj.getNom() + " a été supprimé de l'inventaire !");
 
 		} else if (quantite < obj.getQuantiteInventaire() && quantite > 0) {
 			obj.setQuantiteInventaire(obj.getQuantiteInventaire() - quantite);
+			repoObjet.save(obj);
 			if (quantite == 1) {
 				System.out.println("un exemplaire de " + obj.getNom() + " a été supprimé de l'inventaire");
 			} else {
@@ -64,7 +69,7 @@ public class ObjetService {
 		}
 	}
 
-	
+	@Transactional
 	public void achatObjet(Boutique b,Inventaire i, Personnage p) {
 		// le type de la boutique depend de l'evenement
 		System.out.println("vous etes dans " + b.getTypeBoutique());
@@ -94,6 +99,7 @@ public class ObjetService {
 		}
 	}
 
+	@Transactional
 	public void venteObjet( Boutique b,Inventaire i, Personnage p) {
 		System.out.println("vous etes dans " + b.getTypeBoutique());
 		System.out.println("les articles que vous disposez sont ");

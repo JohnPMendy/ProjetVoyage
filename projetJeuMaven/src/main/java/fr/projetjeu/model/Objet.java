@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -41,13 +43,17 @@ public class Objet {
 	@Column(name = "obj_quantite_boutique")
 	private int quantiteBoutique;
 
-	@ManyToMany
+	
+	/*@ManyToMany
 	@JoinTable(name = "boutique_objet", joinColumns = @JoinColumn(name = "btob_objet_id"), inverseJoinColumns = @JoinColumn(name = "btob_boutique_id"))
-	private List<Boutique> boutiques;
+	private List<Boutique> boutiques;*/
 
-	@ManyToMany
+	@OneToMany(mappedBy= "objet" )
+	private List<ObjetBoutique> objetBoutiques;
+	
+	@OneToMany(mappedBy = "objet")
 	@JoinTable(name = "inventaire_objet", joinColumns = @JoinColumn(name = "invobj_objet_id"), inverseJoinColumns = @JoinColumn(name = "invobj_inventaire_id"))
-	private List<Inventaire> inventaires;
+	private List<ObjetInventaire> ObjetInventaires;
 
 	public String getNom() {
 		return nom;
@@ -105,20 +111,23 @@ public class Objet {
 		this.quantiteBoutique = quantiteBoutique;
 	}
 
-	public List<Boutique> getBoutiques() {
-		return boutiques;
+
+
+
+	public List<ObjetBoutique> getObjetBoutiques() {
+		return objetBoutiques;
 	}
 
-	public void setBoutiques(List<Boutique> boutiques) {
-		this.boutiques = boutiques;
+	public void setObjetBoutiques(List<ObjetBoutique> objetBoutiques) {
+		this.objetBoutiques = objetBoutiques;
 	}
 
-	public List<Inventaire> getInventaires() {
-		return inventaires;
+	public List<ObjetInventaire> getObjetInventaires() {
+		return ObjetInventaires;
 	}
 
-	public void setInventaires(List<Inventaire> inventaires) {
-		this.inventaires = inventaires;
+	public void setObjetInventaires(List<ObjetInventaire> objetInventaires) {
+		ObjetInventaires = objetInventaires;
 	}
 
 	public String toString() {
