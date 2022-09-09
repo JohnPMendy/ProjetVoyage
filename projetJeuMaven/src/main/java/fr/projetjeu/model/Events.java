@@ -22,21 +22,20 @@ public class Events {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "evt_id")
 	private int id;
-	
+
 	@Column(name = "evt_histoire", length = 2000, nullable = true)
-	private static String histoire = "";
-	
+	private String histoire = "";
+
 	@OneToMany(mappedBy = "evenementId")
 	private List<Reponse> reponses;
-	
+
 	@OneToOne(mappedBy = "prochainEvenementId")
 	private Reponse reponse;
-	
-	//Parties utilisant l'event
-	@OneToMany(mappedBy ="eventRunning")
+
+	// Parties utilisant l'event
+	@OneToMany(mappedBy = "eventRunning")
 	private List<Partie> parties;
 
-	
 	// Getters et setters
 	public int getId() {
 		return id;
@@ -46,12 +45,12 @@ public class Events {
 		this.id = id;
 	}
 
-	public static String getHistoire() {
+	public String getHistoire() {
 		return histoire;
 	}
 
-	public static void setHistoire(String histoire) {
-		Events.histoire = histoire;
+	public void setHistoire(String histoire) {
+		this.histoire = histoire;
 	}
 
 	public List<Reponse> getReponses() {
@@ -78,14 +77,4 @@ public class Events {
 		this.parties = parties;
 	}
 
-
-
-
-	
-
 }
-
-
-
-
-

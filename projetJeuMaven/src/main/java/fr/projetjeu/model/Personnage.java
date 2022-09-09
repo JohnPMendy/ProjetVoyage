@@ -174,4 +174,6 @@ public class Personnage {
 		this.isAlive = isAlive;
 	}
 
+	
 }
+

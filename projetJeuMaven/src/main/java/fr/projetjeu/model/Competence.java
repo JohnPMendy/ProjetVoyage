@@ -25,7 +25,7 @@ public class Competence {
 	@Column(name="com_des", length=500)
 	private String description;
 	
-	@ManyToMany(mappedBy="competences")
+	@ManyToMany(mappedBy="comper_competence_id")
 	private List<Personnage> personnages;
 
 
@@ -56,6 +56,16 @@ public class Competence {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+
+	public List<Personnage> getPersonnages() {
+		return personnages;
+	}
+
+
+	public void setPersonnages(List<Personnage> personnages) {
+		this.personnages = personnages;
 	}
 	
 	

@@ -14,13 +14,12 @@ import fr.projetjeu.repo.IObjetRepository;
 import fr.projetjeu.repo.jpa.ObjetRepositoryJpa;
 
 
-@Service
+//@Service
 public class ObjetService {
-	@Autowired 
+	//@Autowired 
 	private IObjetRepository repoObjet = new ObjetRepositoryJpa();
 
 	
-	@Autowired 
 
 	static Scanner sc = new Scanner(System.in);
 	
