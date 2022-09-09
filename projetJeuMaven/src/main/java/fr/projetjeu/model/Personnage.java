@@ -62,6 +62,7 @@ public class Personnage {
 			inverseJoinColumns = @JoinColumn(name = "comper_competence_id")
 		)
 	private List<Competence> competences;
+
 	
 	@OneToOne(mappedBy  ="personnage")
 	private Partie partie;

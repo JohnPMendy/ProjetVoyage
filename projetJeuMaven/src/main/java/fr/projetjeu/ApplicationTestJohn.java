@@ -9,7 +9,7 @@ import fr.projetjeu.model.Events;
 import fr.projetjeu.model.Reponse;
 import fr.projetjeu.service.EventsService;
 
-public class Application {
+public class ApplicationTestJohn {
 	static EventsService srvEvent = new EventsService();
 	static Scanner sc =new Scanner(System.in);
 
@@ -31,21 +31,21 @@ public class Application {
 	}
 	
 	private static void story(Events event) {
-		System.out.println(event.getHistoire());
-		
-		if(event.getReponse().size()==0) {
-			return;
-		}
-		for (int i = 0; i < event.getReponse().size(); i++) {
-			System.out.println((i + 1) + ". " + event.getReponse().get(i).getTexte());
-		}
-		int choix = sc.nextInt();
-		
-		if(choix>0 && choix<=event.getReponse().size()) {
-			Reponse proposition =event.getReponse().get(choix-1);
-			event=srvEvent.findById(proposition.getProchainEvenementId());
-		}
-		
-		story(event);
+//		System.out.println(event.getHistoire());
+//		
+//		if(event.getReponse().size()==0) {
+//			return;
+//		}
+//		for (int i = 0; i < event.getReponse().size(); i++) {
+//			System.out.println((i + 1) + ". " + event.getReponse().get(i).getTexte());
+//		}
+//		int choix = sc.nextInt();
+//		
+//		if(choix>0 && choix<=event.getReponse().size()) {
+//			Reponse proposition =event.getReponse().get(choix-1);
+//			event=srvEvent.findById(proposition.getProchainEvenementId());
+//		}
+//		
+//		story(event);
 	}
 }

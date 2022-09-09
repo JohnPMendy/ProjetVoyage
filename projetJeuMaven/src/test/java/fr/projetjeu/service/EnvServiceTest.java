@@ -2,6 +2,7 @@ package fr.projetjeu.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -29,7 +30,7 @@ public class EnvServiceTest {
 	
 	@Test
 	public void shouldReturnProduitById() throws Exception {
-		Mockito.when(this.repoEnv.findById(1)).thenReturn(new Environnement());
+		Mockito.when(this.repoEnv.findById(1)).thenReturn(Optional.of(new Environnement()));
 		
 		Assertions.assertNotNull(this.srvEnv.findById(1));
 		

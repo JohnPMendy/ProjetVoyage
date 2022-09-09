@@ -13,9 +13,10 @@ import fr.projetjeu.repo.IReponseRepository;
 
 @Service
 public class ReponseService  {
-	
+
 	@Autowired
-	private IReponseRepository repositoryReponse;;
+	private IReponseRepository repositoryReponse;
+
 	
 	public void save(Reponse reponse) {
 		
@@ -30,7 +31,7 @@ public class ReponseService  {
 			throw new NegativeIdException();
 		}
 		else {
-			reponses =this.repositoryReponse.findByEvenementId(id);
+			reponses = repositoryReponse.findByEvenementId(id);
 			
 			if(reponses.size()==0) {
 				throw new ReponseNotFoundException();
@@ -39,6 +40,16 @@ public class ReponseService  {
 		
 		return reponses;
 		
+	}
+	
+	public List<Reponse> findAll() {
+		List<Reponse> reponses = repositoryReponse.findAll();
+		
+		if (reponses == null) {
+			return new ArrayList<>();
+		}
+		
+		return reponses;
 	}
 
 }

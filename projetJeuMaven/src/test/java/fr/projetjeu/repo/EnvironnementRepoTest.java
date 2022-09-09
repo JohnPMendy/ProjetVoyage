@@ -1,21 +1,27 @@
 package fr.projetjeu.repo;
 
 import java.util.List;
-
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import java.util.Optional;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.jdbc.Sql;
+import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
+import fr.projetjeu.config.AppConfig;
 import fr.projetjeu.model.Environnement;
 import fr.projetjeu.model.Meteo;
 import fr.projetjeu.model.TypeEnvironnement;
-import fr.projetjeu.repo.jpa.EnvironnementRepositoryJpa;
 
+@SpringJUnitConfig(AppConfig.class)
+@Sql(scripts = "classpath:/data.sql")
+@ActiveProfiles("test")
 public class EnvironnementRepoTest {
-	private IEnvironnementRepository repoEnvironnement = new EnvironnementRepositoryJpa();
-	private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("ProjetUnit");
+	
+	@Autowired
+	private IEnvironnementRepository repoEnvironnement;
 
 	@Test
 	public void testFindAll() {
@@ -28,9 +34,10 @@ public class EnvironnementRepoTest {
 
 	@Test
 	public void testFindById() {
-		Environnement env = this.repoEnvironnement.findById(1);
+		Optional<Environnement> env = this.repoEnvironnement.findById(1);
 		Assertions.assertNotNull(env);
-		Assertions.assertEquals(1, env.getId());
+		Assertions.assertTrue(env.isPresent());
+		Assertions.assertEquals(1, env.get().getId());
 	}
 	
 	@Test
@@ -50,14 +57,14 @@ public class EnvironnementRepoTest {
 
 	@Test
 	public void shouldUpdate() {
-		Environnement env = this.repoEnvironnement.findById(1);
+		Environnement env = this.repoEnvironnement.findById(1).get();
 		String envNom = env.getNom();
 
 		env.setNom("new ref");
 
 		this.repoEnvironnement.save(env);
 
-		env = this.repoEnvironnement.findById(1);
+		env = this.repoEnvironnement.findById(1).get();
 
 		Assertions.assertNotEquals(envNom, env.getNom());
 	}
@@ -66,7 +73,7 @@ public class EnvironnementRepoTest {
 	public void shouldDelete() {
 		this.repoEnvironnement.deleteById(2);
 
-		Assertions.assertNull(this.repoEnvironnement.findById(2));
+		Assertions.assertFalse(this.repoEnvironnement.findById(2).isPresent());
 	}
 
 }

@@ -12,23 +12,25 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+
 @Entity
 @Table(name = "boutique")
 public class Boutique {
+
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "btq_id")
 	private int id;
-
-	@Column(name = "btq_nom", length = 100)
+	
+	@Column(name="btq_nom", length=100)
 	private String nom;
-
+	
 	@Enumerated(EnumType.ORDINAL)
-	@Column(name = "btq_type", nullable = false)
+	@Column(name="btq_type",nullable=false)
 	private TypeBoutique typeBoutique;
-
-	@ManyToMany(mappedBy = "boutiques")
+	
+	@ManyToMany(mappedBy="boutiques")
 	List<Objet> objets;
 
 	public int getId() {
@@ -39,16 +41,12 @@ public class Boutique {
 		this.id = id;
 	}
 
-	public List<Objet> getObjets() {
-		return objets;
-	}
-
-	public void setObjets(List<Objet> objets) {
-		this.objets = objets;
-	}
-
 	public String getNom() {
 		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
 	}
 
 	public TypeBoutique getTypeBoutique() {
@@ -59,8 +57,15 @@ public class Boutique {
 		this.typeBoutique = typeBoutique;
 	}
 
-	public void setNom(String nom) {
-		this.nom = nom;
+	public List<Objet> getObjets() {
+		return objets;
 	}
+
+	public void setObjets(List<Objet> objets) {
+		this.objets = objets;
+	}
+	
+
+		
 
 }

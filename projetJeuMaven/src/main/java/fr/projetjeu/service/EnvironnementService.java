@@ -3,60 +3,61 @@ package fr.projetjeu.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import fr.projetjeu.exception.EntityNotFoundException;
 import fr.projetjeu.exception.InvalidArgsException;
 import fr.projetjeu.exception.InvalidEntityException;
 import fr.projetjeu.model.Environnement;
 import fr.projetjeu.repo.IEnvironnementRepository;
-import fr.projetjeu.repo.jpa.EnvironnementRepositoryJpa;
 
+@Service
 public class EnvironnementService {
-	private IEnvironnementRepository repoEnvironnement = new EnvironnementRepositoryJpa();
-	
-	
+
+	@Autowired
+	private IEnvironnementRepository repoEnvironnement;
+
 	public Environnement findById(int id) {
-		if (id<=0) {
+		if (id <= 0) {
 			throw new InvalidArgsException("id");
 		}
-		Environnement env = this.repoEnvironnement.findById(id);
-		
-		if(env==null) {
-			throw new EntityNotFoundException();
-		}
-		return env;
-		
+		return this.repoEnvironnement.findById(id).orElseThrow(EntityNotFoundException::new);
+
 	}
-	
+
 	public List<Environnement> findAll() {
 		List<Environnement> environnements = repoEnvironnement.findAll();
-		
+
 		if (environnements == null) {
 			return new ArrayList<>();
 		}
-		
+
 		return environnements;
 	}
-	
-	
+
 	public void save(Environnement environnement) {
 		if (environnement.getNom() == null || environnement.getNom().isBlank()) {
 			throw new InvalidEntityException("nom");
 		}
-		
-		if (environnement.getMeteo() == null || environnement.getEnvironnement()==null) {
-			throw new InvalidEntityException("responsable");
+
+		if (environnement.getEnvironnement() == null) {
+			throw new InvalidEntityException("type environnement");
 		}
 		
+		if (environnement.getMeteo() == null) {
+			throw new InvalidEntityException("meteo");
+		}
+
 		repoEnvironnement.save(environnement);
 	}
-	
+
 	public void deleteById(int id) {
-		if (id<=0) {
+		if (id <= 0) {
 			throw new InvalidArgsException("id");
 		}
-		
+
 		repoEnvironnement.deleteById(id);
 	}
-	
-	
+
 }

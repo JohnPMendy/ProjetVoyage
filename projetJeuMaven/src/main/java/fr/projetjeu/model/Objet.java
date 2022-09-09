@@ -22,31 +22,40 @@ public class Objet {
 	@Column(name = "obj_id")
 	private int id;
 
-	@Column(name = "obj_nom", length = 100, nullable = false)
+	
+	@Column(name="obj_nom",length=100,nullable=false)
 	private String nom;
-
-	@Column(name = "obj_type_alimentaire", nullable = false)
+	
+	@Column(name="obj_type_alimentaire",nullable=false)
 	private boolean typeObjetAlimentaire;
-
-	@Column(name = "obj_prix", nullable = false)
+	
+	@Column(name="obj_prix",nullable=false)
 	private float prix;
-
+	
 	@Enumerated(EnumType.ORDINAL)
-	@Column(name = "obj_type", nullable = false)
+	@Column(name="obj_type",nullable=false)
 	private TypeObjets typeObjets;
-
-	@Column(name = "obj_quantite_inventaire")
+	
+	@Column(name="obj_quantite_inventaire")
 	private int quantiteInventaire;
-
-	@Column(name = "obj_quantite_boutique")
+	
+	@Column(name="obj_quantite_boutique")
 	private int quantiteBoutique;
-
+	
 	@ManyToMany
-	@JoinTable(name = "boutique_objet", joinColumns = @JoinColumn(name = "btob_objet_id"), inverseJoinColumns = @JoinColumn(name = "btob_boutique_id"))
+	@JoinTable(
+			name = "boutique_objet",
+			joinColumns = @JoinColumn(name  ="btob_objet_id"),
+			inverseJoinColumns = @JoinColumn(name = "btob_boutique_id")
+		)
 	private List<Boutique> boutiques;
-
+	
 	@ManyToMany
-	@JoinTable(name = "inventaire_objet", joinColumns = @JoinColumn(name = "invobj_objet_id"), inverseJoinColumns = @JoinColumn(name = "invobj_inventaire_id"))
+	@JoinTable(
+			name = "inventaire_objet",
+			joinColumns = @JoinColumn(name  ="invobj_objet_id"),
+			inverseJoinColumns = @JoinColumn(name = "invobj_inventaire_id")
+		)
 	private List<Inventaire> inventaires;
 
 	public String getNom() {
@@ -105,21 +114,8 @@ public class Objet {
 		this.quantiteBoutique = quantiteBoutique;
 	}
 
-	public List<Boutique> getBoutiques() {
-		return boutiques;
-	}
+	
 
-	public void setBoutiques(List<Boutique> boutiques) {
-		this.boutiques = boutiques;
-	}
-
-	public List<Inventaire> getInventaires() {
-		return inventaires;
-	}
-
-	public void setInventaires(List<Inventaire> inventaires) {
-		this.inventaires = inventaires;
-	}
 
 	public String toString() {
 		return this.nom + "--Prix=" + this.prix + "--Qte dans boutique=" + this.quantiteBoutique

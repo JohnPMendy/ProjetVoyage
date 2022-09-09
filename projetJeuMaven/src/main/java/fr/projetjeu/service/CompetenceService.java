@@ -3,16 +3,16 @@ package fr.projetjeu.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import fr.projetjeu.exception.EntityNotFoundException;
 import fr.projetjeu.exception.InvalidArgsException;
 import fr.projetjeu.exception.InvalidEntityException;
 import fr.projetjeu.model.Competence;
-import fr.projetjeu.model.Environnement;
 import fr.projetjeu.repo.ICompetenceRepository;
-
 import fr.projetjeu.repo.jpa.CompetenceRepositoryJpa;
 
-
+@Service
 public class CompetenceService {
 	private ICompetenceRepository repoCompetence = new CompetenceRepositoryJpa();
 	
