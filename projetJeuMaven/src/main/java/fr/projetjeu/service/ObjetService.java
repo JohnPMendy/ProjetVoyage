@@ -19,8 +19,6 @@ public class ObjetService {
 	@Autowired 
 	private IObjetRepository repoObjet;
 
-	
-	@Autowired 
 
 	static Scanner sc = new Scanner(System.in);
 	
