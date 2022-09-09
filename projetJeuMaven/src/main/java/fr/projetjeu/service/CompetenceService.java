@@ -3,6 +3,7 @@ package fr.projetjeu.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import fr.projetjeu.exception.EntityNotFoundException;
@@ -10,11 +11,11 @@ import fr.projetjeu.exception.InvalidArgsException;
 import fr.projetjeu.exception.InvalidEntityException;
 import fr.projetjeu.model.Competence;
 import fr.projetjeu.repo.ICompetenceRepository;
-import fr.projetjeu.repo.jpa.CompetenceRepositoryJpa;
 
 @Service
 public class CompetenceService {
-	private ICompetenceRepository repoCompetence = new CompetenceRepositoryJpa();
+	@Autowired
+	private ICompetenceRepository repoCompetence;;
 	
 	
 	public List<Competence> findAll() {
@@ -31,7 +32,7 @@ public class CompetenceService {
 		if (id<=0) {
 			throw new InvalidArgsException("id");
 		}
-		Competence competence = this.repoCompetence.findById(id);
+		Competence competence = this.repoCompetence.findById(id).get();
 		
 		if(competence==null) {
 			throw new EntityNotFoundException();
