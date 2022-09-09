@@ -25,7 +25,7 @@ public class Events {
 
 	@Column(name = "evt_histoire", length = 2000, nullable = true)
 	private String histoire = "";
-
+	
 	@OneToMany(mappedBy = "evenementId")
 	private List<Reponse> reponses;
 

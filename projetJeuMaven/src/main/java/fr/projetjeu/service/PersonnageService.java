@@ -9,15 +9,13 @@ import org.springframework.stereotype.Service;
 import fr.projetjeu.exception.EntityNotFoundException;
 import fr.projetjeu.exception.InvalidArgsException;
 import fr.projetjeu.exception.InvalidEntityException;
-import fr.projetjeu.model.Competence;
-import fr.projetjeu.model.Environnement;
 import fr.projetjeu.model.Personnage;
 import fr.projetjeu.repo.IPersonnageRepository;
 import fr.projetjeu.repo.jpa.PersonnageRepositoryJpa;
 
 @Service
 public class PersonnageService {
-	
+
 	@Autowired
 	private IPersonnageRepository repoPersonnage;
 	
@@ -36,7 +34,7 @@ public class PersonnageService {
 		if (id<=0) {
 			throw new InvalidArgsException("id");
 		}
-		Personnage perso= this.repoPersonnage.findById(id);
+		Personnage perso= this.repoPersonnage.findById(id).get();
 		
 		if(perso==null) {
 			throw new EntityNotFoundException();
