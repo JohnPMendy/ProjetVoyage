@@ -1,7 +1,10 @@
 package fr.projetjeu.repo;
 
-import fr.projetjeu.model.Boutique;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface IBoutiqueRepository extends IRepository<Boutique> {
+import fr.projetjeu.model.Boutique;
+import fr.projetjeu.model.Objet;
+
+public interface IBoutiqueRepository extends JpaRepository<Boutique,Integer>  {
 
 }

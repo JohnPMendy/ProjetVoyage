@@ -1,29 +1,31 @@
 package fr.projetjeu.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import fr.projetjeu.exception.EntityNotValidException;
 import fr.projetjeu.exception.EventNotFoundException;
 import fr.projetjeu.exception.InvalidArgsException;
 import fr.projetjeu.model.Events;
 import fr.projetjeu.repo.IEventRepository;
 import fr.projetjeu.repo.IReponseRepository;
-import fr.projetjeu.repo.jpa.EventsRepositoryJpa;
-import fr.projetjeu.repo.jpa.ReponseRepositoryJpa;
-import fr.projetjeu.repo.sql.EventsRepositorySql;
-import fr.projetjeu.repo.sql.ReponseRepositorySql;
 
+@Service
 public class EventsService {
-	 IEventRepository repoEvent = new EventsRepositoryJpa();
-	 IReponseRepository repoReponse = new ReponseRepositoryJpa();
+		
+	 @Autowired
+	 IEventRepository repoEvent;
+	 
+	 @Autowired
+	 IReponseRepository repoReponse;
 	
 	public Events findById(int id) {
 		if (id <= 0) {
 			throw new InvalidArgsException("id");
 		}
 		
-		Events event = this.repoEvent.findById(id);
-		event.setReponses(repoReponse.findByEvenementId(id));
-		
-		return event;
+		return repoEvent.findById(id).orElseThrow(EventNotFoundException::new);
+
 	}
 	
 	public void save(Events event) {
