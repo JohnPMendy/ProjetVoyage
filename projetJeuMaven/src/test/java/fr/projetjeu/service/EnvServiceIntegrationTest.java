@@ -18,14 +18,12 @@ public class EnvServiceIntegrationTest {
 	private EnvironnementService srvEnvironnement;
 	
 	@Test
-	public void shouldReturnFournisseurById() throws Exception {
+	public void shouldReturnEnvironnementById() throws Exception {
 		Assertions.assertNotNull(this.srvEnvironnement.findById(1));
 	}
 	
 	@Test
 	public void shouldThrowExceptionOnFindById() {
-		Assertions.assertThrows(EntityNotFoundException.class, () -> this.srvEnvironnement.findById(10));
+		Assertions.assertThrows(EntityNotFoundException.class, () -> this.srvEnvironnement.findById(3));
 	}
-
-
 }
