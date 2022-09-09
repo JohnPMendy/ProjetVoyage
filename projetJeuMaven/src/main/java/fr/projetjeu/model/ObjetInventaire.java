@@ -1,5 +1,6 @@
 package fr.projetjeu.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,7 +21,8 @@ public class ObjetInventaire {
 	@ManyToOne 
 	@JoinColumn(name="obj_btq_id", nullable = false)
 	private Inventaire inventaire;
-
+	
+	@Column(name = "qte_inventaire", nullable = false)
 	int quantiteInventaire;
 	}
 

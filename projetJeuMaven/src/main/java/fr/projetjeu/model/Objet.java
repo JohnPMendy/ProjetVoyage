@@ -49,8 +49,7 @@ public class Objet {
 	private List<ObjetBoutique> objetBoutiques;
 	
 	@OneToMany(mappedBy = "objet")
-	@JoinTable(name = "inventaire_objet", joinColumns = @JoinColumn(name = "invobj_objet_id"), inverseJoinColumns = @JoinColumn(name = "invobj_inventaire_id"))
-	private List<ObjetInventaire> ObjetInventaires;
+	private List<ObjetInventaire> objetInventaires;
 
 	public String getNom() {
 		return nom;
@@ -105,11 +104,11 @@ public class Objet {
 	}
 
 	public List<ObjetInventaire> getObjetInventaires() {
-		return ObjetInventaires;
+		return objetInventaires;
 	}
 
 	public void setObjetInventaires(List<ObjetInventaire> objetInventaires) {
-		ObjetInventaires = objetInventaires;
+		this.objetInventaires = objetInventaires;
 	}
 
 
