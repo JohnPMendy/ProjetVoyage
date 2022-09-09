@@ -25,7 +25,7 @@ public class Competence {
 	@Column(name="com_des", length=500)
 	private String description;
 	
-	@ManyToMany(mappedBy="comper_competence_id")
+	@ManyToMany(mappedBy="competences")
 	private List<Personnage> personnages;
 
 
