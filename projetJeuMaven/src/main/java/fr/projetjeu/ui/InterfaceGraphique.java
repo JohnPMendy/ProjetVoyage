@@ -62,6 +62,7 @@ public class InterfaceGraphique {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				System.out.println(rs.findAll());
 				id = 1;
 				rd(3);
 				btninventaire.setVisible(true);
@@ -92,7 +93,7 @@ public class InterfaceGraphique {
 				testApplication();
 				labelID.setText("id " + id);
 				label.setText(histoire);
-
+				
 			}
 		});
 
@@ -113,7 +114,6 @@ public class InterfaceGraphique {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				i.getListeObjetInventaire();
 			}
 		});
 
