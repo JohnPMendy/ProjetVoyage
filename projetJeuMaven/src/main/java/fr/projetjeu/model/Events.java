@@ -24,7 +24,7 @@ public class Events {
 	private int id;
 	
 	@Column(name = "evt_histoire", length = 2000, nullable = true)
-	private static String histoire = "";
+	private String histoire = "";
 	
 	@OneToMany(mappedBy = "evenementId")
 	private List<Reponse> reponses;
@@ -46,12 +46,14 @@ public class Events {
 		this.id = id;
 	}
 
-	public static String getHistoire() {
+
+
+	public String getHistoire() {
 		return histoire;
 	}
 
-	public static void setHistoire(String histoire) {
-		Events.histoire = histoire;
+	public void setHistoire(String histoire) {
+		this.histoire = histoire;
 	}
 
 	public List<Reponse> getReponses() {
