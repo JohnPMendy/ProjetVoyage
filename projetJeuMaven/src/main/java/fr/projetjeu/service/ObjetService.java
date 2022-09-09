@@ -17,10 +17,8 @@ import fr.projetjeu.repo.jpa.ObjetRepositoryJpa;
 @Service
 public class ObjetService {
 	@Autowired 
-	private IObjetRepository repoObjet = new ObjetRepositoryJpa();
+	private IObjetRepository repoObjet;
 
-	
-	@Autowired 
 
 	static Scanner sc = new Scanner(System.in);
 	
