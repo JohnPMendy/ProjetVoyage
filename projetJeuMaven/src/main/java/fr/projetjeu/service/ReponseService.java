@@ -3,16 +3,19 @@ package fr.projetjeu.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import fr.projetjeu.exception.NegativeIdException;
 import fr.projetjeu.exception.ReponseNotFoundException;
 import fr.projetjeu.model.Reponse;
 import fr.projetjeu.repo.IReponseRepository;
-import fr.projetjeu.repo.jpa.ReponseRepositoryJpa;
-import fr.projetjeu.repo.sql.ReponseRepositorySql;
 
+@Service
 public class ReponseService  {
 	
-	private IReponseRepository repositoryReponse = new ReponseRepositoryJpa();
+	@Autowired
+	private IReponseRepository repositoryReponse;;
 	
 	public void save(Reponse reponse) {
 		

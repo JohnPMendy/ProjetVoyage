@@ -10,6 +10,7 @@ target/
 SqlProperties.java
 datasource.properties
 
+
 # Compiled class file
 *.class
 
