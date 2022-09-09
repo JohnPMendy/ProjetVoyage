@@ -1,4 +1,4 @@
-package fr.formation.config;
+package fr.projetjeu.config;
 
 import javax.sql.DataSource;
 

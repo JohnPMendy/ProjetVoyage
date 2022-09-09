@@ -12,6 +12,8 @@ import fr.projetjeu.repo.ICompetenceRepository;
 
 import fr.projetjeu.repo.jpa.CompetenceRepositoryJpa;
 
+@Service
+
 
 public class CompetenceService {
 	private ICompetenceRepository repoCompetence = new CompetenceRepositoryJpa();

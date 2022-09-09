@@ -3,6 +3,9 @@ package fr.projetjeu.service;
 import java.util.List;
 import java.util.Scanner;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import fr.projetjeu.model.Boutique;
 import fr.projetjeu.model.Inventaire;
 import fr.projetjeu.model.Objet;
@@ -10,9 +13,27 @@ import fr.projetjeu.model.Personnage;
 import fr.projetjeu.repo.IObjetRepository;
 import fr.projetjeu.repo.jpa.ObjetRepositoryJpa;
 
+
+@Service
 public class ObjetService {
+	@Autowired 
 	private IObjetRepository repoObjet = new ObjetRepositoryJpa();
 
+	
+	@Autowired 
+
+	static Scanner sc = new Scanner(System.in);
+	
+	public Scanner getSc() {
+		return sc;
+	}
+
+	public void setSc(Scanner sc) {
+		ObjetService.sc = sc;
+	}
+	
+	
+	
 	public void ajoutObjetInventaire(Objet obj, int quantite) {
 		// nécessaire de vérifier si l'objet est déjà présent dans l'invetnaire, si
 		// c'est le cas
@@ -43,15 +64,6 @@ public class ObjetService {
 		}
 	}
 
-	static Scanner sc = new Scanner(System.in);
-	
-	public Scanner getSc() {
-		return sc;
-	}
-
-	public void setSc(Scanner sc) {
-		ObjetService.sc = sc;
-	}
 	
 	public void achatObjet(Boutique b,Inventaire i, Personnage p) {
 		// le type de la boutique depend de l'evenement
