@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -22,9 +23,9 @@ public class Inventaire {
 	@Column(name = "inv_id")
 	private int id;
 
+	@OneToMany(mappedBy = "inventaire")
+	private List<ObjetInventaire> listeObjetInventaire;
 
-	@ManyToMany(mappedBy = "inventaires")
-	private List<Objet> listeObjetInventaire = new ArrayList<>();
 
 	@OneToOne(mappedBy = "inventaire")
 	private Partie partie;
@@ -37,13 +38,6 @@ public class Inventaire {
 		this.id = id;
 	}
 
-	public List<Objet> getListeObjetInventaire() {
-		return listeObjetInventaire;
-	}
-
-	public void setListeObjetInventaire(List<Objet> listeObjetInventaire) {
-		this.listeObjetInventaire = listeObjetInventaire;
-	}
 
 	public Partie getPartie() {
 		return partie;
@@ -51,6 +45,15 @@ public class Inventaire {
 
 	public void setPartie(Partie partie) {
 		this.partie = partie;
+	}
+
+
+	public List<ObjetInventaire> getListeObjetInventaire() {
+		return listeObjetInventaire;
+	}
+
+	public void setListeObjetInventaire(List<ObjetInventaire> listeObjetInventaire) {
+		this.listeObjetInventaire = listeObjetInventaire;
 	}
 
 

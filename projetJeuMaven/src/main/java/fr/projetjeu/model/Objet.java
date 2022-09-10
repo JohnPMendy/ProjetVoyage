@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -36,27 +38,18 @@ public class Objet {
 	@Column(name="obj_type",nullable=false)
 	private TypeObjets typeObjets;
 	
-	@Column(name="obj_quantite_inventaire")
-	private int quantiteInventaire;
+
+
 	
-	@Column(name="obj_quantite_boutique")
-	private int quantiteBoutique;
+	/*@ManyToMany
+	@JoinTable(name = "boutique_objet", joinColumns = @JoinColumn(name = "btob_objet_id"), inverseJoinColumns = @JoinColumn(name = "btob_boutique_id"))
+	private List<Boutique> boutiques;*/
+
+	@OneToMany(mappedBy= "objet" )
+	private List<ObjetBoutique> objetBoutiques;
 	
-	@ManyToMany
-	@JoinTable(
-			name = "boutique_objet",
-			joinColumns = @JoinColumn(name  ="btob_objet_id"),
-			inverseJoinColumns = @JoinColumn(name = "btob_boutique_id")
-		)
-	private List<Boutique> boutiques;
-	
-	@ManyToMany
-	@JoinTable(
-			name = "inventaire_objet",
-			joinColumns = @JoinColumn(name  ="invobj_objet_id"),
-			inverseJoinColumns = @JoinColumn(name = "invobj_inventaire_id")
-		)
-	private List<Inventaire> inventaires;
+	@OneToMany(mappedBy = "objet")
+	private List<ObjetInventaire> objetInventaires;
 
 	public String getNom() {
 		return nom;
@@ -98,27 +91,29 @@ public class Objet {
 		this.prix = prix;
 	}
 
-	public int getQuantiteInventaire() {
-		return quantiteInventaire;
+
+
+
+
+	public List<ObjetBoutique> getObjetBoutiques() {
+		return objetBoutiques;
 	}
 
-	public void setQuantiteInventaire(int quantiteInventaire) {
-		this.quantiteInventaire = quantiteInventaire;
+	public void setObjetBoutiques(List<ObjetBoutique> objetBoutiques) {
+		this.objetBoutiques = objetBoutiques;
 	}
 
-	public int getQuantiteBoutique() {
-		return quantiteBoutique;
+	public List<ObjetInventaire> getObjetInventaires() {
+		return objetInventaires;
 	}
 
-	public void setQuantiteBoutique(int quantiteBoutique) {
-		this.quantiteBoutique = quantiteBoutique;
+	public void setObjetInventaires(List<ObjetInventaire> objetInventaires) {
+		this.objetInventaires = objetInventaires;
 	}
-
-	
 
 
 	public String toString() {
-		return this.nom + "--Prix=" + this.prix + "--Qte dans boutique=" + this.quantiteBoutique
-				+ "--Qte votre inventaire=" + this.quantiteInventaire;
+		return this.nom + "--Prix=" + this.prix ;
+				
 	}
 }
