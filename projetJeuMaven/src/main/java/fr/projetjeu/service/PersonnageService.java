@@ -15,6 +15,7 @@ import fr.projetjeu.repo.jpa.PersonnageRepositoryJpa;
 
 @Service
 public class PersonnageService {
+
 	@Autowired
 	private IPersonnageRepository repoPersonnage;
 	

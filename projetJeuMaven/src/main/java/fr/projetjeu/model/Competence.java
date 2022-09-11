@@ -57,6 +57,16 @@ public class Competence {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
+
+	public List<Personnage> getPersonnages() {
+		return personnages;
+	}
+
+
+	public void setPersonnages(List<Personnage> personnages) {
+		this.personnages = personnages;
+	}
 	
 	
 }

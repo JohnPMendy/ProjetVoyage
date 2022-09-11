@@ -18,8 +18,9 @@ import fr.projetjeu.repo.IObjetRepository;
 import fr.projetjeu.repo.jpa.ObjetRepositoryJpa;
 
 
-@Service
+//@Service
 public class ObjetService {
+
 	@Autowired 
 	private IObjetRepository repoObjet;
 	
@@ -85,7 +86,7 @@ public class ObjetService {
 		System.out.println("vous etes dans " + b.getTypeBoutique());
 		System.out.println("Les articles disponibles dans cette boutique sont :");
 		// AffichageObjetsBoutique(e);
-		AffichageObjets(repoObjet.findAllBoutique(b.getId()));
+		//AffichageObjets(repoObjet.findAllBoutique(b.getId()));
 		System.out
 				.println("Si vous etes interesse par un ou plusieurs articles de cette boutique tapez 1 sinon tapez 0");
 		if (sc.nextInt() == 0)
@@ -113,7 +114,7 @@ public class ObjetService {
 	public void venteObjet( Boutique b,Inventaire i, Personnage p) {
 		System.out.println("vous etes dans " + b.getTypeBoutique());
 		System.out.println("les articles que vous disposez sont ");
-		AffichageObjets(repoObjet.findAllInventaire(i.getId()));
+		//AffichageObjets(repoObjet.findAllInventaire(i.getId()));
 		System.out.println("Quel article voulez vous vendre ?"); // a voir est ce que la boutique achete ou pas les
 																	// articles
 		int idx = sc.nextInt();
