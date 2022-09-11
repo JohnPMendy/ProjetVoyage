@@ -1,6 +1,5 @@
 package fr.projetjeu.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -8,7 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -24,7 +22,7 @@ public class Inventaire {
 	private int id;
 
 	@OneToMany(mappedBy = "inventaire")
-	private List<ObjetInventaire> listeObjetInventaire;
+	private List<ObjetInventaire> objets;
 
 
 	@OneToOne(mappedBy = "inventaire")
@@ -47,14 +45,14 @@ public class Inventaire {
 		this.partie = partie;
 	}
 
-
-	public List<ObjetInventaire> getListeObjetInventaire() {
-		return listeObjetInventaire;
+	public List<ObjetInventaire> getObjets() {
+		return objets;
 	}
 
-	public void setListeObjetInventaire(List<ObjetInventaire> listeObjetInventaire) {
-		this.listeObjetInventaire = listeObjetInventaire;
+	public void setObjets(List<ObjetInventaire> objets) {
+		this.objets = objets;
 	}
+
 
 
 

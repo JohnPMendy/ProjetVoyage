@@ -10,6 +10,8 @@ import org.springframework.transaction.annotation.Transactional;
 import fr.projetjeu.model.Boutique;
 import fr.projetjeu.model.Inventaire;
 import fr.projetjeu.model.Objet;
+import fr.projetjeu.model.ObjetBoutique;
+import fr.projetjeu.model.ObjetInventaire;
 import fr.projetjeu.model.Personnage;
 import fr.projetjeu.repo.IInventaireRepository;
 import fr.projetjeu.repo.IObjetRepository;
@@ -38,18 +40,24 @@ public class ObjetService {
 	
 	
 	@Transactional
-	public void ajoutObjetInventaire(Objet obj, int quantite) {
+	public void ajoutObjetInventaire(Objet obj, int quantite,Inventaire inventaire) {
 		// nécessaire de vérifier si l'objet est déjà présent dans l'invetnaire, si
 		// c'est le cas
 		// on augmente juste la quantité présente sinon on crée un objet
-//obj.
-	   if (obj.getId() != 0) {   
+/*obj.setObjetInventaires(repoObjet.findAll().);
 			obj.setQuantiteInventaire(obj.getQuantiteInventaire() + quantite);
 	   }
 		repoObjet.save(obj);
 		System.out.println(obj.getQuantiteInventaire() + " " + obj.getNom() + " ajouté dans l'inventaire ! ");
+	}*/
+		ObjetInventaire objetInventaire=new ObjetInventaire();
+		objetInventaire.setInventaire(inventaire);
+		objetInventaire.setObjet(obj);
+		objetInventaire.setQuantiteInventaire(quantite);
+		
+		
+		
 	}
-	
 	@Transactional
 	public void supprimerObjetInventaire(Objet obj, int quantite) {
         
