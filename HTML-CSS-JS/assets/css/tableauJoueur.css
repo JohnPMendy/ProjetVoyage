@@ -109,6 +109,9 @@ button > a{
 .enCours{
     overflow-y:auto;
 }
+table.partiesEnCours{
+    border-spacing: 2vh 1vw;
+}
 
 table.tableStat{
     border-spacing: 5vh;

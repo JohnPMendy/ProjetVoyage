@@ -16,11 +16,11 @@ document
     tableRow.innerHTML += `<td>${date}</td>`;
     tableRow.innerHTML += `<td>${heure}</td>`;
 
-    
 
     // Ajouter la ligne au tbody du tableau
     document.querySelector('table.partiesEnCours > tbody').append(tableRow);
     document.querySelector('td.compteur').innerHTML =numeroPartie;
+
 });
 
 
