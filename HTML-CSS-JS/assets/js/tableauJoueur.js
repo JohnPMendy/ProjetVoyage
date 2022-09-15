@@ -11,11 +11,10 @@ document
 
     // Modifier le contenu de la ligne du tableau
     numeroPartie++;
-    tableRow.innerHTML = `<td><button class="btn btn-danger">Partie ${numeroPartie}</button></td>`;
+    tableRow.innerHTML = `<td><button class="jeu"> <a href="assets/JeuInteractif.html">Partie ${numeroPartie}</a></button></td>`;
     tableRow.innerHTML += `<td>${ nom }</td>`;
     tableRow.innerHTML += `<td>${date}</td>`;
     tableRow.innerHTML += `<td>${heure}</td>`;
-
 
     // Ajouter la ligne au tbody du tableau
     document.querySelector('table.partiesEnCours > tbody').append(tableRow);
