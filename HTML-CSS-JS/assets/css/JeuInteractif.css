@@ -66,6 +66,8 @@ footer{
     z-index: 1;
     position: relative;
     height: 20px;
+    justify-content: center;
+    align-content: center;
 }
 
 .textcredits{
