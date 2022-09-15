@@ -15,7 +15,7 @@ header, footer {
 footer {
 
     grid-row: 5;
-    line-height:normal
+    line-height:normal;
     opacity: 60%;
     background: rgb(30, 30, 30);
 
@@ -25,12 +25,13 @@ footer {
 .btnaccueil{
     font-weight:bold;
     padding: 0 25px;
-    background: #82899c;
+    background: #214fcc;
     color: white;
     grid-row: 1;
     grid-column: 3;
     padding: 10px;
-    margin:
+    text-decoration: none;
+    text-align: center;
     border-radius : 3px;
 
 }
@@ -52,8 +53,8 @@ header {
 .textcredits{
     opacity:100%;
     color: rgb(255, 255, 255);
-    font-weight:normals
-    font-size : 10px;
+    font-weight:normal;
+    font-size : 100%;
     text-align : center;
     padding: 8px;
 
