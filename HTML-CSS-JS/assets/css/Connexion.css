@@ -7,7 +7,7 @@ body {
 }
 header, footer {
     grid-column: 1 /span 3;
-    grid-row: 1;
+
 
 
 }
@@ -23,20 +23,21 @@ footer {
 }
 .btnaccueil{
     font-weight:bold;
-    padding: 0 25px;
+    padding: 5px;
     background: #385ab9;
     color: white;
     grid-row: 1;
     grid-column: 3;
-    padding: 10px;
     border-radius : 3px;
     text-decoration: none;
     text-align: center;
+    margin-top: 5px;
 
 }
 header {
 
     background: rgb(46, 46, 46);
+    grid-row: 1;
 }
 
 
@@ -112,7 +113,8 @@ header {
     margin-left: 6px;
 
 }
-.login input[name="seConnecter"],.login input[name="pasEncoreInscrit"] {
+
+.login input[name="pasEncoreInscrit"] {
     display: inline-block;
     font-weight:bold;
     padding: 0 25px;
@@ -122,7 +124,7 @@ header {
     transition: all 0.4s;
     cursor: pointer;
     margin-top: 10px;
-    width: 49%;
+    width: 48%;
     margin-left: 6px;
 
 }

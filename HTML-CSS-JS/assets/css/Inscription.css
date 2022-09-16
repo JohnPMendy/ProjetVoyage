@@ -24,12 +24,11 @@ footer {
 
 .btnaccueil{
     font-weight:bold;
-    padding: 0 25px;
+    padding: 20px 20px;
     background: #214fcc;
     color: white;
     grid-row: 1;
     grid-column: 3;
-    padding: 10px;
     text-decoration: none;
     text-align: center;
     border-radius : 3px;
