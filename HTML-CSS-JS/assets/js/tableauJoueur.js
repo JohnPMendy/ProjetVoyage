@@ -15,6 +15,7 @@ document
     tableRow.innerHTML += `<td>${ nom }</td>`;
     tableRow.innerHTML += `<td>${date}</td>`;
     tableRow.innerHTML += `<td>${heure}</td>`;
+    tableRow.innerHTML +=`<td><button class="supprimerPartie">Supprimer</button></td>`;
 
     // Ajouter la ligne au tbody du tableau
     document.querySelector('table.partiesEnCours > tbody').append(tableRow);

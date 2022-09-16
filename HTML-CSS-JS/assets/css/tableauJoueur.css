@@ -6,8 +6,7 @@ body {
     overflow-x: hidden;
     background-image: url(/assets/images/Wallpaper.jpg);
     background-size: cover;
-    background-position: center center;
-    
+    background-position: center center; 
 }
 
 header {
@@ -68,6 +67,10 @@ button>a {
     font-size: 12px;
 }
 
+.supprimerPartie{
+    width: 90px;
+    background: red;
+}
 
 .tabs {
     display: flex;
