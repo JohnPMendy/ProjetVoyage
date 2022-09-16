@@ -150,16 +150,20 @@ footer{
     justify-content: center;
     align-items: center;
     opacity: 100%;
-    height:var(--height-interface);
+    height:
+    var(--height-interface);
     width: var(--largeur-stats-inventaire);
-  background: rgb(255, 255, 255);
-  color: rgb(0, 0, 0);
+    background: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
     z-index: 1;
     left: var(--margin);
-  top: var(--top-interface);
-  font-size: 2vh;
-  font-weight: bold;
-  border: 1.2vh ridge rgb(105, 105, 105);
+    top: var(--top-interface);
+    font-size: 2vh;
+    font-weight: bold;
+    border: 1.2vh ridge rgb(105, 105, 105);
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
 }
 
 .InterfacePartie{
@@ -204,35 +208,32 @@ footer{
 .NameNom, .ValeurNom, .ValeurPrenom, .ValeurPoids, .ValeurArgent, .NamePrenom, .NamePoids,
 .NameArgent, .NameEnergie, .ValeurEnergie, .NameFaim, .ValeurFaim, .NameForce, .ValeurForce,
 .NameCovid, .ValeurCovid, .NameVivant, .ValeurVivant, .NameMeteo, .ValeurMeteo{
-  position:relative;
+  position:
+  relative;
   z-index: 3;
   display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 100%;
-    height: calc(var(--height-interface)/10.4);
-    width: calc(var(--largeur-stats-inventaire)/2);
+  justify-content: center;
+  align-items: center;
+  opacity: 100%;
+  /* height: calc(var(--height-interface)/10.4); */
+  width: calc(var(--largeur-stats-inventaire)/2);
   color: rgb(0, 0, 0);
-    z-index: 1;
-    left: calc(var(--margin) + 0.5vw);
-    top: 16vh;
-    font-size: 3.2vh;
+  z-index: 1;
+  /* left: calc(var(--margin) + 0.5vw); */
+  /* top: 16vh; */
+  font-size: 3.2vh;
   border: solid;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-
-
-
+  box-sizing: border-box;
 }
 
 
 
 
 .Nom, .Prenom, .Poids, .Argent, .Energie, .Faim, .Force, .Covid, .Vivant, .Meteo{
-  display:flex;
+  display: flex;
   font-weight: bolder;
+  flex: 1;
 }
-
-
-
