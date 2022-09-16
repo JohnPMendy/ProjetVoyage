@@ -25,7 +25,7 @@ footer {
 .btnaccueil{
     font-weight:bold;
     padding: 5px;
-    background: #214fcc;
+    background: #385ab9;
     color: white;
     grid-row: 1;
     grid-column: 3;
@@ -37,7 +37,7 @@ footer {
 }
 header {
 
-    background: rgb(46, 46, 46);
+    background: rgba(46, 46, 46,0.7);
 }
 
 
@@ -114,18 +114,10 @@ header {
 
 }
 
-.login input[name="mdpOublie"] {
-    font-weight:bold;
-    padding: 0 25px;
-    background: #a9afbe;
-    color: rgb(0, 0, 0);
-    text-transform: uppercase;
-    transition: all 0.4s;
-    cursor: pointer;
-    margin-top: 10px;
-    width: 100%;
-}
-
 .login input[type="submit"]:hover {
     background: #333333;
+}
+a:hover{
+        background: #333333;
+      
 }
