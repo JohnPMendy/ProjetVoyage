@@ -243,7 +243,7 @@ header .titre {
 
 header .buttons {
     grid-column:  3;
-    padding:  ;
+    padding: 5px ;
 }
 
 header button{
