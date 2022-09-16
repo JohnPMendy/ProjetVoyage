@@ -4,33 +4,31 @@ import java.util.List;
 import java.util.Scanner;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import fr.projetjeu.model.Boutique;
 import fr.projetjeu.model.Inventaire;
 import fr.projetjeu.model.Objet;
-import fr.projetjeu.model.ObjetBoutique;
 import fr.projetjeu.model.ObjetInventaire;
 import fr.projetjeu.model.Personnage;
 import fr.projetjeu.repo.IInventaireRepository;
+import fr.projetjeu.repo.IObjetInventaireRepository;
 import fr.projetjeu.repo.IObjetRepository;
-import fr.projetjeu.repo.jpa.ObjetRepositoryJpa;
-
 
 //@Service
 public class ObjetService {
 
-	@Autowired 
+	@Autowired
 	private IObjetRepository repoObjet;
-	
+
 	@Autowired
 	private IInventaireRepository repoInventaire;
-
 	
+	@Autowired
+	private IObjetInventaireRepository repoObjetInventaire;
 
 	static Scanner sc = new Scanner(System.in);
-	
+
 	public Scanner getSc() {
 		return sc;
 	}
@@ -38,55 +36,59 @@ public class ObjetService {
 	public void setSc(Scanner sc) {
 		ObjetService.sc = sc;
 	}
-	
-	
+
 	@Transactional
-	public void ajoutObjetInventaire(Objet obj, int quantite,Inventaire inventaire) {
+	public void ajoutObjetInventaire(Objet obj, int quantite, Inventaire inventaire) {
 		// nécessaire de vérifier si l'objet est déjà présent dans l'invetnaire, si
 		// c'est le cas
 		// on augmente juste la quantité présente sinon on crée un objet
-/*obj.setObjetInventaires(repoObjet.findAll().);
-			obj.setQuantiteInventaire(obj.getQuantiteInventaire() + quantite);
-	   }
-		repoObjet.save(obj);
-		System.out.println(obj.getQuantiteInventaire() + " " + obj.getNom() + " ajouté dans l'inventaire ! ");
-	}*/
-		ObjetInventaire objetInventaire=new ObjetInventaire();
-		objetInventaire.setInventaire(inventaire);
+		/*
+		 * obj.setObjetInventaires(repoObjet.findAll().);
+		 * obj.setQuantiteInventaire(obj.getQuantiteInventaire() + quantite); }
+		 * repoObjet.save(obj); System.out.println(obj.getQuantiteInventaire() + " " +
+		 * obj.getNom() + " ajouté dans l'inventaire ! "); }
+		 */
+		ObjetInventaire objetInventaire = new ObjetInventaire();
 		objetInventaire.setObjet(obj);
 		objetInventaire.setQuantiteInventaire(quantite);
-		
-		
-		
-	}
-	@Transactional
-	public void supprimerObjetInventaire(Objet obj, int quantite) {
-        
-		if (quantite == obj.getQuantiteInventaire()) {
-			obj.setQuantiteInventaire(0);
-			repoObjet.save(obj);
-			System.out.println(obj.getNom() + " a été supprimé de l'inventaire !");
 
-		} else if (quantite < obj.getQuantiteInventaire() && quantite > 0) {
-			obj.setQuantiteInventaire(obj.getQuantiteInventaire() - quantite);
-			repoObjet.save(obj);
-			if (quantite == 1) {
-				System.out.println("un exemplaire de " + obj.getNom() + " a été supprimé de l'inventaire");
-			} else {
-				System.out.println(quantite + " exemplaires de " + obj.getNom() + " ont été supprimés de l'inventaire");
-			}
-		} else {
-			System.out.println("Mauvaise quantite selectionné");
-		}
+		inventaire.getObjets().add(objetInventaire);
+		repoInventaire.save(inventaire);
 	}
 
 	@Transactional
-	public void achatObjet(Boutique b,Inventaire i, Personnage p) {
+	public void supprimerObjetInventaire(Objet obj, int quantite,Inventaire inventaire ) {
+
+	List<ObjetInventaire> objets =inventaire.getObjets();
+	
+      for (int i=0;i<objets.size();i++) 
+    	  
+      {		ObjetInventaire objet=objets.get(i);
+    	  if(obj==objet.getObjet())
+      	  {     if (quantite < objet.getQuantiteInventaire() && quantite>0) {
+    			objet.setQuantiteInventaire(objet.getQuantiteInventaire()-quantite);
+    			repoInventaire.save(inventaire);
+      	  		}
+      	  
+      	  		else if (quantite == objet.getQuantiteInventaire())
+      	  			repoObjetInventaire.deleteById(objet.getObjInventaireId());//on suprime l'element 
+      	  		else 
+      	  	      	System.out.println("Mauvaise quantite selectionné");
+      	  }
+      }
+	}
+    	  
+    	  
+    	  
+
+
+	@Transactional
+	public void achatObjet(Boutique b, Inventaire i, Personnage p) {
 		// le type de la boutique depend de l'evenement
 		System.out.println("vous etes dans " + b.getTypeBoutique());
 		System.out.println("Les articles disponibles dans cette boutique sont :");
 		// AffichageObjetsBoutique(e);
-		//AffichageObjets(repoObjet.findAllBoutique(b.getId()));
+		// AffichageObjets(repoObjet.findAllBoutique(b.getId()));
 		System.out
 				.println("Si vous etes interesse par un ou plusieurs articles de cette boutique tapez 1 sinon tapez 0");
 		if (sc.nextInt() == 0)
@@ -111,10 +113,10 @@ public class ObjetService {
 	}
 
 	@Transactional
-	public void venteObjet( Boutique b,Inventaire i, Personnage p) {
+	public void venteObjet(Boutique b, Inventaire i, Personnage p) {
 		System.out.println("vous etes dans " + b.getTypeBoutique());
 		System.out.println("les articles que vous disposez sont ");
-		//AffichageObjets(repoObjet.findAllInventaire(i.getId()));
+		// AffichageObjets(repoObjet.findAllInventaire(i.getId()));
 		System.out.println("Quel article voulez vous vendre ?"); // a voir est ce que la boutique achete ou pas les
 																	// articles
 		int idx = sc.nextInt();
@@ -125,11 +127,9 @@ public class ObjetService {
 		p.setArgent(p.getArgent() + prix);
 		this.supprimerObjetInventaire(obj, qteVendue);
 	}
-	
-	
-		
+
 	public void AffichageObjets(List<Objet> A) {
-		for (int j =1;j<A.size();j++) {
+		for (int j = 1; j < A.size(); j++) {
 			System.out.println(j + "--" + A.get(j));
 		}
 	}
