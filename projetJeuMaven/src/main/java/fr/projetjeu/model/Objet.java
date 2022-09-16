@@ -35,6 +35,10 @@ public class Objet {
 
 
 	
+	public String getNom() {
+		return nom;
+	}
+
 	/*@ManyToMany
 	@JoinTable(name = "boutique_objet", joinColumns = @JoinColumn(name = "btob_objet_id"), inverseJoinColumns = @JoinColumn(name = "btob_boutique_id"))
 	private List<Boutique> boutiques;
