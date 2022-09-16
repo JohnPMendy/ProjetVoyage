@@ -96,7 +96,6 @@ footer{
   width: var(--largeur-stats-inventaire);
   background: rgb(255, 255, 255);
   color: rgb(0, 0, 0);
-    z-index: 1;
     left: var(--margin);
     top: 13vh;
   font-size: 4vh;
@@ -155,7 +154,6 @@ footer{
     width: var(--largeur-stats-inventaire);
     background: rgb(255, 255, 255);
     color: rgb(0, 0, 0);
-    z-index: 1;
     left: var(--margin);
     top: var(--top-interface);
     font-size: 2vh;
@@ -170,8 +168,6 @@ footer{
     display: flex;
     position:absolute;
     z-index: 2;
-    justify-content: center;
-    align-items: center;
     opacity: 100%;
     height:var(--height-interface);
     width: calc(97.6vw - 2*(var(--margin) + var(--largeur-stats-inventaire)) );
@@ -183,6 +179,7 @@ footer{
   font-size: 4vh;
   font-weight: bold;
   border: 1.2vh ridge rgb(105, 105, 105);
+  flex-direction: column;
 
 }
 
@@ -201,6 +198,7 @@ footer{
     top: var(--top-interface);
   font-size: 4vh;
   border: 1.2vh ridge rgb(105, 105, 105);
+
   
 }
 
@@ -236,4 +234,39 @@ footer{
   display: flex;
   font-weight: bolder;
   flex: 1;
+}
+
+.Histoire{
+  position:relative;
+  display: flex;
+  opacity: 100%;
+  height:32vh;
+font-size: 2vh;
+font-weight: bold;
+border: solid;
+justify-content: center;
+    white-space: pre-line;
+    text-align: center;
+    border: 1vh ridge rgb(105, 105, 105);
+
+}
+
+.Reponses, .Divers{
+  position:relative;
+  display: flex;
+  opacity: 100%;
+  height:15vh;
+font-size: 2vh;
+font-weight: bold;
+border: solid;
+justify-content: center;
+    white-space: pre-line;
+    text-align: center;
+    border: 1vh ridge rgb(105, 105, 105);
+}
+
+
+.Reponses input, .Divers input {
+  white-space: inherit;
+  width: 100%;
 }
