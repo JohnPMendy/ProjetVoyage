@@ -21,6 +21,10 @@ document
     document.querySelector('table.partiesEnCours > tbody').append(tableRow);
     document.querySelector('td.compteur').innerHTML =numeroPartie;
 
+    tableRow.querySelector('button.supprimerPartie').addEventListener('click',()=>{
+        tableRow.remove();
+    });
+
 });
 
 
