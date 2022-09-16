@@ -1,208 +1,410 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Le voyageur malchanceux</title>
-    <link rel="stylesheet" href="assets/css/JeuInteractif.css">
-    <script defer src="assets/js/JeuInteractif.js"></script>
-    <style>
-    @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Roboto:wght@300&display=swap');
-    </style>
-</head>
-<body>
-    <header>
-        <div class="block"></div>
-        <div class = "titre">
-           Le voyageur malchanceux
-        </div>
-    </header>
+:root {
+  --margin: 4vw;
+  --largeur-stats-inventaire: 22vw;
+  --top-interface: 22.5vh;
+  --height-interface: 67vh;
+}
 
-    <div class="Wallpaper">
-        <img src="assets/images/Wallpaper.jpg" />
-    </div>
+body {
+    font-family: 'Open Sans', sans-serif;     
+    margin: 0;
+     padding: 0;
+     }
 
-    <div class="Jeu">
-        <div class="Stats">
-            <div class="TitreStats">
-                Statistiques
-            </div>
+.Wallpaper img {
+    filter: brightness(100%);
+    opacity: 1;
+    top: 0;
+    left: 0;
+    height: 100vh; /* vh => Viewport Height */
+    width: 100vw;
+    position:absolute;
+}
 
-            <div class="InterfaceStats">
-                <div class="Nom">
-                    <div class="NameNom"> 
-                        Nom
-                    </div>
-    
-                    <div class="ValeurNom"> 
-                        DefautNom
-                    </div>
-                </div>
-    
-                <div class="Prenom">
-                    <div class="NamePrenom"> 
-                        Prenom
-                    </div>
-    
-                    <div class="ValeurPrenom"> 
-                        DefautPrenom
-                    </div>
-    
-                </div>
-                    
-                <div class="Poids">
-                    <div class="NamePoids"> 
-                        Poids
-                    </div>
-    
-                    <div class="ValeurPoids"> 
-                        DefautPoids
-                    </div>
-    
-                </div>
-                    
-                <div class="Argent">
-                    <div class="NameArgent"> 
-                        Argent
-                    </div>
-    
-                    <div class="ValeurArgent"> 
-                        DefautArgent
-                    </div>
-    
-                </div>
-    
-                <div class="Energie">
-                    <div class="NameEnergie"> 
-                        Energie
-                    </div>
-    
-                    <div class="ValeurEnergie"> 
-                        DefautEnergie
-                    </div>
-    
-                </div>
-    
-                <div class="Faim">
-                    <div class="NameFaim"> 
-                        Faim
-                    </div>
-    
-                    <div class="ValeurFaim"> 
-                        DefautFaim
-                    </div>
-    
-                </div>
-    
-                <div class="Force">
-                    <div class="NameForce"> 
-                        Force
-                    </div>
-    
-                    <div class="ValeurForce"> 
-                        DefautForce
-                    </div>
-    
-                </div>
-    
-                <div class="Covid">
-                    <div class="NameCovid"> 
-                        Covid?
-                    </div>
-    
-                    <div class="ValeurForce"> 
-                        DefautCovid
-                    </div>
-    
-                </div>
-    
-                <div class="Vivant">
-                    <div class="NameVivant"> 
-                        Vivant?
-                    </div>
-    
-                    <div class="ValeurVivant"> 
-                        DefautVivant
-                    </div>
-    
-                </div>
-    
-                <div class="Meteo">
-                    <div class="NameMeteo"> 
-                        Meteo
-                    </div>
-    
-                    <div class="ValeurMeteo"> 
-                        DefautMeteo
-                    </div>
-    
-                </div>
+header {
+    opacity: 100%;
+    display: flex;
+    z-index: 1;
+    position: relative;
+    justify-content: center;
+    height: 7vh;
+    align-items: center;    /*mix-blend-mode: color-burn;*/
+}
 
-            </div>
-
-            
-            
-           
-
-        </div>
-
-        <div class="Partie">
-            <div class="TitrePartie">
-                Partie
-            </div>
-
-            <div class="InterfacePartie">
-                <div class="Histoire"> 
-                    Bienvenue sur le jeu "Le voyageur malchanceux"
-                    Test test Test
-                    Test test Test
-                    Test test Test
-                    Test test Test
-
-                </div>
-
-                <div class="Reponses"> 
-                    <input class="Reponse 1" type="submit" value="Reponse1 : Blablablablablabla" />
-                    <input class="Reponse 2" type="submit" value="Reponse2 : Blablablablablabla" />
-                    <input class="Reponse 3" type="submit" value="Reponse3 : Blablablablablabla" />
-                </div>
-
-                <div class="Divers"> 
-                        <input class="Charger" type="submit" value="Charger" />
-                        <input class="Sauvegarder" type="submit" value="Sauvegarder" />
+footer{
+    opacity: 100%;
+    display: flex;
+    position:absolute;
+    z-index: 2;
+    bottom: 0vh;
+    justify-content: center;
+    align-items: center;
+    height: 3vh;
 
 
-                </div>
+}
 
-            </div>
-        </div>
+.block{
+    opacity: 80%;
+    filter: brightness(0.8);
+    height: 7vh;
+  width: 100vw;
+  /*background: -webkit-linear-gradient(top, rgb(61, 129, 231), rgb(97, 145, 255) );*/
+  background: rgb(30, 30, 30);
+    z-index: 1;
+    position: relative;
+}
 
-        <div class="Inventaire">
-            <div class="TitreInventaire">
-                Inventaire
-            </div>
+.titre{
+    font-size: 4vh;
+    opacity:100%;
+    color: rgb(255, 255, 255);
+    z-index: 2;
+    position:absolute;
+    
+}
 
-            <div class="InterfaceInventaire">
-                Epee...
-                Objets...
-            </div>
+.block2{
+    opacity: 60%;
+  width: 100vw;
+  background: white;
+    z-index: 1;
+    position: relative;
+    height: 3vh;
+}
 
-        </div>
+.textcredits{
+    left: 0.5%;
+    opacity:100%;
+    color: rgb(0, 0, 0);
+    z-index: 2;
+    position:absolute;
+    font-weight: bold;
+    font-size: 1.5vh;
 
-        
+    
+}
 
-    </div>
+.TitreStats{
+    display: flex;
+    position:absolute;
+    z-index: 2;
+    justify-content: center;
+    align-items: center;
+    opacity: 100%;
+    height:8vh;
+  width: var(--largeur-stats-inventaire);
+  background: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+    left: var(--margin);
+    top: 13vh;
+  font-size: 4vh;
+  font-weight: bold;
+  border: 1.2vh ridge rgb(105, 105, 105);
+}
+
+.TitreInventaire{
+    display: flex;
+    position:absolute;
+    z-index: 2;
+    justify-content: center;
+    align-items: center;
+    opacity: 100%;
+    height:8vh;
+    width: var(--largeur-stats-inventaire);
+  background: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+    z-index: 1;
+    right: var(--margin);
+    top: 13vh;
+    font-size: 4vh;
+  font-weight: bold;
+  border: 1.2vh ridge rgb(105, 105, 105);
+
+}
+
+.TitrePartie{
+    display: flex;
+    position:absolute;
+    z-index: 2;
+    justify-content: center;
+    align-items: center;
+    opacity: 100%;
+    height:8vh;
+    width: calc(97.6vw - 2*(var(--margin) + var(--largeur-stats-inventaire)) );
+  background: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+    z-index: 1;
+    left: calc(var(--margin) + var(--largeur-stats-inventaire) + 0.6vw );
+    top: 13vh;
+    font-size: 4vh;
+  font-weight: bold;
+  border: 1.2vh ridge rgb(105, 105, 105);
+
+}
+
+.InterfaceStats{
+    position:absolute;
+    z-index: 2;
+    justify-content: center;
+    align-items: center;
+    opacity: 100%;
+    height:
+    var(--height-interface);
+    width: var(--largeur-stats-inventaire);
+    background: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    left: var(--margin);
+    top: var(--top-interface);
+    font-size: 2vh;
+    font-weight: bold;
+    border: 1.2vh ridge rgb(105, 105, 105);
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.InterfacePartie{
+    display: flex;
+    position:absolute;
+    z-index: 2;
+    opacity: 100%;
+    height:var(--height-interface);
+    width: calc(97.6vw - 2*(var(--margin) + var(--largeur-stats-inventaire)) );
+  background: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+    z-index: 1;
+    left: calc(var(--margin) + var(--largeur-stats-inventaire) + 0.6vw );
+    top: var(--top-interface);
+  font-size: 4vh;
+  font-weight: bold;
+  border: 1.2vh ridge rgb(105, 105, 105);
+  flex-direction: column;
+
+}
+
+.InterfaceInventaire{
+    position:absolute;
+    z-index: 2;
+    justify-content: center;
+    align-items: center;
+    opacity: 100%;
+    height:var(--height-interface);
+    width: var(--largeur-stats-inventaire);
+  background: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+    z-index: 1;
+    right: var(--margin);
+    top: var(--top-interface);
+  border: 1.2vh ridge rgb(105, 105, 105);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  
+}
 
 
-    <footer>
-        <div class = "textcredits">
-            "Le voyageur malchanceux" : Made By John Mendy, Clotilde Zenone, 
-        Mahmoud Moussaoui and Badis Ghoubali. 2022©
-        </div>
+.NameNom, .ValeurNom, .ValeurPrenom, .ValeurPoids, .ValeurArgent, .NamePrenom, .NamePoids,
+.NameArgent, .NameEnergie, .ValeurEnergie, .NameFaim, .ValeurFaim, .NameForce, .ValeurForce,
+.NameCovid, .ValeurCovid, .NameVivant, .ValeurVivant, .NameMeteo, .ValeurMeteo{
+  position:
+  relative;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 100%;
+  /* height: calc(var(--height-interface)/10.4); */
+  width: calc(var(--largeur-stats-inventaire)/2);
+  color: rgb(0, 0, 0);
+  z-index: 1;
+  /* left: calc(var(--margin) + 0.5vw); */
+  /* top: 16vh; */
+  font-size: 3.2vh;
+  border: solid;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  box-sizing: border-box;
+}
 
-        <div class="block2"></div>
-    </footer>
 
-</body>
-</html>
+
+
+.Nom, .Prenom, .Poids, .Argent, .Energie, .Faim, .Force, .Covid, .Vivant, .Meteo{
+  display: flex;
+  font-weight: bolder;
+  flex: 1;
+}
+
+.Histoire{
+  position:relative;
+  display: flex;
+  opacity: 100%;
+  height:32vh;
+font-size: 2vh;
+font-weight: bold;
+border: solid;
+justify-content: center;
+    white-space: pre-line;
+    text-align: center;
+    border: 1vh ridge rgb(105, 105, 105);
+
+}
+
+.Reponses, .Divers{
+  position:relative;
+  display: flex;
+  opacity: 100%;
+  height:15vh;
+font-size: 2vh;
+font-weight: bold;
+border: solid;
+justify-content: center;
+    white-space: pre-line;
+    text-align: center;
+    border: 1vh ridge rgb(105, 105, 105);
+}
+
+
+.Reponses input, .Divers input {
+  white-space: inherit;
+  width: 100%;
+}
+
+.InterfaceInventaire div{
+  border:solid;
+  display:flex;
+ width: 100%;
+}
+
+.InterfaceInventaire .NomTypeObjet, .InterfaceInventaire .TypeObjet {
+  width: 70%;
+  justify-content: center;
+  height: 6vh;
+  align-items: center;
+}
+
+.InterfaceInventaire .NomQuantite, .InterfaceInventaire .Quantité {
+  width:30%;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.NomTypeObjet, .NomQuantite{
+  font-weight: bolder;
+  font-size: 3.6vh;
+}
+
+.Quantité{
+  font-weight: bolder;
+
+}
+
+
+.popup-overlay {
+  top: 0;
+    left: 0;
+  width: 100vw; 
+    height: 100vh;
+  position: absolute;
+  z-index: 4;
+    background-color: #333;
+    opacity: 0.75;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+
+.popup-container {
+  top: 0;
+    left: 0;
+  width: 100vw; 
+    height: 100vh;
+  position: absolute;
+  z-index: 4;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.popup-header{
+  position: relative;
+  z-index:5;
+  background-color: white;
+  height: 54vh;
+  width: 96vh;
+  opacity: 1;
+  justify-content: center;
+}
+
+.DemandeSupression{
+  font-size: 5vh;
+  font-weight: bolder;
+  height: 10vh;
+  background-color: #2E86C1;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  position: revert;
+  display: flex;
+}
+
+
+.popup{
+  display:none;
+}
+
+.QTE{
+  position: relative;
+  z-index: 4;
+  font-size: 10vh;
+  left: 83vh;
+  top: 2.5vh;
+}
+
+.QteASupprimer{
+  font-size: 5vh;
+  font-weight: bolder;
+  top: 12vh;
+  position: relative;
+  left: 4vh;
+}
+
+.Valider{
+  font-size: 8vh;
+    top: 20vh;
+    position: relative;
+    left: 2vh;
+    background: limegreen;
+    width: 33vh;
+}
+
+.Valider:hover{
+  background: green;
+}
+
+.Valider:active{
+  background: limegreen;
+}
+
+.Annuler{
+  font-size: 8vh;
+    top: 20vh;
+    position: relative;
+    left: 8vh;
+    background: rgb(255, 118, 118);
+    width: 33vh;
+}
+
+.Annuler:hover{
+  background: red;
+}
+
+.Annuler:active{
+  background: rgb(255, 118, 118);
+}
