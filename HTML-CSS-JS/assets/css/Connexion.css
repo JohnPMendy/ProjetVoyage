@@ -17,7 +17,7 @@ footer {
     grid-row: 5;
     line-height:normal;
     opacity: 60%;
-    background: rgb(30, 30, 30);
+    background: rgb(175, 172, 172);
 
 
 }
@@ -31,8 +31,7 @@ footer {
     border-radius : 3px;
     text-decoration: none;
     text-align: center;
-    margin-top: 5px;
-    margin-left: 5px;
+    margin : 5px
 
 }
 header {
