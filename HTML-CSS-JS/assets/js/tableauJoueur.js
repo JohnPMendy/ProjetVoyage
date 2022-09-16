@@ -3,7 +3,6 @@ var numeroPartie = 0;
 document
 .querySelector('.nouvellePartie')
 .addEventListener('click', () => {
-    const nom="test";
     const date = new Date().toLocaleDateString('fr-FR');
     const heure = new Date().toLocaleTimeString('fr-FR');
     // Fabriquer la ligne du tableau
@@ -11,7 +10,8 @@ document
 
     // Modifier le contenu de la ligne du tableau
     numeroPartie++;
-    tableRow.innerHTML = `<td><button class="jeu"> <a href="JeuInteractif.html">Partie ${numeroPartie}</a></button></td>`;
+    const nom=` test ${numeroPartie}`
+    tableRow.innerHTML = `<td><button class="boutonVersPartie"> <a href="JeuInteractif.html">Partie ${numeroPartie}</a></button></td>`;
     tableRow.innerHTML += `<td>${ nom }</td>`;
     tableRow.innerHTML += `<td>${date}</td>`;
     tableRow.innerHTML += `<td>${heure}</td>`;

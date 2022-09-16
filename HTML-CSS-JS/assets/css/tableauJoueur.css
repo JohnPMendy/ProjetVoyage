@@ -3,7 +3,7 @@ body {
     margin: 0;
     padding: 0;
     overflow-y: scroll;
-    overflow-x: autp;
+    overflow-x: hidden;
     background-image: url(/assets/images/Wallpaper.jpg);
     background-size: cover;
     background-position: center center;
@@ -16,6 +16,7 @@ header {
     position: relative;
     justify-content: center;
     height: 50px;
+    width: 99vw;
     align-items: center;
     background: rgba(30, 30, 30, 0.8);
 }
@@ -30,7 +31,7 @@ button {
     background: rgb(34, 19, 240);
     border: none;
     outline: none;
-    border-radius: 2px;
+    border-radius: 4px;
     height: 40px;
     padding: 0px 0px;
     color: white;
@@ -46,7 +47,7 @@ button>a {
 .deconnexion {
     z-index: 2;
     position: absolute;
-    right: 1vh;
+    right: 30px;
 }
 
 .nouvellePartie {
@@ -54,6 +55,19 @@ button>a {
     position: relative;
     width: 700px;
 }
+
+.nouvellePartie >a{
+    font-size: 20px;
+}
+
+.boutonVersPartie{
+    width: 70px;
+}
+
+.boutonVersPartie >a{
+    font-size: 12px;
+}
+
 
 .tabs {
     display: flex;
@@ -78,6 +92,7 @@ button>a {
 .stats>h5 {
     grid-area: 'titre';
     margin-bottom: 0;
+    font-size: 16px;
 }
 
 .enCours,
