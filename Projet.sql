@@ -59,17 +59,14 @@ CREATE TABLE inventaire(
   inv_id SERIAL PRIMARY KEY,
   inv_partie_id INT
 );
-		
+
 CREATE TABLE objet(
     obj_id SERIAL primary key,
     obj_nom VARCHAR(100) NOT NULL,
     obj_type_alimentaire BOOLEAN NOT NULL,
     obj_prix FLOAT NOT NULL,
     obj_type INT NOT NULL,
-    obj_quantite_inventaire INT NULL,
-    obj_quantite_boutique INT NULL,
-    obj_boutique_id INT NULL,
-    obj_inventaire_id INT NULL
+
 );
 
 CREATE TABLE boutique(
@@ -78,6 +75,19 @@ CREATE TABLE boutique(
    btq_type INT NOT NULL
  );
 
+CREATE TABLE objetBoutique(
+   objbtq_id SERIAL primary key,
+   objBtq_obj_id INT NULL,
+   objBtq_btq_id INT NULL,
+   qte_boutique INT NULL
+);
+
+CREATE TABLE objetInventaire(
+   objinv_id SERIAL primary key,
+   objinv_obj_id INT NULL,
+   objinv_inv_id INT NULL,
+   qte_inventaire INT NULL
+);
 ALTER TABLE partie
     ADD CONSTRAINT FK_PartiePerso
         FOREIGN KEY (par_personnage_id)
@@ -99,19 +109,35 @@ ALTER TABLE partie
         ON UPDATE CASCADE
         ON DELETE CASCADE;
 
-ALTER TABLE objet
-    ADD CONSTRAINT FK_ObjetBoutique
-        FOREIGN KEY(obj_boutique_id)
+ALTER TABLE objetBoutique
+    ADD CONSTRAINT FK_ObjBtq_boutique
+        FOREIGN KEY(objbtq_btq_id)
         REFERENCES boutique(btq_id)
             ON UPDATE CASCADE
             ON DELETE CASCADE;
 
-ALTER TABLE objet
-    ADD CONSTRAINT FK_ObjetInventaire
-        FOREIGN KEY(obj_inventaire_id)
+ALTER TABLE objetBoutique
+    ADD CONSTRAINT FK_ObjBtq_objet
+        FOREIGN KEY(objbtq_obj_id)
+        REFERENCES objet(obj_id)
+            ON UPDATE CASCADE
+            ON DELETE CASCADE;
+
+ALTER TABLE objetInventaire
+    ADD CONSTRAINT FK_Objinv_inventaire
+        FOREIGN KEY(objinv_inv_id)
         REFERENCES inventaire(inv_id)
             ON UPDATE CASCADE
             ON DELETE CASCADE;
+
+ALTER TABLE objetInventaire
+    ADD CONSTRAINT FK_Objinv_objet
+        FOREIGN KEY(objinv_obj_id)
+        REFERENCES objet(obj_id)
+            ON UPDATE CASCADE
+            ON DELETE CASCADE;
+
+
 
 ALTER TABLE inventaire
     ADD CONSTRAINT FK_InventairePartie
