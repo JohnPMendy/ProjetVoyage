@@ -10,18 +10,22 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @Table(name="competence")
 public class Competence {
+	@JsonView(JsonViews.Common.class)
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "com_id")
 	private int id;
 	
+	@JsonView(JsonViews.Common.class)
 	@Column(name="com_nom", length=50, nullable=false)
 	private String nom;
 
-		
+	@JsonView(JsonViews.Common.class)	
 	@Column(name="com_des", length=500)
 	private String description;
 	
