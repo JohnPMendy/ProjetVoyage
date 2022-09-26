@@ -70,13 +70,13 @@ public class EnvironnementRestController {
 	
 	//Pour la modification/mise à jour c'est du PutMapping
 	@PutMapping("{id}")
-	public Environnement update(@PathVariable("id")Integer id,@Valid @RequestBody Environnement produit,BindingResult br) {
+	public Environnement update(@PathVariable("id")Integer id,@Valid @RequestBody Environnement environnement,BindingResult br) {
 		if(br.hasErrors()||srvEnvironnement.existById(id)) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
 		}
-		produit.setId(id);
-		srvEnvironnement.save(produit);
-		return produit;
+		environnement.setId(id);
+		srvEnvironnement.save(environnement);
+		return environnement;
 		
 	}
 	

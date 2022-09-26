@@ -208,3 +208,8 @@ INSERT INTO objetBoutique(objBtq_obj_id , objBtq_btq_id,qte_boutique) VALUES(5,2
 
 INSERT INTO objetInventaire(objinv_obj_id ,objinv_inv_id,qte_inventaire) VALUES(1,1,2);
 INSERT INTO objetInventaire(objinv_obj_id ,objinv_inv_id,qte_inventaire) VALUES(5,2,1);
+
+INSERT INTO environnement(env_nom,env_temperature,env_type_meteo,env_type_environnement)
+VALUES 
+('Env1',25,1,1),
+('Env2',27,2,2);
