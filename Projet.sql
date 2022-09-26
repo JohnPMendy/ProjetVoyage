@@ -189,9 +189,22 @@ INSERT INTO reponse (rep_texte, rep_evenement_id, rep_prochain_evenement_id) VAL
 
 INSERT INTO competence(com_nom, com_des) VALUES ('Négociation', 'Permet de négocier des prix lors des achats');
 
-INSERT INTO objet (obj_nom,obj_type_alimentaire,obj_prix,obj_type)VALUES('Eau' , 1 , 1.0 , 1);
+INSERT INTO objet (obj_nom,obj_type_alimentaire,obj_prix,obj_type)VALUES('Eau' , 1 , 1.0 , 1);   
 INSERT INTO objet (obj_nom,obj_type_alimentaire,obj_prix,obj_type)VALUES('Boisson gazeuse', 1 , 1.5 , 1);
 INSERT INTO objet (obj_nom,obj_type_alimentaire,obj_prix,obj_type)VALUES('Jus', 1 , 2.0 , 1 );
 INSERT INTO objet (obj_nom,obj_type_alimentaire,obj_prix,obj_type)VALUES('Boisson chaude' , 1 , 1.5 , 1);
 
-INSERT INTO boutique (btq_nom,btq_type)VALUES('Carrefour' , 1 , 1.5 , 1);
+INSERT INTO objet (obj_nom,obj_type_alimentaire,obj_prix,obj_type)VALUES('jacket impermeable' , 0 , 60 , 4);
+
+INSERT INTO boutique (btq_nom,btq_type)VALUES('Carrefour' , 1 );
+INSERT INTO boutique (btq_nom,btq_type)VALUES('Decathlon' , 2 );
+
+INSERT INTO inventaire (inv_partie_id)VALUES(1);
+INSERT INTO inventaire (inv_partie_id)VALUES(2);
+
+
+INSERT INTO objetBoutique(objBtq_obj_id , objBtq_btq_id,qte_boutique) VALUES(1,1,200); --l'objet d'id 1 est dans la boutique d'id 1 avec la quantite 2
+INSERT INTO objetBoutique(objBtq_obj_id , objBtq_btq_id,qte_boutique) VALUES(5,2,20);
+
+INSERT INTO objetInventaire(objinv_obj_id ,objinv_inv_id,qte_inventaire) VALUES(1,1,2);
+INSERT INTO objetInventaire(objinv_obj_id ,objinv_inv_id,qte_inventaire) VALUES(5,2,1);
