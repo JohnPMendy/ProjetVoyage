@@ -1,4 +1,4 @@
-package fr.formation.model;
+package fr.projetjeu.model;
 
 public class JsonViews {
 
