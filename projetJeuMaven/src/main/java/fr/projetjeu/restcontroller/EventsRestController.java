@@ -12,6 +12,9 @@ import fr.projetjeu.model.Events;
 import fr.projetjeu.model.JsonViews;
 import fr.projetjeu.service.EventsService;
 
+
+//http://localhost:8080/voyages/api/events/1
+
 @RestController // controller rest pour webservice
 @RequestMapping("/api/events")
 public class EventsRestController {

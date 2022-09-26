@@ -24,7 +24,7 @@ public class ReponseRestController {
 	ReponseService repService = new ReponseService();
 
 	@GetMapping("/{id}")
-	//@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.Common.class)
 
 	public List<Reponse> findByEvenementId(@PathVariable("id") Integer id){
 		return repService.findByEvenementId(id);
