@@ -23,6 +23,7 @@ public class Reponse {
 	@Column(name = "rep_texte", nullable = false)
 	private String texte;
 	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="rep_evenement_id", nullable = false)
 	private Events evenementId;
