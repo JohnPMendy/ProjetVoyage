@@ -66,8 +66,7 @@ CREATE TABLE objet(
     obj_nom VARCHAR(100) NOT NULL,
     obj_type_alimentaire BOOLEAN NOT NULL,
     obj_prix FLOAT NOT NULL,
-    obj_type INT NOT NULL,
-
+    obj_type INT NOT NULL
 );
 
 CREATE TABLE boutique(

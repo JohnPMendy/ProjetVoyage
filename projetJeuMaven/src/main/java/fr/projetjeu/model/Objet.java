@@ -10,24 +10,30 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @Table(name = "objet")
 public class Objet {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonView(JsonViews.Common.class)
 	@Column(name = "obj_id")
 	private int id;
 
-	
+	@JsonView(JsonViews.Common.class)
 	@Column(name="obj_nom",length=100,nullable=false)
 	private String nom;
 	
+	@JsonView(JsonViews.Common.class)
 	@Column(name="obj_type_alimentaire",nullable=false)
 	private boolean typeObjetAlimentaire;
 	
+	@JsonView(JsonViews.Common.class)
 	@Column(name="obj_prix",nullable=false)
 	private float prix;
 	
+	@JsonView(JsonViews.Common.class)
 	@Enumerated(EnumType.ORDINAL)
 	@Column(name="obj_type",nullable=false)
 	private TypeObjets typeObjets;
