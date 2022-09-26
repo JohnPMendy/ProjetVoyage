@@ -17,7 +17,7 @@ footer {
     grid-row: 5;
     line-height:normal;
     opacity: 60%;
-    background: rgb(175, 172, 172);
+    background: rgb(30, 30, 30);
 
 
 }
@@ -36,7 +36,7 @@ footer {
 }
 header {
 
-    background: rgb(46, 46, 46);
+    background: rgba(46, 46, 46,0.7);
     grid-row: 1;
 }
 
@@ -48,6 +48,18 @@ header {
     color: rgb(255, 255, 255);
     text-align: center;
     padding: 8px;
+}
+.PageCNX{
+    opacity: 60%;
+    font-size: 30px;
+    opacity:100%;
+    color: rgb(255, 255, 255);
+    padding: 8%;
+    grid-row: 2;
+    grid-column: 1/span 3;
+
+
+
 }
 
 .textcredits{
@@ -99,7 +111,7 @@ header {
     color: #acacac;
 }
 
-.login input[name="seConnecter"],.login input[name="pasEncoreInscrit"] {
+.login input[name="seConnecter"] {
     display: inline-block;
     font-weight:bold;
     padding: 0 25px;
@@ -142,4 +154,12 @@ header {
 
 .login input[type="submit"]:hover {
     background: #333333;
+}
+.login input[type="button"]:hover {
+    background: #333333;
+}
+
+a:hover{
+    background: #2c2c2c;
+  
 }

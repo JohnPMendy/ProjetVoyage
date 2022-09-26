@@ -15,14 +15,15 @@ public class ObjetInventaire {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "objinv_id")
 	private int objInventaireId;
 
 	@ManyToOne
-	@JoinColumn(name = "inv_obj_id", nullable = false)
+	@JoinColumn(name = "objinv_obj_id", nullable = false)
 	private Objet objet;
 
 	@ManyToOne
-	@JoinColumn(name = "obj_btq_id", nullable = false)
+	@JoinColumn(name = "objinv_inv_id", nullable = false)
 	private Inventaire inventaire;
 
 	@Column(name = "qte_inventaire", nullable = false)

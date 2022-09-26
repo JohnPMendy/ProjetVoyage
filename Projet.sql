@@ -1,3 +1,4 @@
+
 --DROP DATABASE projet;
 --CREATE DATABASE projet;
 
@@ -59,17 +60,14 @@ CREATE TABLE inventaire(
   inv_id SERIAL PRIMARY KEY,
   inv_partie_id INT
 );
-		
+
 CREATE TABLE objet(
     obj_id SERIAL primary key,
     obj_nom VARCHAR(100) NOT NULL,
     obj_type_alimentaire BOOLEAN NOT NULL,
     obj_prix FLOAT NOT NULL,
     obj_type INT NOT NULL,
-    obj_quantite_inventaire INT NULL,
-    obj_quantite_boutique INT NULL,
-    obj_boutique_id INT NULL,
-    obj_inventaire_id INT NULL
+
 );
 
 CREATE TABLE boutique(
@@ -78,6 +76,19 @@ CREATE TABLE boutique(
    btq_type INT NOT NULL
  );
 
+CREATE TABLE objetBoutique(
+   objbtq_id SERIAL primary key,
+   objBtq_obj_id INT NULL,
+   objBtq_btq_id INT NULL,
+   qte_boutique INT NULL
+);
+
+CREATE TABLE objetInventaire(
+   objinv_id SERIAL primary key,
+   objinv_obj_id INT NULL,
+   objinv_inv_id INT NULL,
+   qte_inventaire INT NULL
+);
 ALTER TABLE partie
     ADD CONSTRAINT FK_PartiePerso
         FOREIGN KEY (par_personnage_id)
@@ -99,19 +110,35 @@ ALTER TABLE partie
         ON UPDATE CASCADE
         ON DELETE CASCADE;
 
-ALTER TABLE objet
-    ADD CONSTRAINT FK_ObjetBoutique
-        FOREIGN KEY(obj_boutique_id)
+ALTER TABLE objetBoutique
+    ADD CONSTRAINT FK_ObjBtq_boutique
+        FOREIGN KEY(objbtq_btq_id)
         REFERENCES boutique(btq_id)
             ON UPDATE CASCADE
             ON DELETE CASCADE;
 
-ALTER TABLE objet
-    ADD CONSTRAINT FK_ObjetInventaire
-        FOREIGN KEY(obj_inventaire_id)
+ALTER TABLE objetBoutique
+    ADD CONSTRAINT FK_ObjBtq_objet
+        FOREIGN KEY(objbtq_obj_id)
+        REFERENCES objet(obj_id)
+            ON UPDATE CASCADE
+            ON DELETE CASCADE;
+
+ALTER TABLE objetInventaire
+    ADD CONSTRAINT FK_Objinv_inventaire
+        FOREIGN KEY(objinv_inv_id)
         REFERENCES inventaire(inv_id)
             ON UPDATE CASCADE
             ON DELETE CASCADE;
+
+ALTER TABLE objetInventaire
+    ADD CONSTRAINT FK_Objinv_objet
+        FOREIGN KEY(objinv_obj_id)
+        REFERENCES objet(obj_id)
+            ON UPDATE CASCADE
+            ON DELETE CASCADE;
+
+
 
 ALTER TABLE inventaire
     ADD CONSTRAINT FK_InventairePartie
@@ -161,3 +188,23 @@ INSERT INTO reponse (rep_texte, rep_evenement_id, rep_prochain_evenement_id) VAL
 INSERT INTO reponse (rep_texte, rep_evenement_id, rep_prochain_evenement_id) VALUES ('R2 : Non', 5, 7 );
 
 INSERT INTO competence(com_nom, com_des) VALUES ('Négociation', 'Permet de négocier des prix lors des achats');
+
+INSERT INTO objet (obj_nom,obj_type_alimentaire,obj_prix,obj_type)VALUES('Eau' , 1 , 1.0 , 1);   
+INSERT INTO objet (obj_nom,obj_type_alimentaire,obj_prix,obj_type)VALUES('Boisson gazeuse', 1 , 1.5 , 1);
+INSERT INTO objet (obj_nom,obj_type_alimentaire,obj_prix,obj_type)VALUES('Jus', 1 , 2.0 , 1 );
+INSERT INTO objet (obj_nom,obj_type_alimentaire,obj_prix,obj_type)VALUES('Boisson chaude' , 1 , 1.5 , 1);
+
+INSERT INTO objet (obj_nom,obj_type_alimentaire,obj_prix,obj_type)VALUES('jacket impermeable' , 0 , 60 , 4);
+
+INSERT INTO boutique (btq_nom,btq_type)VALUES('Carrefour' , 1 );
+INSERT INTO boutique (btq_nom,btq_type)VALUES('Decathlon' , 2 );
+
+INSERT INTO inventaire (inv_partie_id)VALUES(1);
+INSERT INTO inventaire (inv_partie_id)VALUES(2);
+
+
+INSERT INTO objetBoutique(objBtq_obj_id , objBtq_btq_id,qte_boutique) VALUES(1,1,200); --l'objet d'id 1 est dans la boutique d'id 1 avec la quantite 2
+INSERT INTO objetBoutique(objBtq_obj_id , objBtq_btq_id,qte_boutique) VALUES(5,2,20);
+
+INSERT INTO objetInventaire(objinv_obj_id ,objinv_inv_id,qte_inventaire) VALUES(1,1,2);
+INSERT INTO objetInventaire(objinv_obj_id ,objinv_inv_id,qte_inventaire) VALUES(5,2,1);
