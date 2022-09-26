@@ -19,6 +19,7 @@ public class PartieService {
 	@Autowired
 	private IPartieRepository repoPartie;
 
+
 	public Partie findById(Integer id) {
 		if (id <= 0) {
 			throw new InvalidArgsException("id");
@@ -61,6 +62,7 @@ public class PartieService {
 
 		repoPartie.save(partie);
 	}
+
 
 	public void deleteById(Integer id) {
 		if (id <= 0) {

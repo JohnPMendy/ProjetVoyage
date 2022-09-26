@@ -20,6 +20,7 @@ public class Partie {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "par_id")
 	private Integer id;
+
 	
 	@OneToOne
 	@JoinColumn(name="par_personnage_id", nullable = false)
@@ -39,6 +40,7 @@ public class Partie {
 	@OneToOne
 	@JoinColumn(name="par_inventaire_id", nullable=false)
 	private Inventaire inventaire;
+
 
 	public Integer getId() {
 		return id;
