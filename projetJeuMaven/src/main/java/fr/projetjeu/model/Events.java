@@ -36,7 +36,7 @@ public class Events {
 	@OneToOne(mappedBy = "prochainEvenementId")
 	private Reponse reponse;
 
-	// Parties utilisant l'event
+	// Parties utilisants l'event
 	@OneToMany(mappedBy = "eventRunning")
 	private List<Partie> parties;
 
