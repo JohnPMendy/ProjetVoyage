@@ -28,6 +28,10 @@ public class EventsService {
 
 	}
 	
+	public Events findByIdFetchReponses(Integer id) {
+		return repoEvent.findByIdFetchingReponses(id).orElseThrow(EventNotFoundException::new);
+	}
+	
 	public void save(Events event) {
 		if(event==null) {
 			throw new InvalidArgsException("id");

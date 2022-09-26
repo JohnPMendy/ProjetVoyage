@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 import fr.projetjeu.model.Events;
 import fr.projetjeu.model.JsonViews;
 import fr.projetjeu.service.EventsService;
+import fr.projetjeu.service.ReponseService;
 
 
 //http://localhost:8080/voyages/api/events/1
@@ -23,9 +24,9 @@ public class EventsRestController {
 	private EventsService evtService = new EventsService();
 	
 	@GetMapping("/{id}")
-	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.EventsAvecReponses.class)
 	public Events findById(@PathVariable("id") Integer id) {
-		return evtService.findById(id);
+		return evtService.findByIdFetchReponses(id);
 	}
 	
 	

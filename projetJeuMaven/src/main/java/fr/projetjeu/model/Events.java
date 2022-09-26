@@ -12,7 +12,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
@@ -24,13 +23,15 @@ public class Events {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "evt_id")
+	@JsonView(JsonViews.Events.class)
 	private Integer id;
 
 	@Column(name = "evt_histoire", length = 2000, nullable = true)
-	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.Events.class)
 	private String histoire = "";
 	
 	@OneToMany(mappedBy = "evenementId")
+	@JsonView(JsonViews.EventsAvecReponses.class)
 	private List<Reponse> reponses;
 
 	@OneToOne(mappedBy = "prochainEvenementId")

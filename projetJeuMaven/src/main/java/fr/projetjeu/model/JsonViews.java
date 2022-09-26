@@ -9,12 +9,12 @@ public class JsonViews {
 		
 	}
 	//view pour produit 
-	public static class Produit extends Common{
+	public static class Events extends Common{
 		
 	}
 	
 	//view pour produit avec fournisseur
-	public static class ProduitAvecFournisseur extends Produit{
+	public static class EventsAvecReponses extends Events{
 		
 	}
 	
