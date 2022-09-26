@@ -208,3 +208,8 @@ INSERT INTO objetBoutique(objBtq_obj_id , objBtq_btq_id,qte_boutique) VALUES(5,2
 
 INSERT INTO objetInventaire(objinv_obj_id ,objinv_inv_id,qte_inventaire) VALUES(1,1,2);
 INSERT INTO objetInventaire(objinv_obj_id ,objinv_inv_id,qte_inventaire) VALUES(5,2,1);
+
+insert into personnage (per_nom,per_prenom,per_poids,per_argent,per_energie, per_humeur, per_faim, per_force,per_covid, per_vivant)
+values ('Lemaire','Pascal',0,0,0,1,0,0,false,true)
+
+

@@ -9,7 +9,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
@@ -19,26 +21,28 @@ public class Competence {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "com_id")
-	private int id;
+	private Integer id;
 	
 	@JsonView(JsonViews.Common.class)
 	@Column(name="com_nom", length=50, nullable=false)
+	@NotBlank
 	private String nom;
 
 	@JsonView(JsonViews.Common.class)	
 	@Column(name="com_des", length=500)
 	private String description;
 	
+	
 	@ManyToMany(mappedBy="competences")
 	private List<Personnage> personnages;
 
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

@@ -30,7 +30,7 @@ public class PersonnageService {
 		return persos;
 	}
 	
-	public Personnage findById(int id) {
+	public Personnage findById(Integer id) {
 		if (id<=0) {
 			throw new InvalidArgsException("id");
 		}
@@ -58,6 +58,13 @@ public class PersonnageService {
 	
 		
 		repoPersonnage.save(perso);
+	}
+	
+	public Personnage findByIdFetchingCompetences(Integer id) {
+		return repoPersonnage.findByIdFetchingCompetences(id).get();
+	}
+	public void deleteById(Integer id) {
+		repoPersonnage.deleteById(id);
 	}
 
 }
