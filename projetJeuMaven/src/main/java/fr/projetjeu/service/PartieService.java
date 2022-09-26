@@ -72,4 +72,8 @@ public class PartieService {
 		repoPartie.deleteById(id);
 	}
 
+	public boolean existById(Integer id) {
+		return repoPartie.existsById(id);
+	}
+
 }

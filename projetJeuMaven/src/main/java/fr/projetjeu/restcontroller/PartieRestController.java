@@ -71,28 +71,28 @@ public class PartieRestController {
 	
 	//Pour la modification/mise à jour c'est du PutMapping
 	@PutMapping("{id}")
-	public Environnement update(@PathVariable("id")Integer id,@Valid @RequestBody Environnement environnement,BindingResult br) {
+	public Partie update(@PathVariable("id")Integer id,@Valid @RequestBody Partie partie,BindingResult br) {
 		if(br.hasErrors()||srvPartie.existById(id)) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
 		}
-		environnement.setId(id);
-		srvPartie.save(environnement);
-		return environnement;
+		partie.setId(id);
+		srvPartie.save(partie);
+		return partie;
 		
 	}
 	
 	@PatchMapping("/{id}")
-	public Environnement partialUpdate(@RequestBody Map<String,Object> fields,@PathVariable("id") Integer id) {
-		Environnement environnement=srvPartie.findById(id);
+	public Partie partialUpdate(@RequestBody Map<String,Object> fields,@PathVariable("id") Integer id) {
+		Partie partie=srvPartie.findById(id);
 //		produit.setReference(fields.get("reference").toString()) ;
 		fields.forEach((key,value)->{
 			//recupère un champ d'un Produit
 			Field field=ReflectionUtils.findField(Environnement.class, key);
 			ReflectionUtils.makeAccessible(field); //Pour pouvoir modifier la valeur obtenue 
-			ReflectionUtils.setField(field, environnement, value); //on change la valeur du champ du produit
+			ReflectionUtils.setField(field, partie, value); //on change la valeur du champ du produit
 		});
-		srvPartie.save(environnement);
-		return environnement;
+		srvPartie.save(partie);
+		return partie;
 	}
 	
 }
