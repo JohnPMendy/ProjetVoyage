@@ -16,7 +16,7 @@ public class ObjetInventaire {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "objinv_id")
-	private int objInventaireId;
+	private Integer objInventaireId;
 
 	@ManyToOne
 	@JoinColumn(name = "objinv_obj_id", nullable = false)
@@ -29,11 +29,11 @@ public class ObjetInventaire {
 	@Column(name = "qte_inventaire", nullable = false)
 	int quantiteInventaire;
 
-	public int getObjInventaireId() {
+	public Integer getObjInventaireId() {
 		return objInventaireId;
 	}
 
-	public void setObjInventaireId(int objInventaireId) {
+	public void setObjInventaireId(Integer objInventaireId) {
 		this.objInventaireId = objInventaireId;
 	}
 

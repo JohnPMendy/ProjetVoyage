@@ -8,21 +8,6 @@ public class JsonViews {
 	public static class Common{
 		
 	}
-	//view pour produit 
-	public static class Produit extends Common{
-		
-	}
-	
-	//view pour produit avec fournisseur
-	public static class ProduitAvecFournisseur extends Produit{
-		
-	}
-	
-	public static class Fournisseur extends Common{
-		
-	}
-	
-	public static class FournisseurAvecProduit extends Fournisseur{
-		
-	}
+
+
 }
