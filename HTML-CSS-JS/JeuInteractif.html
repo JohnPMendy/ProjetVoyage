@@ -184,17 +184,65 @@
             </div>
 
             <div class="InterfaceInventaire">
-                Epee...
-                Objets...
+                <div class="TitreObjets">
+                    <div class="NomTypeObjet"> 
+                        Type Objet
+                    </div>
+    
+                    <div class="NomQuantite"> 
+                        Qte
+                    </div>
+                </div>
+    
+                <div class="Objet">
+                    <input class="TypeObjet" type="submit" value="Pistolet" />
+    
+                    <div class="Quantité"> 
+                        1
+                    </div>
+    
+                </div>
             </div>
 
         </div>
+
 
         
 
     </div>
 
+<!-- Joue le rôle de fond noir transparent -->
+    <div class="popup">
+        <div class="popup-overlay">   </div>
 
+        <div class="popup-container">
+            <div class="popup-header">
+                <div class="DemandeSupression">
+                     Voulez vous supprimer cet objet?
+                </div> 
+
+                <div class="QteASupprimer">
+                    Quantité à supprimer souhaité:
+               </div>
+
+                <select class ="QTE" name="QTE">
+                    <option value="TEST" selected>0</option>
+                    <option value="sopra">1</option>
+                    <option value="amazon">2</option>
+                </select>
+
+                <input class="Valider" type="submit" value="Valider" />
+                <input class="Annuler" type="submit" value="Annuler" />
+
+            </div>
+
+        
+
+        </div>
+
+    
+            
+    </div>
     <footer>
         <div class = "textcredits">
             "Le voyageur malchanceux" : Made By John Mendy, Clotilde Zenone, 

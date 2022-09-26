@@ -196,8 +196,11 @@ footer{
     z-index: 1;
     right: var(--margin);
     top: var(--top-interface);
-  font-size: 4vh;
   border: 1.2vh ridge rgb(105, 105, 105);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
 
   
 }
@@ -269,4 +272,139 @@ justify-content: center;
 .Reponses input, .Divers input {
   white-space: inherit;
   width: 100%;
+}
+
+.InterfaceInventaire div{
+  border:solid;
+  display:flex;
+ width: 100%;
+}
+
+.InterfaceInventaire .NomTypeObjet, .InterfaceInventaire .TypeObjet {
+  width: 70%;
+  justify-content: center;
+  height: 6vh;
+  align-items: center;
+}
+
+.InterfaceInventaire .NomQuantite, .InterfaceInventaire .Quantité {
+  width:30%;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.NomTypeObjet, .NomQuantite{
+  font-weight: bolder;
+  font-size: 3.6vh;
+}
+
+.Quantité{
+  font-weight: bolder;
+
+}
+
+
+.popup-overlay {
+  top: 0;
+    left: 0;
+  width: 100vw; 
+    height: 100vh;
+  position: absolute;
+  z-index: 4;
+    background-color: #333;
+    opacity: 0.75;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+
+.popup-container {
+  top: 0;
+    left: 0;
+  width: 100vw; 
+    height: 100vh;
+  position: absolute;
+  z-index: 4;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.popup-header{
+  position: relative;
+  z-index:5;
+  background-color: white;
+  height: 54vh;
+  width: 96vh;
+  opacity: 1;
+  justify-content: center;
+}
+
+.DemandeSupression{
+  font-size: 5vh;
+  font-weight: bolder;
+  height: 10vh;
+  background-color: #2E86C1;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  position: revert;
+  display: flex;
+}
+
+
+.popup{
+  display:none;
+}
+
+.QTE{
+  position: relative;
+  z-index: 4;
+  font-size: 10vh;
+  left: 83vh;
+  top: 2.5vh;
+}
+
+.QteASupprimer{
+  font-size: 5vh;
+  font-weight: bolder;
+  top: 12vh;
+  position: relative;
+  left: 4vh;
+}
+
+.Valider{
+  font-size: 8vh;
+    top: 20vh;
+    position: relative;
+    left: 2vh;
+    background: limegreen;
+    width: 33vh;
+}
+
+.Valider:hover{
+  background: green;
+}
+
+.Valider:active{
+  background: limegreen;
+}
+
+.Annuler{
+  font-size: 8vh;
+    top: 20vh;
+    position: relative;
+    left: 8vh;
+    background: rgb(255, 118, 118);
+    width: 33vh;
+}
+
+.Annuler:hover{
+  background: red;
+}
+
+.Annuler:active{
+  background: rgb(255, 118, 118);
 }
