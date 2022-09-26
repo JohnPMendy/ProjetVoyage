@@ -19,7 +19,8 @@ public class PartieService {
 	@Autowired
 	private IPartieRepository repoPartie;
 
-	public Partie findById(int id) {
+
+	public Partie findById(Integer id) {
 		if (id <= 0) {
 			throw new InvalidArgsException("id");
 		}
@@ -62,12 +63,17 @@ public class PartieService {
 		repoPartie.save(partie);
 	}
 
-	public void deleteById(int id) {
+
+	public void deleteById(Integer id) {
 		if (id <= 0) {
 			throw new InvalidArgsException("id");
 		}
 
 		repoPartie.deleteById(id);
+	}
+
+	public boolean existById(Integer id) {
+		return repoPartie.existsById(id);
 	}
 
 }

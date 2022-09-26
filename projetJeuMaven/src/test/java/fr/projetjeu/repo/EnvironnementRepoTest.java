@@ -9,12 +9,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
+import org.springframework.test.context.web.WebAppConfiguration;
 
 import fr.projetjeu.config.AppConfig;
 import fr.projetjeu.model.Environnement;
 import fr.projetjeu.model.Meteo;
 import fr.projetjeu.model.TypeEnvironnement;
 
+@WebAppConfiguration
 @SpringJUnitConfig(AppConfig.class)
 @Sql(scripts = "classpath:/data.sql")
 @ActiveProfiles("test")
@@ -48,11 +50,11 @@ public class EnvironnementRepoTest {
 		env.setNom("Test env");
 		env.setTemperature(37.2f);
 
-		Assertions.assertEquals(0, env.getId());
+		Assertions.assertEquals(null, env.getId());
 
 		this.repoEnvironnement.save(env);
 
-		Assertions.assertNotEquals(0, env.getId());
+		Assertions.assertNotEquals(null, env.getId());
 	}
 
 	@Test
