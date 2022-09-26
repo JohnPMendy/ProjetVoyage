@@ -12,6 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
+
 
 @Entity
 @Table(name = "boutique")
@@ -21,24 +24,28 @@ public class Boutique {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "btq_id")
-	private int id;
+	@JsonView(JsonViews.Common.class)
+	private Integer id;
 	
 	@Column(name="btq_nom", length=100)
+	@JsonView(JsonViews.Common.class)
 	private String nom;
 	
 	@Enumerated(EnumType.ORDINAL)
+	@JsonView(JsonViews.Common.class)
 	@Column(name="btq_type",nullable=false)
 	private TypeBoutique typeBoutique;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "boutique")
 	List<ObjetBoutique> objets;
 
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

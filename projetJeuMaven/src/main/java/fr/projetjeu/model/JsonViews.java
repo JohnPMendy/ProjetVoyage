@@ -8,6 +8,7 @@ public class JsonViews {
 	public static class Common {
 
 	}
+<<<<<<< HEAD
 
 	// view pour partie
 	public static class Partie extends Common {
@@ -19,3 +20,25 @@ public class JsonViews {
 	}
 
 }
+=======
+	//view pour produit 
+	public static class Events extends Common{
+		
+	}
+	
+	//view pour produit avec fournisseur
+	public static class EventsAvecReponses extends Events{
+		
+	}
+	
+	public static class Fournisseur extends Common{
+		
+	}
+	
+	public static class FournisseurAvecProduit extends Fournisseur{
+		
+	}
+}
+
+
+>>>>>>> 65e82caa56089baa72af4eb09cd086cfaa54270c
