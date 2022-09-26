@@ -195,5 +195,3 @@ INSERT INTO objet (obj_nom,obj_type_alimentaire,obj_prix,obj_type)VALUES('Jus', 
 INSERT INTO objet (obj_nom,obj_type_alimentaire,obj_prix,obj_type)VALUES('Boisson chaude' , 1 , 1.5 , 1);
 
 INSERT INTO boutique (btq_nom,btq_type)VALUES('Carrefour' , 1 , 1.5 , 1);
-INSERT INTO objetBoutique( )
-INSERT INTO objetBoutique( )
