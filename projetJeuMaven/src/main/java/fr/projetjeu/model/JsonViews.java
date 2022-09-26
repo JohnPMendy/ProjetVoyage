@@ -1,4 +1,4 @@
-package fr.projetjeu.model;
+package fr.formation.model;
 
 public class JsonViews {
 
@@ -26,3 +26,5 @@ public class JsonViews {
 		
 	}
 }
+
+

@@ -19,7 +19,7 @@ public class Objet {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@JsonView(JsonViews.Common.class)
 	@Column(name = "obj_id")
-	private int id;
+	private Integer id;
 
 	@JsonView(JsonViews.Common.class)
 	@Column(name="obj_nom",length=100,nullable=false)
@@ -63,11 +63,11 @@ public class Objet {
 		this.nom = nom;
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
