@@ -18,6 +18,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 public class Reponse {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // Auto-increment
+	@JsonView(JsonViews.Common.class)
 	@Column(name = "rep_id")
 	private Integer id;
 	
