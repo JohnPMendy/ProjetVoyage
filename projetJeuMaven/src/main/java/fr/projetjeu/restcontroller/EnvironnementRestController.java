@@ -22,7 +22,10 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 import fr.projetjeu.model.Environnement;
+import fr.projetjeu.model.JsonViews;
 import fr.projetjeu.service.EnvironnementService;
 
 @RestController
@@ -32,11 +35,13 @@ public class EnvironnementRestController {
 	@Autowired
 	private EnvironnementService srvEnvironnement;
 	
+	@JsonView(JsonViews.Environnement.class)
 	@GetMapping("")
 	public List<Environnement> findAll(){
 		return srvEnvironnement.findAll();
 	}
 	
+	@JsonView(JsonViews.Environnement.class)
 	@GetMapping("/{id}")
 	public Environnement findById(@PathVariable("id") Integer id) {
 		try {

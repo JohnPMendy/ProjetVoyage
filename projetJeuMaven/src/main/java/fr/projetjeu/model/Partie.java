@@ -1,5 +1,6 @@
 package fr.projetjeu.model;
 
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
@@ -12,31 +13,40 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @Table(name="partie")
 public class Partie {
 
+	@JsonView(JsonViews.Common.class)
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "par_id")
 	private Integer id;
-
 	
+	@JsonView(JsonViews.Partie.class)
+	@Column(name="par_date", nullable=false)
+	private Timestamp date;
+	
+	//@JsonView(JsonViews.Partie.class)
+	@JsonIgnore
 	@OneToOne
 	@JoinColumn(name="par_personnage_id", nullable = false)
 	private Personnage personnage;
 	
+	@JsonView(JsonViews.Partie.class)
 	@ManyToOne
 	@JoinColumn(name="par_event_id", nullable = false)
 	private Events eventRunning;
 	
-	@Column(name="par_date", nullable=false)
-	private LocalDateTime date;
-	
+	@JsonView(JsonViews.Partie.class)
 	@ManyToOne
 	@JoinColumn(name="par_environnement_id", nullable=false)
 	private Environnement environnement;
 	
+	@JsonView(JsonViews.Partie.class)
 	@OneToOne
 	@JoinColumn(name="par_inventaire_id", nullable=false)
 	private Inventaire inventaire;
@@ -66,11 +76,11 @@ public class Partie {
 		this.eventRunning = eventRunning;
 	}
 
-	public LocalDateTime getDate() {
+	public Timestamp getDate() {
 		return date;
 	}
 
-	public void setDate(LocalDateTime date) {
+	public void setDate(Timestamp date) {
 		this.date = date;
 	}
 
