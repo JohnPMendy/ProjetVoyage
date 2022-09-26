@@ -17,6 +17,7 @@ public class ObjetBoutique {
 	
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
+@Column(name = "objbtq_id")
 private int ObjetBoutiqueId;
 
 @ManyToOne 
