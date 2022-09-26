@@ -53,6 +53,7 @@ public class BoutiqueService {
 			
 			repoBoutique.save(boutique);
 		}
+		
 		public void deleteById(int id) {
 			if (id<=0) {
 				throw new InvalidArgsException("id");
