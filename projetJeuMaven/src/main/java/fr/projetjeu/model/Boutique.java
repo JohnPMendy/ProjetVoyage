@@ -21,7 +21,7 @@ public class Boutique {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "btq_id")
-	private int id;
+	private Integer id;
 	
 	@Column(name="btq_nom", length=100)
 	private String nom;
@@ -34,11 +34,11 @@ public class Boutique {
 	List<ObjetBoutique> objets;
 
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

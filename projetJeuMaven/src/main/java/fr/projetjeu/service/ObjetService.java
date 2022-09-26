@@ -21,7 +21,7 @@ import fr.projetjeu.repo.IObjetInventaireRepository;
 import fr.projetjeu.repo.IObjetRepository;
 
 @Service
-public class ObjetService {
+public class ObjetService  {
 
 
 	@Autowired
@@ -163,7 +163,7 @@ System.out.println(j + "--" + A.get(j));
 }
 }*/
 	
-	
+@Autowired
 private IObjetRepository repoObjet;
 	
 	
@@ -181,8 +181,11 @@ private IObjetRepository repoObjet;
 		if (id<=0) {
 			throw new InvalidArgsException("id");
 		}
+		System.out.println(id);
+		System.out.println(this.repoObjet.findById(id));
+
 		Objet Objet = this.repoObjet.findById(id).get();
-		
+		System.out.println();
 		if(Objet==null) {
 			throw new EntityNotFoundException();
 		}
