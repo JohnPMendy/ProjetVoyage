@@ -25,7 +25,7 @@ footer {
 .btnaccueil{
     font-weight:bold;
     padding: 5px;
-    background: #214fcc;
+    background: #385ab9;
     color: white;
     grid-row: 1;
     grid-column: 3;
@@ -37,7 +37,7 @@ footer {
 }
 header {
 
-    background: rgb(46, 46, 46);
+    background: rgba(46, 46, 46,0.7);
 }
 
 
@@ -48,6 +48,15 @@ header {
     color: rgb(255, 255, 255);
     text-align: center;
     padding: 8px;
+}
+.PageCNX{
+    opacity: 60%;
+    font-size: 30px;
+    opacity:100%;
+    color: rgb(255, 255, 255);
+    padding: 8%;
+    grid-row: 2;
+    grid-column: 1/span 3;
 }
 
 .textcredits{
@@ -114,18 +123,10 @@ header {
 
 }
 
-.login input[name="mdpOublie"] {
-    font-weight:bold;
-    padding: 0 25px;
-    background: #a9afbe;
-    color: rgb(0, 0, 0);
-    text-transform: uppercase;
-    transition: all 0.4s;
-    cursor: pointer;
-    margin-top: 10px;
-    width: 100%;
-}
-
 .login input[type="submit"]:hover {
     background: #333333;
+}
+a:hover{
+        background: #333333;
+      
 }

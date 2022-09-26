@@ -1,11 +1,16 @@
 package fr.projetjeu.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import fr.projetjeu.exception.EntityNotFoundException;
+import fr.projetjeu.exception.InvalidArgsException;
+import fr.projetjeu.exception.InvalidEntityException;
 import fr.projetjeu.model.Boutique;
 import fr.projetjeu.model.Inventaire;
 import fr.projetjeu.model.Objet;
@@ -15,11 +20,9 @@ import fr.projetjeu.repo.IInventaireRepository;
 import fr.projetjeu.repo.IObjetInventaireRepository;
 import fr.projetjeu.repo.IObjetRepository;
 
-//@Service
+@Service
 public class ObjetService {
 
-	@Autowired
-	private IObjetRepository repoObjet;
 
 	@Autowired
 	private IInventaireRepository repoInventaire;
@@ -81,7 +84,7 @@ public class ObjetService {
     	  
     	  
 
-
+/*
 	@Transactional
 	public void achatObjet(Boutique b, Inventaire i, Personnage p) {
 		// le type de la boutique depend de l'evenement
@@ -99,21 +102,40 @@ public class ObjetService {
 		int idx = sc.nextInt();
 		System.out.println("quelle est la quantite que vous voulez ?");
 		int qteAchete = sc.nextInt();
+		
 		Objet obj = repoObjet.findAllBoutique(b.getId()).get(idx - 1);
 		float prix = obj.getPrix() * qteAchete;
 		if (p.getArgent() >= prix) // verification si le personnage a assez de sous pour acheter les produits
 									// selectionne
 		{
 			p.setArgent(p.getArgent() - prix);
-			this.ajoutObjetInventaire(obj, qteAchete);
+			this.ajoutObjetInventaire(obj, qteAchete,i);
+		} else {
+			System.out.println("vous n'avez pas assez de sous pour acheter ces produits");
+			return;
+		}
+	}
+*/
+	
+	@Transactional
+	public void achatObjet(Boutique b, Inventaire i, Personnage p, Objet obj, int qteAchete ) {		
+		
+		float prix = obj.getPrix() * qteAchete;
+		if (p.getArgent() >= prix) // verification si le personnage a assez de sous pour acheter les produits
+									// selectionne
+		{
+			p.setArgent(p.getArgent() - prix);
+			this.ajoutObjetInventaire(obj, qteAchete,i);
 		} else {
 			System.out.println("vous n'avez pas assez de sous pour acheter ces produits");
 			return;
 		}
 	}
 
+	
+	
 	@Transactional
-	public void venteObjet(Boutique b, Inventaire i, Personnage p) {
+	/*public void venteObjet(Boutique b, Inventaire i, Personnage p) {
 		System.out.println("vous etes dans " + b.getTypeBoutique());
 		System.out.println("les articles que vous disposez sont ");
 		// AffichageObjets(repoObjet.findAllInventaire(i.getId()));
@@ -125,13 +147,63 @@ public class ObjetService {
 		Objet obj = i.getListeObjetInventaire().get(idx - 1);
 		float prix = obj.getPrix() * qteVendue;
 		p.setArgent(p.getArgent() + prix);
-		this.supprimerObjetInventaire(obj, qteVendue);
+		this.supprimerObjetInventaire(obj, qteVendue,i);
 	}
+*/
+	public void venteObjet(Inventaire inv, Personnage p,Objet obj, int qteVendue) {
 
-	public void AffichageObjets(List<Objet> A) {
-		for (int j = 1; j < A.size(); j++) {
-			System.out.println(j + "--" + A.get(j));
+		float prix = obj.getPrix() * qteVendue;
+		p.setArgent(p.getArgent() + prix);
+		this.supprimerObjetInventaire(obj, qteVendue,inv);
+	}
+	
+/*public void AffichageObjets(List<Objet> A) {
+for (int j = 1; j < A.size(); j++) {
+System.out.println(j + "--" + A.get(j));
+}
+}*/
+	
+	
+private IObjetRepository repoObjet;
+	
+	
+	public List<Objet> findAll() {
+		List<Objet> Objets = this.repoObjet.findAll();
+		
+		if (Objets == null) {
+			return new ArrayList<>();
 		}
+		
+		return Objets;
+	}
+	
+	public Objet findById(int id) {
+		if (id<=0) {
+			throw new InvalidArgsException("id");
+		}
+		Objet Objet = this.repoObjet.findById(id).get();
+		
+		if(Objet==null) {
+			throw new EntityNotFoundException();
+		}
+		return Objet;
+		
+	}
+	
+	public void save(Objet objet) {
+		if (objet.getNom() == null || objet.getNom().isBlank()) {
+			throw new InvalidEntityException("nom");
+		}
+		
+		
+		repoObjet.save(objet);
+	}
+	public void deleteById(int id) {
+		if (id<=0) {
+			throw new InvalidArgsException("id");
+		}
+		
+		repoObjet.deleteById(id);
 	}
 
 }
