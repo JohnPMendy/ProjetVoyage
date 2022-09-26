@@ -18,7 +18,7 @@ public class EnvironnementService {
 	@Autowired
 	private IEnvironnementRepository repoEnvironnement;
 
-	public Environnement findById(int id) {
+	public Environnement findById(Integer id) {
 		if (id <= 0) {
 			throw new InvalidArgsException("id");
 		}
@@ -52,12 +52,16 @@ public class EnvironnementService {
 		repoEnvironnement.save(environnement);
 	}
 
-	public void deleteById(int id) {
+	public void deleteById(Integer id) {
 		if (id <= 0) {
 			throw new InvalidArgsException("id");
 		}
 
 		repoEnvironnement.deleteById(id);
+	}
+	
+	public boolean existById(Integer id) {
+		return repoEnvironnement.existsById(id);
 	}
 
 }

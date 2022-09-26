@@ -10,6 +10,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @Table(name = "reponse")
 public class Reponse {
@@ -19,12 +22,15 @@ public class Reponse {
 	private Integer id;
 	
 	@Column(name = "rep_texte", nullable = false)
+	@JsonView(JsonViews.Common.class)
 	private String texte;
+	
 	
 	@ManyToOne
 	@JoinColumn(name="rep_evenement_id", nullable = false)
 	private Events evenementId;
 	
+
 	@OneToOne
 	@JoinColumn(name = "rep_prochain_evenement_id", nullable = false)
 	private Events prochainEvenementId;

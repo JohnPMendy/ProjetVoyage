@@ -19,7 +19,8 @@ public class Partie {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "par_id")
-	private int id;
+	private Integer id;
+
 	
 	@OneToOne
 	@JoinColumn(name="par_personnage_id", nullable = false)
@@ -40,11 +41,12 @@ public class Partie {
 	@JoinColumn(name="par_inventaire_id", nullable=false)
 	private Inventaire inventaire;
 
-	public int getId() {
+
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
