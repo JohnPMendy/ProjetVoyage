@@ -33,7 +33,7 @@ public class PartieRestController {
 	@Autowired
 	private PartieService srvPartie;
 	
-	@GetMapping
+	@GetMapping("")
 	public List<Partie> findAll(){
 		return srvPartie.findAll();
 	}

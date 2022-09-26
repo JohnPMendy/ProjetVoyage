@@ -32,7 +32,7 @@ public class EnvironnementRestController {
 	@Autowired
 	private EnvironnementService srvEnvironnement;
 	
-	@GetMapping
+	@GetMapping("")
 	public List<Environnement> findAll(){
 		return srvEnvironnement.findAll();
 	}
