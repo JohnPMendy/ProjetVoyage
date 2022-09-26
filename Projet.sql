@@ -203,7 +203,7 @@ INSERT INTO inventaire (inv_partie_id)VALUES(1);
 INSERT INTO inventaire (inv_partie_id)VALUES(2);
 
 
-INSERT INTO objetBoutique(objBtq_obj_id , objBtq_btq_id,qte_boutique) VALUES(1,1,200); --l'objet d'id 1 est dans la boutique d'id 1 avec la quantite 2
+INSERT INTO objetBoutique(objBtq_obj_id , objBtq_btq_id,qte_boutique) VALUES(1,1,200); --l'objet d'id 1 est dans la boutique d'id 1 avec la quantite 200
 INSERT INTO objetBoutique(objBtq_obj_id , objBtq_btq_id,qte_boutique) VALUES(5,2,20);
 
 INSERT INTO objetInventaire(objinv_obj_id ,objinv_inv_id,qte_inventaire) VALUES(1,1,2);

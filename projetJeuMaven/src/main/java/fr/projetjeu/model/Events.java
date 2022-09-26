@@ -21,7 +21,7 @@ public class Events {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "evt_id")
-	private int id;
+	private Integer id;
 
 	@Column(name = "evt_histoire", length = 2000, nullable = true)
 	private String histoire = "";
@@ -37,11 +37,11 @@ public class Events {
 	private List<Partie> parties;
 
 	// Getters et setters
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
