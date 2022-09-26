@@ -1,6 +1,6 @@
 package fr.projetjeu.exception;
 
-public class NegativeIdException extends Exception {
+public class NegativeIdException extends RuntimeException {
 
 	/**
 	 * 

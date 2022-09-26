@@ -24,7 +24,7 @@ public class ReponseService  {
 		
 	}
 	
-	public List<Reponse> findByEvenementId(int id) throws NegativeIdException{
+	public List<Reponse> findByEvenementId(Integer id) throws NegativeIdException{
 		List<Reponse> reponses = new ArrayList<>(); 
 		
 		if(id<=0) {

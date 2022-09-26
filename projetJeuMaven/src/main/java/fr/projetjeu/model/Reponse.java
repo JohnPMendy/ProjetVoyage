@@ -10,6 +10,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "reponse")
 public class Reponse {
@@ -25,6 +27,7 @@ public class Reponse {
 	@JoinColumn(name="rep_evenement_id", nullable = false)
 	private Events evenementId;
 	
+	@JsonIgnore
 	@OneToOne
 	@JoinColumn(name = "rep_prochain_evenement_id", nullable = false)
 	private Events prochainEvenementId;
