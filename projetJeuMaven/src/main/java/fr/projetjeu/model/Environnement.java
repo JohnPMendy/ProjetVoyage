@@ -19,7 +19,7 @@ public class Environnement {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "env_id")
-	private int id;
+	private Integer id;
 	
 	@Column(name="env_nom",nullable=false)
 	private String nom;
@@ -38,11 +38,11 @@ public class Environnement {
 	@OneToMany(mappedBy="environnement")
 	private List<Partie> parties;
 	
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
