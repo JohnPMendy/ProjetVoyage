@@ -12,6 +12,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "evenement")
 public class Events {
@@ -26,13 +28,16 @@ public class Events {
 	@Column(name = "evt_histoire", length = 2000, nullable = true)
 	private String histoire = "";
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "evenementId")
 	private List<Reponse> reponses;
 
+	@JsonIgnore
 	@OneToOne(mappedBy = "prochainEvenementId")
 	private Reponse reponse;
 
 	// Parties utilisant l'event
+	@JsonIgnore
 	@OneToMany(mappedBy = "eventRunning")
 	private List<Partie> parties;
 
