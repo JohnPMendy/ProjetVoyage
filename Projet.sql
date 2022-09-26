@@ -67,10 +67,6 @@ CREATE TABLE objet(
     obj_type_alimentaire BOOLEAN NOT NULL,
     obj_prix FLOAT NOT NULL,
     obj_type INT NOT NULL
-<<<<<<< HEAD
-=======
-
->>>>>>> 12976349d6dc88abd89f5baef76926c2dc094760
 );
 
 CREATE TABLE boutique(
