@@ -59,5 +59,9 @@ public class EnvironnementService {
 
 		repoEnvironnement.deleteById(id);
 	}
+	
+	public boolean existById(Integer id) {
+		return repoEnvironnement.existsById(id);
+	}
 
 }

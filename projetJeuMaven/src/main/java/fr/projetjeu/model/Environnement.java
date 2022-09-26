@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="environnement")
 public class Environnement {
@@ -35,6 +37,7 @@ public class Environnement {
 	@Column(name="env_type_environnement",nullable=false)
 	private TypeEnvironnement environnement;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="environnement")
 	private List<Partie> parties;
 	
