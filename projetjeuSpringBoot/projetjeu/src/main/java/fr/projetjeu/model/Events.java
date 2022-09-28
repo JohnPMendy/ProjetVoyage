@@ -23,7 +23,7 @@ public class Events {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "evt_id")
-	@JsonView(JsonViews.Events.class)
+	@JsonView(JsonViews.Common.class)
 	private Integer id;
 
 	@Column(name = "evt_histoire", length = 2000, nullable = true)
