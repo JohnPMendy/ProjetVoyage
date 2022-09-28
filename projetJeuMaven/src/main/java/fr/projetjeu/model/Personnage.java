@@ -14,47 +14,74 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
 @Table(name = "personnage")
 public class Personnage {
+	@JsonView(JsonViews.Common.class)
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // Auto-increment
 	@Column(name = "per_id")
 	private int id;
 	
+	@NotBlank
+	@JsonView(JsonViews.Common.class)
 	@Column(name = "per_nom", length=50, nullable = false)
 	private String nom;
 	
+	@NotBlank
+	@JsonView(JsonViews.Common.class)
 	@Column(name = "per_prenom", length=50, nullable = false)
 	private String prenom;
-
+	
+	@DecimalMin("0.0")
+	@JsonView(JsonViews.Common.class)
 	@Column(name = "per_poids", nullable = false)
 	private float poids  =0;
 	
+	@DecimalMin("0.0")
+	@JsonView(JsonViews.Common.class)
 	@Column(name = "per_argent", nullable = false)
 	private float argent=0;
 	
+	@DecimalMin("0.0")
+	@JsonView(JsonViews.Common.class)
 	@Column(name = "per_energie", nullable = false)
 	private float energie=0;
 	
+	@DecimalMin("0.0")
+	@JsonView(JsonViews.Common.class)
 	@Column(name = "per_faim", nullable = false)
 	private float faim=0;
 	
+	
+	@DecimalMin("0.0")
+	@JsonView(JsonViews.Common.class)
 	@Column(name = "per_force", nullable = false)
 	private float force=0;
 	
+	@NotNull
+	@JsonView(JsonViews.Common.class)
 	@Column(name = "per_covid", nullable = false )
 	private boolean isCovided=false;
 	
+	@NotNull
+	@JsonView(JsonViews.Common.class)
 	@Column(name = "per_vivant", nullable = false)
 	private boolean isAlive=true;
 
+	
+	@JsonView(JsonViews.Common.class)
 	@Enumerated(EnumType.ORDINAL)
 	@Column(name="per_humeur",nullable=false)
 	private Humeur humeur;
 	
-
+	@JsonView(JsonViews.PersonnageAvecCompetence.class)
 	@ManyToMany
 	@JoinTable(
 			name = "competence_personnage",
