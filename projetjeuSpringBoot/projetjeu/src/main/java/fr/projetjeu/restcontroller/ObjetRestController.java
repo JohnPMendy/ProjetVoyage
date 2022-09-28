@@ -17,52 +17,48 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-import fr.projetjeu.model.Boutique;
-import fr.projetjeu.service.BoutiqueService;
+import fr.projetjeu.model.Environnement;
+import fr.projetjeu.model.Objet;
+import fr.projetjeu.service.ObjetService;
 
 @RestController // controller rest pour webservice
-@RequestMapping("/api/boutique")
-public class BoutiqueRestController {
+@RequestMapping("/api/objet")
+public class ObjetRestController {
 	
 	@Autowired
-	private BoutiqueService srvBoutique; 
+	private ObjetService srvObjet; 
 	
 	@GetMapping("/{id}")
-	public Boutique findById(@PathVariable("id") Integer id) {
-		return srvBoutique.findById(id);
+	public Objet findById(@PathVariable("id") Integer id) {
+		return srvObjet.findById(id);
 	}
 	
 
 	@GetMapping("")
-	public List<Boutique> findAll() {
-		return srvBoutique.findAll();
+	public List<Objet> findAll() {
+		return srvObjet.findAll();
 	}
 	
 	
 	@PostMapping("")
 	@ResponseStatus(code=HttpStatus.CREATED)
 	//requestBody permet d'instancier un fournisseur (!!pas de classe abstraite) et recupère l'objet JSON en entrée et fait conresspondre les attributs
-	public Boutique create(@Valid @RequestBody Boutique boutique,BindingResult br){
+	public Objet create(@Valid @RequestBody Objet objet,BindingResult br){
 		if(br.hasErrors()) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
 		}
-		srvBoutique.save(boutique);
-		return srvBoutique.findById(boutique.getId());
+		srvObjet.save(objet);
+		return srvObjet.findById(objet.getId());
 	}
 	
 	@DeleteMapping("/{id}")
 	@ResponseStatus(code=HttpStatus.NO_CONTENT)//code 204 mais il prévient qu'il n'y a pas de contenu à supprimer mais la requete s'est bein déroulé
 	public void delete(@PathVariable("id")Integer id) {
 		try {
-			srvBoutique.deleteById(id);
+			srvObjet.deleteById(id);
 		} catch (Exception e) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 		}
-	}
-	
-	@GetMapping("/{id}/objets")
-	public Boutique findByIdFetchProduits(@PathVariable("id") Integer id) {
-		return srvBoutique.findByIdFetchObjets(id);
 	}
 	}
 	
