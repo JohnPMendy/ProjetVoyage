@@ -30,8 +30,7 @@ public class Partie {
 	@Column(name="par_date", nullable=false)
 	private Timestamp date;
 	
-	//@JsonView(JsonViews.Partie.class)
-	@JsonIgnore
+	@JsonView(JsonViews.Partie.class)
 	@OneToOne
 	@JoinColumn(name="par_personnage_id", nullable = false)
 	private Personnage personnage;
