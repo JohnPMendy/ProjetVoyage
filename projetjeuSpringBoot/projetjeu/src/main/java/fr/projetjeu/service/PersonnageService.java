@@ -11,7 +11,6 @@ import fr.projetjeu.exception.InvalidArgsException;
 import fr.projetjeu.exception.InvalidEntityException;
 import fr.projetjeu.model.Personnage;
 import fr.projetjeu.repo.IPersonnageRepository;
-import fr.projetjeu.repo.jpa.PersonnageRepositoryJpa;
 
 @Service
 public class PersonnageService {

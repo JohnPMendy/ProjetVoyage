@@ -203,12 +203,23 @@ INSERT INTO inventaire DEFAULT VALUES;
 
 
 INSERT INTO objetBoutique(objBtq_obj_id , objBtq_btq_id,qte_boutique) VALUES(1,1,200); --l'objet d'id 1 est dans la boutique d'id 1 avec la quantite 200
+INSERT INTO objetBoutique(objBtq_obj_id , objBtq_btq_id,qte_boutique) VALUES(2,1,200);
+INSERT INTO objetBoutique(objBtq_obj_id , objBtq_btq_id,qte_boutique) VALUES(3,1,200);
+INSERT INTO objetBoutique(objBtq_obj_id , objBtq_btq_id,qte_boutique) VALUES(4,1,200);
+
 INSERT INTO objetBoutique(objBtq_obj_id , objBtq_btq_id,qte_boutique) VALUES(5,2,20);
 
 INSERT INTO objetInventaire(objinv_obj_id ,objinv_inv_id,qte_inventaire) VALUES(1,1,2);
 INSERT INTO objetInventaire(objinv_obj_id ,objinv_inv_id,qte_inventaire) VALUES(5,2,1);
 
+<<<<<<< HEAD
+insert into personnage (per_nom,per_prenom,per_poids,per_argent,per_energie, per_humeur, per_faim, per_force,per_covid, per_vivant)
+values ('Lemaire','Pascal',0,0,0,1,0,0,false,true)
+
+
+=======
 INSERT INTO environnement(env_nom,env_temperature,env_type_meteo,env_type_environnement)
 VALUES 
 ('Env1',25,1,1),
 ('Env2',27,2,2);
+>>>>>>> 2d2e3e677bbdedd2f753c9fac76dc982fb31752c
