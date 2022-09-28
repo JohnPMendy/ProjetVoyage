@@ -19,13 +19,17 @@ public class EventsService {
 	 @Autowired
 	 IReponseRepository repoReponse;
 	
-	public Events findById(int id) {
+	public Events findById(Integer id) {
 		if (id <= 0) {
 			throw new InvalidArgsException("id");
 		}
 		
 		return repoEvent.findById(id).orElseThrow(EventNotFoundException::new);
 
+	}
+	
+	public Events findByIdFetchReponses(Integer id) {
+		return repoEvent.findByIdFetchingReponses(id).orElseThrow(EventNotFoundException::new);
 	}
 	
 	public void save(Events event) {

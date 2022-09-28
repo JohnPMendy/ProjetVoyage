@@ -12,6 +12,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @Table(name = "evenement")
 public class Events {
@@ -21,27 +23,30 @@ public class Events {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "evt_id")
-	private int id;
+	@JsonView(JsonViews.Events.class)
+	private Integer id;
 
 	@Column(name = "evt_histoire", length = 2000, nullable = true)
+	@JsonView(JsonViews.Events.class)
 	private String histoire = "";
 	
 	@OneToMany(mappedBy = "evenementId")
+	@JsonView(JsonViews.EventsAvecReponses.class)
 	private List<Reponse> reponses;
 
 	@OneToOne(mappedBy = "prochainEvenementId")
 	private Reponse reponse;
 
-	// Parties utilisant l'event
+	// Parties utilisants l'event
 	@OneToMany(mappedBy = "eventRunning")
 	private List<Partie> parties;
 
 	// Getters et setters
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

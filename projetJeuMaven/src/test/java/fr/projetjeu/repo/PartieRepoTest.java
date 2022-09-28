@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
+import org.springframework.test.context.web.WebAppConfiguration;
 
 import fr.projetjeu.config.AppConfig;
 import fr.projetjeu.model.Environnement;
@@ -18,6 +19,7 @@ import fr.projetjeu.model.Inventaire;
 import fr.projetjeu.model.Partie;
 import fr.projetjeu.model.Personnage;
 
+@WebAppConfiguration
 @SpringJUnitConfig(AppConfig.class)
 @Sql(scripts = "classpath:/data.sql")
 @ActiveProfiles("test")

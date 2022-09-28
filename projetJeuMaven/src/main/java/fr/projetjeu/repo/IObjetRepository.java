@@ -8,5 +8,4 @@ import fr.projetjeu.model.Objet;
 
 public interface IObjetRepository extends JpaRepository<Objet, Integer> {
 
-
 }	

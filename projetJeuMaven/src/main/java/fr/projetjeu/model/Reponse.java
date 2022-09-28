@@ -10,30 +10,37 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @Table(name = "reponse")
 public class Reponse {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // Auto-increment
+	@JsonView(JsonViews.Common.class)
 	@Column(name = "rep_id")
-	private int id;
+	private Integer id;
 	
 	@Column(name = "rep_texte", nullable = false)
+	@JsonView(JsonViews.Common.class)
 	private String texte;
+	
 	
 	@ManyToOne
 	@JoinColumn(name="rep_evenement_id", nullable = false)
 	private Events evenementId;
 	
+
 	@OneToOne
 	@JoinColumn(name = "rep_prochain_evenement_id", nullable = false)
 	private Events prochainEvenementId;
 	
 	
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getTexte() {

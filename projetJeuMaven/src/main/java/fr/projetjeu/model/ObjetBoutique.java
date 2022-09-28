@@ -18,7 +18,7 @@ public class ObjetBoutique {
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
 @Column(name = "objbtq_id")
-private int ObjetBoutiqueId;
+private Integer ObjetBoutiqueId;
 
 @ManyToOne 
 @JoinColumn(name="objBtq_obj_id", nullable = false)
@@ -33,12 +33,12 @@ private Boutique boutique;
 int quantiteBoutique;
 
 
-public int getObjetBoutiqueId() {
+public Integer getObjetBoutiqueId() {
 	return ObjetBoutiqueId;
 }
 
 
-public void setObjetBoutiqueId(int objetBoutiqueId) {
+public void setObjetBoutiqueId(Integer objetBoutiqueId) {
 	ObjetBoutiqueId = objetBoutiqueId;
 }
 
