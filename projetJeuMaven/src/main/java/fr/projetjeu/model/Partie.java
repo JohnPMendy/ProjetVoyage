@@ -1,6 +1,5 @@
 package fr.projetjeu.model;
 
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
@@ -13,7 +12,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
@@ -28,10 +26,9 @@ public class Partie {
 	
 	@JsonView(JsonViews.Partie.class)
 	@Column(name="par_date", nullable=false)
-	private Timestamp date;
+	private LocalDateTime date;
 	
-	//@JsonView(JsonViews.Partie.class)
-	@JsonIgnore
+	@JsonView(JsonViews.Partie.class)
 	@OneToOne
 	@JoinColumn(name="par_personnage_id", nullable = false)
 	private Personnage personnage;
@@ -76,11 +73,11 @@ public class Partie {
 		this.eventRunning = eventRunning;
 	}
 
-	public Timestamp getDate() {
+	public LocalDateTime getDate() {
 		return date;
 	}
 
-	public void setDate(Timestamp date) {
+	public void setDate(LocalDateTime date) {
 		this.date = date;
 	}
 
@@ -99,7 +96,5 @@ public class Partie {
 	public void setInventaire(Inventaire inventaire) {
 		this.inventaire = inventaire;
 	}
-	
-	
 	
 }

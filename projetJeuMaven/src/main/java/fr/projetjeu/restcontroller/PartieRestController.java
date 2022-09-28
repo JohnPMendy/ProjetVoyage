@@ -22,7 +22,10 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 import fr.projetjeu.model.Environnement;
+import fr.projetjeu.model.JsonViews;
 import fr.projetjeu.model.Partie;
 import fr.projetjeu.service.PartieService;
 
@@ -33,11 +36,13 @@ public class PartieRestController {
 	@Autowired
 	private PartieService srvPartie;
 	
+	@JsonView(JsonViews.Partie.class)
 	@GetMapping("")
 	public List<Partie> findAll(){
 		return srvPartie.findAll();
 	}
 	
+	@JsonView(JsonViews.Partie.class)
 	@GetMapping("/{id}")
 	public Partie findById(@PathVariable("id") Integer id) {
 		try {
