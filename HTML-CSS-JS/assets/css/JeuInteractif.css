@@ -329,7 +329,7 @@ justify-content: center;
   z-index: 4;
     justify-content: center;
     align-items: center;
-    display: flex;
+    display: none;
 }
 
 .popup-header{
@@ -448,13 +448,13 @@ justify-content: center;
   overflow: hidden;
 }
 
-.popup-chargmement .popup-header {
+.popup-chargmement .popup-header-chargement {
   padding: 10px;
   background-color: #2E86C1;
   color: white;
   font-size: 18px;
 }
 
-.popup-chargmement .popup-content {
+.popup-chargmement .popup-content-chargement {
   padding: 10px;
 }
