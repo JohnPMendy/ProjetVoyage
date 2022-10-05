@@ -1,0 +1,67 @@
+img.imgaccueil {
+  width: 30vw;
+}
+.container-accueil {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  padding-top: 60px;
+  padding-right: 30px;
+  padding-left: 30px;
+  padding-bottom: 60px;
+
+  justify-content: center;
+  align-content: center;
+
+  margin-top: 5vh;
+  margin-right: 15vw;
+  margin-left: 15vw;
+  margin-bottom: 5vh;
+
+  height: 100%;
+
+  background: rgba(255, 255, 255, 0.7);
+
+  border-radius: 5px;
+}
+.container-accueil img {
+  margin: auto;
+  display: block;
+}
+
+.container-accueil p {
+  padding-top: 20px;
+}
+
+header {
+  display: grid;
+  grid-template-columns: 350px auto 350px;
+  background: rgba(30, 30, 30, 0.8);
+}
+
+header .titre {
+  grid-column: 2;
+}
+
+header .buttons {
+  grid-column: 3;
+  padding: 5px;
+}
+
+header button {
+  font-size: 25px;
+  padding-left: 20px;
+
+  background: none;
+  border: none;
+
+  color: white;
+  text-align: center;
+}
+header button:hover {
+  color: violet;
+}
+
+header button:active {
+  color: pink;
+}
