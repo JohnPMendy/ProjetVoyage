@@ -1,0 +1,201 @@
+<body>
+  <header>
+    <div class="titre">Le voyageur malchanceux</div>
+  </header>
+
+  <div class="Wallpaper">
+    <img src="assets/images/Wallpaper.jpg" />
+  </div>
+
+  <div class="Jeu">
+    <div class="Stats">
+      <div class="TitreStats">Statistiques</div>
+
+      <div class="InterfaceStats">
+        <div class="Nom">
+          <div class="NameNom">Nom</div>
+
+          <div class="ValeurNom">DefautNom</div>
+        </div>
+
+        <div class="Prenom">
+          <div class="NamePrenom">Prenom</div>
+
+          <div class="ValeurPrenom">DefautPrenom</div>
+        </div>
+
+        <div class="Poids">
+          <div class="NamePoids">Poids</div>
+
+          <div class="ValeurPoids">DefautPoids</div>
+        </div>
+
+        <div class="Argent">
+          <div class="NameArgent">Argent</div>
+
+          <div class="ValeurArgent">DefautArgent</div>
+        </div>
+
+        <div class="Energie">
+          <div class="NameEnergie">Energie</div>
+
+          <div class="ValeurEnergie">DefautEnergie</div>
+        </div>
+
+        <div class="Faim">
+          <div class="NameFaim">Faim</div>
+
+          <div class="ValeurFaim">DefautFaim</div>
+        </div>
+
+        <div class="Force">
+          <div class="NameForce">Force</div>
+
+          <div class="ValeurForce">DefautForce</div>
+        </div>
+
+        <div class="Covid">
+          <div class="NameCovid">Covid?</div>
+
+          <div class="ValeurForce">DefautCovid</div>
+        </div>
+
+        <div class="Vivant">
+          <div class="NameVivant">Vivant?</div>
+
+          <div class="ValeurVivant">DefautVivant</div>
+        </div>
+
+        <div class="Meteo">
+          <div class="NameMeteo">Meteo</div>
+
+          <div class="ValeurMeteo">DefautMeteo</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="Partie">
+      <div class="TitrePartie">Partie</div>
+
+      <div class="InterfacePartie">
+        <div class="Histoire">
+          Bienvenue sur le jeu "Le voyageur malchanceux" Test test Test Test
+          test Test Test test Test Test test Test
+        </div>
+
+        <div class="Reponses">
+          <input
+            class="Reponse 1"
+            type="submit"
+            value="Reponse1 : Blablablablablabla"
+          />
+          <input
+            class="Reponse 2"
+            type="submit"
+            value="Reponse2 : Blablablablablabla"
+          />
+          <input
+            class="Reponse 3"
+            type="submit"
+            value="Reponse3 : Blablablablablabla"
+          />
+        </div>
+
+        <div class="Divers">
+          <input class="Charger" type="submit" value="Charger" />
+          <input class="Sauvegarder" type="submit" value="Sauvegarder" />
+        </div>
+      </div>
+    </div>
+
+    <div class="Inventaire">
+      <div class="TitreInventaire">Inventaire</div>
+
+      <div class="InterfaceInventaire">
+        <div class="TitreObjets">
+          <div class="NomTypeObjet">Type Objet</div>
+
+          <div class="NomQuantite">Qte</div>
+        </div>
+
+        <div class="Objet">
+          <input class="TypeObjet" type="submit" value="Pistolet" />
+
+          <div class="Quantité">1</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Joue le rôle de fond noir transparent -->
+  <div class="popup">
+    <div class="popup-overlay"></div>
+
+    <div class="popup-container">
+      <div class="popup-header">
+        <div class="DemandeSupression">Voulez vous supprimer cet objet?</div>
+
+        <div class="QteASupprimer">Quantité à supprimer souhaité:</div>
+
+        <select class="QTE" name="QTE">
+          <option value="TEST" selected>0</option>
+          <option value="sopra">1</option>
+          <option value="amazon">2</option>
+        </select>
+
+        <input class="Valider" type="submit" value="Valider" />
+        <input class="Annuler" type="submit" value="Annuler" />
+      </div>
+    </div>
+
+    <!--Les popup qui concernent le chargement des parties-->
+    <div class="popup-overlay-chargement"></div>
+    <div class="popup-container-chargement">
+      <!-- La popup avec son titre, et son contenu -->
+      <div class="popup-chargmement">
+        <div class="popup-header">Quelle partie voulez vous charger ?</div>
+
+        <div class="popup-content">
+          <table class="partiesEnCours">
+            <tbody>
+              <tr>
+                <td><button class="ligneChargement">Test</button></td>
+                <td>TEst</td>
+                <td>jj/mm/aaa</td>
+                <td>hh:mm:ss</td>
+              </tr>
+              <tr>
+                <td><button class="ligneChargement">Test1</button></td>
+                <td>TEst</td>
+                <td>jj/mm/aaa</td>
+                <td>hh:mm:ss</td>
+              </tr>
+              <tr>
+                <td><button class="ligneChargement">Test2</button></td>
+                <td>TEst</td>
+                <td>jj/mm/aaa</td>
+                <td>hh:mm:ss</td>
+              </tr>
+            </tbody>
+          </table>
+          <button class="close-popup-chargement">Annuler</button>
+        </div>
+      </div>
+    </div>
+    <div class="popup-charge-confirme">
+      <div class="popup-chargmement">
+        <div class="popup-header">Partie chargé !</div>
+        <button class="close-charge-confirme">Ok</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="textcredits">
+      "Le voyageur malchanceux" : Made By John Mendy, Clotilde Zenone, Mahmoud
+      Moussaoui and Badis Ghoubali. 2022©
+    </div>
+
+    <div class="block2"></div>
+  </footer>
+</body>
