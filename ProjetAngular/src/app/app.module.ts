@@ -6,9 +6,10 @@ import { AppComponent } from './app.component';
 import { routes } from './routes';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JeuComponent } from './pagesweb/component/jeu/jeu.component';
+import { AccueilComponent } from './pagesweb/component/accueil/accueil.component';
 
 @NgModule({
-  declarations: [AppComponent, JeuComponent],
+  declarations: [AppComponent, JeuComponent, AccueilComponent],
   imports: [
     BrowserModule,
     FormsModule,
