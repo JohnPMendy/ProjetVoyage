@@ -7,9 +7,10 @@ import { routes } from './routes';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JeuComponent } from './pagesweb/component/jeu/jeu.component';
 import { AccueilComponent } from './pagesweb/component/accueil/accueil.component';
+import { ConnectionComponent } from './pagesweb/component/connection/connection.component';
 
 @NgModule({
-  declarations: [AppComponent, JeuComponent, AccueilComponent],
+  declarations: [AppComponent, JeuComponent, AccueilComponent, ConnectionComponent],
   imports: [
     BrowserModule,
     FormsModule,

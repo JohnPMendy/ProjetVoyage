@@ -5,10 +5,30 @@ div.buttons {
   z-index: 2;
 }
 
-a.bconnection {
+a.GenericButton {
   color: white;
-  right: -41vw;
+  right: -43vw;
   position: relative;
+  background: #385ab9;
+  grid-row: 1;
+  grid-column: 3;
+  padding: 2vh;
+  text-decoration: none;
+  background-size: 5vh;
+  display: block;
+  width: 12vh;
+}
+
+div.NameGenericButton {
+  position: relative;
+  font-size: 2vh;
+  font-weight: bold;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  box-sizing: border-box;
+  justify-content: center;
+  display: flex;
 }
 
 div.titre {

@@ -6,11 +6,23 @@
     <div class="accueil" *ngIf="router.url === '/accueil'">
       <div class="buttons">
         <a
-          class="bconnection"
-          [routerLink]="['/jeu']"
+          class="GenericButton"
+          [routerLink]="['/connection']"
           routerLinkActive="active"
         >
-          Se connecter</a
+          <div class="NameGenericButton">Connection</div></a
+        >
+      </div>
+    </div>
+
+    <div class="connection" *ngIf="router.url === '/connection'">
+      <div class="buttons">
+        <a
+          class="GenericButton"
+          [routerLink]="['/accueil']"
+          routerLinkActive="active"
+        >
+          <div class="NameGenericButton">Accueil</div></a
         >
       </div>
     </div>
