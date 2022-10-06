@@ -1,0 +1,115 @@
+.PageCNX {
+  opacity: 60%;
+  font-size: 30px;
+  opacity: 100%;
+  color: rgb(255, 255, 255);
+  padding: 8%;
+  grid-row: 2;
+  grid-column: 1 / span 3;
+}
+
+.textcredits {
+  opacity: 100%;
+  color: rgb(255, 255, 255);
+  font-weight: normal;
+  font-size: 100%;
+  text-align: center;
+  padding: 8px;
+}
+
+div.login {
+  grid-column: 2;
+  grid-row: 3;
+  padding: 4vh;
+  border-radius: 3px;
+  background: white;
+  display: block;
+  position: relative;
+  width: 100vh;
+}
+
+div.center {
+  display: grid;
+  align-content: center;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: start;
+  justify-items: start;
+  position: fixed;
+}
+
+.login input {
+  display: block;
+  width: auto;
+  font-size: 18px;
+  line-height: 50px;
+  border-radius: 3px;
+  outline: none;
+  border: none;
+  box-sizing: border-box;
+}
+
+.login input[type="text"],
+.login input[type="password"] {
+  width: 100%;
+  margin-bottom: 20px;
+  padding-left: 30px;
+  background: #e6e6e6;
+  color: #686868;
+  margin-top: 10px;
+}
+
+.login input::placeholder {
+  color: #acacac;
+}
+
+.login input[name="seConnecter"] {
+  display: inline-block;
+  font-weight: bold;
+  padding: 0 25px;
+  background: #385ab9;
+  color: white;
+  text-transform: uppercase;
+  transition: all 0.4s;
+  cursor: pointer;
+  margin-top: 10px;
+  width: 49%;
+  margin-left: 6px;
+}
+
+.login input[name="pasEncoreInscrit"] {
+  display: inline-block;
+  font-weight: bold;
+  padding: 0 25px;
+  background: #385ab9;
+  color: white;
+  text-transform: uppercase;
+  transition: all 0.4s;
+  cursor: pointer;
+  margin-top: 10px;
+  width: 48%;
+  margin-left: 6px;
+}
+.login input[name="mdpOublie"] {
+  font-weight: bold;
+  padding: 0 25px;
+  background: #a9afbe;
+  color: rgb(0, 0, 0);
+  text-transform: uppercase;
+  transition: all 0.4s;
+  cursor: pointer;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.login input[type="submit"]:hover {
+  background: #333333;
+}
+.login input[type="button"]:hover {
+  background: #333333;
+}
+
+a:hover {
+  background: #2c2c2c;
+}
