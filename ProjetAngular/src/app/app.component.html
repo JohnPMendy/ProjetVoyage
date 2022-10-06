@@ -3,6 +3,7 @@
 
   <header class="eventsHeader">
     <div class="titre">Le voyageur malchanceux</div>
+
     <div class="accueil" *ngIf="router.url === '/accueil'">
       <div class="buttons">
         <a
@@ -23,6 +24,30 @@
           routerLinkActive="active"
         >
           <div class="NameGenericButton">Accueil</div></a
+        >
+      </div>
+    </div>
+
+    <div class="accueil" *ngIf="router.url === '/partie'">
+      <div class="buttons">
+        <a
+          class="GenericButton"
+          [routerLink]="['/connection']"
+          routerLinkActive="active"
+        >
+          <div class="NameGenericButton">Déconnection</div></a
+        >
+      </div>
+    </div>
+
+    <div class="accueil" *ngIf="router.url === '/jeu'">
+      <div class="buttons">
+        <a
+          class="GenericButton"
+          [routerLink]="['/connection']"
+          routerLinkActive="active"
+        >
+          <div class="NameGenericButton">Déconnection</div></a
         >
       </div>
     </div>
