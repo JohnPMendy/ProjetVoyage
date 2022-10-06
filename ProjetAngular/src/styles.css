@@ -25,7 +25,7 @@ header {
   opacity: 100%;
   display: flex;
   z-index: 1;
-  position: fixed;
+  position: relative;
   justify-content: center;
   height: 7vh;
   align-items: center; /*mix-blend-mode: color-burn;*/

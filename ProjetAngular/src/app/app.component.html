@@ -1,7 +1,20 @@
 <body>
   <img class="Wallpaper" src="assets/images/Wallpaper.jpg" />
 
-  <header class="eventsHeader">Le voyageur malchanceux</header>
+  <header class="eventsHeader">
+    <div class="titre">Le voyageur malchanceux</div>
+    <div class="accueil" *ngIf="router.url === '/accueil'">
+      <div class="buttons">
+        <a
+          class="bconnection"
+          [routerLink]="['/jeu']"
+          routerLinkActive="active"
+        >
+          Se connecter</a
+        >
+      </div>
+    </div>
+  </header>
 
   <router-outlet></router-outlet>
 

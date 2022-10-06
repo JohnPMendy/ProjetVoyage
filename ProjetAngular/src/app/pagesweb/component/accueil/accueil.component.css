@@ -30,13 +30,6 @@ img.imgaccueil {
   padding-right: 5vh;
 }
 
-div.buttons {
-  grid-column: 3;
-  padding: 5px;
-  position: relative;
-  background-color: wheat;
-}
-
 header button {
   font-size: 25px;
   padding-left: 20px;
