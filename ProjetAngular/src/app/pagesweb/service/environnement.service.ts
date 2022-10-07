@@ -1,4 +1,3 @@
-import { environment } from './../../../environments/environment';
 import { Environnement } from './../model/environnement';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
