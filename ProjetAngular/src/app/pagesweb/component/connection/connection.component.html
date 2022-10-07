@@ -1,14 +1,15 @@
 <div class="center">
-  <div class="login">
-    <input type="text" name="username" placeholder="Nom d'utilisateur" />
-    <input type="password" name="password" placeholder="Mot de passe" />
-    <input
-      class="connection"
-      type="submit"
-      name="seConnecter"
-      value="Se connecter"
-      [routerLink]="['/partie']"
-    />
+  <form (ngSubmit)="submit()" [formGroup]="form">
+
+    <br />
+    <ng-container formGroupName="infoGrp">
+      <input formControlName="loginCtrl" [(ngModel)]="login" /><br />
+      <input formControlName="passwordCtrl"  [(ngModel)]="password"  />
+
+      <br />
+    </ng-container>
+    <button type="submit" >se connecter</button>
+
     <input
       class="pasInscrit"
       type="button"
@@ -22,5 +23,8 @@
       name="mdpOublie"
       value="mot de passe oublié ?"
     />
-  </div>
+  </form>
 </div>
+
+
+
