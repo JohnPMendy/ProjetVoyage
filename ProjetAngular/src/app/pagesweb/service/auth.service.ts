@@ -26,7 +26,7 @@ export class AuthService implements CanActivate {
     if (sessionStorage.getItem('token')) {
       return true;
     }
-    return this.router.parseUrl('/login?auth=false');
+    return this.router.parseUrl('/connection?auth=false');
   }
 
   public authentication(login: string, password: string): Observable<any> {
@@ -35,8 +35,23 @@ export class AuthService implements CanActivate {
       Authorization: 'Basic ' + btoa(`${login}:${password}`),
     });
 
-    return this.httpClient.get('http://localhost:8080/eshop/api/auth', {
+    return this.httpClient.get('http://localhost:8080/voyages/api/auth', {
       headers: monHeaders,
     });
+  }
+
+  public isAuthenticated(): boolean {
+    return sessionStorage.getItem('token') ? true : false;
+  }
+
+  public logout() {
+    sessionStorage.clear();
+  }
+
+  public isAdmin(): boolean {
+    if (sessionStorage.getItem('compte')) {
+      return JSON.parse(sessionStorage.getItem('compte')!).role == 'ROLE_ADMIN';
+    }
+    return false;
   }
 }

@@ -16,7 +16,7 @@
       </div>
     </div>
 
-    <div class="connection" *ngIf="router.url === '/connection'">
+    <div class="connection" *ngIf="router.url === '/connection'|| router.url=='/connection?auth=false' ">
       <div class="buttons">
         <a
           class="GenericButton"
@@ -28,33 +28,22 @@
       </div>
     </div>
 
-    <div class="accueil" *ngIf="router.url === '/partie'">
+    <div class="accueil" *ngIf="router.url === '/partie'|| router.url=='/jeu'   ">
       <div class="buttons">
         <a
           class="GenericButton"
           [routerLink]="['/connection']"
           routerLinkActive="active"
+        (click)="deconnexion()"
         >
-          <div class="NameGenericButton">Déconnection</div></a
-        >
-      </div>
-    </div>
-
-    <div class="accueil" *ngIf="router.url === '/jeu'">
-      <div class="buttons">
-        <a
-          class="GenericButton"
-          [routerLink]="['/connection']"
-          routerLinkActive="active"
-        >
-          <div class="NameGenericButton">Déconnection</div></a
+          <div class="NameGenericButton" >Déconnection</div></a
         >
       </div>
     </div>
   </header>
 
   <router-outlet></router-outlet>
-
+<!--router_outlet c'est ma page connection ou partie,...-->
   <footer class="eventFooter">
     <div class="textcredits">
       "Le voyageur malchanceux" : Made By John Mendy, Clotilde Zenone, Mahmoud
