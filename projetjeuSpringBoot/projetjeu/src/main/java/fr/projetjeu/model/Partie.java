@@ -47,6 +47,10 @@ public class Partie {
 	@OneToOne
 	@JoinColumn(name="par_inventaire_id", nullable=false)
 	private Inventaire inventaire;
+	
+	@ManyToOne
+	@JoinColumn(name="par_compte_id",nullable=false)
+	private Compte compte;
 
 
 	public Integer getId() {
@@ -95,6 +99,14 @@ public class Partie {
 
 	public void setInventaire(Inventaire inventaire) {
 		this.inventaire = inventaire;
+	}
+
+	public Compte getCompte() {
+		return compte;
+	}
+
+	public void setCompte(Compte compte) {
+		this.compte = compte;
 	}
 	
 	

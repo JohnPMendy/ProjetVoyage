@@ -59,6 +59,10 @@ public class PartieService {
 			throw new InvalidEntityException("inventaire");
 		}
 		
+		if (partie.getCompte() == null||partie.getCompte().getId()<=0) {
+			throw new InvalidEntityException("compte");
+		}
+		
 
 		repoPartie.save(partie);
 	}

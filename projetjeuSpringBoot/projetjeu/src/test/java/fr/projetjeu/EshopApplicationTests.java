@@ -29,10 +29,10 @@ class EshopApplicationTests {
 	@Transactional
 	@Commit
 	void initUser() {
-		Compte admin =new Compte("admin","ROLE_ADMIN",passwordEncoder.encode("admin"));
-		compteRepo.save(admin);
-		Compte user=new Compte("user", "ROLE_USER", passwordEncoder.encode("user"));
-		compteRepo.save(user);
+		Compte admin1 =new Compte("admin1","ROLE_ADMIN",passwordEncoder.encode("admin1"));
+		compteRepo.save(admin1);
+		Compte user1=new Compte("user1", "ROLE_USER", passwordEncoder.encode("user1"));
+		compteRepo.save(user1);
 	}
 
 }

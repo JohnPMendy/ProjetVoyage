@@ -1,6 +1,5 @@
 package fr.projetjeu.model;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -10,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -37,6 +37,9 @@ public class Compte implements UserDetails {
 	
 	@Column(name = "mdp", nullable = false)
 	private String mdp;
+	
+	@OneToMany(mappedBy="compte")
+	private List<Partie> parties;
 
 	// private boolean banni=false;
 	public Compte() {
@@ -83,6 +86,17 @@ public class Compte implements UserDetails {
 	public void setMdp(String mdp) {
 		this.mdp = mdp;
 	}
+
+	
+	public List<Partie> getParties() {
+		return parties;
+	}
+
+
+	public void setParties(List<Partie> parties) {
+		this.parties = parties;
+	}
+
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {

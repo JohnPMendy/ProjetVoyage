@@ -43,7 +43,6 @@ public class Environnement {
 	@Column(name="env_type_environnement",nullable=false)
 	private TypeEnvironnement environnement;
 	
-	@JsonIgnore
 	@OneToMany(mappedBy="environnement")
 	private List<Partie> parties;
 	
