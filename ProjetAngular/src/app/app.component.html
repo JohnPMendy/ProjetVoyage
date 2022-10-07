@@ -34,8 +34,9 @@
           class="GenericButton"
           [routerLink]="['/connection']"
           routerLinkActive="active"
+        (click)="deconnexion()"
         >
-          <div class="NameGenericButton">Déconnection</div></a
+          <div class="NameGenericButton" >Déconnection</div></a
         >
       </div>
     </div>
@@ -54,7 +55,7 @@
   </header>
 
   <router-outlet></router-outlet>
-
+<!--router_outlet c'est ma page connection ou partie,...-->
   <footer class="eventFooter">
     <div class="textcredits">
       "Le voyageur malchanceux" : Made By John Mendy, Clotilde Zenone, Mahmoud
