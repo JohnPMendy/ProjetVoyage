@@ -26,4 +26,8 @@ export const routes: Routes = [
     path: 'partie',
     component: PartieComponent,canActivate:[AuthenticatedGuardService]
   },
+
+  {
+    path: '', redirectTo:'accueil',pathMatch:'full'
+  },
 ];
