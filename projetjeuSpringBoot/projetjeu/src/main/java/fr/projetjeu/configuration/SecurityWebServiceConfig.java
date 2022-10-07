@@ -11,26 +11,28 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 public class SecurityWebServiceConfig {
-	
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		// @formatter:off
 		return http.antMatcher("/api/**")
 						.csrf().disable()
+					//plus de session pour l'authentification
 				   .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 				   .and()
 				   .authorizeRequests()
-				   		//.antMatchers(HttpMethod.OPTIONS).permitAll()
-				   		.antMatchers(HttpMethod.GET,"/api/**").permitAll()
+				   		.antMatchers(HttpMethod.OPTIONS).permitAll()
+				   		.antMatchers(HttpMethod.POST).authenticated()
+				   		.antMatchers(HttpMethod.PUT).authenticated()
+				   		.antMatchers(HttpMethod.DELETE).authenticated()
 				   		.anyRequest().authenticated()
 				   .and()
+				   		//plus de formulaire on envoie dans le header de la requete le login, password
 				   		.httpBasic()
 				   .and()
 				   .build();
 		// @formatter:on
 
 	}
-	
 	
 	@Bean
 	public PasswordEncoder passwordEncoder() {

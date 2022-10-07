@@ -1,4 +1,6 @@
 
+
+
 --DROP DATABASE projet;
 --CREATE DATABASE projet;
 
@@ -10,9 +12,6 @@ CREATE TABLE personnage(
   per_argent FLOAT NOT NULL,
   per_energie FLOAT NOT NULL,
   per_humeur INT NOT NULL,
-
-  per_competences INT NOT NULL,
-
   per_faim FLOAT NOT NULL,
   per_force FLOAT NOT NULL,
   per_covid BOOLEAN NOT NULL,
@@ -88,6 +87,15 @@ CREATE TABLE objetInventaire(
    objinv_inv_id INT NULL,
    qte_inventaire INT NULL
 );
+
+CREATE TABLE compte(
+id SERIAL primary key,
+login varchar(50) NOT NULL,
+mdp varchar(255) NOT NULL,
+role varchar(50) NOT NULL
+);
+
+
 ALTER TABLE partie
     ADD CONSTRAINT FK_PartiePerso
         FOREIGN KEY (par_personnage_id)
@@ -186,7 +194,7 @@ INSERT INTO reponse (rep_texte, rep_evenement_id, rep_prochain_evenement_id) VAL
 INSERT INTO reponse (rep_texte, rep_evenement_id, rep_prochain_evenement_id) VALUES ('R1 : Oui', 5, 6 );
 INSERT INTO reponse (rep_texte, rep_evenement_id, rep_prochain_evenement_id) VALUES ('R2 : Non', 5, 7 );
 
-INSERT INTO competence(com_nom, com_des) VALUES ('Négociation', 'Permet de négocier des prix lors des achats');
+INSERT INTO competence (com_nom, com_des) VALUES ('Négociation', 'Permet de négocier des prix lors des achats');
 
 INSERT INTO objet (obj_nom,obj_type_alimentaire,obj_prix,obj_type)VALUES('Eau' , true , 1.0 , 1);   
 INSERT INTO objet (obj_nom,obj_type_alimentaire,obj_prix,obj_type)VALUES('Boisson gazeuse', true , 1.5 , 1);
@@ -212,14 +220,17 @@ INSERT INTO objetBoutique(objBtq_obj_id , objBtq_btq_id,qte_boutique) VALUES(5,2
 INSERT INTO objetInventaire(objinv_obj_id ,objinv_inv_id,qte_inventaire) VALUES(1,1,2);
 INSERT INTO objetInventaire(objinv_obj_id ,objinv_inv_id,qte_inventaire) VALUES(5,2,1);
 
-<<<<<<< HEAD
 insert into personnage (per_nom,per_prenom,per_poids,per_argent,per_energie, per_humeur, per_faim, per_force,per_covid, per_vivant)
-values ('Lemaire','Pascal',0,0,0,1,0,0,false,true)
+values ('Lemaire','Pascal',0,0,0,1,0,0,false,true);
 
 
-=======
 INSERT INTO environnement(env_nom,env_temperature,env_type_meteo,env_type_environnement)
 VALUES 
 ('Env1',25,1,1),
 ('Env2',27,2,2);
->>>>>>> 2d2e3e677bbdedd2f753c9fac76dc982fb31752c
+
+INSERT INTO compte (login,mdp,role) VALUES('admin','$2a$10$1oGuBqgzfGzhkLX1hIXIdOUpOy5TswqdK4Y5Nn88ZZJMdAAvc1Xua','ROLE_ADMIN');
+INSERT INTO compte (login,mdp,role) VALUES('user','$2a$10$tsTiy0kKXpWc9qhYRtkqA.Ku2kjdC5ma5mEUYcFAhsHhrVgoowRyO','ROLE_USER')
+
+
+

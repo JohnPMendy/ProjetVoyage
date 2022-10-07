@@ -36,7 +36,7 @@ public class Boutique {
 	@Column(name="btq_type",nullable=false)
 	private TypeBoutique typeBoutique;
 
-
+	@JsonView(JsonViews.Common.class)
 	@OneToMany(mappedBy = "boutique")
 	List<ObjetBoutique> objets;
 
