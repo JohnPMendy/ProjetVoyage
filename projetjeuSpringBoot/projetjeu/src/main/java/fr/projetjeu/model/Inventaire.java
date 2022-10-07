@@ -11,6 +11,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @Table(name = "inventaire")
 public class Inventaire {
@@ -19,12 +21,15 @@ public class Inventaire {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "inv_id")
+	@JsonView(JsonViews.Common.class)
 	private Integer id;
-
+	
+	
+	@JsonView(JsonViews.Common.class)
 	@OneToMany(mappedBy = "inventaire")
 	private List<ObjetInventaire> objets;
 
-
+	@JsonView(JsonViews.Common.class)
 	@OneToOne(mappedBy = "inventaire")
 	private Partie partie;
 
