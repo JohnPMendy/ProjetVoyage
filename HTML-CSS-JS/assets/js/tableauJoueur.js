@@ -22,7 +22,9 @@ document
     document.querySelector('td.compteur').innerHTML =numeroPartie;
 
     tableRow.querySelector('button.supprimerPartie').addEventListener('click',()=>{
+        numeroPartie--;
         tableRow.remove();
+        document.querySelector('td.compteur').innerHTML =numeroPartie;
     });
 
 });

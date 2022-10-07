@@ -116,6 +116,10 @@ table.partiesEnCours {
     border-spacing: 2vh 1vw;
 }
 
+table.partiesEnCours >tbody >tr.active{
+
+}
+
 table.tableStat {
     border-spacing: 5vh;
 }
