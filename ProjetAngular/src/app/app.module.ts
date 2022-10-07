@@ -10,17 +10,31 @@ import { ConnectionComponent } from './pagesweb/component/connection/connection.
 import { PartieComponent } from './pagesweb/component/partie/partie.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
-  declarations: [AppComponent, JeuComponent, AccueilComponent, ConnectionComponent, PartieComponent],
+  declarations: [
+    AppComponent,
+    JeuComponent,
+    AccueilComponent,
+    ConnectionComponent,
+    PartieComponent,
+  ],
   imports: [
     BrowserModule,
     FormsModule,
     RouterModule.forRoot(routes),
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
-  providers: [{provide:HTTP_INTERCEPTORS,useClass: AuthenticationInterceptor ,multi:true}],
+  providers: [
+    DatePipe,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthenticationInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
