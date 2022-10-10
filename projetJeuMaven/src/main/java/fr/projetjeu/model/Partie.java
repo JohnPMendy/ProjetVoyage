@@ -12,39 +12,48 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @Table(name="partie")
 public class Partie {
 
+	@JsonView(JsonViews.Common.class)
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "par_id")
-	private int id;
+	private Integer id;
 	
+	@JsonView(JsonViews.Partie.class)
+	@Column(name="par_date", nullable=false)
+	private LocalDateTime date;
+	
+	@JsonView(JsonViews.Partie.class)
 	@OneToOne
 	@JoinColumn(name="par_personnage_id", nullable = false)
 	private Personnage personnage;
 	
+	@JsonView(JsonViews.Partie.class)
 	@ManyToOne
 	@JoinColumn(name="par_event_id", nullable = false)
 	private Events eventRunning;
 	
-	@Column(name="par_date", nullable=false)
-	private LocalDateTime date;
-	
+	@JsonView(JsonViews.Partie.class)
 	@ManyToOne
 	@JoinColumn(name="par_environnement_id", nullable=false)
 	private Environnement environnement;
 	
+	@JsonView(JsonViews.Partie.class)
 	@OneToOne
 	@JoinColumn(name="par_inventaire_id", nullable=false)
 	private Inventaire inventaire;
 
-	public int getId() {
+
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -87,7 +96,5 @@ public class Partie {
 	public void setInventaire(Inventaire inventaire) {
 		this.inventaire = inventaire;
 	}
-	
-	
 	
 }

@@ -1,0 +1,44 @@
+<div class="tabs">
+  <button class="nouvellePartie">
+    <a [routerLink]="['/jeu']"> Nouvelle Partie</a>
+  </button>
+
+  <div class="parties">
+    <h5>Parties en cours</h5>
+    <div class="enCours">
+      <table class="partiesEnCours">
+        <tr>
+          <th>
+            <button class="boutonVersPartie">
+              <a [routerLink]="['/jeu']">Partie</a>
+            </button>
+          </th>
+          <th>Nom Joueur</th>
+          <th>Date</th>
+          <th>Heure</th>
+          <th><button class="supprimerPartie">Supprimer</button></th>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="stats">
+    <h5>Statistiques</h5>
+    <div class="statistiques">
+      <table class="tableStat">
+        <tbody>
+          <tr>
+            <td class="leftHeader" colspan="2">Nombres de parties jouées :</td>
+            <td class="compteur">0</td>
+          </tr>
+          <tr>
+            <td class="leftHeader" colspan="2">
+              Nombres de parties terminés :
+            </td>
+            <td>0</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

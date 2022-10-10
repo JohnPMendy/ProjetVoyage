@@ -9,6 +9,7 @@ target/
 .project
 SqlProperties.java
 datasource.properties
+application.properties
 
 
 # Compiled class file
@@ -34,3 +35,4 @@ datasource.properties
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+projetjeuSpringBoot/projetjeu/src/main/resources/application-dev.properties

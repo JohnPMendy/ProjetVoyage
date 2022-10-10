@@ -12,25 +12,33 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @Table(name="environnement")
 public class Environnement {
 	
+	@JsonView(JsonViews.Common.class)
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "env_id")
-	private int id;
+	private Integer id;
 	
+	@JsonView(JsonViews.Environnement.class)
 	@Column(name="env_nom",nullable=false)
 	private String nom;
 	
+	@JsonView(JsonViews.Environnement.class)
 	@Column(name="env_temperature")
 	private float temperature;
 	
+	@JsonView(JsonViews.Environnement.class)
 	@Enumerated(EnumType.ORDINAL)
 	@Column(name="env_type_meteo",nullable=false)
 	private Meteo meteo;
 	
+	@JsonView(JsonViews.Environnement.class)
 	@Enumerated(EnumType.ORDINAL)
 	@Column(name="env_type_environnement",nullable=false)
 	private TypeEnvironnement environnement;
@@ -38,11 +46,11 @@ public class Environnement {
 	@OneToMany(mappedBy="environnement")
 	private List<Partie> parties;
 	
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

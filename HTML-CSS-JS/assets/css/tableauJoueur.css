@@ -1,0 +1,152 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    background-image: url(/assets/images/Wallpaper.jpg);
+    background-size: cover;
+    background-position: center center; 
+}
+
+header {
+    display: flex;
+    z-index: 1;
+    position: relative;
+    justify-content: center;
+    height: 50px;
+    width: 99vw;
+    align-items: center;
+    background: rgba(30, 30, 30, 0.8);
+}
+
+.titre {
+    font-size: 30px;
+    color: rgba(255, 255, 255,1);
+    z-index: 2;
+}
+
+button {
+    background: rgb(34, 19, 240);
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    height: 40px;
+    padding: 0px 0px;
+    color: white;
+}
+
+button>a {
+    display: block;
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+}
+
+.deconnexion {
+    z-index: 2;
+    position: absolute;
+    right: 30px;
+}
+
+.nouvellePartie {
+    margin-top: 2vh;
+    position: relative;
+    width: 700px;
+}
+
+.nouvellePartie >a{
+    font-size: 20px;
+}
+
+.boutonVersPartie{
+    width: 70px;
+}
+
+.boutonVersPartie >a{
+    font-size: 12px;
+}
+
+.supprimerPartie{
+    width: 90px;
+    background: red;
+}
+
+.tabs {
+    display: flex;
+    position: relative;
+    z-index: 1;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.parties,
+.stats {
+    margin-top: 2vh;
+    display: grid;
+    grid-template-areas:
+        'titre'
+        'table';
+    row-gap: 0px;
+}
+
+.parties>h5,
+.stats>h5 {
+    grid-area: 'titre';
+    margin-bottom: 0;
+    font-size: 16px;
+}
+
+.enCours,
+.statistiques {
+    height: 220px;
+    width: 1000px;
+    border: 1.2vh ridge rgb(105, 105, 105);
+    background: rgba(255, 255, 255, 0.5);
+    grid-area: 'table';
+
+}
+
+.enCours {
+    overflow-y: auto;
+}
+
+table.partiesEnCours {
+    border-spacing: 2vh 1vw;
+}
+
+table.partiesEnCours >tbody >tr.active{
+
+}
+
+table.tableStat {
+    border-spacing: 5vh;
+}
+
+td.leftHeader {
+    font-weight: bold;
+}
+
+
+footer {
+    display: flex;
+    position: fixed;
+    z-index: 2;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+    height: 20px;
+    width: 100vw;
+    background: rgba(255, 255, 255, 0.6);
+}
+
+.textcredits {
+    left: 0.5%;
+    opacity: 100%;
+    color: rgb(0, 0, 0);
+    z-index: 2;
+    position: absolute;
+    font-weight: bold;
+    font-size: 10px;
+}

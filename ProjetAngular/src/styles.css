@@ -1,0 +1,65 @@
+:root {
+  --margin: 4vw;
+  --largeur-stats-inventaire: 22vw;
+  --top-interface: 22.5vh;
+  --height-interface: 67vh;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  margin: 0%;
+  padding: 0;
+}
+
+.Wallpaper {
+  filter: brightness(100%);
+  opacity: 1;
+  top: 0;
+  left: 0;
+  height: 100vh; /* vh => Viewport Height */
+  width: 100vw;
+  position: fixed;
+  z-index: -1;
+}
+
+header {
+  opacity: 100%;
+  display: flex;
+  z-index: 1;
+  position: relative;
+  justify-content: center;
+  height: 7vh;
+  align-items: center; /*mix-blend-mode: color-burn;*/
+  background: rgb(30, 30, 30, 0.8);
+  color: white;
+  font-size: 4vh;
+  width: 100vw;
+}
+
+footer {
+  opacity: 100%;
+  display: flex;
+  position: fixed;
+  z-index: 2;
+  bottom: 0vh;
+  justify-content: center;
+  align-items: center;
+  height: 3vh;
+}
+
+.textcredits {
+  display: flex;
+  left: 0.5%;
+  width: 100vw;
+  opacity: 100%;
+  color: rgb(0, 0, 0);
+  z-index: 2;
+  position: absolute;
+  font-weight: bold;
+  font-size: 1.5vh;
+  background: rgba(255, 255, 255, 0.4);
+  height: 3vh;
+  justify-content: flex-start;
+  align-items: center;
+  text-indent: 1vh;
+}

@@ -316,7 +316,7 @@ justify-content: center;
     opacity: 0.75;
     justify-content: center;
     align-items: center;
-    display: flex;
+    display: none;
 }
 
 
@@ -329,7 +329,7 @@ justify-content: center;
   z-index: 4;
     justify-content: center;
     align-items: center;
-    display: flex;
+    display: none;
 }
 
 .popup-header{
@@ -407,4 +407,54 @@ justify-content: center;
 
 .Annuler:active{
   background: rgb(255, 118, 118);
+}
+
+/*Les paramètres CSS pour la popup chargement*/
+
+.popup-overlay-chargement,
+.popup-charge-confirme,
+.popup-container-chargement {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 4; 
+}
+
+.popup-overlay-chargement {
+  background-color: #333;
+  opacity: 0.75;
+}
+
+.popup-charge-confirme,.popup-container-chargement {
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-overlay-chargement.open {
+  display: block;
+}
+
+.popup-charge-confirme.open,.popup-container-chargement.open {
+  display: flex;
+}
+
+.popup-chargmement{
+  width: 600px;
+  background-color: white;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.popup-chargmement .popup-header-chargement {
+  padding: 10px;
+  background-color: #2E86C1;
+  color: white;
+  font-size: 18px;
+}
+
+.popup-chargmement .popup-content-chargement {
+  padding: 10px;
 }

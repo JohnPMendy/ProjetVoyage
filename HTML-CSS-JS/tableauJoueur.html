@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau</title>
+    <link rel="stylesheet" href="assets/css/tableauJoueur.css">
+    <script defer src="assets/js/tableauJoueur.js"></script>
+</head>
+<body>
+    <header>
+        <h1 class = "titre">
+           Le voyageur malchanceux
+        </h1>
+        <button class="deconnexion">
+            <a href="accueil.html"> Deconnexion</a>
+        </button>
+    </header>
+
+    <div class="tabs">
+        <button class="nouvellePartie">
+        <a > Nouvelle Partie</a>
+        </button>
+
+        <div class="parties">
+            <h5>Parties en cours</h5>
+            <div class="enCours">
+                <table class="partiesEnCours">
+                    <tbody>
+                        <tr>
+                            <td> Partie n°</td>
+                            <td>Nom Joueur</td>
+                            <td>Date</td>
+                            <td>Heure</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+
+        <div class="stats">
+            <h5>Statistiques</h5>
+            <div class="statistiques">
+                <table class="tableStat">
+                    <tbody>
+                        <tr>
+                            <td class="leftHeader" colspan="2">Nombres de parties jouées :</td>
+                            <td class="compteur"> 0</td>
+                        </tr>
+                        <tr>
+                            <td class="leftHeader" colspan="2"> Nombres de parties terminés :</td>
+                            <td> 0</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>      
+    </div>
+    
+    <footer>
+        <div class = "textcredits">
+            "Le voyageur malchanceux" : Made By John Mendy, Clotilde Zenone, 
+        Mahmoud Moussaoui and Badis Ghoubali. 2022©
+        </div>
+    </footer>
+
+</body>
+</html>
