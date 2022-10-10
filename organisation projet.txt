@@ -1,0 +1,30 @@
+BADIS:
+
+creation des webservices et leurs integrations dans la page jeu.
+quand on appuis sur les boutton on puisse acceder aux events suivants(changement de stats)
+rajout de colonnes dans la table reponse pour modifier les stats du joueur (les obligatoires)
+
+MAHMOUD:
+le boutton pour les objets des qu'on click il suprimme les objets 
+mdp ne soit pas les meme et cachee
+formulaire de creation de compte(page inscription) create
+css de la connexion
+
+CLOTILDE:
+terminer les services 
+questionnaires : component qui est sensee de remplir les stats
+
+
+
+
+creation d'histoire
+
+
+Optionnel: 
+envoi d'un mail dans le boutton mdp oubliee
+messages d'erreurs quand mdp non enregistre
+
+
+
+
+
