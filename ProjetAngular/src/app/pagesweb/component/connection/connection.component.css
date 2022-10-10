@@ -83,8 +83,8 @@ form.login input[name="mdpOublie"] {
 
 }
 
-.login input[type="submit"]:hover,
-.login input[type="button"]:hover {
+
+.login input[type="button"]:hover,.seConnecter:hover {
   background: #333333;
 }
 
