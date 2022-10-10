@@ -9,25 +9,31 @@ import { AuthenticatedGuardService } from './pagesweb/service/authenticated-guar
 export const routes: Routes = [
   {
     path: 'jeu',
-    component: JeuComponent,canActivate:[AuthenticatedGuardService]
+    component: JeuComponent,
+    canActivate: [AuthenticatedGuardService],
   },
 
   {
     path: 'accueil',
-    component: AccueilComponent, canActivate:[AnonymousGuardService] //on peut rentrer sans se connecter.
+    component: AccueilComponent,
+    canActivate: [AnonymousGuardService], //on peut rentrer sans se connecter.
   },
 
   {
     path: 'connection',
-    component: ConnectionComponent,canActivate:[AnonymousGuardService]
+    component: ConnectionComponent,
+    canActivate: [AnonymousGuardService],
   },
 
   {
     path: 'partie',
-    component: PartieComponent,canActivate:[AuthenticatedGuardService]
+    component: PartieComponent,
+    canActivate: [AuthenticatedGuardService],
   },
 
   {
-    path: '', redirectTo:'partie',pathMatch:'full'
+    path: '',
+    redirectTo: 'partie',
+    pathMatch: 'full',
   },
 ];
