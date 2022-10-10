@@ -31,7 +31,6 @@ public class Events {
 	private String histoire = "";
 	
 	@OneToMany(mappedBy = "evenementId")
-	@JsonView(JsonViews.EventsAvecReponses.class)
 	private List<Reponse> reponses;
 
 	@OneToOne(mappedBy = "prochainEvenementId")

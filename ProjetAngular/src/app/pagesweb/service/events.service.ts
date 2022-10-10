@@ -1,7 +1,8 @@
-import { Events } from './../model/events';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Events } from './../model/events';
+import { Reponses } from './../model/reponses';
 
 @Injectable({
   providedIn: 'root',
@@ -11,11 +12,10 @@ export class EventsService {
 
   constructor(private httpClient: HttpClient) {}
 
-  public EnvToJson(events: Events): any {
+  public EnvToJson(events: Events, reponses: Reponses): any {
     let obj = {
       id: events.id,
       histoire: events.histoire,
-      reponses: events.reponses,
     };
     return obj;
   }

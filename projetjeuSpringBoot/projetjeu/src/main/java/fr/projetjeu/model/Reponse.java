@@ -33,6 +33,7 @@ public class Reponse {
 	
 
 	@OneToOne
+	@JsonView(JsonViews.Common.class)
 	@JoinColumn(name = "rep_prochain_evenement_id", nullable = false)
 	private Events prochainEvenementId;
 	

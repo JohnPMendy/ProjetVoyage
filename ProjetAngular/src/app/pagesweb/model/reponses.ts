@@ -1,9 +1,10 @@
+import { Events } from './events';
 export class Reponses {
-  public get id(): number | undefined {
-    return this._id;
+  public get prochainEvenementId(): Events | undefined {
+    return this._prochainEvenementId;
   }
-  public set id(value: number | undefined) {
-    this._id = value;
+  public set prochainEvenementId(value: Events | undefined) {
+    this._prochainEvenementId = value;
   }
   public get texte(): string | undefined {
     return this._texte;
@@ -11,5 +12,16 @@ export class Reponses {
   public set texte(value: string | undefined) {
     this._texte = value;
   }
-  constructor(private _id?: number, private _texte?: string) {}
+  public get id(): number | undefined {
+    return this._id;
+  }
+  public set id(value: number | undefined) {
+    this._id = value;
+  }
+
+  constructor(
+    private _id?: number,
+    private _texte?: string,
+    private _prochainEvenementId?: Events
+  ) {}
 }

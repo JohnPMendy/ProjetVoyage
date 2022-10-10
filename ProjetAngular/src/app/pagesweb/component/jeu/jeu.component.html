@@ -70,26 +70,30 @@
 
     <div class="InterfacePartie">
       <div class="Histoire">
-        {{ events.id }}
         {{ events.histoire }}
-        {{ events.reponses }}
       </div>
 
       <div class="Reponses">
         <input
-          class="Reponse 1"
+          *ngIf="nbReponses(reponses)! > 0"
+          class="Reponse1"
           type="submit"
-          value="Reponse1 : Blablablablablabla"
+          [(ngModel)]="reponses[0].texte"
+          (click)="prochainId()"
         />
+
         <input
-          class="Reponse 2"
+          *ngIf="nbReponses(reponses)! > 1"
+          class="Reponse2"
           type="submit"
-          value="Reponse2 : Blablablablablabla"
+          [(ngModel)]="reponses[1].texte"
         />
+
         <input
-          class="Reponse 3"
+          *ngIf="nbReponses(reponses)! > 2"
+          class="Reponse3"
           type="submit"
-          value="Reponse3 : Blablablablablabla"
+          [(ngModel)]="reponses[2].texte"
         />
       </div>
 

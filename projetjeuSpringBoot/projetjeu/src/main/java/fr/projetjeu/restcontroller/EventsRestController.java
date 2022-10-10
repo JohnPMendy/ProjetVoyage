@@ -26,9 +26,9 @@ public class EventsRestController {
 	private EventsService evtService = new EventsService();
 	
 	@GetMapping("/{id}")
-	@JsonView(JsonViews.EventsAvecReponses.class)
+	@JsonView(JsonViews.Events.class)
 	public Events findById(@PathVariable("id") Integer id) {
-		return evtService.findByIdFetchReponses(id);
+		return evtService.findById(id);
 	}
 	
 	
