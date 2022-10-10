@@ -4,7 +4,7 @@
     <br />
     <ng-container formGroupName="infoGrp">
       <input formControlName="loginCtrl" [(ngModel)]="login" /><br />
-      <input formControlName="passwordCtrl"  [(ngModel)]="password"  />
+      <input formControlName="passwordCtrl" type="password" [(ngModel)]="password"  />
 
       <br />
     </ng-container>
@@ -22,6 +22,7 @@
       type="submit"
       name="mdpOublie"
       value="mot de passe oublié ?"
+      hidden
     />
   </form>
 </div>
