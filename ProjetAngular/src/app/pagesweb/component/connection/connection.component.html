@@ -1,14 +1,14 @@
-<div class="center">
-  <form (ngSubmit)="submit()" [formGroup]="form">
+
+  <form class= login (ngSubmit)="submit()" [formGroup]="form">
 
     <br />
     <ng-container formGroupName="infoGrp">
-      <input formControlName="loginCtrl" [(ngModel)]="login" /><br />
-      <input formControlName="passwordCtrl" type="password" [(ngModel)]="password"  />
+      <input formControlName="loginCtrl" type="texte" placeholder="Login" [(ngModel)]="login" /><br />
+      <input formControlName="passwordCtrl" type="password" placeholder="Password" [(ngModel)]="password"  />
 
       <br />
     </ng-container>
-    <button type="submit" >se connecter</button>
+    <button class="seConnecter" type="submit" >se connecter</button>
 
     <input
       class="pasInscrit"
@@ -22,10 +22,10 @@
       type="submit"
       name="mdpOublie"
       value="mot de passe oublié ?"
-      hidden
+
     />
   </form>
-</div>
+
 
 
 
