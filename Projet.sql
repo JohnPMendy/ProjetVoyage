@@ -26,6 +26,7 @@ CREATE TABLE competence(
 
 CREATE TABLE partie(
   par_id SERIAL PRIMARY KEY,
+  par_compte_id INT NOT NULL,
   par_personnage_id INT NOT NULL,
   par_event_id INT NOT NULL,
   par_date DATE NOT NULL,

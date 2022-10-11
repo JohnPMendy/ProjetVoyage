@@ -37,6 +37,7 @@ public class Compte implements UserDetails {
 	@Column(name = "mdp", nullable = false)
 	private String mdp;
 	
+	@JsonView(JsonViews.Compte.class)
 	@OneToMany(mappedBy="compte")
 	private List<Partie> parties;
 
