@@ -1,8 +1,15 @@
+import { Personnage } from './personnage';
 import { Inventaire } from './inventaire';
 import { Events } from './events';
 import { Environnement } from './environnement';
 import { Compte } from './compte';
 export class Partie {
+  public get personnage(): Personnage | undefined {
+    return this._personnage;
+  }
+  public set personnage(value: Personnage | undefined) {
+    this._personnage = value;
+  }
   public get date(): Date | undefined {
     return this._date;
   }
@@ -45,6 +52,7 @@ export class Partie {
     private _environment?: Environnement,
     private _eventRunning?: Events,
     private _inventaire?: Inventaire,
+    private _personnage?: Personnage,
     private _date?: Date
   ) {}
 }

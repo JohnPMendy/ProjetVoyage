@@ -15,7 +15,7 @@ import fr.projetjeu.repo.ICompetenceRepository;
 @Service
 public class CompetenceService {
 	@Autowired
-	private ICompetenceRepository repoCompetence;;
+	private ICompetenceRepository repoCompetence;
 	
 	
 	public List<Competence> findAll() {

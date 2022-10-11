@@ -34,7 +34,6 @@ public class Compte implements UserDetails {
 	@Column(name = "role", nullable = false, length = 50)
 	private String role;
 	
-	
 	@Column(name = "mdp", nullable = false)
 	private String mdp;
 	
