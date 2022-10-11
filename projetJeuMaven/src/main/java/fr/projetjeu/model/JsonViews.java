@@ -11,6 +11,10 @@ public class JsonViews {
 
 	}
 
+
+
+
+
 	// view pour partie
 	public static class Partie extends Common {
 

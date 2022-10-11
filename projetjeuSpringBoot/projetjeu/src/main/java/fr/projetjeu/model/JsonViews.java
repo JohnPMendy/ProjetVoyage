@@ -26,7 +26,6 @@ public class JsonViews {
 		
 	}
 	
-	//view pour produit avec fournisseur
 	public static class EventsAvecReponses extends Events{
 		
 	}
