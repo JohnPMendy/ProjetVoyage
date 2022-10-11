@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonView;
@@ -39,6 +40,9 @@ public class Objet {
 	@Enumerated(EnumType.ORDINAL)
 	@Column(name="obj_type",nullable=false)
 	private TypeObjets typeObjets;
+	
+	@OneToOne(mappedBy = "objetId")
+	private Reponse reponse;
 	
 	
 	//@ManyToOne

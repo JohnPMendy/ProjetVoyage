@@ -41,6 +41,36 @@ public class Reponse {
 	@JsonView(JsonViews.Common.class)
 	private Integer ajoutPoids;
 	
+	@Column(name = "rep_argent", nullable = true)
+	@JsonView(JsonViews.Common.class)
+	private Integer ajoutArgent;
+	
+	@Column(name = "rep_energie", nullable = true)
+	@JsonView(JsonViews.Common.class)
+	private Integer ajoutEnergie;
+	
+	@Column(name = "rep_force", nullable = true)
+	@JsonView(JsonViews.Common.class)
+	private Integer ajoutForce;
+	
+	@Column(name = "rep_covid", nullable = true)
+	@JsonView(JsonViews.Common.class)
+	private Integer ajoutCovid;
+	
+	@JsonView(JsonViews.Common.class)
+	@Column(name = "rep_vivant", nullable = true)
+	private boolean isAlive;
+	
+	@OneToOne
+	@JsonView(JsonViews.Common.class)
+	@JoinColumn(name = "rep_meteo", nullable = true)
+	private Environnement environnementId;
+	
+	@OneToOne
+	@JsonView(JsonViews.Common.class)
+	@JoinColumn(name = "rep_objet", nullable = true)
+	private Objet objetId;
+	
 	
 	public Integer getId() {
 		return id;

@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonView;
@@ -44,6 +45,9 @@ public class Environnement {
 	
 	@OneToMany(mappedBy="environnement")
 	private List<Partie> parties;
+	
+	@OneToOne(mappedBy = "environnementId")
+	private Reponse reponse;
 	
 	public Integer getId() {
 		return id;
