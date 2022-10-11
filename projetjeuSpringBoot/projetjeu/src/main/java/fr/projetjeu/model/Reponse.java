@@ -37,6 +37,10 @@ public class Reponse {
 	@JoinColumn(name = "rep_prochain_evenement_id", nullable = false)
 	private Events prochainEvenementId;
 	
+	@Column(name = "rep_poids", nullable = true)
+	@JsonView(JsonViews.Common.class)
+	private Integer ajoutPoids;
+	
 	
 	public Integer getId() {
 		return id;

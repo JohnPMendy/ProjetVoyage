@@ -40,11 +40,21 @@ CREATE TABLE evenement(
   evt_histoire VARCHAR(2000) NOT NULL
 );
 
+
+--DROP TABLE reponse;
 CREATE TABLE reponse (
   rep_id SERIAL PRIMARY KEY,
   rep_texte  VARCHAR(200),
   rep_evenement_id INT NULL,
-  rep_prochain_evenement_id INT NULL
+  rep_prochain_evenement_id INT NULL,
+  rep_poids INT NULL,
+  rep_argent INT NULL,
+  rep_energie INT NULL,
+  rep_force INT NULL,
+  rep_covid INT NULL,
+  rep_vivant BOOLEAN NULL,
+  rep_meteo INT NULL,
+  rep_objet INT NULL
 );
 
 
@@ -154,20 +164,36 @@ ALTER TABLE inventaire
         REFERENCES partie(par_id)
             ON UPDATE CASCADE
             ON DELETE CASCADE;
-
-ALTER TABLE reponse
+            
+            ALTER TABLE reponse
     ADD CONSTRAINT FK_ReponseEvent
       FOREIGN KEY(rep_evenement_id)
       REFERENCES evenement(evt_id)
           ON UPDATE CASCADE
           ON DELETE CASCADE;
-
-ALTER TABLE reponse
-    ADD CONSTRAINT FK_ReponseProchainEvent
+          
+    ALTER TABLE reponse      
+            ADD CONSTRAINT FK_ReponseProchainEvent
       FOREIGN KEY(rep_prochain_evenement_id)
       REFERENCES evenement(evt_id)
           ON UPDATE CASCADE
           ON DELETE CASCADE;
+          
+   
+          ALTER TABLE reponse      
+            ADD CONSTRAINT FK_ReponseMeteo
+      FOREIGN KEY(rep_meteo)
+      REFERENCES environnement(env_id)
+          ON UPDATE CASCADE
+          ON DELETE CASCADE;
+          
+           ALTER TABLE reponse      
+            ADD CONSTRAINT FK_ReponseObjet
+      FOREIGN KEY(rep_objet)
+      REFERENCE S objet(obj_id)
+          ON UPDATE CASCADE
+          ON DELETE CASCADE;
+
 
 ALTER TABLE environnement
   ADD CONSTRAINT chk_meteo
@@ -187,13 +213,16 @@ INSERT INTO evenement (evt_histoire) VALUES ('Event 6 : Vous êtes mort (FIN)');
 INSERT INTO evenement (evt_histoire) VALUES ('Event 7 : A suivre... (FIN)');
 INSERT INTO evenement (evt_histoire) VALUES ('Event 8 : Vous êtes mort (FIN)');
 
-INSERT INTO reponse (rep_texte, rep_evenement_id, rep_prochain_evenement_id) VALUES ('R1 : Avion', 1, 2 );
-INSERT INTO reponse (rep_texte, rep_evenement_id, rep_prochain_evenement_id) VALUES ('R2 : Bateau', 1, 5 );
-INSERT INTO reponse (rep_texte, rep_evenement_id, rep_prochain_evenement_id) VALUES ('R3 : Nage', 1, 8 );
-INSERT INTO reponse (rep_texte, rep_evenement_id, rep_prochain_evenement_id) VALUES ('R1 : Oui', 2, 3 );
-INSERT INTO reponse (rep_texte, rep_evenement_id, rep_prochain_evenement_id) VALUES ('R2 : Non', 2, 4 );
-INSERT INTO reponse (rep_texte, rep_evenement_id, rep_prochain_evenement_id) VALUES ('R1 : Oui', 5, 6 );
-INSERT INTO reponse (rep_texte, rep_evenement_id, rep_prochain_evenement_id) VALUES ('R2 : Non', 5, 7 );
+INSERT INTO reponse (rep_texte, rep_evenement_id, rep_prochain_evenement_id) 
+VALUES 
+('R1 : Avion', 1, 2 ), 
+('R2 : Bateau', 1, 5 ),
+('R3 : Nage', 1, 8 ),
+('R1 : Oui', 2, 3 ),
+('R2 : Non', 2, 4 ),
+('R1 : Oui', 5, 6 ),
+('R2 : Non', 5, 7 );
+    
 
 INSERT INTO competence (com_nom, com_des) VALUES ('Négociation', 'Permet de négocier des prix lors des achats');
 
@@ -232,6 +261,16 @@ VALUES
 
 INSERT INTO compte (login,mdp,role) VALUES('admin','$2a$10$1oGuBqgzfGzhkLX1hIXIdOUpOy5TswqdK4Y5Nn88ZZJMdAAvc1Xua','ROLE_ADMIN');
 INSERT INTO compte (login,mdp,role) VALUES('user','$2a$10$tsTiy0kKXpWc9qhYRtkqA.Ku2kjdC5ma5mEUYcFAhsHhrVgoowRyO','ROLE_USER')
+
+
+
+
+
+
+
+
+
+
 
 
 
