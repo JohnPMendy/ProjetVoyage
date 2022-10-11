@@ -29,7 +29,7 @@ public class Inventaire {
 	@OneToMany(mappedBy = "inventaire")
 	private List<ObjetInventaire> objets;
 
-	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.Inventaire.class)
 	@OneToOne(mappedBy = "inventaire")
 	private Partie partie;
 

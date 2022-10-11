@@ -12,7 +12,7 @@ public class CompteService {
 	@Autowired
 	private ICompteRepository repoCompte;
 	
-	public Compte findByIdFetchParties(Integer id) {
+	public Compte findByIdFetchParties(Long id) {
 		return repoCompte.findByIdFetchingParties(id).orElseThrow(CompteNotFoundException::new);
 	}
 

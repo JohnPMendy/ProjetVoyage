@@ -1,6 +1,13 @@
 <div class="tabs">
+  <a
+    routerLink="/partie"
+    class="btn btn-outline-primary"
+    (click)="creation()"
+    routerLinkActive="active"
+    >Nouvelle partie</a
+  >
   <button class="nouvellePartie">
-    <a [routerLink]="['/jeu']"> Nouvelle Partie</a>
+    <a [routerLink]="['/partie']" routerLinkActive="active"> Nouvelle Partie</a>
   </button>
 
   <div class="parties">
@@ -14,6 +21,7 @@
           <th>Heure</th>
           <th></th>
         </tr>
+        <!--tr *ngFor="let p of compte?.parties"-->
         <tr *ngFor="let p of parties">
           <td>
             <button class="boutonVersPartie">
@@ -21,13 +29,17 @@
             </button>
           </td>
           <td>
-            {{ p.personnage }}
+            {{ p.personnage?.nom | uppercase }} {{ p.personnage?.prenom }}
           </td>
           <td>
             {{ p.date | date: "y:MM:dd" }}
           </td>
           <td>{{ p.date | date: "h:mm:ss" }}</td>
-          <td><button class="supprimerPartie">Supprimer</button></td>
+          <td>
+            <button class="supprimerPartie" (click)="delete(p.id!)">
+              Supprimer
+            </button>
+          </td>
         </tr>
       </table>
     </div>
