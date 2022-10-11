@@ -1,6 +1,3 @@
-
-
-
 --DROP DATABASE projet;
 --CREATE DATABASE projet;
 
@@ -190,7 +187,7 @@ ALTER TABLE inventaire
            ALTER TABLE reponse      
             ADD CONSTRAINT FK_ReponseObjet
       FOREIGN KEY(rep_objet)
-      REFERENCE S objet(obj_id)
+      REFERENCES objet(obj_id)
           ON UPDATE CASCADE
           ON DELETE CASCADE;
 
@@ -213,15 +210,15 @@ INSERT INTO evenement (evt_histoire) VALUES ('Event 6 : Vous êtes mort (FIN)');
 INSERT INTO evenement (evt_histoire) VALUES ('Event 7 : A suivre... (FIN)');
 INSERT INTO evenement (evt_histoire) VALUES ('Event 8 : Vous êtes mort (FIN)');
 
-INSERT INTO reponse (rep_texte, rep_evenement_id, rep_prochain_evenement_id) 
+INSERT INTO reponse (rep_texte, rep_evenement_id, rep_prochain_evenement_id, rep_vivant) 
 VALUES 
-('R1 : Avion', 1, 2 ), 
-('R2 : Bateau', 1, 5 ),
-('R3 : Nage', 1, 8 ),
-('R1 : Oui', 2, 3 ),
-('R2 : Non', 2, 4 ),
-('R1 : Oui', 5, 6 ),
-('R2 : Non', 5, 7 );
+('R1 : Avion', 1, 2, true ), 
+('R2 : Bateau', 1, 5, true ),
+('R3 : Nage', 1, 8, false ),
+('R1 : Oui', 2, 3, true ),
+('R2 : Non', 2, 4, false ),
+('R1 : Oui', 5, 6, false ),
+('R2 : Non', 5, 7, false );
     
 
 INSERT INTO competence (com_nom, com_des) VALUES ('Négociation', 'Permet de négocier des prix lors des achats');
