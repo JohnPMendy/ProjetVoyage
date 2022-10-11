@@ -79,7 +79,7 @@
           class="Reponse1"
           type="submit"
           [(ngModel)]="reponses[0].texte"
-          (click)="prochainId()"
+          (click)="prochainId(0)"
         />
 
         <input
@@ -87,6 +87,7 @@
           class="Reponse2"
           type="submit"
           [(ngModel)]="reponses[1].texte"
+          (click)="prochainId(1)"
         />
 
         <input
@@ -94,6 +95,7 @@
           class="Reponse3"
           type="submit"
           [(ngModel)]="reponses[2].texte"
+          (click)="prochainId(2)"
         />
       </div>
 
