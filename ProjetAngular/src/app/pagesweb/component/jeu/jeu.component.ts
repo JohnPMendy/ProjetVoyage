@@ -19,6 +19,7 @@ export class JeuComponent implements OnInit {
     private reponsesService: ReponsesService
   ) {}
 
+  finDePartie: boolean | undefined = true;
   ngOnInit(): void {}
 
   nbReponses(reponses: Reponses[]) {
@@ -26,33 +27,35 @@ export class JeuComponent implements OnInit {
   }
 
   initialisation() {
+    this.finDePartie = true;
     this.events.id = 1;
-    this.activatedRoute.params.subscribe((params) => {
-      if (this.events.id) {
-        this.eventsService.findById(this.events.id).subscribe((data) => {
-          this.events = data;
-        });
+    if (this.events.id) {
+      this.eventsService.findById(this.events.id).subscribe((data) => {
+        this.events = data;
+      });
 
-        this.reponsesService.findById(this.events.id).subscribe((data) => {
-          this.reponses = data;
-        });
-      }
-    });
+      this.reponsesService.findById(this.events.id).subscribe((data) => {
+        this.reponses = data;
+        console.log(this.reponses);
+      });
+    }
   }
 
   prochainId(number: number): void {
     this.events.id = this.reponses[number].prochainEvenementId?.id;
-    this.activatedRoute.params.subscribe((params) => {
-      if (this.events.id) {
-        this.eventsService.findById(this.events.id).subscribe((data) => {
-          this.events = data;
-          console.log(this.reponses.length);
-        });
+    console.log(this.reponses[number].isAlive);
+    this.finDePartie = this.reponses[number].isAlive;
+    if (this.events.id) {
+      this.eventsService.findById(this.events.id).subscribe((data) => {
+        this.events = data;
+      });
 
+      if (this.events.id && this.reponses[number].isAlive) {
         this.reponsesService.findById(this.events.id).subscribe((data) => {
           this.reponses = data;
+          console.log(this.reponses);
         });
       }
-    });
+    }
   }
 }

@@ -75,7 +75,7 @@
 
       <div class="Reponses">
         <input
-          *ngIf="nbReponses(reponses)! === 0"
+          *ngIf="nbReponses(reponses)! === 0 && finDePartie"
           class="CommencerPartie"
           type="submit"
           value="Commencer la partie"
@@ -83,7 +83,7 @@
         />
 
         <input
-          *ngIf="nbReponses(reponses)! > 0"
+          *ngIf="nbReponses(reponses)! > 0 && finDePartie"
           class="Reponse1"
           type="submit"
           [(ngModel)]="reponses[0].texte"
@@ -91,7 +91,7 @@
         />
 
         <input
-          *ngIf="nbReponses(reponses)! > 1"
+          *ngIf="nbReponses(reponses)! > 1 && finDePartie"
           class="Reponse2"
           type="submit"
           [(ngModel)]="reponses[1].texte"
@@ -99,11 +99,19 @@
         />
 
         <input
-          *ngIf="nbReponses(reponses)! > 2"
+          *ngIf="nbReponses(reponses)! > 2 && finDePartie"
           class="Reponse3"
           type="submit"
           [(ngModel)]="reponses[2].texte"
           (click)="prochainId(2)"
+        />
+
+        <input
+          *ngIf="finDePartie === false"
+          class="CommencerPartie"
+          type="submit"
+          value="Recommencer la partie"
+          (click)="initialisation()"
         />
       </div>
 
