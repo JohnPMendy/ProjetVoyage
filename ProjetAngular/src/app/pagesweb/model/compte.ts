@@ -1,5 +1,11 @@
 import { Partie } from './partie';
 export class Compte {
+  public get mdp(): string|undefined {
+    return this._mdp;
+  }
+  public set mdp(value: string|undefined) {
+    this._mdp = value;
+  }
   public get parties(): Partie[] | undefined {
     return this._parties;
   }
@@ -28,6 +34,7 @@ export class Compte {
     private _id?: number,
     private _login?: string,
     private _role?: string,
+    private _mdp?: string,
     private _parties?: Partie[]
   ) {}
 }

@@ -16,4 +16,25 @@ export class CompteService {
       CompteService.URL + '/' + id + '/parties'
     );
   }
+
+  public objetToJson(compte:Compte) {
+    let obj = {
+      id: compte.id,
+      login: compte.login,
+      mdp:compte.mdp,
+      role:compte.role,
+      parties:compte.parties ,
+
+    };
+
+    console.log(obj);
+    return obj;
+  }
+
+  public create(compte:Compte): Observable<Compte> {
+    return this.httpCLient.post<Compte>(
+      CompteService.URL+'/'+compte.id,
+      this.objetToJson(compte)
+    );
+  }
 }

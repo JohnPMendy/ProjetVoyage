@@ -1,3 +1,5 @@
+import { Compte } from './../../model/compte';
+import { CompteService } from './../../service/compte.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -9,28 +11,33 @@ import { AuthService } from '../../service/auth.service';
   styleUrls: ['./inscription.component.css']
 })
 export class InscriptionComponent implements OnInit {
-  nom: string = '';
-  prenom:string='';
+
+  //l'email c'est le login
   email:string='';
-//l'email c'est le login
   password: string = '';
+  compte:Compte=new Compte();
   form!: FormGroup;
-  constructor(private authService: AuthService ,private router: Router) { }
+  constructor(private authService: AuthService ,private compteService:CompteService,private router: Router) { }
 
   ngOnInit(): void {
+    this.compte.login=this.email;
+    this.compte.role='ROLE_USER';
+    this.compte.mdp=this.password;
+    this.compte.parties=[];
     this.form = new FormGroup({
-      inputCtrl: new FormControl('', [
-        Validators.required,
-        Validators.minLength(2),
-      ]),
 
       emailCtrl: new FormControl('', Validators.email),
       passwordCtrl: new FormControl('', Validators.required)
 
     });
+
   }
 submit(){
-// a implementer
+  console.log("aaa");
+  this.compteService.create(this.compte).subscribe((data) => {
+    this.router.navigateByUrl('/compte?action=create&id=' + data.id);
+    console.log("aaa");
+  });
 }
 
 }

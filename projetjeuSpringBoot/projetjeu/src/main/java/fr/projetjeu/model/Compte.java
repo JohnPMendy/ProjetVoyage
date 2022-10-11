@@ -24,7 +24,7 @@ public class Compte implements UserDetails {
 	@JsonView(JsonViews.Common.class)
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Integer id;
 	
 	@JsonView(JsonViews.Common.class)
 	@Column(name = "login", nullable = false, unique = true, length = 50)
@@ -55,11 +55,11 @@ public class Compte implements UserDetails {
 	}
 
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
