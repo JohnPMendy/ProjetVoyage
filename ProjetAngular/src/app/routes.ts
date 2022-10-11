@@ -5,6 +5,7 @@ import { AccueilComponent } from './pagesweb/component/accueil/accueil.component
 import { ConnectionComponent } from './pagesweb/component/connection/connection.component';
 import { PartieComponent } from './pagesweb/component/partie/partie.component';
 import { AuthenticatedGuardService } from './pagesweb/service/authenticated-guard.service';
+import { InscriptionComponent } from './pagesweb/component/inscription/inscription.component';
 
 export const routes: Routes = [
   {
@@ -29,5 +30,10 @@ export const routes: Routes = [
 
   {
     path: '', redirectTo:'partie',pathMatch:'full'
+  },
+
+  {
+    path: 'inscription',
+    component: InscriptionComponent,canActivate:[AnonymousGuardService]
   },
 ];

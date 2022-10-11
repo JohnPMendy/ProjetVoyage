@@ -26,7 +26,6 @@ export class ConnectionComponent implements OnInit {
       inputCtrl: new FormControl('', [
         Validators.required,
         Validators.minLength(2),
-
       ]),
       infoGrp: new FormGroup(
         {

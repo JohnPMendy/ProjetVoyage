@@ -1,5 +1,6 @@
 
   <form class= login (ngSubmit)="submit()" [formGroup]="form">
+    <div class ="PageCNX">Page de connexion</div>
 
     <br />
     <ng-container formGroupName="infoGrp">
@@ -15,6 +16,7 @@
       type="button"
       name="pasEncoreInscrit"
       value="pas encore inscrit ?"
+      routerLink="/inscription"
     />
     <!-- <input type="submit" name="pasEncoreInscrit" value="pas encore inscrit ?" />-->
     <input

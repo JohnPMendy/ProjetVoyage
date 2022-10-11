@@ -11,6 +11,7 @@ import { PartieComponent } from './pagesweb/component/partie/partie.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { DatePipe } from '@angular/common';
+import { InscriptionComponent } from './pagesweb/component/inscription/inscription.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { DatePipe } from '@angular/common';
     AccueilComponent,
     ConnectionComponent,
     PartieComponent,
+    InscriptionComponent,
   ],
   imports: [
     BrowserModule,
