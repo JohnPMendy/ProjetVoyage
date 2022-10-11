@@ -11,10 +11,9 @@ import { AuthService } from '../../service/auth.service';
   styleUrls: ['./inscription.component.css']
 })
 export class InscriptionComponent implements OnInit {
-  nom: string = '';
-  prenom:string='';
+
+  //l'email c'est le login
   email:string='';
-//l'email c'est le login
   password: string = '';
   compte:Compte=new Compte();
   form!: FormGroup;
@@ -26,10 +25,6 @@ export class InscriptionComponent implements OnInit {
     this.compte.mdp=this.password;
     this.compte.parties=[];
     this.form = new FormGroup({
-      inputCtrl: new FormControl('', [
-        Validators.required,
-        Validators.minLength(2),
-      ]),
 
       emailCtrl: new FormControl('', Validators.email),
       passwordCtrl: new FormControl('', Validators.required)
