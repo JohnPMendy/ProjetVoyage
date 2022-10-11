@@ -46,7 +46,6 @@ export class JeuComponent implements OnInit {
 
     this.personnageService.getById(this.numeroPartie).subscribe((data) => {
       this.personnage = data;
-      console.log(this.personnage);
     });
   }
 
@@ -58,13 +57,12 @@ export class JeuComponent implements OnInit {
       this.eventsService.findById(this.events.id).subscribe((data) => {
         this.events = data;
       });
-
-      if (this.events.id && this.reponses[number].isAlive) {
-        this.reponsesService.findById(this.events.id).subscribe((data) => {
-          this.reponses = data;
-          console.log(this.reponses);
-        });
-      }
+    }
+    if (this.events.id && this.reponses[number].isAlive) {
+      this.reponsesService.findById(this.events.id).subscribe((data) => {
+        this.reponses = data;
+        console.log(this.reponses);
+      });
     }
   }
 }
