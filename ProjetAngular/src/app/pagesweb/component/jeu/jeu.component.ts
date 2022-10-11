@@ -11,7 +11,7 @@ import { ReponsesService } from './../../service/reponses.service';
   styleUrls: ['./jeu.component.css'],
 })
 export class JeuComponent implements OnInit {
-  events: Events = new Events(1);
+  events: Events = new Events(0);
   reponses: Reponses[] = [];
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -19,12 +19,18 @@ export class JeuComponent implements OnInit {
     private reponsesService: ReponsesService
   ) {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  nbReponses(reponses: Reponses[]) {
+    return reponses.length;
+  }
+
+  initialisation() {
+    this.events.id = 1;
     this.activatedRoute.params.subscribe((params) => {
       if (this.events.id) {
         this.eventsService.findById(this.events.id).subscribe((data) => {
           this.events = data;
-          console.log(this.events.id);
         });
 
         this.reponsesService.findById(this.events.id).subscribe((data) => {
@@ -34,22 +40,17 @@ export class JeuComponent implements OnInit {
     });
   }
 
-  nbReponses(reponses: Reponses[]) {
-    return reponses.length;
-  }
-
   prochainId(number: number): void {
     this.events.id = this.reponses[number].prochainEvenementId?.id;
     this.activatedRoute.params.subscribe((params) => {
       if (this.events.id) {
         this.eventsService.findById(this.events.id).subscribe((data) => {
           this.events = data;
-          console.log(this.events.id);
+          console.log(this.reponses.length);
         });
 
         this.reponsesService.findById(this.events.id).subscribe((data) => {
           this.reponses = data;
-          console.log(this.reponses);
         });
       }
     });

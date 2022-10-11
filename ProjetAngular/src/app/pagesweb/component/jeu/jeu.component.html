@@ -75,6 +75,14 @@
 
       <div class="Reponses">
         <input
+          *ngIf="nbReponses(reponses)! === 0"
+          class="CommencerPartie"
+          type="submit"
+          value="Commencer la partie"
+          (click)="initialisation()"
+        />
+
+        <input
           *ngIf="nbReponses(reponses)! > 0"
           class="Reponse1"
           type="submit"
