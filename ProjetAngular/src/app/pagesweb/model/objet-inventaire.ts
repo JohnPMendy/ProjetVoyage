@@ -25,7 +25,7 @@ export class ObjetInventaire {
 
   constructor(
     private _id?: number,
-    private _inventaire?: inventaire,
+    private _inventaire?: Inventaire,
     private _objet?: Object,
     private _quantiteinventaire?: number
     ){}
