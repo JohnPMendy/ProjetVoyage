@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Personnage } from '../../model/personnage';
 import { Events } from './../../model/events';
 import { Reponses } from './../../model/reponses';
 import { EventsService } from './../../service/events.service';
+import { PersonnageService } from './../../service/personnage.service';
 import { ReponsesService } from './../../service/reponses.service';
 
 @Component({
@@ -13,13 +14,18 @@ import { ReponsesService } from './../../service/reponses.service';
 export class JeuComponent implements OnInit {
   events: Events = new Events(0);
   reponses: Reponses[] = [];
+  personnage: Personnage | undefined;
+
   constructor(
-    private activatedRoute: ActivatedRoute,
     private eventsService: EventsService,
-    private reponsesService: ReponsesService
+    private reponsesService: ReponsesService,
+    private personnageService: PersonnageService
   ) {}
 
   finDePartie: boolean | undefined = true;
+  numeroCompte: number = 1;
+  numeroPartie: number = 1;
+
   ngOnInit(): void {}
 
   nbReponses(reponses: Reponses[]) {
@@ -29,16 +35,19 @@ export class JeuComponent implements OnInit {
   initialisation() {
     this.finDePartie = true;
     this.events.id = 1;
-    if (this.events.id) {
-      this.eventsService.findById(this.events.id).subscribe((data) => {
-        this.events = data;
-      });
 
-      this.reponsesService.findById(this.events.id).subscribe((data) => {
-        this.reponses = data;
-        console.log(this.reponses);
-      });
-    }
+    this.eventsService.findById(this.events.id).subscribe((data) => {
+      this.events = data;
+    });
+
+    this.reponsesService.findById(this.events.id).subscribe((data) => {
+      this.reponses = data;
+    });
+
+    this.personnageService.getById(this.numeroPartie).subscribe((data) => {
+      this.personnage = data;
+      console.log(this.personnage);
+    });
   }
 
   prochainId(number: number): void {
