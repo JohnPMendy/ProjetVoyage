@@ -21,7 +21,6 @@ export class InscriptionComponent implements OnInit {
   constructor(private authService: AuthService ,private compteService:CompteService,private router: Router) { }
 
   ngOnInit(): void {
-    this.compte.id=3;// this.form.get("nom de variable")?.value
     this.compte.login=this.email;
     this.compte.role='ROLE_USER';
     this.compte.mdp=this.password;
@@ -39,8 +38,9 @@ export class InscriptionComponent implements OnInit {
 
   }
 submit(){
+  console.log("aaa");
   this.compteService.create(this.compte).subscribe((data) => {
-    this.router.navigateByUrl('/produit?action=create&id=' + data.id);
+    this.router.navigateByUrl('/compte?action=create&id=' + data.id);
     console.log("aaa");
   });
 }

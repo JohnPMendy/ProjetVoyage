@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import fr.projetjeu.model.Compte;
 
 
-public interface ICompteRepository extends JpaRepository<Compte, Long> {
+public interface ICompteRepository extends JpaRepository<Compte, Integer> {
 	Optional<Compte> findByLogin(String login);
 	
 	@Query("select c from Compte c left join fetch c.parties where c.id=?1")
