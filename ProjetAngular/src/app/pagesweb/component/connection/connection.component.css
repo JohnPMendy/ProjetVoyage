@@ -1,26 +1,34 @@
+
+.PageCNX{
+  opacity: 60%;
+  font-size: 30px;
+  opacity:100%;
+  color: rgb(255, 255, 255);
+grid-column: 1;
+}
+
+
 form.login {
   grid-column: 2;
   grid-row: 3;
   padding: 4vh;
   border-radius: 3px;
-  background: white;
   display: block;
   position: relative;
   width: 100vh;
 }
 
-div.center {
+form.login {
   display: grid;
   align-content: center;
   height: 100%;
   width: 100%;
   justify-content: center;
   align-items: start;
-  justify-items: start;
   position: fixed;
 }
 
-.login input {
+form.login input,.seConnecter {
   display: block;
   width: auto;
   font-size: 18px;
@@ -29,10 +37,11 @@ div.center {
   outline: none;
   border: none;
   box-sizing: border-box;
+  text-align: center;
 }
 
-.login input[type="text"],
-.login input[type="password"] {
+form.login input[type="text"],
+.seConnecter {
   width: 100%;
   margin-bottom: 20px;
   padding-left: 30px;
@@ -41,11 +50,12 @@ div.center {
   margin-top: 10px;
 }
 
-.login input::placeholder {
+form.login input::placeholder {
   color: #acacac;
+  right: 10px;
 }
 
-.login input[name="seConnecter"] {
+.seConnecter{
   display: inline-block;
   font-weight: bold;
   padding: 0 25px;
@@ -54,25 +64,22 @@ div.center {
   text-transform: uppercase;
   transition: all 0.4s;
   cursor: pointer;
-  margin-top: 10px;
-  width: 49%;
-  margin-left: 6px;
+
 }
 
-.login input[name="pasEncoreInscrit"] {
+form.login input[name="pasEncoreInscrit"] {
   display: inline-block;
   font-weight: bold;
-  padding: 0 25px;
   background: #385ab9;
   color: white;
   text-transform: uppercase;
   transition: all 0.4s;
   cursor: pointer;
   margin-top: 10px;
-  width: 48%;
-  margin-left: 6px;
+  padding: 0 25px;
+
 }
-.login input[name="mdpOublie"] {
+form.login input[name="mdpOublie"] {
   font-weight: bold;
   padding: 0 25px;
   background: #a9afbe;
@@ -82,10 +89,12 @@ div.center {
   cursor: pointer;
   margin-top: 10px;
   width: 100%;
+  visibility: hidden;
+
 }
 
-.login input[type="submit"]:hover,
-.login input[type="button"]:hover {
+
+.login input[type="button"]:hover,.seConnecter:hover {
   background: #333333;
 }
 
