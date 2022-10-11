@@ -8,17 +8,27 @@
     <div class="enCours">
       <table class="partiesEnCours">
         <tr>
-          <th>
-            <button class="boutonVersPartie">
-              <a [routerLink]="['/jeu']">Partie</a>
-            </button>
-          </th>
+          <th></th>
           <th>Nom Joueur</th>
           <th>Date</th>
           <th>Heure</th>
-          <th><button class="supprimerPartie">Supprimer</button></th>
+          <th></th>
         </tr>
-        <tr></tr>
+        <tr *ngFor="let p of parties">
+          <td>
+            <button class="boutonVersPartie">
+              <a [routerLink]="['/jeu']">Partie</a>
+            </button>
+          </td>
+          <td>
+            {{ p.personnage }}
+          </td>
+          <td>
+            {{ p.date | date: "y:MM:dd" }}
+          </td>
+          <td>{{ p.date | date: "h:mm:ss" }}</td>
+          <td><button class="supprimerPartie">Supprimer</button></td>
+        </tr>
       </table>
     </div>
   </div>

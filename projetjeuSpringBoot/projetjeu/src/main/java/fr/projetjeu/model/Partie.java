@@ -48,6 +48,7 @@ public class Partie {
 	@JoinColumn(name="par_inventaire_id", nullable=false)
 	private Inventaire inventaire;
 	
+	@JsonView(JsonViews.Partie.class)
 	@ManyToOne
 	@JoinColumn(name="par_compte_id",nullable=false)
 	private Compte compte;

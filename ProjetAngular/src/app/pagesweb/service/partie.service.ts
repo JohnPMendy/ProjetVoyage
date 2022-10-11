@@ -18,4 +18,8 @@ export class PartieService {
   public delete(id: number): Observable<void> {
     return this.httpClient.delete<void>(PartieService + '/' + id);
   }
+
+  public findAllByCompteId(id: number): Observable<Partie[]> {
+    return this.httpClient.get<Partie[]>(PartieService.URL + '/compte/' + id);
+  }
 }

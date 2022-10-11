@@ -44,6 +44,12 @@ public class PartieRestController {
 		return srvPartie.findAll();
 	}
 	
+//	@JsonView(JsonViews.Partie.class)
+//	@GetMapping("")
+//	public List<Partie> findByCompteId(@PathVariable("id")Integer id){
+//		return srvPartie.findByCompteId(id);
+//	}
+	
 	@JsonView(JsonViews.Partie.class)
 	@GetMapping("/{id}")
 	public Partie findById(@PathVariable("id") Integer id) {
