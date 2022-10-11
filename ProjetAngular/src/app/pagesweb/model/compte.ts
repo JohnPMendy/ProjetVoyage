@@ -1,4 +1,11 @@
+import { Partie } from './partie';
 export class Compte {
+  public get parties(): Partie[] | undefined {
+    return this._parties;
+  }
+  public set parties(value: Partie[] | undefined) {
+    this._parties = value;
+  }
   public get role(): string | undefined {
     return this._role;
   }
@@ -20,6 +27,7 @@ export class Compte {
   constructor(
     private _id?: number,
     private _login?: string,
-    private _role?: string
+    private _role?: string,
+    private _parties?: Partie[]
   ) {}
 }
