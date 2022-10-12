@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { Personnage } from './../../model/personnage';
 import { PersonnageService } from './../../service/personnage.service';
 import { DatePipe } from '@angular/common';
@@ -14,7 +15,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./partie.component.css'],
 })
 export class PartieComponent implements OnInit {
-  parties!: Partie[];
+  parties!: Observable<Partie[]>;
+  partiesTest!: Observable<Partie[]>;
   compte!: Compte;
   dateFormat!: string;
   hourFormat!: string;
@@ -26,13 +28,11 @@ export class PartieComponent implements OnInit {
     private partieService: PartieService,
     private compteService: CompteService,
     private personnageService: PersonnageService,
-    //private inventaireService:InventaireService,
     private router: Router
   ) {}
 
   ngOnInit(): void {
     this.compte = JSON.parse(sessionStorage.getItem('compte')!);
-    // console.log(this.compte.parties);
     this.listParties(this.compte.id as number);
   }
 
@@ -44,7 +44,10 @@ export class PartieComponent implements OnInit {
         listId.push(p.id as number);
       }
       console.log(listId);
-      this.parties = data.parties!;
+      this.parties = this.partieService.getAll();
+
+      console.log(this.parties);
+      console.log(this.parties.operator?.call.length);
     });
   }
 

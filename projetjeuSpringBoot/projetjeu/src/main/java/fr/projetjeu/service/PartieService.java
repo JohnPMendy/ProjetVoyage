@@ -38,16 +38,14 @@ public class PartieService {
 		return parties;
 	}
 	
-//	public List<Partie> findByCompteId(Integer id){
-//		List<Partie> parties = repoPartie.findByCompteId(id);
-//		
-//		if (parties == null) {
-//			return new ArrayList<>();
-//		}
-//
-//		return parties;
-//	}
+public List<Partie> findAllById(List<Integer> ids){
+	List<Partie> parties = repoPartie.findAllById(ids);
+	if (parties == null) {
+		return new ArrayList<>();
+	}
 
+	return parties;
+}
 	public void save(Partie partie) {
 		if (partie.getPersonnage() == null|| partie.getPersonnage().getId()<=0) {
 			throw new InvalidEntityException("personnage");

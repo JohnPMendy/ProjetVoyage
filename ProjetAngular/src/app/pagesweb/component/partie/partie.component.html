@@ -1,11 +1,4 @@
 <div class="tabs">
-  <a
-    routerLink="/partie"
-    class="btn btn-outline-primary"
-    (click)="creation()"
-    routerLinkActive="active"
-    >Nouvelle partie</a
-  >
   <button class="nouvellePartie" (click)="creation()" routerLinkActive="active">
     <a [routerLink]="['/partie']" routerLinkActive="active"> Nouvelle Partie</a>
   </button>
@@ -22,15 +15,13 @@
           <th></th>
         </tr>
         <!--tr *ngFor="let p of compte?.parties"-->
-        <tr *ngFor="let p of parties">
+        <tr *ngFor="let p of parties | async">
           <td>
             <button class="boutonVersPartie">
               <a [routerLink]="['/jeu']">Charger</a>
             </button>
           </td>
-          <td>
-            {{ p.personnage?.id }}
-          </td>
+          <td>{{ p.personnage?.nom }} {{ p.personnage?.prenom }}</td>
           <td>
             {{ p.date | date: "y:MM:dd" }}
           </td>
@@ -52,7 +43,7 @@
         <tbody>
           <tr>
             <td class="leftHeader" colspan="2">Nombres de parties jouées :</td>
-            <td class="compteur">0</td>
+            <td class="compteur">{{ parties.operator?.call?.length }}</td>
           </tr>
           <tr>
             <td class="leftHeader" colspan="2">

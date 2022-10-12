@@ -23,10 +23,6 @@ export class PartieService {
     return this.httpClient.delete<void>(PartieService.URL + '/' + id);
   }
 
-  public findAllByCompteId(id: number): Observable<Partie[]> {
-    return this.httpClient.get<Partie[]>(PartieService.URL + '/compte/' + id);
-  }
-
   public partieToJson(partie: Partie): any {
     let obj = {
       id: partie.id,
