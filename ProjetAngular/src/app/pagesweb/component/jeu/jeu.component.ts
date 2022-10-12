@@ -51,13 +51,14 @@ export class JeuComponent implements OnInit {
 
   prochainId(number: number): void {
     this.events.id = this.reponses[number].prochainEvenementId?.id;
-    console.log(this.reponses[number].isAlive);
     this.finDePartie = this.reponses[number].isAlive;
+
     if (this.events.id) {
       this.eventsService.findById(this.events.id).subscribe((data) => {
         this.events = data;
       });
     }
+
     if (this.events.id && this.reponses[number].isAlive) {
       this.reponsesService.findById(this.events.id).subscribe((data) => {
         this.reponses = data;

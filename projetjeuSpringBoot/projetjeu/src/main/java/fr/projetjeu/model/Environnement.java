@@ -25,20 +25,20 @@ public class Environnement {
 	@Column(name = "env_id")
 	private Integer id;
 	
-	@JsonView(JsonViews.Environnement.class)
+	@JsonView(JsonViews.Common.class)
 	@Column(name="env_nom",nullable=false)
 	private String nom;
 	
-	@JsonView(JsonViews.Environnement.class)
+	@JsonView(JsonViews.Common.class)
 	@Column(name="env_temperature")
 	private float temperature;
 	
-	@JsonView(JsonViews.Environnement.class)
+	@JsonView(JsonViews.Common.class)
 	@Enumerated(EnumType.ORDINAL)
 	@Column(name="env_type_meteo",nullable=false)
 	private Meteo meteo;
 	
-	@JsonView(JsonViews.Environnement.class)
+	@JsonView(JsonViews.Common.class)
 	@Enumerated(EnumType.ORDINAL)
 	@Column(name="env_type_environnement",nullable=false)
 	private TypeEnvironnement environnement;
@@ -46,9 +46,9 @@ public class Environnement {
 	@OneToMany(mappedBy="environnement")
 	private List<Partie> parties;
 	
-	@OneToOne(mappedBy = "environnementId")
-	private Events event;
-	
+	@OneToMany(mappedBy = "environnementId")
+	private List<Events> event;
+
 	public Integer getId() {
 		return id;
 	}
@@ -96,6 +96,15 @@ public class Environnement {
 	public void setParties(List<Partie> parties) {
 		this.parties = parties;
 	}
+
+	public List<Events> getEvent() {
+		return event;
+	}
+
+	public void setEvent(List<Events> event) {
+		this.event = event;
+	}
+	
 
 
 

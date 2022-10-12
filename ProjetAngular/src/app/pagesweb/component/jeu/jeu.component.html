@@ -57,10 +57,28 @@
         <div class="ValeurVivant">{{ personnage?.isAlive }}</div>
       </div>
 
+      <div class="Environnement">
+        <div class="NameEnvironnement">Lieu</div>
+
+        <div class="ValeurEnvironnement">
+          {{ events.environnementId?.environnement }}
+        </div>
+      </div>
+
       <div class="Meteo">
         <div class="NameMeteo">Meteo</div>
 
-        <div class="ValeurMeteo"></div>
+        <div class="ValeurMeteo">
+          {{ events.environnementId?.meteo }}
+        </div>
+      </div>
+
+      <div class="Temperature">
+        <div class="NameTemperature">Temperature</div>
+
+        <div class="ValeurTemperature">
+          {{ events.environnementId?.temperature }}
+        </div>
       </div>
 
       <div class="Humeur">
@@ -69,143 +87,143 @@
         <div class="ValeurHumeur">{{ personnage?.humeur }}</div>
       </div>
     </div>
-  </div>
 
-  <div class="Partie">
-    <div class="TitrePartie">Partie</div>
+    <div class="Partie">
+      <div class="TitrePartie">Partie</div>
 
-    <div class="InterfacePartie">
-      <div class="Histoire">
-        {{ events.histoire }}
+      <div class="InterfacePartie">
+        <div class="Histoire">
+          {{ events.histoire }}
+        </div>
+
+        <div class="Reponses">
+          <input
+            *ngIf="nbReponses(reponses)! === 0 && finDePartie"
+            class="CommencerPartie"
+            type="submit"
+            value="Commencer la partie"
+            (click)="initialisation()"
+          />
+
+          <input
+            *ngIf="nbReponses(reponses)! > 0 && finDePartie"
+            class="Reponse1"
+            type="submit"
+            [(ngModel)]="reponses[0].texte"
+            (click)="prochainId(0)"
+          />
+
+          <input
+            *ngIf="nbReponses(reponses)! > 1 && finDePartie"
+            class="Reponse2"
+            type="submit"
+            [(ngModel)]="reponses[1].texte"
+            (click)="prochainId(1)"
+          />
+
+          <input
+            *ngIf="nbReponses(reponses)! > 2 && finDePartie"
+            class="Reponse3"
+            type="submit"
+            [(ngModel)]="reponses[2].texte"
+            (click)="prochainId(2)"
+          />
+
+          <input
+            *ngIf="finDePartie === false"
+            class="CommencerPartie"
+            type="submit"
+            value="Recommencer la partie"
+            [routerLink]="['/partie']"
+          />
+        </div>
+
+        <div class="Divers">
+          <input class="Charger" type="submit" value="Charger" />
+          <input class="Sauvegarder" type="submit" value="Sauvegarder" />
+        </div>
       </div>
+    </div>
 
-      <div class="Reponses">
-        <input
-          *ngIf="nbReponses(reponses)! === 0 && finDePartie"
-          class="CommencerPartie"
-          type="submit"
-          value="Commencer la partie"
-          (click)="initialisation()"
-        />
+    <div class="Inventaire">
+      <div class="TitreInventaire">Inventaire</div>
 
-        <input
-          *ngIf="nbReponses(reponses)! > 0 && finDePartie"
-          class="Reponse1"
-          type="submit"
-          [(ngModel)]="reponses[0].texte"
-          (click)="prochainId(0)"
-        />
+      <div class="InterfaceInventaire">
+        <div class="TitreObjets">
+          <div class="NomTypeObjet">Type Objet</div>
 
-        <input
-          *ngIf="nbReponses(reponses)! > 1 && finDePartie"
-          class="Reponse2"
-          type="submit"
-          [(ngModel)]="reponses[1].texte"
-          (click)="prochainId(1)"
-        />
+          <div class="NomQuantite">Qte</div>
+        </div>
 
-        <input
-          *ngIf="nbReponses(reponses)! > 2 && finDePartie"
-          class="Reponse3"
-          type="submit"
-          [(ngModel)]="reponses[2].texte"
-          (click)="prochainId(2)"
-        />
+        <div class="Objet">
+          <input class="TypeObjet" type="submit" value="Pistolet" />
 
-        <input
-          *ngIf="finDePartie === false"
-          class="CommencerPartie"
-          type="submit"
-          value="Recommencer la partie"
-          [routerLink]="['/partie']"
-        />
-      </div>
-
-      <div class="Divers">
-        <input class="Charger" type="submit" value="Charger" />
-        <input class="Sauvegarder" type="submit" value="Sauvegarder" />
+          <div class="Quantité">1</div>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="Inventaire">
-    <div class="TitreInventaire">Inventaire</div>
+  <!-- Joue le rôle de fond noir transparent -->
+  <div class="popup">
+    <div class="popup-overlay"></div>
 
-    <div class="InterfaceInventaire">
-      <div class="TitreObjets">
-        <div class="NomTypeObjet">Type Objet</div>
+    <div class="popup-container">
+      <div class="popup-header">
+        <div class="DemandeSupression">Voulez vous supprimer cet objet?</div>
 
-        <div class="NomQuantite">Qte</div>
-      </div>
+        <div class="QteASupprimer">Quantité à supprimer souhaité:</div>
 
-      <div class="Objet">
-        <input class="TypeObjet" type="submit" value="Pistolet" />
+        <select class="QTE" name="QTE">
+          <option value="TEST" selected>0</option>
+          <option value="sopra">1</option>
+          <option value="amazon">2</option>
+        </select>
 
-        <div class="Quantité">1</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Joue le rôle de fond noir transparent -->
-<div class="popup">
-  <div class="popup-overlay"></div>
-
-  <div class="popup-container">
-    <div class="popup-header">
-      <div class="DemandeSupression">Voulez vous supprimer cet objet?</div>
-
-      <div class="QteASupprimer">Quantité à supprimer souhaité:</div>
-
-      <select class="QTE" name="QTE">
-        <option value="TEST" selected>0</option>
-        <option value="sopra">1</option>
-        <option value="amazon">2</option>
-      </select>
-
-      <input class="Valider" type="submit" value="Valider" />
-      <input class="Annuler" type="submit" value="Annuler" />
-    </div>
-  </div>
-
-  <!--Les popup qui concernent le chargement des parties-->
-  <div class="popup-overlay-chargement"></div>
-  <div class="popup-container-chargement">
-    <!-- La popup avec son titre, et son contenu -->
-    <div class="popup-chargmement">
-      <div class="popup-header">Quelle partie voulez vous charger ?</div>
-
-      <div class="popup-content">
-        <table class="partiesEnCours">
-          <tbody>
-            <tr>
-              <td><button class="ligneChargement">Test</button></td>
-              <td>TEst</td>
-              <td>jj/mm/aaa</td>
-              <td>hh:mm:ss</td>
-            </tr>
-            <tr>
-              <td><button class="ligneChargement">Test1</button></td>
-              <td>TEst</td>
-              <td>jj/mm/aaa</td>
-              <td>hh:mm:ss</td>
-            </tr>
-            <tr>
-              <td><button class="ligneChargement">Test2</button></td>
-              <td>TEst</td>
-              <td>jj/mm/aaa</td>
-              <td>hh:mm:ss</td>
-            </tr>
-          </tbody>
-        </table>
-        <button class="close-popup-chargement">Annuler</button>
+        <input class="Valider" type="submit" value="Valider" />
+        <input class="Annuler" type="submit" value="Annuler" />
       </div>
     </div>
-  </div>
-  <div class="popup-charge-confirme">
-    <div class="popup-chargmement">
-      <div class="popup-header">Partie chargé !</div>
-      <button class="close-charge-confirme">Ok</button>
+
+    <!--Les popup qui concernent le chargement des parties-->
+    <div class="popup-overlay-chargement"></div>
+    <div class="popup-container-chargement">
+      <!-- La popup avec son titre, et son contenu -->
+      <div class="popup-chargmement">
+        <div class="popup-header">Quelle partie voulez vous charger ?</div>
+
+        <div class="popup-content">
+          <table class="partiesEnCours">
+            <tbody>
+              <tr>
+                <td><button class="ligneChargement">Test</button></td>
+                <td>TEst</td>
+                <td>jj/mm/aaa</td>
+                <td>hh:mm:ss</td>
+              </tr>
+              <tr>
+                <td><button class="ligneChargement">Test1</button></td>
+                <td>TEst</td>
+                <td>jj/mm/aaa</td>
+                <td>hh:mm:ss</td>
+              </tr>
+              <tr>
+                <td><button class="ligneChargement">Test2</button></td>
+                <td>TEst</td>
+                <td>jj/mm/aaa</td>
+                <td>hh:mm:ss</td>
+              </tr>
+            </tbody>
+          </table>
+          <button class="close-popup-chargement">Annuler</button>
+        </div>
+      </div>
+    </div>
+    <div class="popup-charge-confirme">
+      <div class="popup-chargmement">
+        <div class="popup-header">Partie chargé !</div>
+        <button class="close-charge-confirme">Ok</button>
+      </div>
     </div>
   </div>
 </div>
