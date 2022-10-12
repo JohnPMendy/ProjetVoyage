@@ -32,13 +32,13 @@ public class CompteRestController {
 	@Autowired
 	private CompteService srvCompte;
 	
-<<<<<<< HEAD
+
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
-=======
+
 	@JsonView(JsonViews.CompteAvecParties.class)
->>>>>>> 691547849db7d5b497eb45ab0abded85aceb67bb
+
 	@GetMapping("/{id}/parties")
 	public Compte findByIdFetchParties(@PathVariable("id")Long id) {
 		return srvCompte.findByIdFetchParties(id);
