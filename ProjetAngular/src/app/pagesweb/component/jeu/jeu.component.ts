@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Personnage } from '../../model/personnage';
 import { Events } from './../../model/events';
+import { Inventaire } from './../../model/inventaire';
 import { Reponses } from './../../model/reponses';
 import { EventsService } from './../../service/events.service';
+import { inventaireService } from './../../service/inventaire.service';
 import { PersonnageService } from './../../service/personnage.service';
 import { ReponsesService } from './../../service/reponses.service';
 
@@ -15,11 +17,13 @@ export class JeuComponent implements OnInit {
   events: Events = new Events(0);
   reponses: Reponses[] = [];
   personnage: Personnage | undefined;
+  inventaire!: Inventaire;
 
   constructor(
     private eventsService: EventsService,
     private reponsesService: ReponsesService,
-    private personnageService: PersonnageService
+    private personnageService: PersonnageService,
+    private inventaireService: inventaireService
   ) {}
 
   finDePartie: boolean | undefined = true;
@@ -46,6 +50,11 @@ export class JeuComponent implements OnInit {
 
     this.personnageService.getById(this.numeroPartie).subscribe((data) => {
       this.personnage = data;
+    });
+
+    this.inventaireService.getById(this.numeroPartie).subscribe((data) => {
+      this.inventaire = data;
+      console.log(this.inventaire.objets![0].objet?.nom);
     });
   }
 

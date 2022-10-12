@@ -232,6 +232,7 @@ INSERT INTO objet_boutique(obj_btq_obj_id , obj_btq_btq_id,qte_boutique) VALUES(
 INSERT INTO objet_boutique(obj_btq_obj_id , obj_btq_btq_id,qte_boutique) VALUES(5,2,20);
 
 INSERT INTO objet_inventaire(objinv_obj_id ,objinv_inv_id,qte_inventaire) VALUES(1,1,2);
+INSERT INTO objet_inventaire(objinv_obj_id ,objinv_inv_id,qte_inventaire) VALUES(2,1,3);
 INSERT INTO objet_inventaire(objinv_obj_id ,objinv_inv_id,qte_inventaire) VALUES(5,2,1);
 
 insert into personnage (per_nom,per_prenom,per_poids,per_argent,per_energie, per_humeur, per_faim, per_force,per_covid, per_vivant)
