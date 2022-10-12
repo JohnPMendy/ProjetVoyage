@@ -259,8 +259,7 @@ insert into competence(com_nom, com_des) values ('Réactivité','Réagit instant
       FOREIGN KEY(evt_meteo)
       REFERENCES environnement(env_id)
           ON UPDATE CASCADE
-          ON DELETE CASCADE;
-          
+          ON DELETE CASCADE
           
            ALTER TABLE reponse      
             ADD CONSTRAINT FK_ReponseObjet
@@ -268,6 +267,8 @@ insert into competence(com_nom, com_des) values ('Réactivité','Réagit instant
       REFERENCES objet(obj_id)
           ON UPDATE CASCADE
           ON DELETE CASCADE;
+
+
 
 
 
