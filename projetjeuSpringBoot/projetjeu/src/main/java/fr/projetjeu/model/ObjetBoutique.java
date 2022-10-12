@@ -10,26 +10,32 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 
 @Entity
-@Table(name = "objetBoutique")
+@Table(name = "objet_boutique")
 public class ObjetBoutique {
 	
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
 @Column(name = "objbtq_id")
+@JsonView(JsonViews.Common.class)
 private Integer ObjetBoutiqueId;
 
 @ManyToOne 
 @JoinColumn(name="objBtq_obj_id", nullable = false)
+@JsonView(JsonViews.BoutiqueAvecObjets.class)
 private  Objet objet;
 
 @ManyToOne 
 @JoinColumn(name="objBtq_btq_id", nullable = false)
+//@JsonView(JsonViews.Common.class)
 private Boutique boutique;
 
 
 @Column(name = "qte_boutique", nullable = false)
+@JsonView(JsonViews.Common.class)
 int quantiteBoutique;
 
 

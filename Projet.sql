@@ -176,21 +176,7 @@ ALTER TABLE inventaire
           ON UPDATE CASCADE
           ON DELETE CASCADE;
           
-   
-          ALTER TABLE evenement      
-            ADD CONSTRAINT FK_ReponseMeteo
-      FOREIGN KEY(evt_meteo)
-      REFERENCES environnement(env_id)
-          ON UPDATE CASCADE
-          ON DELETE CASCADE;
           
-           ALTER TABLE reponse      
-            ADD CONSTRAINT FK_ReponseObjet
-      FOREIGN KEY(rep_objet)
-      REFERENCES objet(obj_id)
-          ON UPDATE CASCADE
-          ON DELETE CASCADE;
-
 
 ALTER TABLE environnement
   ADD CONSTRAINT chk_meteo
@@ -201,24 +187,25 @@ ALTER TABLE environnement
   CHECK (env_type_environnement BETWEEN 0 AND 4);
           
 --Exemples pour faire des tests (Questions/Reponses)
-INSERT INTO evenement (evt_histoire) VALUES ('Event 1 : Locomotion?');
-INSERT INTO evenement (evt_histoire) VALUES ('Event 2 : Ouverture cockpit?');
-INSERT INTO evenement (evt_histoire) VALUES ('Event 3 : Vous êtes mort (FIN)');
-INSERT INTO evenement (evt_histoire) VALUES ('Event 4 : A suivre... (FIN)');
-INSERT INTO evenement (evt_histoire) VALUES ('Event 5 : Sauter du bateau?');
-INSERT INTO evenement (evt_histoire) VALUES ('Event 6 : Vous êtes mort (FIN)');
-INSERT INTO evenement (evt_histoire) VALUES ('Event 7 : A suivre... (FIN)');
-INSERT INTO evenement (evt_histoire) VALUES ('Event 8 : Vous êtes mort (FIN)');
+INSERT INTO evenement (evt_histoire,evt_meteo) VALUES 
+('Event 1 : Locomotion?',1),
+('Event 2 : Ouverture cockpit?',2),
+('Event 3 : Vous êtes mort (FIN)',1),
+('Event 4 : A suivre... (FIN)',2),
+('Event 5 : Sauter du bateau?',1),
+('Event 6 : Vous êtes mort (FIN)',2),
+('Event 7 : A suivre... (FIN)',1),
+('Event 8 : Vous êtes mort (FIN)',2);
 
-INSERT INTO reponse (rep_texte, rep_evenement_id, rep_prochain_evenement_id, rep_vivant) 
+INSERT INTO reponse (rep_texte, rep_evenement_id, rep_prochain_evenement_id, rep_vivant, rep_objet) 
 VALUES 
-('R1 : Avion', 1, 2, true ), 
-('R2 : Bateau', 1, 5, true ),
-('R3 : Nage', 1, 8, false ),
-('R1 : Oui', 2, 3, true ),
-('R2 : Non', 2, 4, false ),
-('R1 : Oui', 5, 6, false ),
-('R2 : Non', 5, 7, false );
+('R1 : Avion', 1, 2, true, 1 ), 
+('R2 : Bateau', 1, 5, true, 2),
+('R3 : Nage', 1, 8, false, 3 ),
+('R1 : Oui', 2, 3, true,1 ),
+('R2 : Non', 2, 4, false,3 ),
+('R1 : Oui', 5, 6, false,2 ),
+('R2 : Non', 5, 7, false,4 );
     
 
 INSERT INTO competence (com_nom, com_des) VALUES ('Négociation', 'Permet de négocier des prix lors des achats');
@@ -267,6 +254,20 @@ insert into competence(com_nom, com_des) values ('Connaissance sur le monde anim
 insert into competence(com_nom, com_des) values ('Culture générale','A une connaissance du monde approfondie');
 insert into competence(com_nom, com_des) values ('Réactivité','Réagit instantanément face à une attaque');
 
+       ALTER TABLE evenement      
+            ADD CONSTRAINT FK_EvenementMeteo
+      FOREIGN KEY(evt_meteo)
+      REFERENCES environnement(env_id)
+          ON UPDATE CASCADE
+          ON DELETE CASCADE;
+          
+          
+           ALTER TABLE reponse      
+            ADD CONSTRAINT FK_ReponseObjet
+      FOREIGN KEY(rep_objet)
+      REFERENCES objet(obj_id)
+          ON UPDATE CASCADE
+          ON DELETE CASCADE;
 
 
 
