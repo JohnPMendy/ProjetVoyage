@@ -147,6 +147,10 @@ div.InterfaceInventaire {
 .ValeurVivant,
 .NameMeteo,
 .ValeurMeteo,
+.NameEnvironnement,
+.ValeurEnvironnement,
+.NameTemperature,
+.ValeurTemperature,
 .NameHumeur,
 .ValeurHumeur {
   position: relative;
@@ -179,6 +183,8 @@ div.InterfaceInventaire {
 .Covid,
 .Vivant,
 .Meteo,
+.Environnement,
+.Temperature,
 .Humeur {
   display: flex;
   font-weight: bolder;

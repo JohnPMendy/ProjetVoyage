@@ -16,6 +16,12 @@ export class EventsService {
     let obj = {
       id: events.id,
       histoire: events.histoire,
+      environnementId: {
+        id: events.environnementId?.id,
+        temperature: events.environnementId?.temperature,
+        meteo: events.environnementId?.meteo,
+        environnement: events.environnementId?.environnement,
+      },
     };
     return obj;
   }

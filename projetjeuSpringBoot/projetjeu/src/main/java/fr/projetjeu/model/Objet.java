@@ -42,8 +42,8 @@ public class Objet {
 	@Column(name="obj_type",nullable=false)
 	private TypeObjets typeObjets;
 	
-	@OneToOne(mappedBy = "objetId")
-	private Reponse reponse;
+	@OneToMany(mappedBy = "objetId")
+	private List<Reponse> reponse;
 	
 	//@JsonView(JsonViews.Common.class)
 	@OneToMany(mappedBy="objet")

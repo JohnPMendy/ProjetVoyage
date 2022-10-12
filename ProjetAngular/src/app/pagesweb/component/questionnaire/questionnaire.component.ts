@@ -213,7 +213,8 @@ export class QuestionnaireComponent implements OnInit {
     if(socio>=1){
       //this.srvCompetence.getByNom("sociabilite").subscribe((data)=>console.log(data));
       //Ajout compétence socio aux compétences du perso
-      this.srvCompetence.getByNom("sociabilite").subscribe((data)=>personnage.competences?.push(data));
+      this.srvCompetence.getByNom("sociabilite").subscribe((data)=>{personnage.competences?.push(data); console.log(data)});
+
     }
     if(reac>=1){
       this.srvCompetence.getByNom("reactivite").subscribe((data)=>personnage.competences?.push(data));

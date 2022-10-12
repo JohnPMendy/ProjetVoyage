@@ -62,7 +62,7 @@ public class Reponse {
 	private boolean isAlive;
 	
 	
-	@OneToOne
+	@ManyToOne
 	@JsonView(JsonViews.Common.class)
 	@JoinColumn(name = "rep_objet", nullable = true)
 	private Objet objetId;

@@ -26,6 +26,8 @@ export class PersonnageService {
     return this.httpClient.put<Personnage>(PersonnageService.URL+'/'+personnage.id,this.personnageToJson(personnage));
   }
   public personnageToJson(personnage:Personnage){
+
+    let competencesJson=JSON.parse(JSON.stringify(personnage.competences));
     let obj={
       id:personnage.id,
       nom:personnage.nom,
@@ -38,7 +40,7 @@ export class PersonnageService {
       isCovided:personnage.isCovided,
       isAlive:personnage.isAlive,
       humeur:personnage.humeur,
-      competences:personnage.competences
+      competences:competencesJson,
 
     };
 
