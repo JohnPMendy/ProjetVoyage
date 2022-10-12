@@ -39,9 +39,6 @@ public class CompteService {
 	
 	
 	public void save(Compte compte) {
-		if (compte.getId() == null ) {
-			throw new InvalidEntityException("nom");
-		}
 		
 		repoCompte.save(compte);	
 	}

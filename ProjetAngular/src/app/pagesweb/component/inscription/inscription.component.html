@@ -1,22 +1,26 @@
 
 
-<form [formGroup]="form">
+<form class =Inscription (ngSubmit)="submit()" [formGroup]="form">
+  <div class ="PageCNX">Page d'inscription :</div>
   <div class="form-group">
     <input
-      formControlName="email"
-      placeholder="Email"/>
+      formControlName="emailCtrl"
+      placeholder="Email"
+    />
 
     <div class="alert alert-danger" *ngIf="form.get('email')?.dirty &&
       form.get('email')?.invalid">email obligatoire</div>
-    />
-  </div>
 
   <div class="form-group">
     <input
-      formControlName="password"
+      formControlName="passwordCtrl"
+      type="password"
       placeholder="Password"/>
       <div class="alert alert-danger" *ngIf="form.get('password')?.dirty &&
       form.get('password')?.invalid">Mot de passe obligatoire</div>
 
-  </div>
 
+
+  <button class="Enregistrer" type="submit">Enregistrer</button>
+
+<form>

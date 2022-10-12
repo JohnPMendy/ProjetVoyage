@@ -13,17 +13,14 @@ import { AuthService } from '../../service/auth.service';
 export class InscriptionComponent implements OnInit {
 
   //l'email c'est le login
-  email:string='';
-  password: string = '';
+
   compte:Compte=new Compte();
   form!: FormGroup;
   constructor(private authService: AuthService ,private compteService:CompteService,private router: Router) { }
 
   ngOnInit(): void {
-    this.compte.login=this.email;
-    this.compte.role='ROLE_USER';
-    this.compte.mdp=this.password;
-    this.compte.parties=[];
+
+
     this.form = new FormGroup({
 
       emailCtrl: new FormControl('', Validators.email),
@@ -33,10 +30,12 @@ export class InscriptionComponent implements OnInit {
 
   }
 submit(){
-  console.log("aaa");
+  this.compte.login=this.form.get('emailCtrl')?.value;
+  this.compte.role='ROLE_USER';
+  this.compte.mdp=this.form.get('passwordCtrl')?.value;
+  this.compte.parties=[];
   this.compteService.create(this.compte).subscribe((data) => {
-    this.router.navigateByUrl('/compte?action=create&id=' + data.id);
-    console.log("aaa");
+    this.router.navigateByUrl('/connection?action=create&id=' + data.id);
   });
 }
 
