@@ -34,17 +34,19 @@ public class BoutiqueRestController {
 	@Autowired
 	private ObjetService srvObjet; 
 	
+	@JsonView(JsonViews.BoutiqueAvecObjets.class)
 	@GetMapping("/{id}")
 	public Boutique findById(@PathVariable("id") Integer id) {
 		return srvBoutique.findById(id);
 	}
 	
-	@GetMapping("/{id}/objets")
-	@JsonView(JsonViews.BoutiqueAvecObjets.class)
-	public Boutique findByIdFetchObjets(@PathVariable("id") Integer id) {
-		return srvBoutique.findByIdFetchObjets(id);
-	}
+//	@GetMapping("/{id}/objets")
+//	@JsonView(JsonViews.BoutiqueAvecObjets.class)
+//	public Boutique findByIdFetchObjets(@PathVariable("id") Integer id) {
+//		return srvBoutique.findByIdFetchObjets(id);
+//	}
 	
+	@JsonView(JsonViews.BoutiqueAvecObjets.class)
 	@GetMapping("")
 	public List<Boutique> findAll() {
 		return srvBoutique.findAll();
