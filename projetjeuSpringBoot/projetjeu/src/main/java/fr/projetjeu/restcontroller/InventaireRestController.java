@@ -16,45 +16,46 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-import fr.projetjeu.model.Boutique;
-import fr.projetjeu.service.BoutiqueService;
+import fr.projetjeu.model.Inventaire;
+import fr.projetjeu.service.InventaireService;
+
 
 @RestController // controller rest pour webservice
-@RequestMapping("/api/boutique")
+@RequestMapping("/api/inventaire")
 @CrossOrigin(origins = "*")
-public class BoutiqueRestController {
+public class InventaireRestController {
 	
 	@Autowired
-	private BoutiqueService srvBoutique; 
+	private InventaireService srvInventaire; 
 	
 	@GetMapping("/{id}")
-	public Boutique findById(@PathVariable("id") Integer id) {
-		return srvBoutique.findById(id);
+	public Inventaire findById(@PathVariable("id") Integer id) {
+		return srvInventaire.findById(id);
 	}
 	
 
 	@GetMapping("")
-	public List<Boutique> findAll() {
-		return srvBoutique.findAll();
+	public List<Inventaire> findAll() {
+		return srvInventaire.findAll();
 	}
 	
 	
 	@PostMapping("")
 	@ResponseStatus(code=HttpStatus.CREATED)
 	//requestBody permet d'instancier un fournisseur (!!pas de classe abstraite) et recupère l'objet JSON en entrée et fait conresspondre les attributs
-	public Boutique create(@RequestBody Boutique boutique,BindingResult br){
+	public Inventaire create( @RequestBody Inventaire inventaire,BindingResult br){
 		if(br.hasErrors()) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
 		}
-		srvBoutique.save(boutique);
-		return srvBoutique.findById(boutique.getId());
+		srvInventaire.save(inventaire);
+		return srvInventaire.findById(inventaire.getId());
 	}
 	
 	@DeleteMapping("/{id}")
 	@ResponseStatus(code=HttpStatus.NO_CONTENT)//code 204 mais il prévient qu'il n'y a pas de contenu à supprimer mais la requete s'est bein déroulé
 	public void delete(@PathVariable("id")Integer id) {
 		try {
-			srvBoutique.deleteById(id);
+			srvInventaire.deleteById(id);
 		} catch (Exception e) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 		}

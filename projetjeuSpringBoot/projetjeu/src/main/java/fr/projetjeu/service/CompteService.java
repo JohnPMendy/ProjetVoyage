@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 import fr.projetjeu.exception.CompteNotFoundException;
 import fr.projetjeu.exception.EntityNotFoundException;
 import fr.projetjeu.exception.InvalidArgsException;
-import fr.projetjeu.exception.InvalidEntityException;
 import fr.projetjeu.model.Compte;
 import fr.projetjeu.repo.ICompteRepository;
 
