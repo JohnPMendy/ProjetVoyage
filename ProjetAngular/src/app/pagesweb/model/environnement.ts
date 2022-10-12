@@ -1,9 +1,9 @@
 export class Environnement {
-  public get TypeEnv(): string | undefined {
-    return this._TypeEnv;
+  public get environnement(): string | undefined {
+    return this._environnement;
   }
-  public set TypeEnv(value: string | undefined) {
-    this._TypeEnv = value;
+  public set environnement(value: string | undefined) {
+    this._environnement = value;
   }
   public get meteo(): string | undefined {
     return this._meteo;
@@ -34,6 +34,6 @@ export class Environnement {
     private _nom?: string,
     private _temperature?: number,
     private _meteo?: string,
-    private _TypeEnv?: string
+    private _environnement?: string
   ) {}
 }

@@ -147,12 +147,12 @@ div.InterfaceInventaire {
 .ValeurVivant,
 .NameMeteo,
 .ValeurMeteo,
-.NameHumeur,
-.ValeurHumeur,
 .NameEnvironnement,
 .ValeurEnvironnement,
 .NameTemperature,
-.ValeurTemperature {
+.ValeurTemperature,
+.NameHumeur,
+.ValeurHumeur {
   position: relative;
   z-index: 3;
   display: flex;
@@ -183,9 +183,9 @@ div.InterfaceInventaire {
 .Covid,
 .Vivant,
 .Meteo,
-.Humeur,
 .Environnement,
-.Temperature {
+.Temperature,
+.Humeur {
   display: flex;
   font-weight: bolder;
   flex: 1;

@@ -1,10 +1,10 @@
 import { Environnement } from './environnement';
 export class Events {
-  public get environnement(): Environnement | undefined {
-    return this._environnement;
+  public get environnementId(): Environnement | undefined {
+    return this._environnementId;
   }
-  public set environnement(value: Environnement | undefined) {
-    this._environnement = value;
+  public set environnementId(value: Environnement | undefined) {
+    this._environnementId = value;
   }
   public get histoire(): string | undefined {
     return this._histoire;
@@ -21,6 +21,6 @@ export class Events {
   constructor(
     private _id?: number,
     private _histoire?: string,
-    private _environnement?: Environnement
+    private _environnementId?: Environnement
   ) {}
 }
