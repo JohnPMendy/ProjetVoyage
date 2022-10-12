@@ -11,6 +11,8 @@ import { PartieComponent } from './pagesweb/component/partie/partie.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { DatePipe } from '@angular/common';
+import { QuestionnaireComponent } from './pagesweb/component/questionnaire/questionnaire.component';
+import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,7 @@ import { DatePipe } from '@angular/common';
     AccueilComponent,
     ConnectionComponent,
     PartieComponent,
+    QuestionnaireComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,6 +29,7 @@ import { DatePipe } from '@angular/common';
     RouterModule.forRoot(routes),
     HttpClientModule,
     ReactiveFormsModule,
+    MatRadioModule,
   ],
   providers: [
     DatePipe,

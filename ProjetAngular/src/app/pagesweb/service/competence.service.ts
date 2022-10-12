@@ -18,6 +18,10 @@ export class CompetenceService {
   public getById(id:number):Observable<Competence>{
     return this.httpClient.get<Competence>(CompetenceService.URL+'/'+id);
   }
+
+  public getByNom(nom:string):Observable<Competence>{
+    return this.httpClient.get<Competence>(CompetenceService.URL+'/name/'+nom);
+  }
   public delete(id:number):Observable<void>{
     return this.httpClient.delete<void>(CompetenceService.URL+'/'+id);
   }

@@ -1,0 +1,55 @@
+<form [formGroup]="formQuestionnaire">
+
+  <div class="form-group">
+    <label for="nom">nom:</label>
+    <input formControlName="nom"/>
+    <div class="alert alert-danger" *ngIf="formQuestionnaire.get('nom')?.dirty &&
+    formQuestionnaire.get('nom')?.invalid">nom obligatoire</div>
+  </div>
+  <div class="form-group">
+    <label for="prenom">prenom:</label>
+    <input formControlName="prenom"/>
+    <div class="alert alert-danger" *ngIf="formQuestionnaire.get('prenom')?.dirty &&
+    formQuestionnaire.get('prenom')?.invalid">prenom obligatoire</div>
+  </div>
+
+  <div class="form-group">
+    <label for="age">Vous avez...</label>
+    <mat-radio-group name="age" aria-labelledby="age" formControlName="age" class="example-radio-group" >
+      <mat-radio-button class="example-radio-button" *ngFor="let age of ages; let index= index " [value]="index">{{age}}</mat-radio-button>
+    </mat-radio-group>
+  </div>
+  <div class="form-group">
+    <label for="weekend">Le week-end...</label>
+    <mat-radio-group name="weekend" aria-labelledby="weekend" formControlName="weekend" class="example-radio-group" >
+      <mat-radio-button class="example-radio-button" *ngFor="let weekend of weekendList; let index=index" [value]="index">{{weekend}}</mat-radio-button>
+    </mat-radio-group>
+  </div>
+  <div class="form-group">
+    <label for="jeu">Si vous jouez aux jeux-vidéos, vous préférez jouer à...</label>
+    <mat-radio-group name="jeu" aria-labelledby="jeu" formControlName="jeu" class="example-radio-group" >
+      <mat-radio-button class="example-radio-button" *ngFor="let jeu of jeux; let index=index" [value]="index">{{jeu}}</mat-radio-button>
+    </mat-radio-group>
+  </div>
+
+  <div class="form-group">
+    <label for="matiere">Votre matière préférée à l'école ?</label>
+    <mat-radio-group name="matiere" aria-labelledby="matiere" formControlName="matiere" class="example-radio-group" >
+      <mat-radio-button class="example-radio-button" *ngFor="let matiere of matieres; let index=index" [value]="index">{{matiere}}</mat-radio-button>
+    </mat-radio-group>
+  </div>
+
+  <div class="form-group">
+    <label for="saison">Votre saison préférée ?</label>
+    <mat-radio-group name="saison" aria-labelledby="saison" formControlName="saison" class="example-radio-group" >
+      <mat-radio-button class="example-radio-button" *ngFor="let saison of saisons; let index=index" [value]="index">{{saison}}</mat-radio-button>
+    </mat-radio-group>
+  </div>
+
+  <div>
+    <button (click)="onSubmitForm()">
+      enregistrer
+    </button>
+  </div>
+
+  </form>

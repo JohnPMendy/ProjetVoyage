@@ -41,6 +41,17 @@ public class CompetenceService {
 		
 	}
 	
+	public Competence findByNom(String nom) {
+
+		Competence competence = this.repoCompetence.findByNom(nom).get();
+		
+		if(competence==null) {
+			throw new EntityNotFoundException();
+		}
+		return competence;
+		
+	}
+	
 	public void save(Competence competence) {
 		if (competence.getNom() == null || competence.getNom().isBlank()) {
 			throw new InvalidEntityException("nom");

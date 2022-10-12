@@ -1,3 +1,4 @@
+import { QuestionnaireComponent } from './pagesweb/component/questionnaire/questionnaire.component';
 import { AnonymousGuardService } from './pagesweb/service/anonymous-guard.service';
 import { JeuComponent } from './pagesweb/component/jeu/jeu.component';
 import { Routes } from '@angular/router';
@@ -26,6 +27,12 @@ export const routes: Routes = [
     path: 'partie',
     component: PartieComponent,canActivate:[AuthenticatedGuardService]
   },
+
+  {
+    path: 'questionnaire',
+    component: QuestionnaireComponent,canActivate:[AuthenticatedGuardService]
+  },
+
 
   {
     path: '', redirectTo:'partie',pathMatch:'full'
