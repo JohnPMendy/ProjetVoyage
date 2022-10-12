@@ -34,7 +34,8 @@ CREATE TABLE partie(
 
 CREATE TABLE evenement(
   evt_id SERIAL PRIMARY KEY,
-  evt_histoire VARCHAR(2000) NOT NULL
+  evt_histoire VARCHAR(2000) NOT NULL,
+  evt_meteo INT NULL
 );
 
 
@@ -50,7 +51,6 @@ CREATE TABLE reponse (
   rep_force INT NULL,
   rep_covid INT NULL,
   rep_vivant BOOLEAN NULL,
-  rep_meteo INT NULL,
   rep_objet INT NULL
 );
 
@@ -177,9 +177,9 @@ ALTER TABLE inventaire
           ON DELETE CASCADE;
           
    
-          ALTER TABLE reponse      
+          ALTER TABLE evenement      
             ADD CONSTRAINT FK_ReponseMeteo
-      FOREIGN KEY(rep_meteo)
+      FOREIGN KEY(evt_meteo)
       REFERENCES environnement(env_id)
           ON UPDATE CASCADE
           ON DELETE CASCADE;
