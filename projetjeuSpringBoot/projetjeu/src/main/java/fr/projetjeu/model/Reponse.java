@@ -61,10 +61,6 @@ public class Reponse {
 	@Column(name = "rep_vivant", nullable = true)
 	private boolean isAlive;
 	
-	@OneToOne
-	@JsonView(JsonViews.Common.class)
-	@JoinColumn(name = "rep_meteo", nullable = true)
-	private Environnement environnementId;
 	
 	@OneToOne
 	@JsonView(JsonViews.Common.class)

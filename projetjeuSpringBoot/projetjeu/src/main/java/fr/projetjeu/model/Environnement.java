@@ -47,7 +47,7 @@ public class Environnement {
 	private List<Partie> parties;
 	
 	@OneToOne(mappedBy = "environnementId")
-	private Reponse reponse;
+	private Events event;
 	
 	public Integer getId() {
 		return id;
