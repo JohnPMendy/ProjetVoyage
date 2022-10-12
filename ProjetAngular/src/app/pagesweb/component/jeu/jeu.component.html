@@ -61,20 +61,24 @@
         <div class="NameEnvironnement">Lieu</div>
 
         <div class="ValeurEnvironnement">
-          {{ events.environnementId?.meteo }}
+          {{ events.environnementId?.environnement }}
         </div>
       </div>
 
       <div class="Meteo">
         <div class="NameMeteo">Meteo</div>
 
-        <div class="ValeurMeteo"></div>
+        <div class="ValeurMeteo">
+          {{ events.environnementId?.meteo }}
+        </div>
       </div>
 
       <div class="Temperature">
         <div class="NameTemperature">Temperature</div>
 
-        <div class="ValeurTemperature"></div>
+        <div class="ValeurTemperature">
+          {{ events.environnementId?.temperature }}
+        </div>
       </div>
 
       <div class="Humeur">

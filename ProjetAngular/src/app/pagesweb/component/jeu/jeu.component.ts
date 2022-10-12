@@ -38,8 +38,6 @@ export class JeuComponent implements OnInit {
 
     this.eventsService.findById(this.events.id).subscribe((data) => {
       this.events = data;
-      console.log(this.events);
-      console.log(this.events.environnementId?.environnement);
     });
 
     this.reponsesService.findById(this.events.id).subscribe((data) => {
