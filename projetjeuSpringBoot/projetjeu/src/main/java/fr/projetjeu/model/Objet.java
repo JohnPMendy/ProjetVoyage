@@ -1,6 +1,8 @@
 package fr.projetjeu.model;
 
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -8,6 +10,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -39,8 +42,8 @@ public class Objet {
 	@Column(name="obj_type",nullable=false)
 	private TypeObjets typeObjets;
 	
-	@OneToOne(mappedBy = "objetId")
-	private Reponse reponse;
+	@OneToMany(mappedBy = "objetId")
+	private List<Reponse> reponse;
 	
 	
 	//@ManyToOne
