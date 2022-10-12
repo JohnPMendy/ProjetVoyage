@@ -15,13 +15,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./partie.component.css'],
 })
 export class PartieComponent implements OnInit {
-  parties!: Observable<Partie[]>;
-  partiesTest!: Observable<Partie[]>;
+  parties: Partie[] = [];
   compte!: Compte;
-  dateFormat!: string;
-  hourFormat!: string;
   partie: Partie = new Partie();
   personnage!: Personnage;
+  listId: number[] = [];
 
   constructor(
     private datePipe: DatePipe,
@@ -43,11 +41,22 @@ export class PartieComponent implements OnInit {
       for (p of data.parties!) {
         listId.push(p.id as number);
       }
-      console.log(listId);
-      this.parties = this.partieService.getAll();
 
-      console.log(this.parties);
-      console.log(this.parties.operator?.call.length);
+      let i: number;
+      for (i of listId) {
+        this.partieService.findById(i).subscribe((params) => {
+          let play: Partie = new Partie();
+          play.id = params['id'];
+          play.compte = params['compte'];
+          play.personnage = params['personnage'];
+          play.environment = params['environment'];
+          play.inventaire = params['inventaire'];
+          play.date = params['date'];
+          play.eventRunning = params['eventRunning'];
+          console.log(play);
+          this.parties.push(play);
+        });
+      }
     });
   }
 

@@ -1,6 +1,8 @@
 <div class="tabs">
   <button class="nouvellePartie" (click)="creation()" routerLinkActive="active">
-    <a [routerLink]="['/partie']" routerLinkActive="active"> Nouvelle Partie</a>
+    <a [routerLink]="['/questionnaire']" routerLinkActive="active">
+      Nouvelle Partie</a
+    >
   </button>
 
   <div class="parties">
@@ -9,19 +11,21 @@
       <table class="partiesEnCours">
         <tr>
           <th></th>
-          <th>Nom Joueur</th>
+          <th>Personnage</th>
           <th>Date</th>
           <th>Heure</th>
           <th></th>
         </tr>
         <!--tr *ngFor="let p of compte?.parties"-->
-        <tr *ngFor="let p of parties | async">
+        <tr *ngFor="let p of parties">
           <td>
             <button class="boutonVersPartie">
               <a [routerLink]="['/jeu']">Charger</a>
             </button>
           </td>
-          <td>{{ p.personnage?.nom }} {{ p.personnage?.prenom }}</td>
+          <td>
+            {{ p.personnage?.nom | uppercase }} {{ p.personnage?.prenom }}
+          </td>
           <td>
             {{ p.date | date: "y:MM:dd" }}
           </td>
@@ -43,7 +47,7 @@
         <tbody>
           <tr>
             <td class="leftHeader" colspan="2">Nombres de parties jouées :</td>
-            <td class="compteur">{{ parties.operator?.call?.length }}</td>
+            <td class="compteur">{{ parties.length }}</td>
           </tr>
           <tr>
             <td class="leftHeader" colspan="2">
