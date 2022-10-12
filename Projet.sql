@@ -257,7 +257,15 @@ VALUES
 ('Env2',27,2,2);
 
 INSERT INTO compte (login,mdp,role) VALUES('admin','$2a$10$1oGuBqgzfGzhkLX1hIXIdOUpOy5TswqdK4Y5Nn88ZZJMdAAvc1Xua','ROLE_ADMIN');
-INSERT INTO compte (login,mdp,role) VALUES('user','$2a$10$tsTiy0kKXpWc9qhYRtkqA.Ku2kjdC5ma5mEUYcFAhsHhrVgoowRyO','ROLE_USER')
+INSERT INTO compte (login,mdp,role) VALUES('user','$2a$10$tsTiy0kKXpWc9qhYRtkqA.Ku2kjdC5ma5mEUYcFAhsHhrVgoowRyO','ROLE_USER');
+
+insert into competence(com_nom, com_des) values ('Organisation','Sait comment organiser rapidement ses affaires');
+insert into competence(com_nom, com_des) values ('Linguistique','Ne connait pas de difficulté avec les langues étrangères');
+insert into competence(com_nom, com_des) values ('Sociabilté','Communique aisément avec les gens');
+insert into competence(com_nom, com_des) values ('Orientation','Peut se retrouver facilement dans un endroit même si il ne le connait pas');
+insert into competence(com_nom, com_des) values ('Connaissance sur le monde animal','Peut facilement apprivoiser les animaux sauvages');
+insert into competence(com_nom, com_des) values ('Culture générale','A une connaissance du monde approfondie');
+insert into competence(com_nom, com_des) values ('Réactivité','Réagit instantanément face à une attaque');
 
 
 

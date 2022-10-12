@@ -50,6 +50,17 @@ public class CompetenceRestController {
 		}
 	}
 	
+	@GetMapping("/name/{nom}")
+	@JsonView(JsonViews.Competence.class)
+	public Competence findByNom(@PathVariable("nom") String nom) {
+		try {
+		return srvCompetence.findByNom(nom);
+		}
+		catch(Exception e) {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+		}
+	}
+	
 	@PostMapping("")
 	@ResponseStatus(code=HttpStatus.CREATED)
 	@JsonView(JsonViews.Competence.class)

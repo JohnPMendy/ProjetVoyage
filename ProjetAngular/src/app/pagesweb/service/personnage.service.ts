@@ -42,7 +42,16 @@ export class PersonnageService {
 
     };
 
+
     console.log(obj);
     return obj;
+  }
+
+  public create(personnage : Personnage):Observable<Personnage>{
+    return this.httpClient.post<Personnage>(
+      PersonnageService.URL, this.personnageToJson(personnage)
+
+
+    );
   }
 }

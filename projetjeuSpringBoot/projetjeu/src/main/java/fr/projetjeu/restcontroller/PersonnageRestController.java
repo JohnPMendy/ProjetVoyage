@@ -65,7 +65,7 @@ public class PersonnageRestController {
 	@PostMapping("")
 	@ResponseStatus(code= HttpStatus.CREATED)
 	@JsonView(JsonViews.Personnage.class)
-	public Personnage personnage(@Valid @RequestBody Personnage personnage, BindingResult br) {
+	public Personnage create(@Valid @RequestBody Personnage personnage, BindingResult br) {
 		if(br.hasErrors()) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
 		}
