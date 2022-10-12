@@ -176,13 +176,6 @@ ALTER TABLE inventaire
           ON UPDATE CASCADE
           ON DELETE CASCADE;
           
-   
-          ALTER TABLE evenement      
-            ADD CONSTRAINT FK_ReponseMeteo
-      FOREIGN KEY(evt_meteo)
-      REFERENCES environnement(env_id)
-          ON UPDATE CASCADE
-          ON DELETE CASCADE;
           
            ALTER TABLE reponse      
             ADD CONSTRAINT FK_ReponseObjet
@@ -190,7 +183,7 @@ ALTER TABLE inventaire
       REFERENCES objet(obj_id)
           ON UPDATE CASCADE
           ON DELETE CASCADE;
-
+          
 
 ALTER TABLE environnement
   ADD CONSTRAINT chk_meteo
@@ -201,14 +194,15 @@ ALTER TABLE environnement
   CHECK (env_type_environnement BETWEEN 0 AND 4);
           
 --Exemples pour faire des tests (Questions/Reponses)
-INSERT INTO evenement (evt_histoire) VALUES ('Event 1 : Locomotion?');
-INSERT INTO evenement (evt_histoire) VALUES ('Event 2 : Ouverture cockpit?');
-INSERT INTO evenement (evt_histoire) VALUES ('Event 3 : Vous êtes mort (FIN)');
-INSERT INTO evenement (evt_histoire) VALUES ('Event 4 : A suivre... (FIN)');
-INSERT INTO evenement (evt_histoire) VALUES ('Event 5 : Sauter du bateau?');
-INSERT INTO evenement (evt_histoire) VALUES ('Event 6 : Vous êtes mort (FIN)');
-INSERT INTO evenement (evt_histoire) VALUES ('Event 7 : A suivre... (FIN)');
-INSERT INTO evenement (evt_histoire) VALUES ('Event 8 : Vous êtes mort (FIN)');
+INSERT INTO evenement (evt_histoire,evt_meteo) VALUES 
+('Event 1 : Locomotion?',1),
+('Event 2 : Ouverture cockpit?',2),
+('Event 3 : Vous êtes mort (FIN)',1),
+('Event 4 : A suivre... (FIN)',2),
+('Event 5 : Sauter du bateau?',1),
+('Event 6 : Vous êtes mort (FIN)',2),
+('Event 7 : A suivre... (FIN)',1),
+('Event 8 : Vous êtes mort (FIN)',2);
 
 INSERT INTO reponse (rep_texte, rep_evenement_id, rep_prochain_evenement_id, rep_vivant) 
 VALUES 
@@ -267,7 +261,12 @@ insert into competence(com_nom, com_des) values ('Connaissance sur le monde anim
 insert into competence(com_nom, com_des) values ('Culture générale','A une connaissance du monde approfondie');
 insert into competence(com_nom, com_des) values ('Réactivité','Réagit instantanément face à une attaque');
 
-
+       ALTER TABLE evenement      
+            ADD CONSTRAINT FK_EvenementMeteo
+      FOREIGN KEY(evt_meteo)
+      REFERENCES environnement(env_id)
+          ON UPDATE CASCADE
+          ON DELETE CASCADE;
 
 
 
