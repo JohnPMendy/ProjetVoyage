@@ -7,7 +7,7 @@ import { Objet } from '../model/objet';
   providedIn: 'root',
 })
 export class ObjetService {
-  private static URL = 'http://localhost:8080/eshop/api/objet';
+  private static URL = 'http://localhost:8080/voyages/api/objet';
 
   constructor(private httpClient: HttpClient) {}
 

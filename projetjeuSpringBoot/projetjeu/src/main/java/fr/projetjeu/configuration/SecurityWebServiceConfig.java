@@ -20,6 +20,7 @@ public class SecurityWebServiceConfig {
 				   .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 				   .and()
 				   .authorizeRequests()
+				        .antMatchers(HttpMethod.POST,"/api/compte").permitAll()
 				   		.antMatchers(HttpMethod.OPTIONS).permitAll()
 				   		.antMatchers(HttpMethod.POST).authenticated()
 				   		.antMatchers(HttpMethod.PUT).authenticated()

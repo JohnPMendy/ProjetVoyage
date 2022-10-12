@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
+import com.fasterxml.jackson.annotation.JsonView;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
@@ -29,21 +32,28 @@ public class CompteRestController {
 	@Autowired
 	private CompteService srvCompte;
 	
+
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+
+
 	@JsonView(JsonViews.CompteAvecParties.class)
+
 	@GetMapping("/{id}/parties")
 	public Compte findByIdFetchParties(@PathVariable("id")Integer id) {
 		return srvCompte.findByIdFetchParties(id);
 	}
 
-	
 	@JsonView(JsonViews.Compte.class)
 	@PostMapping("")
 	@ResponseStatus(code=HttpStatus.CREATED)
 	//requestBody permet d'instancier un fournisseur (!!pas de classe abstraite) et recupère l'objet JSON en entrée et fait conresspondre les attributs
-	public Compte create(@Valid @RequestBody Compte compte,BindingResult br){
+	public Compte create(@RequestBody Compte compte,BindingResult br){
 		if(br.hasErrors()) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
 		}
+		
+		compte.setMdp(passwordEncoder.encode(compte.getMdp()));
 		srvCompte.save(compte);
 		return srvCompte.findById(compte.getId());
 	}
