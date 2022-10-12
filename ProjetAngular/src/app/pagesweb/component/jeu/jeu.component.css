@@ -146,7 +146,9 @@ div.InterfaceInventaire {
 .NameVivant,
 .ValeurVivant,
 .NameMeteo,
-.ValeurMeteo {
+.ValeurMeteo,
+.NameHumeur,
+.ValeurHumeur {
   position: relative;
   z-index: 3;
   display: flex;
@@ -176,7 +178,8 @@ div.InterfaceInventaire {
 .Force,
 .Covid,
 .Vivant,
-.Meteo {
+.Meteo,
+.Humeur {
   display: flex;
   font-weight: bolder;
   flex: 1;
@@ -404,7 +407,4 @@ div.Histoire {
 
 .popup-chargmement .popup-content {
   padding: 10px;
-}
-
-.Reponse1 {
 }
