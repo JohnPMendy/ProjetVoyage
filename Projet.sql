@@ -34,7 +34,8 @@ CREATE TABLE partie(
 
 CREATE TABLE evenement(
   evt_id SERIAL PRIMARY KEY,
-  evt_histoire VARCHAR(2000) NOT NULL
+  evt_histoire VARCHAR(2000) NOT NULL,
+  evt_meteo INT NULL
 );
 
 
@@ -50,7 +51,6 @@ CREATE TABLE reponse (
   rep_force INT NULL,
   rep_covid INT NULL,
   rep_vivant BOOLEAN NULL,
-  rep_meteo INT NULL,
   rep_objet INT NULL
 );
 
@@ -177,9 +177,9 @@ ALTER TABLE inventaire
           ON DELETE CASCADE;
           
    
-          ALTER TABLE reponse      
+          ALTER TABLE evenement      
             ADD CONSTRAINT FK_ReponseMeteo
-      FOREIGN KEY(rep_meteo)
+      FOREIGN KEY(evt_meteo)
       REFERENCES environnement(env_id)
           ON UPDATE CASCADE
           ON DELETE CASCADE;
@@ -257,7 +257,15 @@ VALUES
 ('Env2',27,2,2);
 
 INSERT INTO compte (login,mdp,role) VALUES('admin','$2a$10$1oGuBqgzfGzhkLX1hIXIdOUpOy5TswqdK4Y5Nn88ZZJMdAAvc1Xua','ROLE_ADMIN');
-INSERT INTO compte (login,mdp,role) VALUES('user','$2a$10$tsTiy0kKXpWc9qhYRtkqA.Ku2kjdC5ma5mEUYcFAhsHhrVgoowRyO','ROLE_USER')
+INSERT INTO compte (login,mdp,role) VALUES('user','$2a$10$tsTiy0kKXpWc9qhYRtkqA.Ku2kjdC5ma5mEUYcFAhsHhrVgoowRyO','ROLE_USER');
+
+insert into competence(com_nom, com_des) values ('Organisation','Sait comment organiser rapidement ses affaires');
+insert into competence(com_nom, com_des) values ('Linguistique','Ne connait pas de difficulté avec les langues étrangères');
+insert into competence(com_nom, com_des) values ('Sociabilté','Communique aisément avec les gens');
+insert into competence(com_nom, com_des) values ('Orientation','Peut se retrouver facilement dans un endroit même si il ne le connait pas');
+insert into competence(com_nom, com_des) values ('Connaissance sur le monde animal','Peut facilement apprivoiser les animaux sauvages');
+insert into competence(com_nom, com_des) values ('Culture générale','A une connaissance du monde approfondie');
+insert into competence(com_nom, com_des) values ('Réactivité','Réagit instantanément face à une attaque');
 
 
 

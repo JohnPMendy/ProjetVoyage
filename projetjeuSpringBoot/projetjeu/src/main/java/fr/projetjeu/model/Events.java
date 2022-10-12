@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -39,6 +40,11 @@ public class Events {
 	// Parties utilisants l'event
 	@OneToMany(mappedBy = "eventRunning")
 	private List<Partie> parties;
+	
+	@OneToOne
+	@JsonView(JsonViews.Common.class)
+	@JoinColumn(name = "evt_meteo", nullable = true)
+	private Environnement environnementId;
 
 	// Getters et setters
 	public Integer getId() {

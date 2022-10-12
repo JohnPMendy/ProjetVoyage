@@ -11,7 +11,12 @@ import { PartieComponent } from './pagesweb/component/partie/partie.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { DatePipe } from '@angular/common';
+
 import { InscriptionComponent } from './pagesweb/component/inscription/inscription.component';
+
+import { QuestionnaireComponent } from './pagesweb/component/questionnaire/questionnaire.component';
+import { MatRadioModule } from '@angular/material/radio';
+
 
 @NgModule({
   declarations: [
@@ -21,6 +26,7 @@ import { InscriptionComponent } from './pagesweb/component/inscription/inscripti
     ConnectionComponent,
     PartieComponent,
     InscriptionComponent,
+    QuestionnaireComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,6 +34,7 @@ import { InscriptionComponent } from './pagesweb/component/inscription/inscripti
     RouterModule.forRoot(routes),
     HttpClientModule,
     ReactiveFormsModule,
+    MatRadioModule,
   ],
   providers: [
     DatePipe,
