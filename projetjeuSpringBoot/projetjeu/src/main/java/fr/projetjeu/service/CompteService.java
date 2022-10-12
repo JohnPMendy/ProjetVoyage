@@ -8,7 +8,6 @@ import fr.projetjeu.exception.EntityNotFoundException;
 import fr.projetjeu.exception.InvalidArgsException;
 import fr.projetjeu.exception.InvalidEntityException;
 import fr.projetjeu.model.Compte;
-import fr.projetjeu.model.Objet;
 import fr.projetjeu.repo.ICompteRepository;
 
 @Service
@@ -16,7 +15,7 @@ public class CompteService {
 	@Autowired
 	private ICompteRepository repoCompte;
 	
-	public Compte findByIdFetchParties(Long id) {
+	public Compte findByIdFetchParties(Integer id) {
 		return repoCompte.findByIdFetchingParties(id).orElseThrow(CompteNotFoundException::new);
 	}
 

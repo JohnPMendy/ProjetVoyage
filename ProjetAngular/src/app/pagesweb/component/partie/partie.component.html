@@ -6,7 +6,7 @@
     routerLinkActive="active"
     >Nouvelle partie</a
   >
-  <button class="nouvellePartie">
+  <button class="nouvellePartie" (click)="creation()" routerLinkActive="active">
     <a [routerLink]="['/partie']" routerLinkActive="active"> Nouvelle Partie</a>
   </button>
 
@@ -25,11 +25,11 @@
         <tr *ngFor="let p of parties">
           <td>
             <button class="boutonVersPartie">
-              <a [routerLink]="['/jeu']">Partie</a>
+              <a [routerLink]="['/jeu']">Charger</a>
             </button>
           </td>
           <td>
-            {{ p.personnage?.nom | uppercase }} {{ p.personnage?.prenom }}
+            {{ p.personnage?.id }}
           </td>
           <td>
             {{ p.date | date: "y:MM:dd" }}

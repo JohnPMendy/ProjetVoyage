@@ -20,7 +20,7 @@ export class PartieService {
   }
 
   public delete(id: number): Observable<void> {
-    return this.httpClient.delete<void>(PartieService + '/' + id);
+    return this.httpClient.delete<void>(PartieService.URL + '/' + id);
   }
 
   public findAllByCompteId(id: number): Observable<Partie[]> {

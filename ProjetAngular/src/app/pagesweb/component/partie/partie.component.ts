@@ -32,12 +32,18 @@ export class PartieComponent implements OnInit {
 
   ngOnInit(): void {
     this.compte = JSON.parse(sessionStorage.getItem('compte')!);
-    console.log(this.compte.parties);
+    // console.log(this.compte.parties);
     this.listParties(this.compte.id as number);
   }
 
   listParties(id: number) {
+    let listId: number[] = [];
     this.compteService.getByIdWithParties(id).subscribe((data) => {
+      let p: Partie;
+      for (p of data.parties!) {
+        listId.push(p.id as number);
+      }
+      console.log(listId);
       this.parties = data.parties!;
     });
   }
