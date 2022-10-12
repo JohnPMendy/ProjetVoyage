@@ -1,10 +1,12 @@
 package fr.projetjeu.restcontroller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,43 +16,51 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.fasterxml.jackson.annotation.JsonView;
+import fr.projetjeu.model.Inventaire;
+import fr.projetjeu.service.InventaireService;
 
-import fr.projetjeu.model.Compte;
-import fr.projetjeu.model.JsonViews;
-import fr.projetjeu.service.CompteService;
 
-@RestController
-@RequestMapping("/api/compte")
+@RestController // controller rest pour webservice
+@RequestMapping("/api/inventaire")
 @CrossOrigin(origins = "*")
-public class CompteRestController {
+public class InventaireRestController {
 	
 	@Autowired
-	private CompteService srvCompte;
+	private InventaireService srvInventaire; 
 	
-
-	@Autowired
-	private PasswordEncoder passwordEncoder;
-
-
-	@JsonView(JsonViews.CompteAvecParties.class)
-
-	@GetMapping("/{id}/parties")
-	public Compte findByIdFetchParties(@PathVariable("id")Long id) {
-		return srvCompte.findByIdFetchParties(id);
+	@GetMapping("/{id}")
+	public Inventaire findById(@PathVariable("id") Integer id) {
+		return srvInventaire.findById(id);
 	}
+	
 
-	@JsonView(JsonViews.Compte.class)
+	@GetMapping("")
+	public List<Inventaire> findAll() {
+		return srvInventaire.findAll();
+	}
+	
+	
 	@PostMapping("")
 	@ResponseStatus(code=HttpStatus.CREATED)
 	//requestBody permet d'instancier un fournisseur (!!pas de classe abstraite) et recupère l'objet JSON en entrée et fait conresspondre les attributs
-	public Compte create(@RequestBody Compte compte,BindingResult br){
+	public Inventaire create( @RequestBody Inventaire inventaire,BindingResult br){
 		if(br.hasErrors()) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
 		}
-		
-		compte.setMdp(passwordEncoder.encode(compte.getMdp()));
-		srvCompte.save(compte);
-		return srvCompte.findById(compte.getId());
+		srvInventaire.save(inventaire);
+		return srvInventaire.findById(inventaire.getId());
 	}
-}
+	
+	@DeleteMapping("/{id}")
+	@ResponseStatus(code=HttpStatus.NO_CONTENT)//code 204 mais il prévient qu'il n'y a pas de contenu à supprimer mais la requete s'est bein déroulé
+	public void delete(@PathVariable("id")Integer id) {
+		try {
+			srvInventaire.deleteById(id);
+		} catch (Exception e) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+		}
+	}
+	
+
+	}
+	

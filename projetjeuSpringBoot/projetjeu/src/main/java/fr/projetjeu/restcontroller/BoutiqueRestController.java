@@ -2,8 +2,6 @@ package fr.projetjeu.restcontroller;
 
 import java.util.List;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
@@ -44,7 +42,7 @@ public class BoutiqueRestController {
 	@PostMapping("")
 	@ResponseStatus(code=HttpStatus.CREATED)
 	//requestBody permet d'instancier un fournisseur (!!pas de classe abstraite) et recupère l'objet JSON en entrée et fait conresspondre les attributs
-	public Boutique create(@Valid @RequestBody Boutique boutique,BindingResult br){
+	public Boutique create(@RequestBody Boutique boutique,BindingResult br){
 		if(br.hasErrors()) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
 		}
@@ -62,9 +60,6 @@ public class BoutiqueRestController {
 		}
 	}
 	
-	@GetMapping("/{id}/objets")
-	public Boutique findByIdFetchProduits(@PathVariable("id") Integer id) {
-		return srvBoutique.findByIdFetchObjets(id);
-	}
+
 	}
 	
