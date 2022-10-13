@@ -28,7 +28,7 @@ export class JeuComponent implements OnInit {
     private inventaireService: inventaireService
   ) {}
 
-  finDePartie: boolean | undefined = true;
+  finDePartie: boolean | undefined = false;
   numeroCompte: number = 1;
   numeroPartie: number = 1;
 
@@ -47,7 +47,6 @@ export class JeuComponent implements OnInit {
   }
 
   initialisation() {
-    this.finDePartie = true;
     this.events.id = 1;
     this.covid = 'Non';
     this.vivant = 'Oui';
@@ -71,7 +70,7 @@ export class JeuComponent implements OnInit {
 
   prochainId(number: number): void {
     this.events.id = this.reponses[number].prochainEvenementId?.id;
-    this.finDePartie = this.reponses[number].isAlive;
+    this.finDePartie = this.reponses[number].Fin;
     this.personnage!.isAlive = this.finDePartie;
 
     this.personnage!.argent =
