@@ -38,6 +38,10 @@ export class JeuComponent implements OnInit {
     return reponses.length;
   }
 
+  ajoutObjetInventaire(number: number) {
+    console.log(this.reponses[number]);
+  }
+
   initialisation() {
     this.finDePartie = true;
     this.events.id = 1;
@@ -92,6 +96,8 @@ export class JeuComponent implements OnInit {
       this.personnage!.poids! +
       this.reponses[number].ajoutPoids! -
       this.reponses[number].conditionPoids!;
+
+    this.ajoutObjetInventaire(number);
 
     console.log(Math.random());
     if (Math.random() < this.reponses[number]!.ajoutCovid! / 100) {
