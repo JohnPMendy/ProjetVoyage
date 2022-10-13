@@ -1,26 +1,33 @@
-<form class =Inscription (ngSubmit)="submit()" [formGroup]="form">
-  <div class ="PageCNX">Page d'inscription :</div>
+<form class="Inscription" (ngSubmit)="submit()" [formGroup]="form">
+  <div class="PageCNX">Page d'inscription :</div>
   <div class="form-group">
-    <input
-      formControlName="loginCtrl"
-      placeholder="Login"
-    />
+    <input formControlName="loginCtrl" placeholder="Login" />
 
-      <div class="alert alert-danger" *ngIf="form.get('loginCtrl')?.dirty &&
-      form.get('loginCtrl')?.invalid">Format mail obligatoire</div>
+    <div
+      class="alert alert-danger"
+      *ngIf="form.get('loginCtrl')?.dirty && form.get('loginCtrl')?.invalid"
+    >
+      Format mail obligatoire
+    </div>
   </div>
 
   <div class="form-group">
     <input
       formControlName="passwordCtrl"
       type="password"
-      placeholder="Password"/>
-      <div class="alert alert-danger" *ngIf="form.dirty &&
-      form.hasError('error')">Mot de passe egal login
-      </div>
+      placeholder="Password"
+    />
+    <div
+      class="alert alert-danger"
+      *ngIf="form.dirty && form.hasError('error')"
+    >
+      Mot de passe egal login
+    </div>
   </div>
 
+  <button class="Enregistrer" type="submit" [disabled]="form.invalid">
+    Enregistrer
+  </button>
 
-  <button class="Enregistrer" type="submit" [disabled]="form.invalid">Enregistrer</button>
-
-<form>
+  <form></form>
+</form>
