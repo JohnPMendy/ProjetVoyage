@@ -266,12 +266,12 @@ INSERT INTO compte (login,mdp,role) VALUES('user','$2a$10$tsTiy0kKXpWc9qhYRtkqA.
 
 insert into competence(com_nom, com_des) values ('Organisation','Sait comment organiser rapidement ses affaires');
 insert into competence(com_nom, com_des) values ('Linguistique','Ne connait pas de difficulté avec les langues étrangères');
-insert into competence(com_nom, com_des) values ('Sociabilté','Communique aisément avec les gens');
+insert into competence(com_nom, com_des) values ('sociabilite','Communique aisément avec les gens');
 insert into competence(com_nom, com_des) values ('Orientation','Peut se retrouver facilement dans un endroit même si il ne le connait pas');
 insert into competence(com_nom, com_des) values ('Connaissance sur le monde animal','Peut facilement apprivoiser les animaux sauvages');
-insert into competence(com_nom, com_des) values ('Culture générale','A une connaissance du monde approfondie');
-insert into competence(com_nom, com_des) values ('Réactivité','Réagit instantanément face à une attaque');
-
+insert into competence(com_nom, com_des) values ('culture generale','A une connaissance du monde approfondie');
+insert into competence(com_nom, com_des) values ('reactivite','Réagit instantanément face à une attaque');
+    
        ALTER TABLE evenement      
             ADD CONSTRAINT FK_EvenementMeteo
       FOREIGN KEY(evt_meteo)

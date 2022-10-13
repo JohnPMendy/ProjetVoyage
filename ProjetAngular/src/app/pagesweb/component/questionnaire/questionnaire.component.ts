@@ -339,7 +339,7 @@ export class QuestionnaireComponent implements OnInit {
         this.srvPartie.create(partie).subscribe((data2)=>{
           console.log(data2);
           //part sur la page du jeu en envoyant l'id de la partie
-          this.router.navigateByUrl('/jeu/new/{{ data2.id }}');
+          this.router.navigateByUrl('/jeu/new/'+data2.id);
         })
 
 
