@@ -37,6 +37,7 @@ export class ReponsesService {
       conditionCovid: reponses.conditionCovid,
       conditionObjet: reponses.conditionObjet,
       conditionFaim: reponses.conditionFaim,
+      Fin: reponses.Fin,
     };
     return obj;
   }

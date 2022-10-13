@@ -39,7 +39,6 @@ export class JeuComponent implements OnInit {
   }
 
   ajoutObjetInventaire(id: number) {
-
     //this.inventaire.objets!.objet.push( this.reponses[id].objetId?);
     // this.inventaire.objets!= this.reponses[id].objetId!.nom;
     // this.inventaire.objets!= this.reponses[id].objetId!.prix;
@@ -55,12 +54,10 @@ export class JeuComponent implements OnInit {
 
     this.eventsService.findById(this.events.id).subscribe((data) => {
       this.events = data;
-      console.log(this.events);
     });
 
     this.reponsesService.findById(this.events.id).subscribe((data) => {
       this.reponses = data;
-      console.log(this.reponses);
     });
 
     this.personnageService.getById(this.numeroPartie).subscribe((data) => {
@@ -69,7 +66,6 @@ export class JeuComponent implements OnInit {
 
     this.inventaireService.getById(this.numeroPartie).subscribe((data) => {
       this.inventaire = data;
-      console.log(this.inventaire.objets![0].objet?.nom);
     });
   }
 
@@ -103,7 +99,7 @@ export class JeuComponent implements OnInit {
       this.reponses[number].ajoutPoids! -
       this.reponses[number].conditionPoids!;
 
-    console.log(this.reponses.length);
+    console.log(this.reponses);
 
     //this.ajoutObjetInventaire(number);
 
@@ -115,7 +111,6 @@ export class JeuComponent implements OnInit {
     //this.personnage?.isCovided != false;
     //this.covid = 'Non';
     //}
-
     if (this.events.id) {
       this.eventsService.findById(this.events.id).subscribe((data) => {
         this.events = data;
@@ -125,7 +120,7 @@ export class JeuComponent implements OnInit {
     if (this.events.id && this.reponses[number].isAlive) {
       this.reponsesService.findById(this.events.id).subscribe((data) => {
         this.reponses = data;
-        console.log(this.reponses);
+        console.log('aaaa');
       });
     }
   }
