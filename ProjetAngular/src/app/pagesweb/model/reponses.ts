@@ -2,17 +2,35 @@ import { Environnement } from './environnement';
 import { Events } from './events';
 import { Objet } from './objet';
 export class Reponses {
+  public get ajoutCovid(): number | undefined {
+    return this._ajoutCovid;
+  }
+  public set ajoutCovid(value: number | undefined) {
+    this._ajoutCovid = value;
+  }
+  public get conditionCovid(): boolean | undefined {
+    return this._conditionCovid;
+  }
+  public set conditionCovid(value: boolean | undefined) {
+    this._conditionCovid = value;
+  }
+  public get conditionFaim(): number | undefined {
+    return this._conditionFaim;
+  }
+  public set conditionFaim(value: number | undefined) {
+    this._conditionFaim = value;
+  }
+  public get ajoutFaim(): number | undefined {
+    return this._ajoutFaim;
+  }
+  public set ajoutFaim(value: number | undefined) {
+    this._ajoutFaim = value;
+  }
   public get conditionObjet(): number | undefined {
     return this._conditionObjet;
   }
   public set conditionObjet(value: number | undefined) {
     this._conditionObjet = value;
-  }
-  public get conditionCovid(): true | undefined {
-    return this._conditionCovid;
-  }
-  public set conditionCovid(value: true | undefined) {
-    this._conditionCovid = value;
   }
   public get conditionForce(): number | undefined {
     return this._conditionForce;
@@ -55,12 +73,6 @@ export class Reponses {
   }
   public set isAlive(value: boolean | undefined) {
     this._isAlive = value;
-  }
-  public get ajoutCovid(): number | undefined {
-    return this._ajoutCovid;
-  }
-  public set ajoutCovid(value: number | undefined) {
-    this._ajoutCovid = value;
   }
   public get ajoutForce(): number | undefined {
     return this._ajoutForce;
@@ -114,6 +126,7 @@ export class Reponses {
     private _ajoutEnergie?: number,
     private _ajoutForce?: number,
     private _ajoutCovid?: number,
+    private _ajoutFaim?: number,
     private _isAlive?: boolean,
     private _environnement?: Environnement,
     private _objet?: Objet,
@@ -121,7 +134,8 @@ export class Reponses {
     private _conditionArgent?: number,
     private _conditionEnergie?: number,
     private _conditionForce?: number,
-    private _conditionCovid?: true,
-    private _conditionObjet?: number
+    private _conditionCovid?: boolean,
+    private _conditionObjet?: number,
+    private _conditionFaim?: number
   ) {}
 }

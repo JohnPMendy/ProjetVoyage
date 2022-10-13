@@ -10,7 +10,7 @@ import fr.projetjeu.model.Reponse;
 public interface IReponseRepository extends JpaRepository<Reponse, Integer>{
 	
 	
-	@Query("select r from Reponse r where r.evenementId.id = ?1")
+	@Query("select r from Reponse r where r.evenementId.id = ?1 order by r.id")
 	public List<Reponse> findByEvenementId(int id);
 
 }
