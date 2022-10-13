@@ -13,6 +13,17 @@ import { Personnage } from '../../model/personnage';
 })
 export class QuestionnaireComponent implements OnInit {
   formQuestionnaire!: FormGroup;
+  personnage!: Personnage;
+  reactivite!: Competence;
+  sociabilite!: Competence;
+  organisation!: Competence;
+  orientation!: Competence;
+  anim!: Competence;
+  linguistique!: Competence;
+  culture!: Competence;
+
+  isFormInvalid!: boolean;
+
   ages: string[] = [
     'Moins de 25 ans',
     'Entre 25 et 34 ans',
@@ -47,7 +58,11 @@ export class QuestionnaireComponent implements OnInit {
   saison!: string;
   saisons: string[] = ['le printemps', "l'été", "l'automne", "l'hiver"];
 
-  constructor(private srvCompetence:CompetenceService, private srvPersonnage:PersonnageService, private router:Router) {}
+  constructor(
+    private srvCompetence: CompetenceService,
+    private srvPersonnage: PersonnageService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     //initialisation formulaire
@@ -61,23 +76,31 @@ export class QuestionnaireComponent implements OnInit {
       age: new FormControl('', Validators.required),
       matiere: new FormControl('', Validators.required),
     });
-  }
 
-  onSubmitForm() {
+    //récupération des compétences à attribuer à partir de la bdd
+    this.srvCompetence
+      .getByNom('reactivite')
+      .subscribe((data) => (this.reactivite = data));
+    this.srvCompetence
+      .getByNom('sociabilite')
+      .subscribe((data) => (this.sociabilite = data));
+    this.srvCompetence
+      .getByNom('Organisation')
+      .subscribe((data) => (this.organisation = data));
+    this.srvCompetence
+      .getByNom('Orientation')
+      .subscribe((data) => (this.orientation = data));
+    this.srvCompetence
+      .getByNom('Connaissance sur le monde animal')
+      .subscribe((data) => (this.anim = data));
+    this.srvCompetence
+      .getByNom('Linguistique')
+      .subscribe((data) => (this.linguistique = data));
+    this.srvCompetence
+      .getByNom('culture generale')
+      .subscribe((data) => (this.culture = data));
 
-    console.log(this.formQuestionnaire.value);
-
-
-    let orga=0;
-    let socio=0;
-    let reac=0;
-    let orient=0;
-    let animaux=0;
-    let lingui=0;
-    let culture=0;
-
-
-    let personnage: Personnage = {
+    this.personnage = {
       id: undefined,
       competences: [],
       humeur: undefined,
@@ -88,161 +111,187 @@ export class QuestionnaireComponent implements OnInit {
       energie: 50,
       argent: undefined,
       poids: 60,
-      prenom: this.formQuestionnaire.get('nom')?.value,
-      nom: this.formQuestionnaire.get('prenom')?.value,
+      nom: undefined,
+      prenom: undefined,
     };
-    //to do : control aux boutons radios
+  }
 
-    //verification age
-    switch (this.formQuestionnaire.get('age')?.value) {
-      case 0:
-        //moins de 25 ans
-        personnage.faim = personnage.faim! + 20;
-        personnage.force = personnage.force! + 5;
-        personnage.argent = 2800;
-        personnage.energie = personnage.energie! + 20;
-        break;
-      case 1:
-        personnage.force = personnage.force! + 10;
-        personnage.faim = personnage.faim! + 7;
-        personnage.argent = 4000;
-        personnage.energie = personnage.energie! + 5;
-        break;
+  onSubmitForm() {
 
-      case 2:
-        personnage.force = personnage.force! + 3;
-        personnage.argent = 6000;
-        break;
+    console.log(this.formQuestionnaire.value);
 
-      case 3:
+    if (
+      this.formQuestionnaire.get('nom')?.value==="" || this.formQuestionnaire.get('nom')?.value.isBlank ||
+      this.formQuestionnaire.get('prenom')?.value===""  ||this.formQuestionnaire.get('prenom')?.value.isBlank ||
+      this.formQuestionnaire.get('age')?.value===""  ||
+      this.formQuestionnaire.get('weekend')?.value===""  ||
+      this.formQuestionnaire.get('jeu')?.value===""  ||
+      this.formQuestionnaire.get('saison')?.value==="" ||
+      this.formQuestionnaire.get('matiere')?.value===""
+    ) {
+      this.isFormInvalid = true;
+      console.log("champ invalide")
+    } else {
+      console.log("considere les verifs ok");
+      this.personnage.prenom = this.formQuestionnaire.get('nom')?.value;
+      this.personnage.nom = this.formQuestionnaire.get('prenom')?.value;
 
-        personnage.faim = personnage.faim! -7;
-        personnage.argent = 7800;
-        personnage.energie = personnage.energie! + 5;
-        break;
 
-      case 4:
-        personnage.force = personnage.force! -20;
-        personnage.faim = personnage.faim! -20;
-        personnage.argent = 1000;
-        personnage.energie = personnage.energie! -25;
-        culture++;
-        break;
-      default:
-        console.log(this.formQuestionnaire.get('age'));
-        break;
-    }
-    switch (this.formQuestionnaire.get('weekend')?.value){
-      case 0:
-        //jogging
-        personnage.force = personnage.force! +5;
-        personnage.poids= personnage.poids! -10;
-        break;
-      case 1:
-        //netflix
-        personnage.energie=personnage.energie!+10;
-        personnage.poids= personnage.poids! +10;
-        lingui++;
-        break;
-      case 2:
-        orga++;
-        personnage.argent=personnage.argent!+300;
-        break;
-      case 3:
-        socio++;
-        break;
-    }
-    switch (this.formQuestionnaire.get('jeu')?.value){
-      case 0:
-        //rpg
-        animaux++;
-        break;
-      case 1:
-        orient++;
-        break;
-      case 2:
-        orga++;
-        break;
-      case 3:
-        reac++;
-        break;
-    }
-    switch (this.formQuestionnaire.get('matiere')?.value){
-      case 0:
-        orga++;
-        break;
+      let orga = 0;
+      let socio = 0;
+      let reac = 0;
+      let orient = 0;
+      let animaux = 0;
+      let lingui = 0;
+      let culturePt = 0;
+      //to do : control aux boutons radios
 
-      case 1:
-        lingui++;
-        break;
-      case 2 :
-        animaux++;
-        break;
-      case 3:
-        culture++;
-        break;
-      case 4:
-        orient ++;
-        culture++;
-        break;
-      case 5:
-        personnage.force=personnage.force!+10;
-        reac++;
-        break;
-    }
-    switch (this.formQuestionnaire.get('saison')?.value){
-      case 0:
-        personnage.energie=personnage.energie!+5;
-        personnage.force=personnage.force!+5;
-        personnage.humeur='ENJOUEE';
-        break;
-      case 1:
-        personnage.energie=personnage.energie!+10;
-        personnage.humeur='ENERVEE';
-        break;
-      case 2:
-        personnage.argent=personnage.argent!+500;
-        personnage.humeur='NERVEUX';
-        break;
-      case 3:
-        personnage.force=personnage.force!+30;
-        personnage.humeur='TRISTE';
-        break;
-    }
+      //verification age
+      switch (this.formQuestionnaire.get('age')?.value) {
+        case 0:
+          //moins de 25 ans
+          this.personnage.faim = this.personnage.faim! + 20;
+          this.personnage.force = this.personnage.force! + 5;
+          this.personnage.argent = 2800;
+          this.personnage.energie = this.personnage.energie! + 20;
+          break;
+        case 1:
+          this.personnage.force = this.personnage.force! + 10;
+          this.personnage.faim = this.personnage.faim! + 7;
+          this.personnage.argent = 4000;
+          this.personnage.energie = this.personnage.energie! + 5;
+          break;
 
-    if(socio>=1){
-      //this.srvCompetence.getByNom("sociabilite").subscribe((data)=>console.log(data));
-      //Ajout compétence socio aux compétences du perso
-      this.srvCompetence.getByNom("sociabilite").subscribe((data)=>{personnage.competences?.push(data); console.log(data)});
+        case 2:
+          this.personnage.force = this.personnage.force! + 3;
+          this.personnage.argent = 6000;
+          break;
 
-    }
-    if(reac>=1){
-      this.srvCompetence.getByNom("reactivite").subscribe((data)=>personnage.competences?.push(data));
-    }
-    if(orga>=1){
-      this.srvCompetence.getByNom("Organisation").subscribe((data)=>personnage.competences?.push(data));
-    }
-    if(orient>=1){
-      this.srvCompetence.getByNom("Orientation").subscribe((data)=>personnage.competences?.push(data));
-    }
-    if(animaux>=1){
-      this.srvCompetence.getByNom("Connaissance sur le monde animal").subscribe((data)=>personnage.competences?.push(data));
-    }
-    if(lingui>=1){
-      this.srvCompetence.getByNom("Linguistique").subscribe((data)=>personnage.competences?.push(data));
-    }
-    if(culture>=1){
-      this.srvCompetence.getByNom("culture generale").subscribe((data)=>personnage.competences?.push(data));
-    }
+        case 3:
+          this.personnage.faim = this.personnage.faim! - 7;
+          this.personnage.argent = 7800;
+          this.personnage.energie = this.personnage.energie! + 5;
+          break;
 
-    console.log(personnage);
+        case 4:
+          this.personnage.force = this.personnage.force! - 20;
+          this.personnage.faim = this.personnage.faim! - 20;
+          this.personnage.argent = 1000;
+          this.personnage.energie = this.personnage.energie! - 25;
+          culturePt++;
+          break;
+        default:
+          console.log(this.formQuestionnaire.get('age'));
+          break;
+      }
+      switch (this.formQuestionnaire.get('weekend')?.value) {
+        case 0:
+          //jogging
+          this.personnage.force = this.personnage.force! + 5;
+          this.personnage.poids = this.personnage.poids! - 10;
+          break;
+        case 1:
+          //netflix
+          this.personnage.energie = this.personnage.energie! + 10;
+          this.personnage.poids = this.personnage.poids! + 10;
+          lingui++;
+          break;
+        case 2:
+          orga++;
+          this.personnage.argent = this.personnage.argent! + 300;
+          break;
+        case 3:
+          socio++;
+          break;
+      }
+      switch (this.formQuestionnaire.get('jeu')?.value) {
+        case 0:
+          //rpg
+          animaux++;
+          break;
+        case 1:
+          orient++;
+          break;
+        case 2:
+          orga++;
+          break;
+        case 3:
+          reac++;
+          break;
+      }
+      switch (this.formQuestionnaire.get('matiere')?.value) {
+        case 0:
+          orga++;
+          break;
 
-    this.srvPersonnage.create(personnage).subscribe((data)=>{
-      personnage.id=data.id;
-      this.router.navigateByUrl('/jeu');
-    });
-    //TO DO
-    //attribution personnage à partie
-    //redirection vers jeu
+        case 1:
+          lingui++;
+          break;
+        case 2:
+          animaux++;
+          break;
+        case 3:
+          culturePt++;
+          break;
+        case 4:
+          orient++;
+          break;
+        case 5:
+          this.personnage.force = this.personnage.force! + 10;
+          reac++;
+          break;
+      }
+      switch (this.formQuestionnaire.get('saison')?.value) {
+        case 0:
+          this.personnage.energie = this.personnage.energie! + 5;
+          this.personnage.force = this.personnage.force! + 5;
+          this.personnage.humeur = 'ENJOUEE';
+          break;
+        case 1:
+          this.personnage.energie = this.personnage.energie! + 10;
+          this.personnage.humeur = 'ENERVEE';
+          break;
+        case 2:
+          this.personnage.argent = this.personnage.argent! + 500;
+          this.personnage.humeur = 'NERVEUX';
+          break;
+        case 3:
+          this.personnage.force = this.personnage.force! + 30;
+          this.personnage.humeur = 'TRISTE';
+          break;
+      }
+
+      if (socio >= 1) {
+        this.personnage.competences!.push(this.sociabilite);
+      }
+      if (reac >= 1) {
+        this.personnage.competences!.push(this.reactivite);
+      }
+      if (orga >= 1) {
+        this.personnage.competences!.push(this.organisation);
+      }
+      if (orient >= 1) {
+        this.personnage.competences!.push(this.orientation);
+      }
+      if (animaux >= 1) {
+        this.personnage.competences!.push(this.anim);
+      }
+      if (lingui >= 1) {
+        this.personnage.competences!.push(this.linguistique);
+      }
+      if (culturePt >= 1) {
+        this.personnage.competences!.push(this.culture);
+      }
+
+      console.log(this.personnage);
+
+      this.srvPersonnage.create(this.personnage).subscribe((data) => {
+        this.personnage.id = data.id;
+        this.router.navigateByUrl('/jeu');
+      });
+      //TO DO
+      //attribution personnage à partie
+      //redirection vers jeu
+    }
   }
 }

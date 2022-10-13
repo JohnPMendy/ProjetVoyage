@@ -1,55 +1,63 @@
+<div class="container">
+
+  <div><h1>Avant de commencer, nous aimerions en savoir un peu plus sur vous...</h1></div>
 <form [formGroup]="formQuestionnaire">
 
   <div class="form-group">
-    <label for="nom">nom:</label>
-    <input formControlName="nom"/>
-    <div class="alert alert-danger" *ngIf="formQuestionnaire.get('nom')?.dirty &&
-    formQuestionnaire.get('nom')?.invalid">nom obligatoire</div>
+    <label for="nom">1. Votre nom:</label>
+    <div class="invalidMessage" *ngIf="formQuestionnaire.get('nom')?.dirty &&
+    formQuestionnaire.get('nom')?.invalid">obligatoire</div>
+    <input type="text" formControlName="nom"/>
+
   </div>
   <div class="form-group">
-    <label for="prenom">prenom:</label>
-    <input formControlName="prenom"/>
-    <div class="alert alert-danger" *ngIf="formQuestionnaire.get('prenom')?.dirty &&
-    formQuestionnaire.get('prenom')?.invalid">prenom obligatoire</div>
+    <label for="prenom">2. Votre prénom:</label>
+    <div class="invalidMessage" *ngIf="formQuestionnaire.get('prenom')?.dirty &&
+    formQuestionnaire.get('prenom')?.invalid">obligatoire</div>
+    <input type="text" formControlName="prenom"/>
+
   </div>
 
   <div class="form-group">
-    <label for="age">Vous avez...</label>
-    <mat-radio-group name="age" aria-labelledby="age" formControlName="age" class="example-radio-group" >
-      <mat-radio-button class="example-radio-button" *ngFor="let age of ages; let index= index " [value]="index">{{age}}</mat-radio-button>
+    <label for="age">3. Vous avez...</label>
+    <mat-radio-group name="age" aria-labelledby="age" formControlName="age" class="example-radio-group">
+      <mat-radio-button class="example-radio-button" *ngFor="let age of ages; let index=index" [value]="index">{{age}}</mat-radio-button>
     </mat-radio-group>
   </div>
+
   <div class="form-group">
-    <label for="weekend">Le week-end...</label>
-    <mat-radio-group name="weekend" aria-labelledby="weekend" formControlName="weekend" class="example-radio-group" >
+    <label for="weekend">4. Le week-end...</label>
+    <mat-radio-group name="weekend" aria-labelledby="weekend" formControlName="weekend" class="example-radio-group">
       <mat-radio-button class="example-radio-button" *ngFor="let weekend of weekendList; let index=index" [value]="index">{{weekend}}</mat-radio-button>
     </mat-radio-group>
   </div>
   <div class="form-group">
-    <label for="jeu">Si vous jouez aux jeux-vidéos, vous préférez jouer à...</label>
+    <label for="jeu">4. Si vous jouez aux jeux-vidéos, vous préférez jouer à...</label>
     <mat-radio-group name="jeu" aria-labelledby="jeu" formControlName="jeu" class="example-radio-group" >
       <mat-radio-button class="example-radio-button" *ngFor="let jeu of jeux; let index=index" [value]="index">{{jeu}}</mat-radio-button>
     </mat-radio-group>
   </div>
 
   <div class="form-group">
-    <label for="matiere">Votre matière préférée à l'école ?</label>
+    <label for="matiere">5. Votre matière préférée à l'école ?</label>
     <mat-radio-group name="matiere" aria-labelledby="matiere" formControlName="matiere" class="example-radio-group" >
-      <mat-radio-button class="example-radio-button" *ngFor="let matiere of matieres; let index=index" [value]="index">{{matiere}}</mat-radio-button>
+      <mat-radio-button class="example-radio-button" *ngFor="let matiere of matieres; let index=index" [value]="index" >{{matiere}}</mat-radio-button>
     </mat-radio-group>
   </div>
 
   <div class="form-group">
-    <label for="saison">Votre saison préférée ?</label>
+    <label for="saison">6. Votre saison préférée ?</label>
     <mat-radio-group name="saison" aria-labelledby="saison" formControlName="saison" class="example-radio-group" >
-      <mat-radio-button class="example-radio-button" *ngFor="let saison of saisons; let index=index" [value]="index">{{saison}}</mat-radio-button>
+      <mat-radio-button class="example-radio-button" *ngFor="let saison of saisons; let index=index" [value]="index" >{{saison}}</mat-radio-button>
     </mat-radio-group>
   </div>
 
   <div>
     <button (click)="onSubmitForm()">
-      enregistrer
+      C'est parti !
     </button>
+    <p class="invalidMessage" *ngIf="isFormInvalid">Veuillez remplir tous les champs</p>
   </div>
 
   </form>
+</div>

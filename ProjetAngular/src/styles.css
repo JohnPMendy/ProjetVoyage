@@ -63,3 +63,6 @@ footer {
   align-items: center;
   text-indent: 1vh;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
