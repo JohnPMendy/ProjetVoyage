@@ -12,7 +12,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
 
 
@@ -36,9 +35,9 @@ public class Boutique {
 	@Column(name="btq_type",nullable=false)
 	private TypeBoutique typeBoutique;
 
-	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.BoutiqueAvecObjets.class)
 	@OneToMany(mappedBy = "boutique")
-	List<ObjetBoutique> objets;
+	private List<ObjetBoutique> objets;
 
 
 	public Integer getId() {

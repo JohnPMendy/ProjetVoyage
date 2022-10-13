@@ -16,7 +16,10 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 import fr.projetjeu.model.Inventaire;
+import fr.projetjeu.model.JsonViews;
 import fr.projetjeu.service.InventaireService;
 
 
@@ -28,13 +31,22 @@ public class InventaireRestController {
 	@Autowired
 	private InventaireService srvInventaire; 
 	
+
+	@JsonView(JsonViews.InventaireAvecObjets.class)
 	@GetMapping("/{id}")
 	public Inventaire findById(@PathVariable("id") Integer id) {
 		return srvInventaire.findById(id);
 	}
 	
 
+	@GetMapping("/{id}/objets")
+	@JsonView(JsonViews.InventaireAvecObjets.class)
+	public Inventaire findByIdFetchObjets(@PathVariable("id") Integer id) {
+		return srvInventaire.findByIdFetchObjets(id);
+	}
+
 	@GetMapping("")
+	@JsonView(JsonViews.InventaireAvecObjets.class)
 	public List<Inventaire> findAll() {
 		return srvInventaire.findAll();
 	}

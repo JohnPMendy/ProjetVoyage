@@ -1,12 +1,11 @@
 import { Personnage } from './../../model/personnage';
 import { PersonnageService } from './../../service/personnage.service';
-import { DatePipe } from '@angular/common';
 import { CompteService } from './../../service/compte.service';
 import { PartieService } from './../../service/partie.service';
 import { Partie } from './../../model/partie';
 import { Component, OnInit } from '@angular/core';
 import { Compte } from '../../model/compte';
-import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-partie',
@@ -14,48 +13,55 @@ import { Router } from '@angular/router';
   styleUrls: ['./partie.component.css'],
 })
 export class PartieComponent implements OnInit {
-  parties!: Partie[];
+  parties: Partie[] = [];
   compte!: Compte;
-  dateFormat!: string;
-  hourFormat!: string;
   partie: Partie = new Partie();
-  personnage!: Personnage;
+  personnage!: Observable<Personnage>;
+  listId: number[] = [];
 
   constructor(
-    private datePipe: DatePipe,
     private partieService: PartieService,
-    private compteService: CompteService,
-    private personnageService: PersonnageService,
-    //private inventaireService:InventaireService,
-    private router: Router
+    private compteService: CompteService
   ) {}
 
   ngOnInit(): void {
     this.compte = JSON.parse(sessionStorage.getItem('compte')!);
-    console.log(this.compte.parties);
     this.listParties(this.compte.id as number);
   }
 
   listParties(id: number) {
+    let listId: number[] = [];
     this.compteService.getByIdWithParties(id).subscribe((data) => {
-      this.parties = data.parties!;
+      let p: Partie;
+      for (p of data.parties!) {
+        listId.push(p.id as number);
+      }
+
+      let i: number;
+      for (i of listId) {
+        this.partieService.findById(i).subscribe((params) => {
+          let play: Partie = new Partie();
+          play.id = params['id'];
+          play.compte = params['compte'];
+          play.personnage = params['personnage'];
+          play.environment = params['environment'];
+          play.inventaire = params['inventaire'];
+          play.date = params['date'];
+          play.eventRunning = params['eventRunning'];
+          this.parties.push(play);
+        });
+      }
     });
   }
 
   delete(id: number) {
     this.partieService.delete(id).subscribe(() => {
+      this.parties = [];
       this.listParties(this.compte.id as number);
     });
   }
 
-  creation() {
-    if (!this.partie.id) {
-      this.partieService.create(this.partie).subscribe((data) => {
-        //this.router.navigateByUrl('/questionnaire');
-        this.router.navigateByUrl('/partie');
-      });
-    }
+  charger(id: number) {
+    this.partieService.sendCharge(id);
   }
-
-  charger() {}
 }

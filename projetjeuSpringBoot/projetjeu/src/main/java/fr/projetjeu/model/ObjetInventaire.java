@@ -9,16 +9,21 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
-@Table(name = "objetInventaire")
+@Table(name = "objet_inventaire")
 public class ObjetInventaire {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "objinv_id")
+	@JsonView(JsonViews.Common.class)
 	private Integer objInventaireId;
 
+
 	@ManyToOne
+	@JsonView(JsonViews.InventaireAvecObjets.class)
 	@JoinColumn(name = "objinv_obj_id", nullable = false)
 	private Objet objet;
 
@@ -26,6 +31,8 @@ public class ObjetInventaire {
 	@JoinColumn(name = "objinv_inv_id", nullable = false)
 	private Inventaire inventaire;
 
+
+	@JsonView(JsonViews.Common.class)
 	@Column(name = "qte_inventaire", nullable = false)
 	int quantiteInventaire;
 

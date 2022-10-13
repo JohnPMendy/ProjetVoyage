@@ -54,6 +54,10 @@ public class JsonViews {
 	public static class BoutiqueAvecObjets extends Boutique {
 
 	}
+	
+	public static class InventaireAvecObjets extends Inventaire {
+
+	}
 
 	public static class Compte extends Common {
 

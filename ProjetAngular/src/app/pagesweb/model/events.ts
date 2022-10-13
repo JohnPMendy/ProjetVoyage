@@ -1,4 +1,11 @@
+import { Environnement } from './environnement';
 export class Events {
+  public get environnementId(): Environnement | undefined {
+    return this._environnementId;
+  }
+  public set environnementId(value: Environnement | undefined) {
+    this._environnementId = value;
+  }
   public get histoire(): string | undefined {
     return this._histoire;
   }
@@ -11,5 +18,9 @@ export class Events {
   public set id(value: number | undefined) {
     this._id = value;
   }
-  constructor(private _id?: number, private _histoire?: string) {}
+  constructor(
+    private _id?: number,
+    private _histoire?: string,
+    private _environnementId?: Environnement
+  ) {}
 }

@@ -37,4 +37,8 @@ export class CompteService {
       this.objetToJson(compte)
     );
   }
+
+  public getAll(): Observable<Compte[]> {
+    return this.httpCLient.get<Compte[]>(CompteService.URL);
+  }
 }

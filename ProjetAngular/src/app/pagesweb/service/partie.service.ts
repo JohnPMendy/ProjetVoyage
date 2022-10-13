@@ -8,6 +8,14 @@ import { Injectable } from '@angular/core';
 })
 export class PartieService {
   private static URL = 'http://localhost:8080/voyages/api/partie';
+  private static _partie: Partie;
+
+  public static get partie(): Partie {
+    return PartieService._partie;
+  }
+  public static set partie(value: Partie) {
+    PartieService._partie = value;
+  }
 
   constructor(private httpClient: HttpClient) {}
 
@@ -20,11 +28,7 @@ export class PartieService {
   }
 
   public delete(id: number): Observable<void> {
-    return this.httpClient.delete<void>(PartieService + '/' + id);
-  }
-
-  public findAllByCompteId(id: number): Observable<Partie[]> {
-    return this.httpClient.get<Partie[]>(PartieService.URL + '/compte/' + id);
+    return this.httpClient.delete<void>(PartieService.URL + '/' + id);
   }
 
   public partieToJson(partie: Partie): any {
@@ -61,5 +65,21 @@ export class PartieService {
       `${PartieService.URL}/${partie.id}`,
       this.partieToJson(partie)
     );
+  }
+
+  public sendCharge(id: number) {
+    this.findById(id).subscribe((data) => (PartieService._partie = data));
+  }
+
+  public recieveCharge(partie: Partie) {
+    partie = PartieService._partie;
+  }
+
+  public sauvegarde(partie: Partie) {
+    if (partie.id) {
+      this.update(partie).subscribe((data) => {});
+    } else {
+      this.create(partie).subscribe((data) => {});
+    }
   }
 }

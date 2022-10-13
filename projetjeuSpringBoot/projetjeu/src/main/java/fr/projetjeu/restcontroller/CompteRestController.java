@@ -33,15 +33,15 @@ public class CompteRestController {
 
 	@JsonView(JsonViews.CompteAvecParties.class)
 	@GetMapping("/{id}/parties")
-	public Compte findByIdFetchParties(@PathVariable("id") Long id) {
+	public Compte findByIdFetchParties(@PathVariable("id")Integer id) {
+
 		return srvCompte.findByIdFetchParties(id);
 	}
 
 	@JsonView(JsonViews.Compte.class)
 	@PostMapping("")
 	@ResponseStatus(code = HttpStatus.CREATED)
-	// requestBody permet d'instancier un fournisseur (!!pas de classe abstraite) et
-	// recupère l'objet JSON en entrée et fait conresspondre les attributs
+
 	public Compte create(@RequestBody Compte compte, BindingResult br) {
 		if (br.hasErrors()) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
