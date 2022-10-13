@@ -98,6 +98,8 @@ export class JeuComponent implements OnInit {
       this.reponses[number].ajoutPoids! -
       this.reponses[number].conditionPoids!;
 
+    console.log(this.reponses.length);
+
     //this.ajoutObjetInventaire(number);
 
     //console.log(Math.random());
