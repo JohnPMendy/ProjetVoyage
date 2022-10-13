@@ -39,6 +39,10 @@ public class Reponse {
 	@JsonView(JsonViews.Common.class)
 	private Integer ajoutPoids;
 	
+	@Column(name = "rep_faim", nullable = true)
+	@JsonView(JsonViews.Common.class)
+	private Integer ajoutFaim;
+	
 	@Column(name = "rep_argent", nullable = true)
 	@JsonView(JsonViews.Common.class)
 	private Integer ajoutArgent;
@@ -58,8 +62,7 @@ public class Reponse {
 	@JsonView(JsonViews.Common.class)
 	@Column(name = "rep_vivant", nullable = true)
 	private boolean isAlive;
-	
-	
+
 	@ManyToOne
 	@JsonView(JsonViews.Common.class)
 	@JoinColumn(name = "rep_objet", nullable = true)
@@ -89,6 +92,9 @@ public class Reponse {
 	@Column(name = "rep_cond_objet", nullable = true)
 	private Integer conditionObjet;
 	
+	@JsonView(JsonViews.Common.class)
+	@Column(name = "rep_cond_faim", nullable = true)
+	private Integer conditionFaim;
 	
 	public Integer getId() {
 		return id;
