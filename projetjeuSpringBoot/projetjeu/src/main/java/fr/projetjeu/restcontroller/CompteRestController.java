@@ -33,7 +33,8 @@ public class CompteRestController {
 
 	@JsonView(JsonViews.CompteAvecParties.class)
 	@GetMapping("/{id}/parties")
-	public Compte findByIdFetchParties(@PathVariable("id") Long id) {
+	public Compte findByIdFetchParties(@PathVariable("id")Integer id) {
+
 		return srvCompte.findByIdFetchParties(id);
 	}
 

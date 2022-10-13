@@ -24,7 +24,7 @@ public class Partie {
 	@Column(name = "par_id")
 	private Integer id;
 	
-	@JsonView(JsonViews.Partie.class)
+	@JsonView(JsonViews.Common.class)
 	@Column(name="par_date", nullable=false)
 	private Timestamp date;
 	

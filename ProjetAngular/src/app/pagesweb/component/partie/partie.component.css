@@ -15,16 +15,10 @@ button > a {
   padding: 10px;
 }
 
-.deconnexion {
-  z-index: 2;
-  position: absolute;
-  right: 30px;
-}
-
 .nouvellePartie {
   margin-top: 2vh;
   position: relative;
-  width: 700px;
+  width: 70%;
 }
 
 .nouvellePartie > a {
@@ -73,7 +67,7 @@ button > a {
 .enCours,
 .statistiques {
   height: 220px;
-  width: 1000px;
+  width: 75vw;
   border: 1.2vh ridge rgb(105, 105, 105);
   background: rgba(255, 255, 255, 0.5);
   grid-area: "table";

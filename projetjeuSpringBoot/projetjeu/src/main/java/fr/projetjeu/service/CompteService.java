@@ -14,7 +14,7 @@ public class CompteService {
 	@Autowired
 	private ICompteRepository repoCompte;
 	
-	public Compte findByIdFetchParties(Long id) {
+	public Compte findByIdFetchParties(Integer id) {
 		return repoCompte.findByIdFetchingParties(id).orElseThrow(CompteNotFoundException::new);
 	}
 

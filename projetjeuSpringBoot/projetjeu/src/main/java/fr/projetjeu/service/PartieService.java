@@ -12,12 +12,16 @@ import fr.projetjeu.exception.InvalidEntityException;
 import fr.projetjeu.model.Environnement;
 import fr.projetjeu.model.Partie;
 import fr.projetjeu.repo.IPartieRepository;
+import fr.projetjeu.repo.IPersonnageRepository;
 
 @Service
 public class PartieService {
 
 	@Autowired
 	private IPartieRepository repoPartie;
+	
+	@Autowired
+	private IPersonnageRepository repoPersonnage;
 
 
 	public Partie findById(Integer id) {
@@ -38,16 +42,14 @@ public class PartieService {
 		return parties;
 	}
 	
-//	public List<Partie> findByCompteId(Integer id){
-//		List<Partie> parties = repoPartie.findByCompteId(id);
-//		
-//		if (parties == null) {
-//			return new ArrayList<>();
-//		}
-//
-//		return parties;
-//	}
+public List<Partie> findAllById(List<Integer> ids){
+	List<Partie> parties = repoPartie.findAllById(ids);
+	if (parties == null) {
+		return new ArrayList<>();
+	}
 
+	return parties;
+}
 	public void save(Partie partie) {
 		if (partie.getPersonnage() == null|| partie.getPersonnage().getId()<=0) {
 			throw new InvalidEntityException("personnage");
@@ -82,8 +84,8 @@ public class PartieService {
 		if (id <= 0) {
 			throw new InvalidArgsException("id");
 		}
-
-		repoPartie.deleteById(id);
+		repoPersonnage.deleteById(repoPartie.findById(id).get().getPersonnage().getId());
+		//repoPartie.deleteById(id);
 	}
 
 	public boolean existById(Integer id) {
