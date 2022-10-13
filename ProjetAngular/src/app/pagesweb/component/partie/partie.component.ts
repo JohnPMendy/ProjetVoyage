@@ -58,27 +58,10 @@ export class PartieComponent implements OnInit {
     this.partieService.delete(id).subscribe(() => {
       this.parties = [];
       this.listParties(this.compte.id as number);
-      //this.router.navigateByUrl('/partie');
     });
   }
 
-  // creation() {
-  //   if (!this.partie.id) {
-  //     this.partieService.create(this.partie).subscribe((data) => {
-  //       this.router.navigateByUrl('/partie');
-  //     });
-  //   }
-  // }
-
-  public sauvegarde() {
-    if (this.partie.id) {
-      this.partieService.update(this.partie).subscribe((data) => {});
-    } else {
-      this.partieService.create(this.partie).subscribe((data) => {});
-    }
-  }
-
   charger(id: number) {
-    this.partieService.findById(id).subscribe();
+    this.partieService.sendCharge(id);
   }
 }
