@@ -21,6 +21,8 @@ export class JeuComponent implements OnInit {
   covid!: String;
   vivant!: String;
 
+  eventDebut!:Events;
+
   constructor(
     private eventsService: EventsService,
     private reponsesService: ReponsesService,
@@ -32,7 +34,10 @@ export class JeuComponent implements OnInit {
   numeroCompte: number = 1;
   numeroPartie: number = 1;
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+
+  }
 
   nbReponses(reponses: Reponses[]) {
     return reponses.length;

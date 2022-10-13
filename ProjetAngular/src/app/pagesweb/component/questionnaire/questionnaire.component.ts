@@ -1,3 +1,7 @@
+import { environment } from './../../../../environments/environment.prod';
+import { inventaireService } from './../../service/inventaire.service';
+import { PartieService } from './../../service/partie.service';
+import { EventsService } from './../../service/events.service';
 import { Router } from '@angular/router';
 import { PersonnageService } from './../../service/personnage.service';
 import { CompetenceService } from './../../service/competence.service';
@@ -5,6 +9,12 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Competence } from '../../model/competence';
 import { Personnage } from '../../model/personnage';
+import { Events } from '../../model/events';
+import { Inventaire } from '../../model/inventaire';
+import { Partie } from '../../model/partie';
+import { timestamp } from 'rxjs';
+import { ObjetInventaire } from '../../model/objet-inventaire';
+import { Compte } from '../../model/compte';
 
 @Component({
   selector: 'app-questionnaire',
@@ -21,6 +31,11 @@ export class QuestionnaireComponent implements OnInit {
   anim!: Competence;
   linguistique!: Competence;
   culture!: Competence;
+
+  inventaire!:Inventaire;
+  eventInit!:Events;
+
+
 
   isFormInvalid!: boolean;
 
@@ -58,13 +73,20 @@ export class QuestionnaireComponent implements OnInit {
   saison!: string;
   saisons: string[] = ['le printemps', "l'été", "l'automne", "l'hiver"];
 
+  compte!:Compte;
+
   constructor(
     private srvCompetence: CompetenceService,
     private srvPersonnage: PersonnageService,
+    private srvInventaire:inventaireService,
+    private srvEvents:EventsService,
+    private srvPartie:PartieService,
     private router: Router
   ) {}
 
   ngOnInit(): void {
+
+
     //initialisation formulaire
     this.formQuestionnaire = new FormGroup({
       id: new FormControl(),
@@ -76,6 +98,8 @@ export class QuestionnaireComponent implements OnInit {
       age: new FormControl('', Validators.required),
       matiere: new FormControl('', Validators.required),
     });
+
+    this.compte=JSON.parse(sessionStorage.getItem('compte')!);
 
     //récupération des compétences à attribuer à partir de la bdd
     this.srvCompetence
@@ -99,6 +123,20 @@ export class QuestionnaireComponent implements OnInit {
     this.srvCompetence
       .getByNom('culture generale')
       .subscribe((data) => (this.culture = data));
+
+      //initialisation inventaire
+
+    this.inventaire={
+      id : undefined,
+      partie:undefined,
+      nom:"nouvel inventaire",
+      objets : [],
+    };
+
+    console.log(this.inventaire);
+    this.srvInventaire.create(this.inventaire).subscribe((data)=>{this.inventaire.id=data.id});
+
+    this.srvEvents.findById(1).subscribe((data)=>this.eventInit=data);
 
     this.personnage = {
       id: undefined,
@@ -285,10 +323,30 @@ export class QuestionnaireComponent implements OnInit {
 
       console.log(this.personnage);
 
+
       this.srvPersonnage.create(this.personnage).subscribe((data) => {
-        this.personnage.id = data.id;
-        this.router.navigateByUrl('/jeu');
+        let partie ={
+          id: undefined,
+          compte:this.compte,
+          personnage : data,
+          eventRunning : this.eventInit,
+          environment:this.eventInit.environnementId,
+          inventaire:this.inventaire,
+          date:new Date()
+        }
+        console.log(partie);
+
+        this.srvPartie.create(partie).subscribe((data2)=>{
+          console.log(data2);
+          //part sur la page du jeu en envoyant l'id de la partie
+          this.router.navigateByUrl('/jeu/new/{{ data2.id }}');
+        })
+
+
+
       });
+
+
       //TO DO
       //attribution personnage à partie
       //redirection vers jeu
