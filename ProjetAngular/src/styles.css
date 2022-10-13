@@ -55,7 +55,7 @@ footer {
   color: rgb(0, 0, 0);
   z-index: 2;
   position: absolute;
-  font-weight: bold;
+  font-weight: 500;
   font-size: 1.5vh;
   background: rgba(255, 255, 255, 0.4);
   height: 3vh;
@@ -64,5 +64,11 @@ footer {
   text-indent: 1vh;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

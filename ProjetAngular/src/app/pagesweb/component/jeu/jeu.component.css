@@ -414,3 +414,8 @@ div.Histoire {
 .popup-chargmement .popup-content {
   padding: 10px;
 }
+
+div.CenterHistoire {
+  margin-left: 2vh;
+  margin-right: 2vh;
+}
