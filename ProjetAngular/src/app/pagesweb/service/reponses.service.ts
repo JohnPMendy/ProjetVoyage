@@ -16,6 +16,19 @@ export class ReponsesService {
       id: reponses.id,
       texte: reponses.texte,
       prochainEvenementId: reponses.prochainEvenementId,
+      ajoutPoids: reponses.ajoutPoids,
+      ajoutArgent: reponses.ajoutArgent,
+      ajoutEnergie: reponses.ajoutEnergie,
+      ajoutForce: reponses.ajoutForce,
+      ajoutCovid: reponses.ajoutCovid,
+      isAlive: reponses.ajoutCovid,
+      objetId: {
+        id: reponses.objetId?.id,
+        nom: reponses.objetId?.nom,
+        typeObjetAlimentaire: reponses.objetId?.typeObjetAlimetaire,
+        prix: reponses.objetId?.prix,
+        typeObjets: reponses.objetId?.typeObjets,
+      },
     };
     return obj;
   }

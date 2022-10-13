@@ -16,8 +16,12 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 import fr.projetjeu.model.Boutique;
+import fr.projetjeu.model.JsonViews;
 import fr.projetjeu.service.BoutiqueService;
+import fr.projetjeu.service.ObjetService;
 
 @RestController // controller rest pour webservice
 @RequestMapping("/api/boutique")
@@ -27,12 +31,22 @@ public class BoutiqueRestController {
 	@Autowired
 	private BoutiqueService srvBoutique; 
 	
+	@Autowired
+	private ObjetService srvObjet; 
+	
+	@JsonView(JsonViews.BoutiqueAvecObjets.class)
 	@GetMapping("/{id}")
 	public Boutique findById(@PathVariable("id") Integer id) {
 		return srvBoutique.findById(id);
 	}
 	
-
+//	@GetMapping("/{id}/objets")
+//	@JsonView(JsonViews.BoutiqueAvecObjets.class)
+//	public Boutique findByIdFetchObjets(@PathVariable("id") Integer id) {
+//		return srvBoutique.findByIdFetchObjets(id);
+//	}
+	
+	@JsonView(JsonViews.BoutiqueAvecObjets.class)
 	@GetMapping("")
 	public List<Boutique> findAll() {
 		return srvBoutique.findAll();
@@ -49,6 +63,7 @@ public class BoutiqueRestController {
 		srvBoutique.save(boutique);
 		return srvBoutique.findById(boutique.getId());
 	}
+	
 	
 	@DeleteMapping("/{id}")
 	@ResponseStatus(code=HttpStatus.NO_CONTENT)//code 204 mais il prévient qu'il n'y a pas de contenu à supprimer mais la requete s'est bein déroulé
