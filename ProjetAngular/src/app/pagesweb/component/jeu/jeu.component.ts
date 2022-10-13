@@ -19,7 +19,7 @@ export class JeuComponent implements OnInit {
   personnage: Personnage | undefined;
   inventaire!: Inventaire;
   covid!: String;
-  mort!: String;
+  vivant!: String;
 
   constructor(
     private eventsService: EventsService,
@@ -32,9 +32,7 @@ export class JeuComponent implements OnInit {
   numeroCompte: number = 1;
   numeroPartie: number = 1;
 
-  ngOnInit(): void {
-    this.personnage?.isCovided;
-  }
+  ngOnInit(): void {}
 
   nbReponses(reponses: Reponses[]) {
     return reponses.length;
@@ -44,6 +42,7 @@ export class JeuComponent implements OnInit {
     this.finDePartie = true;
     this.events.id = 1;
     this.covid = 'Non';
+    this.vivant = 'Oui';
 
     this.eventsService.findById(this.events.id).subscribe((data) => {
       this.events = data;
@@ -93,6 +92,7 @@ export class JeuComponent implements OnInit {
       this.personnage!.poids! +
       this.reponses[number].ajoutPoids! -
       this.reponses[number].conditionPoids!;
+
     console.log(Math.random());
     if (Math.random() < this.reponses[number]!.ajoutCovid! / 100) {
       this.personnage?.isCovided != true;
@@ -101,7 +101,7 @@ export class JeuComponent implements OnInit {
       this.personnage?.isCovided != false;
       this.covid = 'Non';
     }
-    console.log(this.personnage?.isCovided!);
+
     if (this.events.id) {
       this.eventsService.findById(this.events.id).subscribe((data) => {
         this.events = data;
