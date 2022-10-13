@@ -27,7 +27,6 @@ CREATE TABLE partie(
   par_personnage_id INT NOT NULL,
   par_event_id INT NOT NULL,
   par_date DATE NOT NULL,
-  par_heure TIME NOT NULL,
   par_environnement_id INT NOT NULL,
   par_inventaire_id INT NOT NULL
   );
