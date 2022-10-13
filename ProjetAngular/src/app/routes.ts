@@ -14,7 +14,11 @@ export const routes: Routes = [
     component: JeuComponent,
     canActivate: [AuthenticatedGuardService],
   },
-
+  {
+    path: 'jeu/new/:id',
+    component: JeuComponent,
+    canActivate: [AuthenticatedGuardService],
+  },
   {
     path: 'accueil',
     component: AccueilComponent,

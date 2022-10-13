@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import fr.projetjeu.exception.EntityNotFoundException;
 import fr.projetjeu.exception.InvalidArgsException;
 import fr.projetjeu.exception.InvalidEntityException;
-import fr.projetjeu.model.Environnement;
+import fr.projetjeu.model.Inventaire;
 import fr.projetjeu.model.Partie;
 import fr.projetjeu.repo.IPartieRepository;
 import fr.projetjeu.repo.IPersonnageRepository;
@@ -22,7 +22,7 @@ public class PartieService {
 	
 	@Autowired
 	private IPersonnageRepository repoPersonnage;
-
+	
 
 	public Partie findById(Integer id) {
 		if (id <= 0) {
@@ -51,6 +51,9 @@ public List<Partie> findAllById(List<Integer> ids){
 	return parties;
 }
 	public void save(Partie partie) {
+		if (partie.getId()==null) {
+
+		}
 		if (partie.getPersonnage() == null|| partie.getPersonnage().getId()<=0) {
 			throw new InvalidEntityException("personnage");
 		}
@@ -71,9 +74,9 @@ public List<Partie> findAllById(List<Integer> ids){
 			throw new InvalidEntityException("inventaire");
 		}
 		
-		if (partie.getCompte() == null||partie.getCompte().getId()<=0) {
-			throw new InvalidEntityException("compte");
-		}
+		//if (partie.getCompte() == null||partie.getCompte().getId()<=0) {
+		//	throw new InvalidEntityException("compte");
+		//}
 		
 
 		repoPartie.save(partie);

@@ -7,8 +7,8 @@ import java.util.Map;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.util.ReflectionUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -26,6 +26,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
+import fr.projetjeu.model.Compte;
 import fr.projetjeu.model.Environnement;
 import fr.projetjeu.model.JsonViews;
 import fr.projetjeu.model.Partie;
@@ -66,10 +67,12 @@ public class PartieRestController {
 	@PostMapping("")
 	@ResponseStatus(code=HttpStatus.CREATED)
 	//requestBody permet d'instancier un fournisseur (!!pas de classe abstraite) et recupère l'objet JSON en entrée et fait conresspondre les attributs
-	public Partie create(@Valid @RequestBody Partie partie,BindingResult br){
+	public Partie create(@Valid @RequestBody Partie partie,BindingResult br,@AuthenticationPrincipal Compte compte){
 		if(br.hasErrors()) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
 		}
+
+		partie.setCompte(compte);
 		srvPartie.save(partie);
 		return srvPartie.findById(partie.getId());
 	}

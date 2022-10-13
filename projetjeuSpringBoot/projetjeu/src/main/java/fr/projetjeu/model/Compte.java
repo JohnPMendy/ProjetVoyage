@@ -16,6 +16,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
@@ -37,7 +38,7 @@ public class Compte implements UserDetails {
 	@Column(name = "mdp", nullable = false)
 	private String mdp;
 	
-	@JsonView(JsonViews.CompteAvecParties.class)
+	@JsonIgnore
 	@OneToMany(mappedBy="compte")
 	private List<Partie> parties;
 

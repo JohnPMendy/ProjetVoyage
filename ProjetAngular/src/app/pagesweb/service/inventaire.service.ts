@@ -34,21 +34,7 @@ export class inventaireService {
   public objetToJson(inventaire: Inventaire) {
     let obj = {
       id: inventaire.id,
-      objets: [
-        {
-          objInventaireId: inventaire.objets![this.number!].id,
-          objet: {
-            id: inventaire.objets![this.number!].objet?.id,
-            nom: inventaire.objets![this.number!].objet?.nom,
-            typeObjetAlimentaire:
-              inventaire.objets![this.number!].objet?.typeObjetAlimetaire,
-            prix: inventaire.objets![this.number!].objet?.prix,
-            typeObjets: inventaire.objets![this.number!].objet?.typeObjets,
-          },
-          quantiteInventaire:
-            inventaire.objets![this.number!].quantiteInventaire,
-        },
-      ],
+      objets: inventaire.objets,
       partie: inventaire.partie,
     };
 

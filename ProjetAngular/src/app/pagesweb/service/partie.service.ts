@@ -35,22 +35,14 @@ export class PartieService {
     let obj = {
       id: partie.id,
       date: partie.date,
+      compte:partie.compte,
+      inventaire:partie.inventaire,
+      eventRunning : partie.eventRunning,
+      personnage:partie.personnage,
+      environnement:partie.environment
     };
-    if (partie.compte) {
-      Object.assign(obj, { compte: { id: partie.compte?.id } });
-    }
-    if (partie.inventaire) {
-      Object.assign(obj, { inventaire: { id: partie.inventaire?.id } });
-    }
-    if (partie.eventRunning) {
-      Object.assign(obj, { eventRunning: { id: partie.eventRunning?.id } });
-    }
-    if (partie.personnage) {
-      Object.assign(obj, { personnage: { id: partie.personnage?.id } });
-    }
-    if (partie.environment) {
-      Object.assign(obj, { environment: { id: partie.environment?.id } });
-    }
+
+    console.log(obj)
     return obj;
   }
   public create(partie: Partie): Observable<Partie> {
