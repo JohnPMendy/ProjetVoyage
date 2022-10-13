@@ -2,6 +2,12 @@ import { Environnement } from './environnement';
 import { Events } from './events';
 import { Objet } from './objet';
 export class Reponses {
+  public get Fin(): boolean | undefined {
+    return this._Fin;
+  }
+  public set Fin(value: boolean | undefined) {
+    this._Fin = value;
+  }
   public get ajoutCovid(): number | undefined {
     return this._ajoutCovid;
   }
@@ -136,6 +142,7 @@ export class Reponses {
     private _conditionForce?: number,
     private _conditionCovid?: boolean,
     private _conditionObjet?: number,
-    private _conditionFaim?: number
+    private _conditionFaim?: number,
+    private _Fin?: boolean
   ) {}
 }

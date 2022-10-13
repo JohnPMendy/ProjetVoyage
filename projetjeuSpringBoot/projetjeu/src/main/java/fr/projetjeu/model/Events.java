@@ -37,8 +37,8 @@ public class Events {
 	@OneToMany(mappedBy = "evenementId")
 	private List<Reponse> reponses;
 
-	@OneToOne(mappedBy = "prochainEvenementId")
-	private Reponse reponse;
+	@OneToMany(mappedBy = "prochainEvenementId")
+	private List<Reponse> reponse;
 
 	// Parties utilisants l'event
 	@OneToMany(mappedBy = "eventRunning")
@@ -74,16 +74,24 @@ public class Events {
 		this.reponses = reponses;
 	}
 
-	public Reponse getReponse() {
+	public List<Partie> getParties() {
+		return parties;
+	}
+
+	public List<Reponse> getReponse() {
 		return reponse;
 	}
 
-	public void setReponse(Reponse reponse) {
+	public void setReponse(List<Reponse> reponse) {
 		this.reponse = reponse;
 	}
 
-	public List<Partie> getParties() {
-		return parties;
+	public Environnement getEnvironnementId() {
+		return environnementId;
+	}
+
+	public void setEnvironnementId(Environnement environnementId) {
+		this.environnementId = environnementId;
 	}
 
 	public void setParties(List<Partie> parties) {

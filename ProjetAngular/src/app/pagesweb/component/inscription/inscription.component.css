@@ -1,15 +1,17 @@
-.inscription, .Enregistrer{
+.Inscription,
+.Enregistrer {
   grid-column: 2;
   grid-row: 3;
-  padding: 100px;
+  padding-left: 50vh;
+  padding-right: 50vh;
 
   border-radius: 3px;
   margin-top: 10%;
   margin-bottom: 10%;
-
 }
 
-.inscription input ,.Enregistrer{
+.Inscription input,
+.Enregistrer {
   display: block;
   width: auto;
   font-size: 18px;
@@ -20,23 +22,23 @@
   box-sizing: border-box;
 }
 
-.inscription input {
+.Inscription input {
   width: 100%;
   margin-bottom: 20px;
   padding-left: 30px;
   background: #e6e6e6;
   color: #686868;
   margin-top: 10px;
-
 }
 
-.inscription input::placeholder,.Enregistrer {
+.Inscription input::placeholder,
+.Enregistrer {
   color: #acacac;
 }
 
 .Enregistrer {
   display: inline-block;
-  font-weight:bold;
+  font-weight: bold;
   padding: 0 25px;
   background: #385ab9;
   color: white;
@@ -45,22 +47,19 @@
   cursor: pointer;
   margin-top: 30px;
   width: 100%;
-
-
 }
 
-.PageCNX{
+.PageCNX {
   opacity: 60%;
   font-size: 30px;
-  opacity:100%;
+  opacity: 100%;
   color: rgb(255, 255, 255);
   grid-row: 2;
-  grid-column: 1/span 3;
+  grid-column: 1 / span 3;
 }
-.inscription input[type="submit"]:hover {
+.Inscription input[type="submit"]:hover {
   background: #333333;
 }
-a:hover{
-      background: #333333;
-
+a:hover {
+  background: #333333;
 }

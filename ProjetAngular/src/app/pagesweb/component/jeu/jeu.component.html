@@ -93,12 +93,14 @@
 
       <div class="InterfacePartie">
         <div class="Histoire">
-          {{ events.histoire }}
+          <div class="CenterHistoire">
+            {{ events.histoire }}
+          </div>
         </div>
 
         <div class="Reponses">
           <input
-            *ngIf="nbReponses(reponses)! === 0 && finDePartie"
+            *ngIf="nbReponses(reponses)! === 0 && finDePartie === false"
             class="CommencerPartie"
             type="submit"
             value="Commencer la partie"
@@ -106,7 +108,7 @@
           />
 
           <input
-            *ngIf="nbReponses(reponses)! > 0 && finDePartie"
+            *ngIf="nbReponses(reponses)! > 0 && finDePartie === false"
             class="Reponse1"
             type="submit"
             [(ngModel)]="reponses[0].texte"
@@ -114,7 +116,7 @@
           />
 
           <input
-            *ngIf="nbReponses(reponses)! > 1 && finDePartie"
+            *ngIf="nbReponses(reponses)! > 1 && finDePartie === false"
             class="Reponse2"
             type="submit"
             [(ngModel)]="reponses[1].texte"
@@ -122,7 +124,7 @@
           />
 
           <input
-            *ngIf="nbReponses(reponses)! > 2 && finDePartie"
+            *ngIf="nbReponses(reponses)! > 2 && finDePartie === false"
             class="Reponse3"
             type="submit"
             [(ngModel)]="reponses[2].texte"
@@ -130,7 +132,7 @@
           />
 
           <input
-            *ngIf="finDePartie === false"
+            *ngIf="finDePartie === true"
             class="CommencerPartie"
             type="submit"
             value="Recommencer la partie"

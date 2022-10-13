@@ -30,7 +30,7 @@ public class Reponse {
 	@JoinColumn(name="rep_evenement_id", nullable = false)
 	private Events evenementId;
 
-	@OneToOne
+	@ManyToOne
 	@JsonView(JsonViews.Common.class)
 	@JoinColumn(name = "rep_prochain_evenement_id", nullable = false)
 	private Events prochainEvenementId;
@@ -95,6 +95,10 @@ public class Reponse {
 	@JsonView(JsonViews.Common.class)
 	@Column(name = "rep_cond_faim", nullable = true)
 	private Integer conditionFaim;
+	
+	@JsonView(JsonViews.Common.class)
+	@Column(name = "rep_fin", nullable = true)
+	private boolean Fin;
 	
 	public Integer getId() {
 		return id;

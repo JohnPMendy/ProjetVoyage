@@ -29,8 +29,10 @@ div.NameGenericButton {
   box-sizing: border-box;
   justify-content: center;
   display: flex;
+  font-weight: normal;
 }
 
 div.titre {
   position: absolute;
+  font-weight: normal;
 }

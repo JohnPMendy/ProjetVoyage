@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Objet } from '../../model/objet';
+import { ObjetInventaire } from '../../model/objet-inventaire';
 import { Personnage } from '../../model/personnage';
 import { Events } from './../../model/events';
 import { Inventaire } from './../../model/inventaire';
@@ -30,7 +32,7 @@ export class JeuComponent implements OnInit {
     private inventaireService: inventaireService
   ) {}
 
-  finDePartie: boolean | undefined = true;
+  finDePartie: boolean | undefined = false;
   numeroCompte: number = 1;
   numeroPartie: number = 1;
 
@@ -43,12 +45,16 @@ export class JeuComponent implements OnInit {
     return reponses.length;
   }
 
-  ajoutObjetInventaire(number: number) {
-    console.log(this.reponses[number]);
-  }
 
+  ajoutObjetInventaire(objet:Objet , qte :number, inventaire:Inventaire,numeroReponse :number ) {
+    let objetInventaire=new ObjetInventaire();
+    objetInventaire.objet=objet;
+    objetInventaire.quantiteInventaire=qte;
+    if (this.reponses[numeroReponse].objetId==null){return;}
+    else
+    {inventaire.objets?.push(objetInventaire)};
+  }
   initialisation() {
-    this.finDePartie = true;
     this.events.id = 1;
     this.covid = 'Non';
     this.vivant = 'Oui';
@@ -59,7 +65,6 @@ export class JeuComponent implements OnInit {
 
     this.reponsesService.findById(this.events.id).subscribe((data) => {
       this.reponses = data;
-      console.log(this.reponses);
     });
 
     this.personnageService.getById(this.numeroPartie).subscribe((data) => {
@@ -68,13 +73,12 @@ export class JeuComponent implements OnInit {
 
     this.inventaireService.getById(this.numeroPartie).subscribe((data) => {
       this.inventaire = data;
-      console.log(this.inventaire.objets![0].objet?.nom);
     });
   }
 
   prochainId(number: number): void {
     this.events.id = this.reponses[number].prochainEvenementId?.id;
-    this.finDePartie = this.reponses[number].isAlive;
+    this.finDePartie = this.reponses[number].Fin;
     this.personnage!.isAlive = this.finDePartie;
 
     this.personnage!.argent =
@@ -102,17 +106,18 @@ export class JeuComponent implements OnInit {
       this.reponses[number].ajoutPoids! -
       this.reponses[number].conditionPoids!;
 
-    this.ajoutObjetInventaire(number);
+    console.log(this.reponses);
 
-    console.log(Math.random());
-    if (Math.random() < this.reponses[number]!.ajoutCovid! / 100) {
-      this.personnage?.isCovided != true;
-      this.covid = 'Oui';
-    } else {
-      this.personnage?.isCovided != false;
-      this.covid = 'Non';
-    }
+    this.ajoutObjetInventaire(this.reponses[number].objetId!,1 ,this.inventaire,number);
 
+    //console.log(Math.random());
+    //if (Math.random() < this.reponses[number]!.ajoutCovid! / 100) {
+    //this.personnage?.isCovided != true;
+    //this.covid = 'Oui';
+    //} else {
+    //this.personnage?.isCovided != false;
+    //this.covid = 'Non';
+    //}
     if (this.events.id) {
       this.eventsService.findById(this.events.id).subscribe((data) => {
         this.events = data;
@@ -122,7 +127,7 @@ export class JeuComponent implements OnInit {
     if (this.events.id && this.reponses[number].isAlive) {
       this.reponsesService.findById(this.events.id).subscribe((data) => {
         this.reponses = data;
-        console.log(this.reponses);
+        console.log('aaaa');
       });
     }
   }
