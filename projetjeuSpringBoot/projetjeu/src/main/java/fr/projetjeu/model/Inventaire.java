@@ -30,7 +30,7 @@ public class Inventaire {
 	private List<ObjetInventaire> objets;
 
 	
-	@JsonView(JsonViews.Common.class)
+	//@JsonView(JsonViews.Common.class)
 	@OneToOne(mappedBy = "inventaire")
 	private Partie partie;
 

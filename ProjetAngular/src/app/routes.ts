@@ -10,7 +10,7 @@ import { InscriptionComponent } from './pagesweb/component/inscription/inscripti
 
 export const routes: Routes = [
   {
-    path: 'jeu',
+    path: 'jeu/',
     component: JeuComponent,
     canActivate: [AuthenticatedGuardService],
   },

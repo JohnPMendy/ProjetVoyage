@@ -25,8 +25,7 @@
               "src/styles.css"
             ],
 
-            "scripts": ["src/assets/js/JeuInteractif.js"]
-
+            "scripts": []
           },
           "configurations": {
             "production": {

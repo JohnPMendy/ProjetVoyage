@@ -40,14 +40,20 @@ export class JeuComponent implements OnInit {
     return reponses.length;
   }
 
-
-  ajoutObjetInventaire(objet:Objet , qte :number, inventaire:Inventaire,numeroReponse :number ) {
-    let objetInventaire=new ObjetInventaire();
-    objetInventaire.objet=objet;
-    objetInventaire.quantiteInventaire=qte;
-    if (this.reponses[numeroReponse].objetId==null){return;}
-    else
-    {inventaire.objets?.push(objetInventaire)};
+  ajoutObjetInventaire(
+    objet: Objet,
+    qte: number,
+    inventaire: Inventaire,
+    numeroReponse: number
+  ) {
+    let objetInventaire = new ObjetInventaire();
+    objetInventaire.objet = objet;
+    objetInventaire.quantiteInventaire = qte;
+    if (this.reponses[numeroReponse].objetId == null) {
+      return;
+    } else {
+      inventaire.objets?.push(objetInventaire);
+    }
   }
   initialisation() {
     this.events.id = 1;
@@ -103,7 +109,12 @@ export class JeuComponent implements OnInit {
 
     console.log(this.reponses);
 
-    this.ajoutObjetInventaire(this.reponses[number].objetId!,1 ,this.inventaire,number);
+    this.ajoutObjetInventaire(
+      this.reponses[number].objetId!,
+      1,
+      this.inventaire,
+      number
+    );
 
     //console.log(Math.random());
     //if (Math.random() < this.reponses[number]!.ajoutCovid! / 100) {

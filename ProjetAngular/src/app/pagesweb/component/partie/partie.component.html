@@ -20,7 +20,9 @@
         <tr *ngFor="let p of parties">
           <td>
             <button class="boutonVersPartie">
-              <a [routerLink]="['/jeu']" (click)="charger(p.id!)">Charger</a>
+              <a routerLink="/jeu/{{ p.id }}" routerLinkActive="active"
+                >Charger</a
+              >
             </button>
           </td>
           <td>

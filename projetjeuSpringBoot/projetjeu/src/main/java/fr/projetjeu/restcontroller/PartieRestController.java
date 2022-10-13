@@ -7,7 +7,6 @@ import java.util.Map;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.util.ReflectionUtils;
 import org.springframework.validation.BindingResult;
@@ -44,14 +43,7 @@ public class PartieRestController {
 	public List<Partie> findAll(){
 		return srvPartie.findAll();
 	}
-	
-//	@JsonView(JsonViews.Partie.class)
-//	@GetMapping("")
-//	public List<Partie> findAllById( List<Integer> ids){
-//		return srvPartie.findAllById(ids);
-//	}
-	
-	
+		
 	@JsonView(JsonViews.Partie.class)
 	@GetMapping("/{id}")
 	public Partie findById(@PathVariable("id") Integer id) {
