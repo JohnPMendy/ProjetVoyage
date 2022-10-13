@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Objet } from '../../model/objet';
+import { ObjetInventaire } from '../../model/objet-inventaire';
 import { Personnage } from '../../model/personnage';
 import { Events } from './../../model/events';
 import { Inventaire } from './../../model/inventaire';
@@ -38,14 +40,14 @@ export class JeuComponent implements OnInit {
     return reponses.length;
   }
 
-  ajoutObjetInventaire(id: number) {
-    //this.inventaire.objets!.objet.push( this.reponses[id].objetId?);
-    // this.inventaire.objets!= this.reponses[id].objetId!.nom;
-    // this.inventaire.objets!= this.reponses[id].objetId!.prix;
-    // this.inventaire.objets![id].objet!.typeObjetAlimetaire= this.reponses[id].objetId!.typeObjetAlimetaire;
-    // this.inventaire.objets![id].objet!.typeObjets= this.reponses[id].objetId!.typeObjets;
-  }
 
+  ajoutObjetInventaire(objet:Objet , qte :number, inventaire:Inventaire ) {
+    let objetInventaire=new ObjetInventaire();
+    objetInventaire.objet=objet;
+    objetInventaire.quantiteInventaire=qte;
+    inventaire.objets?.push(objetInventaire)
+
+  }
   initialisation() {
     this.events.id = 1;
     this.covid = 'Non';
@@ -100,7 +102,7 @@ export class JeuComponent implements OnInit {
 
     console.log(this.reponses);
 
-    //this.ajoutObjetInventaire(number);
+    this.ajoutObjetInventaire(this.reponses[number].objetId!,1,this.inventaire);
 
     //console.log(Math.random());
     //if (Math.random() < this.reponses[number]!.ajoutCovid! / 100) {
