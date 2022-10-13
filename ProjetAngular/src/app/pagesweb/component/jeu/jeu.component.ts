@@ -38,8 +38,13 @@ export class JeuComponent implements OnInit {
     return reponses.length;
   }
 
-  ajoutObjetInventaire(number: number) {
-    console.log(this.reponses[number]);
+  ajoutObjetInventaire(id: number) {
+
+    //this.inventaire.objets!.objet.push( this.reponses[id].objetId?);
+    // this.inventaire.objets!= this.reponses[id].objetId!.nom;
+    // this.inventaire.objets!= this.reponses[id].objetId!.prix;
+    // this.inventaire.objets![id].objet!.typeObjetAlimetaire= this.reponses[id].objetId!.typeObjetAlimetaire;
+    // this.inventaire.objets![id].objet!.typeObjets= this.reponses[id].objetId!.typeObjets;
   }
 
   initialisation() {
