@@ -23,14 +23,14 @@ export class InscriptionComponent implements OnInit {
 
     this.form = new FormGroup({
 
-      emailCtrl: new FormControl('', Validators.email),
+      loginCtrl: new FormControl('', Validators.email),
       passwordCtrl: new FormControl('', Validators.required)
 
     });
 
   }
 submit(){
-  this.compte.login=this.form.get('emailCtrl')?.value;
+  this.compte.login=this.form.get('loginCtrl')?.value;
   this.compte.role='ROLE_USER';
   this.compte.mdp=this.form.get('passwordCtrl')?.value;
   this.compte.parties=[];

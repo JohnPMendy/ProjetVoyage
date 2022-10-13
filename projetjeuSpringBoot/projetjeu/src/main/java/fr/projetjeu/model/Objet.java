@@ -45,9 +45,9 @@ public class Objet {
 	@OneToMany(mappedBy = "objetId")
 	private List<Reponse> reponse;
 	
-	
-	//@ManyToOne
-	//s@JoinColumn(name="obj_btq_id", nullable = false)
+	//@JsonView(JsonViews.Common.class)
+	@OneToMany(mappedBy="objet")
+	List<ObjetBoutique> boutiques;
 	
 
 
