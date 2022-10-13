@@ -17,6 +17,7 @@ export class ReponsesService {
       texte: reponses.texte,
       prochainEvenementId: reponses.prochainEvenementId,
       ajoutPoids: reponses.ajoutPoids,
+      ajoutFaim: reponses.ajoutFaim,
       ajoutArgent: reponses.ajoutArgent,
       ajoutEnergie: reponses.ajoutEnergie,
       ajoutForce: reponses.ajoutForce,
@@ -29,6 +30,13 @@ export class ReponsesService {
         prix: reponses.objetId?.prix,
         typeObjets: reponses.objetId?.typeObjets,
       },
+      conditionPoids: reponses.conditionPoids,
+      conditionArgent: reponses.conditionArgent,
+      conditionEnergie: reponses.conditionEnergie,
+      conditionForce: reponses.conditionForce,
+      conditionCovid: reponses.conditionCovid,
+      conditionObjet: reponses.conditionObjet,
+      conditionFaim: reponses.conditionFaim,
     };
     return obj;
   }

@@ -48,9 +48,6 @@ public class Objet {
 	//@JsonView(JsonViews.Common.class)
 	@OneToMany(mappedBy="objet")
 	List<ObjetBoutique> boutiques;
-	
-
-
 
 	
 	public String getNom() {

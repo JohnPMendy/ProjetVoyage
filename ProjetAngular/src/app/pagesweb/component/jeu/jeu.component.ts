@@ -18,6 +18,8 @@ export class JeuComponent implements OnInit {
   reponses: Reponses[] = [];
   personnage: Personnage | undefined;
   inventaire!: Inventaire;
+  covid!: String;
+  vivant!: String;
 
   constructor(
     private eventsService: EventsService,
@@ -36,9 +38,15 @@ export class JeuComponent implements OnInit {
     return reponses.length;
   }
 
+  ajoutObjetInventaire(number: number) {
+    console.log(this.reponses[number]);
+  }
+
   initialisation() {
     this.finDePartie = true;
     this.events.id = 1;
+    this.covid = 'Non';
+    this.vivant = 'Oui';
 
     this.eventsService.findById(this.events.id).subscribe((data) => {
       this.events = data;
@@ -46,6 +54,7 @@ export class JeuComponent implements OnInit {
 
     this.reponsesService.findById(this.events.id).subscribe((data) => {
       this.reponses = data;
+      console.log(this.reponses);
     });
 
     this.personnageService.getById(this.numeroPartie).subscribe((data) => {
@@ -62,6 +71,42 @@ export class JeuComponent implements OnInit {
     this.events.id = this.reponses[number].prochainEvenementId?.id;
     this.finDePartie = this.reponses[number].isAlive;
     this.personnage!.isAlive = this.finDePartie;
+
+    this.personnage!.argent =
+      this.personnage!.argent! +
+      this.reponses[number].ajoutArgent! -
+      this.reponses[number].conditionArgent!;
+
+    this.personnage!.energie =
+      this.personnage!.energie! +
+      this.reponses[number].ajoutEnergie! -
+      this.reponses[number].conditionEnergie!;
+
+    this.personnage!.faim =
+      this.personnage!.faim! +
+      this.reponses[number].ajoutFaim! -
+      this.reponses[number].conditionFaim!;
+
+    this.personnage!.force =
+      this.personnage!.force! +
+      this.reponses[number].ajoutForce! -
+      this.reponses[number].conditionForce!;
+
+    this.personnage!.poids =
+      this.personnage!.poids! +
+      this.reponses[number].ajoutPoids! -
+      this.reponses[number].conditionPoids!;
+
+    this.ajoutObjetInventaire(number);
+
+    console.log(Math.random());
+    if (Math.random() < this.reponses[number]!.ajoutCovid! / 100) {
+      this.personnage?.isCovided != true;
+      this.covid = 'Oui';
+    } else {
+      this.personnage?.isCovided != false;
+      this.covid = 'Non';
+    }
 
     if (this.events.id) {
       this.eventsService.findById(this.events.id).subscribe((data) => {
