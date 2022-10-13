@@ -27,6 +27,7 @@ CREATE TABLE partie(
   par_personnage_id INT NOT NULL,
   par_event_id INT NOT NULL,
   par_date DATE NOT NULL,
+  par_heure TIME NOT NULL,
   par_environnement_id INT NOT NULL,
   par_inventaire_id INT NOT NULL
   );
@@ -194,32 +195,41 @@ ALTER TABLE environnement
   CHECK (env_type_environnement BETWEEN 0 AND 4);
           
 --Exemples pour faire des tests (Questions/Reponses)
-INSERT INTO evenement (evt_histoire,evt_meteo) VALUES 
-('Event 1 : Locomotion?',1),
-('Event 2 : Ouverture cockpit?',2),
-('Event 3 : Vous êtes mort (FIN)',1),
-('Event 4 : A suivre... (FIN)',2),
-('Event 5 : Sauter du bateau?',1),
-('Event 6 : Vous êtes mort (FIN)',2),
-('Event 7 : A suivre... (FIN)',1),
-('Event 8 : Vous êtes mort (FIN)',2);
+insert into "evenement" ("evt_histoire", "evt_id", "evt_meteo") values ('Event 1 : Vous êtes sur le point de partir en vacances, votre valise est supposément prête... Voulez vous vérifier son contenu à nouveau?', 1, 1);
+insert into "evenement" ("evt_histoire", "evt_id", "evt_meteo") values ('Event 2 : Vous êtes a l''aéroport, on vous demande le visa.', 2, 1);
+insert into "evenement" ("evt_histoire", "evt_id", "evt_meteo") values ('Event 3 : Vous êtes dans l''avion, direction Tahiti. Que voulez vous faire actuellement?', 3, 1);
+insert into "evenement" ("evt_histoire", "evt_id", "evt_meteo") values ('Event 4 : Le temps passe un peu trop lentement à votre gout, que souhaitez vous faire pour remédier à cela.', 4, 1);
+insert into "evenement" ("evt_histoire", "evt_id", "evt_meteo") values ('Event 6 : Vous êtes mort... à quoi vous attendiez vous?', 6, 1);
+insert into "evenement" ("evt_histoire", "evt_id", "evt_meteo") values ('Event 5 : Le trajet est terminé, vous êtes à destination. Ou souhaitez vous aller en premier?', 5, 1);
+insert into "evenement" ("evt_histoire", "evt_id", "evt_meteo") values ('Event 7 : Après une bonne journée de bronzage, vous souhaitez integrer une soirée hypée de la vile. Le videur vous demande un prix d''entrée de 10000 euros...', 7, 1);
+insert into "evenement" ("evt_histoire", "evt_id", "evt_meteo") values ('Event 8 : Durant la séance de musculation, vous vous sentez en confiance. Souhaitez vous soulever la barre de 150kg?', 8, 1);
+insert into "evenement" ("evt_histoire", "evt_id", "evt_meteo") values ('Event 9 : En tentant de soulever le poids, vous perdez l''équilibre, et la barre atterit violemment sur votre gorge... Fin de séance!!', 9, 1);
+insert into "evenement" ("evt_histoire", "evt_id", "evt_meteo") values ('Event 10 : Après être rentré à l''hotel, vous passez des vacances somme toute assez classique... FIN!', 10, 1);
+insert into "evenement" ("evt_histoire", "evt_id", "evt_meteo") values ('Event 11 : Le videur refuse la proposition. Jette le coquillage par terre, s''en suit une explosion brutale. En effet, le coquillage était piégé... ', 11, 1);
 
-insert into "reponse" ("rep_argent", "rep_cond_argent", "rep_cond_covid", "rep_cond_energie", "rep_cond_faim", "rep_cond_force", "rep_cond_objet", "rep_cond_poids", "rep_covid", "rep_energie", "rep_evenement_id", "rep_faim", "rep_force", "rep_id", "rep_objet", "rep_poids", "rep_prochain_evenement_id", "rep_texte", "rep_vivant") values (NULL, NULL, true, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, 3, 3, NULL, 8, 'R3 : Nage', false);
-insert into "reponse" ("rep_argent", "rep_cond_argent", "rep_cond_covid", "rep_cond_energie", "rep_cond_faim", "rep_cond_force", "rep_cond_objet", "rep_cond_poids", "rep_covid", "rep_energie", "rep_evenement_id", "rep_faim", "rep_force", "rep_id", "rep_objet", "rep_poids", "rep_prochain_evenement_id", "rep_texte", "rep_vivant") values (NULL, NULL, true, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, NULL, 4, 1, NULL, 3, 'R1 : Oui', true);
-insert into "reponse" ("rep_argent", "rep_cond_argent", "rep_cond_covid", "rep_cond_energie", "rep_cond_faim", "rep_cond_force", "rep_cond_objet", "rep_cond_poids", "rep_covid", "rep_energie", "rep_evenement_id", "rep_faim", "rep_force", "rep_id", "rep_objet", "rep_poids", "rep_prochain_evenement_id", "rep_texte", "rep_vivant") values (NULL, NULL, false, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, NULL, 5, 3, NULL, 4, 'R2 : Non', false);
-insert into "reponse" ("rep_argent", "rep_cond_argent", "rep_cond_covid", "rep_cond_energie", "rep_cond_faim", "rep_cond_force", "rep_cond_objet", "rep_cond_poids", "rep_covid", "rep_energie", "rep_evenement_id", "rep_faim", "rep_force", "rep_id", "rep_objet", "rep_poids", "rep_prochain_evenement_id", "rep_texte", "rep_vivant") values (NULL, NULL, true, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 5, NULL, NULL, 6, 2, NULL, 6, 'R1 : Oui', false);
-insert into "reponse" ("rep_argent", "rep_cond_argent", "rep_cond_covid", "rep_cond_energie", "rep_cond_faim", "rep_cond_force", "rep_cond_objet", "rep_cond_poids", "rep_covid", "rep_energie", "rep_evenement_id", "rep_faim", "rep_force", "rep_id", "rep_objet", "rep_poids", "rep_prochain_evenement_id", "rep_texte", "rep_vivant") values (NULL, NULL, false, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 5, NULL, NULL, 7, 4, NULL, 7, 'R2 : Non', false);
-insert into "reponse" ("rep_argent", "rep_cond_argent", "rep_cond_covid", "rep_cond_energie", "rep_cond_faim", "rep_cond_force", "rep_cond_objet", "rep_cond_poids", "rep_covid", "rep_energie", "rep_evenement_id", "rep_faim", "rep_force", "rep_id", "rep_objet", "rep_poids", "rep_prochain_evenement_id", "rep_texte", "rep_vivant") values (0, 300, true, 10, 10, 30, 1, 70, 5, 0, 1, 0, 0, 1, 1, -5, 2, 'R1 : Avion', true);
-insert into "reponse" ("rep_argent", "rep_cond_argent", "rep_cond_covid", "rep_cond_energie", "rep_cond_faim", "rep_cond_force", "rep_cond_objet", "rep_cond_poids", "rep_covid", "rep_energie", "rep_evenement_id", "rep_faim", "rep_force", "rep_id", "rep_objet", "rep_poids", "rep_prochain_evenement_id", "rep_texte", "rep_vivant") values (NULL, NULL, false, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, 2, 2, NULL, 5, 'R2 : Bateau', true);
+
+insert into "reponse" ("rep_argent", "rep_cond_argent", "rep_cond_covid", "rep_cond_energie", "rep_cond_faim", "rep_cond_force", "rep_cond_objet", "rep_cond_poids", "rep_covid", "rep_energie", "rep_evenement_id", "rep_faim", "rep_force", "rep_id", "rep_objet", "rep_poids", "rep_prochain_evenement_id", "rep_texte", "rep_vivant") values (0, NULL, false, 5, NULL, NULL, NULL, NULL, 0, 0, 1, 5, 0, 1, 3, 0, 2, 'Oui, je veux vérifier la valise à nouveau', true);
+insert into "reponse" ("rep_argent", "rep_cond_argent", "rep_cond_covid", "rep_cond_energie", "rep_cond_faim", "rep_cond_force", "rep_cond_objet", "rep_cond_poids", "rep_covid", "rep_energie", "rep_evenement_id", "rep_faim", "rep_force", "rep_id", "rep_objet", "rep_poids", "rep_prochain_evenement_id", "rep_texte", "rep_vivant") values (0, NULL, false, NULL, NULL, NULL, NULL, NULL, 0, 0, 1, 0, 0, 2, NULL, 0, 2, 'Non, je suis sur que tout est en ordre!', true);
+insert into "reponse" ("rep_argent", "rep_cond_argent", "rep_cond_covid", "rep_cond_energie", "rep_cond_faim", "rep_cond_force", "rep_cond_objet", "rep_cond_poids", "rep_covid", "rep_energie", "rep_evenement_id", "rep_faim", "rep_force", "rep_id", "rep_objet", "rep_poids", "rep_prochain_evenement_id", "rep_texte", "rep_vivant") values (0, 400, false, NULL, NULL, NULL, 3, NULL, 0, 0, 2, 0, 0, 3, NULL, 0, 3, 'Présenter le visa', true);
+insert into "reponse" ("rep_argent", "rep_cond_argent", "rep_cond_covid", "rep_cond_energie", "rep_cond_faim", "rep_cond_force", "rep_cond_objet", "rep_cond_poids", "rep_covid", "rep_energie", "rep_evenement_id", "rep_faim", "rep_force", "rep_id", "rep_objet", "rep_poids", "rep_prochain_evenement_id", "rep_texte", "rep_vivant") values (0, NULL, false, 5, NULL, NULL, NULL, 1, 2, 0, 2, 5, 0, 4, NULL, 0, 1, 'Retourner chez soi', true);
+insert into "reponse" ("rep_argent", "rep_cond_argent", "rep_cond_covid", "rep_cond_energie", "rep_cond_faim", "rep_cond_force", "rep_cond_objet", "rep_cond_poids", "rep_covid", "rep_energie", "rep_evenement_id", "rep_faim", "rep_force", "rep_id", "rep_objet", "rep_poids", "rep_prochain_evenement_id", "rep_texte", "rep_vivant") values (0, NULL, false, 5, NULL, NULL, NULL, NULL, 0, 0, 3, 5, 0, 5, NULL, 0, 4, 'Regarder un film', true);
+insert into "reponse" ("rep_argent", "rep_cond_argent", "rep_cond_covid", "rep_cond_energie", "rep_cond_faim", "rep_cond_force", "rep_cond_objet", "rep_cond_poids", "rep_covid", "rep_energie", "rep_evenement_id", "rep_faim", "rep_force", "rep_id", "rep_objet", "rep_poids", "rep_prochain_evenement_id", "rep_texte", "rep_vivant") values (0, NULL, false, NULL, NULL, NULL, NULL, NULL, 0, 10, 3, 5, 0, 6, NULL, 0, 4, 'Dormir', true);
+insert into "reponse" ("rep_argent", "rep_cond_argent", "rep_cond_covid", "rep_cond_energie", "rep_cond_faim", "rep_cond_force", "rep_cond_objet", "rep_cond_poids", "rep_covid", "rep_energie", "rep_evenement_id", "rep_faim", "rep_force", "rep_id", "rep_objet", "rep_poids", "rep_prochain_evenement_id", "rep_texte", "rep_vivant") values (0, NULL, false, NULL, NULL, NULL, 4, NULL, 0, 10, 3, -5, 0, 7, NULL, 1, 4, 'Manger votre dernière barre chocolaté', true);
+insert into "reponse" ("rep_argent", "rep_cond_argent", "rep_cond_covid", "rep_cond_energie", "rep_cond_faim", "rep_cond_force", "rep_cond_objet", "rep_cond_poids", "rep_covid", "rep_energie", "rep_evenement_id", "rep_faim", "rep_force", "rep_id", "rep_objet", "rep_poids", "rep_prochain_evenement_id", "rep_texte", "rep_vivant") values (0, NULL, false, NULL, NULL, NULL, NULL, NULL, 0, 0, 4, 0, 0, 8, NULL, 0, 5, 'Attendre patiemment', true);
+insert into "reponse" ("rep_argent", "rep_cond_argent", "rep_cond_covid", "rep_cond_energie", "rep_cond_faim", "rep_cond_force", "rep_cond_objet", "rep_cond_poids", "rep_covid", "rep_energie", "rep_evenement_id", "rep_faim", "rep_force", "rep_id", "rep_objet", "rep_poids", "rep_prochain_evenement_id", "rep_texte", "rep_vivant") values (0, NULL, false, NULL, NULL, NULL, NULL, NULL, 0, 0, 4, 0, 0, 9, NULL, 0, 6, 'Ouvrir le cockpit!', false);
+insert into "reponse" ("rep_argent", "rep_cond_argent", "rep_cond_covid", "rep_cond_energie", "rep_cond_faim", "rep_cond_force", "rep_cond_objet", "rep_cond_poids", "rep_covid", "rep_energie", "rep_evenement_id", "rep_faim", "rep_force", "rep_id", "rep_objet", "rep_poids", "rep_prochain_evenement_id", "rep_texte", "rep_vivant") values (0, NULL, false, 5, NULL, NULL, NULL, 1, 4, 0, 5, 5, 0, 10, 5, 0, 7, 'Aller à la plage', true);
+insert into "reponse" ("rep_argent", "rep_cond_argent", "rep_cond_covid", "rep_cond_energie", "rep_cond_faim", "rep_cond_force", "rep_cond_objet", "rep_cond_poids", "rep_covid", "rep_energie", "rep_evenement_id", "rep_faim", "rep_force", "rep_id", "rep_objet", "rep_poids", "rep_prochain_evenement_id", "rep_texte", "rep_vivant") values (0, 30, false, 15, NULL, NULL, NULL, NULL, 10, 0, 5, 10, 10, 11, NULL, 2, 8, 'Aller à salle', true);
+insert into "reponse" ("rep_argent", "rep_cond_argent", "rep_cond_covid", "rep_cond_energie", "rep_cond_faim", "rep_cond_force", "rep_cond_objet", "rep_cond_poids", "rep_covid", "rep_energie", "rep_evenement_id", "rep_faim", "rep_force", "rep_id", "rep_objet", "rep_poids", "rep_prochain_evenement_id", "rep_texte", "rep_vivant") values (0, NULL, false, NULL, NULL, NULL, NULL, NULL, 0, 0, 7, 0, 0, 12, NULL, 0, 10, 'C''est trop cher, je rentre à l''hotel.', true);
+insert into "reponse" ("rep_argent", "rep_cond_argent", "rep_cond_covid", "rep_cond_energie", "rep_cond_faim", "rep_cond_force", "rep_cond_objet", "rep_cond_poids", "rep_covid", "rep_energie", "rep_evenement_id", "rep_faim", "rep_force", "rep_id", "rep_objet", "rep_poids", "rep_prochain_evenement_id", "rep_texte", "rep_vivant") values (0, NULL, false, NULL, NULL, NULL, 5, NULL, 0, 0, 7, 0, 0, 13, NULL, 0, 11, 'Lui présenter le coquillage que vous aviez trouvé à la plage ce matin', false);
+insert into "reponse" ("rep_argent", "rep_cond_argent", "rep_cond_covid", "rep_cond_energie", "rep_cond_faim", "rep_cond_force", "rep_cond_objet", "rep_cond_poids", "rep_covid", "rep_energie", "rep_evenement_id", "rep_faim", "rep_force", "rep_id", "rep_objet", "rep_poids", "rep_prochain_evenement_id", "rep_texte", "rep_vivant") values (0, NULL, false, NULL, NULL, NULL, NULL, NULL, 0, 0, 8, 0, 0, 14, NULL, 0, 9, 'Oui, alons y!', false);
 
 INSERT INTO competence (com_nom, com_des) VALUES ('Négociation', 'Permet de négocier des prix lors des achats');
 
-INSERT INTO objet (obj_nom,obj_type_alimentaire,obj_prix,obj_type)VALUES('Eau' , true , 1.0 , 1);   
-INSERT INTO objet (obj_nom,obj_type_alimentaire,obj_prix,obj_type)VALUES('Boisson gazeuse', true , 1.5 , 1);
-INSERT INTO objet (obj_nom,obj_type_alimentaire,obj_prix,obj_type)VALUES('Jus', true , 2.0 , 1 );
-INSERT INTO objet (obj_nom,obj_type_alimentaire,obj_prix,obj_type)VALUES('Boisson chaude' , true , 1.5 , 1);
-
-INSERT INTO objet (obj_nom,obj_type_alimentaire,obj_prix,obj_type)VALUES('jacket impermeable' , false , 60 , 4);
+insert into "objet" ("obj_id", "obj_nom", "obj_prix", "obj_type", "obj_type_alimentaire") values (1, 'Eau', 1, 1, true);
+insert into "objet" ("obj_id", "obj_nom", "obj_prix", "obj_type", "obj_type_alimentaire") values (2, 'Boisson gazeuse', 1.5, 1, true);
+insert into "objet" ("obj_id", "obj_nom", "obj_prix", "obj_type", "obj_type_alimentaire") values (3, 'Visa', 0, 1, false);
+insert into "objet" ("obj_id", "obj_nom", "obj_prix", "obj_type", "obj_type_alimentaire") values (4, 'Barre chocolaté', 1, 1, true);
+insert into "objet" ("obj_id", "obj_nom", "obj_prix", "obj_type", "obj_type_alimentaire") values (5, 'Coquillage', 10000, 1, false);
 
 INSERT INTO boutique (btq_nom,btq_type)VALUES('Carrefour' , 1 );
 INSERT INTO boutique (btq_nom,btq_type)VALUES('Decathlon' , 2 );
@@ -235,47 +245,29 @@ INSERT INTO objet_boutique(obj_btq_obj_id , obj_btq_btq_id,qte_boutique) VALUES(
 
 INSERT INTO objet_boutique(obj_btq_obj_id , obj_btq_btq_id,qte_boutique) VALUES(5,2,20);
 
-INSERT INTO objet_inventaire(objinv_obj_id ,objinv_inv_id,qte_inventaire) VALUES(1,1,2);
-INSERT INTO objet_inventaire(objinv_obj_id ,objinv_inv_id,qte_inventaire) VALUES(2,1,3);
-INSERT INTO objet_inventaire(objinv_obj_id ,objinv_inv_id,qte_inventaire) VALUES(5,2,1);
+insert into "objet_inventaire" ("objinv_id", "objinv_inv_id", "objinv_obj_id", "qte_inventaire") values (1, 1, 4, 1);
+insert into "objet_inventaire" ("objinv_id", "objinv_inv_id", "objinv_obj_id", "qte_inventaire") values (2, 1, 1, 1);
+
+
+insert into personnage (per_nom,per_prenom,per_poids,per_argent,per_energie, per_humeur, per_faim, per_force,per_covid, per_vivant)
+values ('Lemaire','Pascal',75,2000,10,1,10,40,false,true);
+
 
 INSERT INTO environnement(env_nom,env_temperature,env_type_meteo,env_type_environnement)
 VALUES 
 ('Env1',25,1,1),
 ('Env2',27,2,2);
 
-
-
 INSERT INTO compte (login,mdp,role) VALUES('admin','$2a$10$1oGuBqgzfGzhkLX1hIXIdOUpOy5TswqdK4Y5Nn88ZZJMdAAvc1Xua','ROLE_ADMIN');
 INSERT INTO compte (login,mdp,role) VALUES('user','$2a$10$tsTiy0kKXpWc9qhYRtkqA.Ku2kjdC5ma5mEUYcFAhsHhrVgoowRyO','ROLE_USER');
 
-insert into personnage (per_nom,per_prenom,per_poids,per_argent,per_energie, per_humeur, per_faim, per_force,per_covid, per_vivant)
-values ('Lemaire','Pascal',0,0,0,1,0,0,false,true);
-
-INSERT INTO inventaire DEFAULT VALUES;
-
-  INSERT INTO
-  partie(par_compte_id,par_personnage_id,par_inventaire_id,par_event_id,par_environnement_id,par_date) VALUES
-  (1 ,(SELECT MAX(per_id) FROM personnage),(SELECT MAX(inv_id) FROM inventaire),1,1,'2020-01-01');
-    Update inventaire set inv_partie_id=(SELECT MAX(par_id) FROM partie) where inv_id=(SELECT MAX(inv_id) FROM inventaire);
-
-     insert into personnage (per_nom,per_prenom,per_poids,per_argent,per_energie, per_humeur, per_faim, per_force,per_covid, per_vivant)
-values ('Jean','Marie',0,0,0,1,0,0,false,true);
-
-INSERT INTO inventaire DEFAULT VALUES;
-
-  INSERT INTO
-  partie(par_compte_id,par_personnage_id,par_inventaire_id,par_event_id,par_environnement_id,par_date) VALUES
-  (2,(SELECT MAX(per_id) FROM personnage),(SELECT MAX(inv_id) FROM inventaire),2,1,'2020-01-01');
-    Update inventaire set inv_partie_id=(SELECT MAX(par_id) FROM partie) where inv_id=(SELECT MAX(inv_id) FROM inventaire);
-
 insert into competence(com_nom, com_des) values ('Organisation','Sait comment organiser rapidement ses affaires');
 insert into competence(com_nom, com_des) values ('Linguistique','Ne connait pas de difficulté avec les langues étrangères');
-insert into competence(com_nom, com_des) values ('sociabilite','Communique aisément avec les gens');
+insert into competence(com_nom, com_des) values ('Sociabilté','Communique aisément avec les gens');
 insert into competence(com_nom, com_des) values ('Orientation','Peut se retrouver facilement dans un endroit même si il ne le connait pas');
 insert into competence(com_nom, com_des) values ('Connaissance sur le monde animal','Peut facilement apprivoiser les animaux sauvages');
-insert into competence(com_nom, com_des) values ('culture generale','A une connaissance du monde approfondie');
-insert into competence(com_nom, com_des) values ('reactivite','Réagit instantanément face à une attaque');
+insert into competence(com_nom, com_des) values ('Culture générale','A une connaissance du monde approfondie');
+insert into competence(com_nom, com_des) values ('Réactivité','Réagit instantanément face à une attaque');
 
        ALTER TABLE evenement      
             ADD CONSTRAINT FK_EvenementMeteo
