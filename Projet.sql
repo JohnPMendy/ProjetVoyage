@@ -27,7 +27,6 @@ CREATE TABLE partie(
   par_personnage_id INT NOT NULL,
   par_event_id INT NOT NULL,
   par_date DATE NOT NULL,
-  par_heure TIME NOT NULL,
   par_environnement_id INT NOT NULL,
   par_inventaire_id INT NOT NULL
   );
@@ -240,17 +239,35 @@ INSERT INTO objet_inventaire(objinv_obj_id ,objinv_inv_id,qte_inventaire) VALUES
 INSERT INTO objet_inventaire(objinv_obj_id ,objinv_inv_id,qte_inventaire) VALUES(2,1,3);
 INSERT INTO objet_inventaire(objinv_obj_id ,objinv_inv_id,qte_inventaire) VALUES(5,2,1);
 
-insert into personnage (per_nom,per_prenom,per_poids,per_argent,per_energie, per_humeur, per_faim, per_force,per_covid, per_vivant)
-values ('Lemaire','Pascal',0,0,0,1,0,0,false,true);
-
-
 INSERT INTO environnement(env_nom,env_temperature,env_type_meteo,env_type_environnement)
 VALUES 
 ('Env1',25,1,1),
 ('Env2',27,2,2);
 
+
+
 INSERT INTO compte (login,mdp,role) VALUES('admin','$2a$10$1oGuBqgzfGzhkLX1hIXIdOUpOy5TswqdK4Y5Nn88ZZJMdAAvc1Xua','ROLE_ADMIN');
 INSERT INTO compte (login,mdp,role) VALUES('user','$2a$10$tsTiy0kKXpWc9qhYRtkqA.Ku2kjdC5ma5mEUYcFAhsHhrVgoowRyO','ROLE_USER');
+
+insert into personnage (per_nom,per_prenom,per_poids,per_argent,per_energie, per_humeur, per_faim, per_force,per_covid, per_vivant)
+values ('Lemaire','Pascal',0,0,0,1,0,0,false,true);
+
+INSERT INTO inventaire DEFAULT VALUES;
+
+  INSERT INTO
+  partie(par_compte_id,par_personnage_id,par_inventaire_id,par_event_id,par_environnement_id,par_date) VALUES
+  (1 ,(SELECT MAX(per_id) FROM personnage),(SELECT MAX(inv_id) FROM inventaire),1,1,'2020-01-01');
+    Update inventaire set inv_partie_id=(SELECT MAX(par_id) FROM partie) where inv_id=(SELECT MAX(inv_id) FROM inventaire);
+
+     insert into personnage (per_nom,per_prenom,per_poids,per_argent,per_energie, per_humeur, per_faim, per_force,per_covid, per_vivant)
+values ('Jean','Marie',0,0,0,1,0,0,false,true);
+
+INSERT INTO inventaire DEFAULT VALUES;
+
+  INSERT INTO
+  partie(par_compte_id,par_personnage_id,par_inventaire_id,par_event_id,par_environnement_id,par_date) VALUES
+  (2,(SELECT MAX(per_id) FROM personnage),(SELECT MAX(inv_id) FROM inventaire),2,1,'2020-01-01');
+    Update inventaire set inv_partie_id=(SELECT MAX(par_id) FROM partie) where inv_id=(SELECT MAX(inv_id) FROM inventaire);
 
 insert into competence(com_nom, com_des) values ('Organisation','Sait comment organiser rapidement ses affaires');
 insert into competence(com_nom, com_des) values ('Linguistique','Ne connait pas de difficulté avec les langues étrangères');
