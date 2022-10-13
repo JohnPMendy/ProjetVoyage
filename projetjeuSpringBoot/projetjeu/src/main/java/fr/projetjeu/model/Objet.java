@@ -49,6 +49,8 @@ public class Objet {
 	@OneToMany(mappedBy="objet")
 	List<ObjetBoutique> boutiques;
 	
+	@OneToMany(mappedBy="objet")
+	List<ObjetInventaire> inventaires;
 
 
 

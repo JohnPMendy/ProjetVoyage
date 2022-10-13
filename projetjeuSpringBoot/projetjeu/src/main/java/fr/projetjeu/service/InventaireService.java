@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import fr.projetjeu.exception.EntityNotFoundException;
 import fr.projetjeu.exception.InvalidArgsException;
+import fr.projetjeu.exception.InventaireNotFoundException;
 import fr.projetjeu.model.Inventaire;
 import fr.projetjeu.repo.IInventaireRepository;
 
@@ -16,11 +17,11 @@ public class InventaireService {
 
 
 		@Autowired
-		private IInventaireRepository repoinventaire;
+		private IInventaireRepository repoInventaire;
 		
 		
 		public List<Inventaire> findAll() {
-			List<Inventaire> inventaires = this.repoinventaire.findAll();
+			List<Inventaire> inventaires = this.repoInventaire.findAll();
 			
 			if (inventaires == null) {
 				return new ArrayList<>();
@@ -33,7 +34,7 @@ public class InventaireService {
 			if (id<=0) {
 				throw new InvalidArgsException("id");
 			}
-			Inventaire inventaire = this.repoinventaire.findById(id).get();
+			Inventaire inventaire = this.repoInventaire.findById(id).get();
 			
 			if(inventaire==null) {
 				throw new EntityNotFoundException();
@@ -44,7 +45,7 @@ public class InventaireService {
 		
 		public void save(Inventaire inventaire) {
 
-			repoinventaire.save(inventaire);
+			repoInventaire.save(inventaire);
 		}
 		
 		public void deleteById(int id) {
@@ -52,9 +53,13 @@ public class InventaireService {
 				throw new InvalidArgsException("id");
 			}
 			
-			repoinventaire.deleteById(id);
+			repoInventaire.deleteById(id);
 		}
 		
+		
+		public Inventaire findByIdFetchObjets(Integer id) {
+			return repoInventaire.findByIdFetchingObjets(id).orElseThrow(InventaireNotFoundException::new);
+		}
 		
 	}
 

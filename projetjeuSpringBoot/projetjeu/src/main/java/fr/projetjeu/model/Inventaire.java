@@ -25,11 +25,12 @@ public class Inventaire {
 	private Integer id;
 	
 	
-	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.InventaireAvecObjets.class)
 	@OneToMany(mappedBy = "inventaire")
 	private List<ObjetInventaire> objets;
 
-	@JsonView(JsonViews.Inventaire.class)
+	
+	@JsonView(JsonViews.Common.class)
 	@OneToOne(mappedBy = "inventaire")
 	private Partie partie;
 
