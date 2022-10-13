@@ -48,7 +48,7 @@
       <div class="Covid">
         <div class="NameCovid">Covid?</div>
 
-        <div class="ValeurForce">{{ personnage?.isCovided }}</div>
+        <div class="ValeurForce">{{ covid }}</div>
       </div>
 
       <div class="Vivant">
@@ -155,10 +155,15 @@
           <div class="NomQuantite">Qte</div>
         </div>
 
-        <div class="Objet">
-          <input class="TypeObjet" type="submit" value="Pistolet" />
-
-          <div class="Quantité">1</div>
+        <div class="Objet" *ngFor="let p of inventaire.objets; let i = index">
+          <input
+            class="TypeObjet"
+            type="submit"
+            [(ngModel)]="inventaire.objets![i].objet!.nom"
+          />
+          <div class="Quantité">
+            {{ inventaire.objets![i].quantiteInventaire }}
+          </div>
         </div>
       </div>
     </div>

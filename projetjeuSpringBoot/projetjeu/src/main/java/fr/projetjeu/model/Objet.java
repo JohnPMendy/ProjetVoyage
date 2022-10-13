@@ -11,7 +11,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonView;
@@ -48,7 +47,7 @@ public class Objet {
 	//@JsonView(JsonViews.Common.class)
 	@OneToMany(mappedBy="objet")
 	List<ObjetBoutique> boutiques;
-	
+
 	@OneToMany(mappedBy="objet")
 	List<ObjetInventaire> inventaires;
 

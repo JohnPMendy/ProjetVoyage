@@ -50,8 +50,16 @@ CREATE TABLE reponse (
   rep_energie INT NULL,
   rep_force INT NULL,
   rep_covid INT NULL,
+  rep_faim INT NULL,
   rep_vivant BOOLEAN NULL,
-  rep_objet INT NULL
+  rep_objet INT NULL,
+  rep_cond_faim INT NULL,
+  rep_cond_poids INT NULL,
+  rep_cond_argent INT NULL,
+  rep_cond_energie INT NULL,
+  rep_cond_force INT NULL,
+  rep_cond_covid BOOLEAN NULL,
+  rep_cond_objet INT NULL
 );
 
 
@@ -197,16 +205,13 @@ INSERT INTO evenement (evt_histoire,evt_meteo) VALUES
 ('Event 7 : A suivre... (FIN)',1),
 ('Event 8 : Vous êtes mort (FIN)',2);
 
-INSERT INTO reponse (rep_texte, rep_evenement_id, rep_prochain_evenement_id, rep_vivant, rep_objet) 
-VALUES 
-('R1 : Avion', 1, 2, true, 1 ), 
-('R2 : Bateau', 1, 5, true, 2),
-('R3 : Nage', 1, 8, false, 3 ),
-('R1 : Oui', 2, 3, true,1 ),
-('R2 : Non', 2, 4, false,3 ),
-('R1 : Oui', 5, 6, false,2 ),
-('R2 : Non', 5, 7, false,4 );
-    
+insert into "reponse" ("rep_argent", "rep_cond_argent", "rep_cond_covid", "rep_cond_energie", "rep_cond_faim", "rep_cond_force", "rep_cond_objet", "rep_cond_poids", "rep_covid", "rep_energie", "rep_evenement_id", "rep_faim", "rep_force", "rep_id", "rep_objet", "rep_poids", "rep_prochain_evenement_id", "rep_texte", "rep_vivant") values (NULL, NULL, true, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, 3, 3, NULL, 8, 'R3 : Nage', false);
+insert into "reponse" ("rep_argent", "rep_cond_argent", "rep_cond_covid", "rep_cond_energie", "rep_cond_faim", "rep_cond_force", "rep_cond_objet", "rep_cond_poids", "rep_covid", "rep_energie", "rep_evenement_id", "rep_faim", "rep_force", "rep_id", "rep_objet", "rep_poids", "rep_prochain_evenement_id", "rep_texte", "rep_vivant") values (NULL, NULL, true, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, NULL, 4, 1, NULL, 3, 'R1 : Oui', true);
+insert into "reponse" ("rep_argent", "rep_cond_argent", "rep_cond_covid", "rep_cond_energie", "rep_cond_faim", "rep_cond_force", "rep_cond_objet", "rep_cond_poids", "rep_covid", "rep_energie", "rep_evenement_id", "rep_faim", "rep_force", "rep_id", "rep_objet", "rep_poids", "rep_prochain_evenement_id", "rep_texte", "rep_vivant") values (NULL, NULL, false, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, NULL, 5, 3, NULL, 4, 'R2 : Non', false);
+insert into "reponse" ("rep_argent", "rep_cond_argent", "rep_cond_covid", "rep_cond_energie", "rep_cond_faim", "rep_cond_force", "rep_cond_objet", "rep_cond_poids", "rep_covid", "rep_energie", "rep_evenement_id", "rep_faim", "rep_force", "rep_id", "rep_objet", "rep_poids", "rep_prochain_evenement_id", "rep_texte", "rep_vivant") values (NULL, NULL, true, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 5, NULL, NULL, 6, 2, NULL, 6, 'R1 : Oui', false);
+insert into "reponse" ("rep_argent", "rep_cond_argent", "rep_cond_covid", "rep_cond_energie", "rep_cond_faim", "rep_cond_force", "rep_cond_objet", "rep_cond_poids", "rep_covid", "rep_energie", "rep_evenement_id", "rep_faim", "rep_force", "rep_id", "rep_objet", "rep_poids", "rep_prochain_evenement_id", "rep_texte", "rep_vivant") values (NULL, NULL, false, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 5, NULL, NULL, 7, 4, NULL, 7, 'R2 : Non', false);
+insert into "reponse" ("rep_argent", "rep_cond_argent", "rep_cond_covid", "rep_cond_energie", "rep_cond_faim", "rep_cond_force", "rep_cond_objet", "rep_cond_poids", "rep_covid", "rep_energie", "rep_evenement_id", "rep_faim", "rep_force", "rep_id", "rep_objet", "rep_poids", "rep_prochain_evenement_id", "rep_texte", "rep_vivant") values (0, 300, true, 10, 10, 30, 1, 70, 5, 0, 1, 0, 0, 1, 1, -5, 2, 'R1 : Avion', true);
+insert into "reponse" ("rep_argent", "rep_cond_argent", "rep_cond_covid", "rep_cond_energie", "rep_cond_faim", "rep_cond_force", "rep_cond_objet", "rep_cond_poids", "rep_covid", "rep_energie", "rep_evenement_id", "rep_faim", "rep_force", "rep_id", "rep_objet", "rep_poids", "rep_prochain_evenement_id", "rep_texte", "rep_vivant") values (NULL, NULL, false, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, 2, 2, NULL, 5, 'R2 : Bateau', true);
 
 INSERT INTO competence (com_nom, com_des) VALUES ('Négociation', 'Permet de négocier des prix lors des achats');
 
@@ -232,6 +237,7 @@ INSERT INTO objet_boutique(obj_btq_obj_id , obj_btq_btq_id,qte_boutique) VALUES(
 INSERT INTO objet_boutique(obj_btq_obj_id , obj_btq_btq_id,qte_boutique) VALUES(5,2,20);
 
 INSERT INTO objet_inventaire(objinv_obj_id ,objinv_inv_id,qte_inventaire) VALUES(1,1,2);
+INSERT INTO objet_inventaire(objinv_obj_id ,objinv_inv_id,qte_inventaire) VALUES(2,1,3);
 INSERT INTO objet_inventaire(objinv_obj_id ,objinv_inv_id,qte_inventaire) VALUES(5,2,1);
 
 insert into personnage (per_nom,per_prenom,per_poids,per_argent,per_energie, per_humeur, per_faim, per_force,per_covid, per_vivant)
@@ -267,6 +273,8 @@ insert into competence(com_nom, com_des) values ('Réactivité','Réagit instant
       REFERENCES objet(obj_id)
           ON UPDATE CASCADE
           ON DELETE CASCADE;
+          
+   
 
 
 

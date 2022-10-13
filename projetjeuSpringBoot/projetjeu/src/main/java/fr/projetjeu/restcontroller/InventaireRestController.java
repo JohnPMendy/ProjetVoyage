@@ -31,17 +31,20 @@ public class InventaireRestController {
 	@Autowired
 	private InventaireService srvInventaire; 
 	
+
 	@JsonView(JsonViews.InventaireAvecObjets.class)
 	@GetMapping("/{id}")
 	public Inventaire findById(@PathVariable("id") Integer id) {
 		return srvInventaire.findById(id);
 	}
 	
+
 	@GetMapping("/{id}/objets")
 	@JsonView(JsonViews.InventaireAvecObjets.class)
 	public Inventaire findByIdFetchObjets(@PathVariable("id") Integer id) {
 		return srvInventaire.findByIdFetchObjets(id);
 	}
+
 	@GetMapping("")
 	@JsonView(JsonViews.InventaireAvecObjets.class)
 	public List<Inventaire> findAll() {
