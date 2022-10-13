@@ -1,13 +1,11 @@
-import { Observable } from 'rxjs';
 import { Personnage } from './../../model/personnage';
 import { PersonnageService } from './../../service/personnage.service';
-import { DatePipe } from '@angular/common';
 import { CompteService } from './../../service/compte.service';
 import { PartieService } from './../../service/partie.service';
 import { Partie } from './../../model/partie';
 import { Component, OnInit } from '@angular/core';
 import { Compte } from '../../model/compte';
-import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-partie',
@@ -18,15 +16,12 @@ export class PartieComponent implements OnInit {
   parties: Partie[] = [];
   compte!: Compte;
   partie: Partie = new Partie();
-  personnage!: Personnage;
+  personnage!: Observable<Personnage>;
   listId: number[] = [];
 
   constructor(
-    private datePipe: DatePipe,
     private partieService: PartieService,
-    private compteService: CompteService,
-    private personnageService: PersonnageService,
-    private router: Router
+    private compteService: CompteService
   ) {}
 
   ngOnInit(): void {
@@ -53,7 +48,6 @@ export class PartieComponent implements OnInit {
           play.inventaire = params['inventaire'];
           play.date = params['date'];
           play.eventRunning = params['eventRunning'];
-          console.log(play);
           this.parties.push(play);
         });
       }
@@ -62,18 +56,12 @@ export class PartieComponent implements OnInit {
 
   delete(id: number) {
     this.partieService.delete(id).subscribe(() => {
+      this.parties = [];
       this.listParties(this.compte.id as number);
     });
   }
 
-  creation() {
-    if (!this.partie.id) {
-      this.partieService.create(this.partie).subscribe((data) => {
-        //this.router.navigateByUrl('/questionnaire');
-        this.router.navigateByUrl('/partie');
-      });
-    }
+  charger(id: number) {
+    this.partieService.sendCharge(id);
   }
-
-  charger() {}
 }

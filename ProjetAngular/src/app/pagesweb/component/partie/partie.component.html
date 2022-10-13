@@ -1,5 +1,5 @@
 <div class="tabs">
-  <button class="nouvellePartie" (click)="creation()" routerLinkActive="active">
+  <button class="nouvellePartie" routerLinkActive="active">
     <a [routerLink]="['/questionnaire']" routerLinkActive="active">
       Nouvelle Partie</a
     >
@@ -20,7 +20,7 @@
         <tr *ngFor="let p of parties">
           <td>
             <button class="boutonVersPartie">
-              <a [routerLink]="['/jeu']">Charger</a>
+              <a [routerLink]="['/jeu']" (click)="charger(p.id!)">Charger</a>
             </button>
           </td>
           <td>
