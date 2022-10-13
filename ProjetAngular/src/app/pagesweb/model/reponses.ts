@@ -2,6 +2,42 @@ import { Environnement } from './environnement';
 import { Events } from './events';
 import { Objet } from './objet';
 export class Reponses {
+  public get conditionObjet(): number | undefined {
+    return this._conditionObjet;
+  }
+  public set conditionObjet(value: number | undefined) {
+    this._conditionObjet = value;
+  }
+  public get conditionCovid(): true | undefined {
+    return this._conditionCovid;
+  }
+  public set conditionCovid(value: true | undefined) {
+    this._conditionCovid = value;
+  }
+  public get conditionForce(): number | undefined {
+    return this._conditionForce;
+  }
+  public set conditionForce(value: number | undefined) {
+    this._conditionForce = value;
+  }
+  public get conditionEnergie(): number | undefined {
+    return this._conditionEnergie;
+  }
+  public set conditionEnergie(value: number | undefined) {
+    this._conditionEnergie = value;
+  }
+  public get conditionArgent(): number | undefined {
+    return this._conditionArgent;
+  }
+  public set conditionArgent(value: number | undefined) {
+    this._conditionArgent = value;
+  }
+  public get conditionPoids(): number | undefined {
+    return this._conditionPoids;
+  }
+  public set conditionPoids(value: number | undefined) {
+    this._conditionPoids = value;
+  }
   public get objet(): Objet | undefined {
     return this._objet;
   }
@@ -80,6 +116,12 @@ export class Reponses {
     private _ajoutCovid?: number,
     private _isAlive?: boolean,
     private _environnement?: Environnement,
-    private _objet?: Objet
+    private _objet?: Objet,
+    private _conditionPoids?: number,
+    private _conditionArgent?: number,
+    private _conditionEnergie?: number,
+    private _conditionForce?: number,
+    private _conditionCovid?: true,
+    private _conditionObjet?: number
   ) {}
 }

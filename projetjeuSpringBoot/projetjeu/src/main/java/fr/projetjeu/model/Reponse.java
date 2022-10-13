@@ -26,11 +26,9 @@ public class Reponse {
 	@JsonView(JsonViews.Common.class)
 	private String texte;
 	
-	
 	@ManyToOne
 	@JoinColumn(name="rep_evenement_id", nullable = false)
 	private Events evenementId;
-	
 
 	@OneToOne
 	@JsonView(JsonViews.Common.class)
@@ -66,6 +64,30 @@ public class Reponse {
 	@JsonView(JsonViews.Common.class)
 	@JoinColumn(name = "rep_objet", nullable = true)
 	private Objet objetId;
+	
+	@JsonView(JsonViews.Common.class)
+	@Column(name = "rep_cond_poids", nullable = true)
+	private Integer conditionPoids;
+	
+	@JsonView(JsonViews.Common.class)
+	@Column(name = "rep_cond_argent", nullable = true)
+	private Integer conditionArgent;
+	
+	@JsonView(JsonViews.Common.class)
+	@Column(name = "rep_cond_energie", nullable = true)
+	private Integer conditionEnergie;
+	
+	@JsonView(JsonViews.Common.class)
+	@Column(name = "rep_cond_force", nullable = true)
+	private Integer conditionForce;
+	
+	@JsonView(JsonViews.Common.class)
+	@Column(name = "rep_cond_covid", nullable = true)
+	private boolean conditionCovid;
+	
+	@JsonView(JsonViews.Common.class)
+	@Column(name = "rep_cond_objet", nullable = true)
+	private Integer conditionObjet;
 	
 	
 	public Integer getId() {

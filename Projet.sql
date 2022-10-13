@@ -203,16 +203,13 @@ INSERT INTO evenement (evt_histoire,evt_meteo) VALUES
 ('Event 7 : A suivre... (FIN)',1),
 ('Event 8 : Vous êtes mort (FIN)',2);
 
-INSERT INTO reponse (rep_texte, rep_evenement_id, rep_prochain_evenement_id, rep_vivant, rep_objet) 
-VALUES 
-('R1 : Avion', 1, 2, true, 1 ), 
-('R2 : Bateau', 1, 5, true, 2),
-('R3 : Nage', 1, 8, false, 3 ),
-('R1 : Oui', 2, 3, true,1 ),
-('R2 : Non', 2, 4, false,3 ),
-('R1 : Oui', 5, 6, false,2 ),
-('R2 : Non', 5, 7, false,4 );
-    
+insert into "reponse" ("rep_argent", "rep_cond_argent", "rep_cond_covid", "rep_cond_energie", "rep_cond_force", "rep_cond_objet", "rep_cond_poids", "rep_covid", "rep_energie", "rep_evenement_id", "rep_force", "rep_id", "rep_objet", "rep_poids", "rep_prochain_evenement_id", "rep_texte", "rep_vivant") values (NULL, NULL, false, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, 2, 2, NULL, 5, 'R2 : Bateau', true);
+insert into "reponse" ("rep_argent", "rep_cond_argent", "rep_cond_covid", "rep_cond_energie", "rep_cond_force", "rep_cond_objet", "rep_cond_poids", "rep_covid", "rep_energie", "rep_evenement_id", "rep_force", "rep_id", "rep_objet", "rep_poids", "rep_prochain_evenement_id", "rep_texte", "rep_vivant") values (NULL, NULL, true, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, 3, 3, NULL, 8, 'R3 : Nage', false);
+insert into "reponse" ("rep_argent", "rep_cond_argent", "rep_cond_covid", "rep_cond_energie", "rep_cond_force", "rep_cond_objet", "rep_cond_poids", "rep_covid", "rep_energie", "rep_evenement_id", "rep_force", "rep_id", "rep_objet", "rep_poids", "rep_prochain_evenement_id", "rep_texte", "rep_vivant") values (NULL, NULL, true, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, 4, 1, NULL, 3, 'R1 : Oui', true);
+insert into "reponse" ("rep_argent", "rep_cond_argent", "rep_cond_covid", "rep_cond_energie", "rep_cond_force", "rep_cond_objet", "rep_cond_poids", "rep_covid", "rep_energie", "rep_evenement_id", "rep_force", "rep_id", "rep_objet", "rep_poids", "rep_prochain_evenement_id", "rep_texte", "rep_vivant") values (NULL, NULL, false, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, 5, 3, NULL, 4, 'R2 : Non', false);
+insert into "reponse" ("rep_argent", "rep_cond_argent", "rep_cond_covid", "rep_cond_energie", "rep_cond_force", "rep_cond_objet", "rep_cond_poids", "rep_covid", "rep_energie", "rep_evenement_id", "rep_force", "rep_id", "rep_objet", "rep_poids", "rep_prochain_evenement_id", "rep_texte", "rep_vivant") values (NULL, NULL, true, NULL, NULL, NULL, NULL, NULL, NULL, 5, NULL, 6, 2, NULL, 6, 'R1 : Oui', false);
+insert into "reponse" ("rep_argent", "rep_cond_argent", "rep_cond_covid", "rep_cond_energie", "rep_cond_force", "rep_cond_objet", "rep_cond_poids", "rep_covid", "rep_energie", "rep_evenement_id", "rep_force", "rep_id", "rep_objet", "rep_poids", "rep_prochain_evenement_id", "rep_texte", "rep_vivant") values (NULL, NULL, false, NULL, NULL, NULL, NULL, NULL, NULL, 5, NULL, 7, 4, NULL, 7, 'R2 : Non', false);
+insert into "reponse" ("rep_argent", "rep_cond_argent", "rep_cond_covid", "rep_cond_energie", "rep_cond_force", "rep_cond_objet", "rep_cond_poids", "rep_covid", "rep_energie", "rep_evenement_id", "rep_force", "rep_id", "rep_objet", "rep_poids", "rep_prochain_evenement_id", "rep_texte", "rep_vivant") values (0, 300, true, 10, 30, 1, 70, 5, 0, 1, 0, 1, 1, -5, 2, 'R1 : Avion', true);
 
 INSERT INTO competence (com_nom, com_des) VALUES ('Négociation', 'Permet de négocier des prix lors des achats');
 
@@ -275,12 +272,7 @@ insert into competence(com_nom, com_des) values ('Réactivité','Réagit instant
           ON UPDATE CASCADE
           ON DELETE CASCADE;
           
-          ALTER TABLE reponse      
-            ADD CONSTRAINT FK_ReponseConditionObjet
-      FOREIGN KEY(rep_cond_objet)
-      REFERENCES objet(obj_id)
-          ON UPDATE CASCADE
-          ON DELETE CASCADE;
+   
 
 
 

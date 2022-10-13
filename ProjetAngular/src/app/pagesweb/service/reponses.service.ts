@@ -29,6 +29,12 @@ export class ReponsesService {
         prix: reponses.objetId?.prix,
         typeObjets: reponses.objetId?.typeObjets,
       },
+      conditionPoids: reponses.conditionPoids,
+      conditionArgent: reponses.conditionArgent,
+      conditionEnergie: reponses.conditionEnergie,
+      conditionForce: reponses.conditionForce,
+      conditionCovid: reponses.conditionCovid,
+      conditionObjet: reponses.conditionObjet,
     };
     return obj;
   }
