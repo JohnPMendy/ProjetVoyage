@@ -12,12 +12,16 @@ import fr.projetjeu.exception.InvalidEntityException;
 import fr.projetjeu.model.Environnement;
 import fr.projetjeu.model.Partie;
 import fr.projetjeu.repo.IPartieRepository;
+import fr.projetjeu.repo.IPersonnageRepository;
 
 @Service
 public class PartieService {
 
 	@Autowired
 	private IPartieRepository repoPartie;
+	
+	@Autowired
+	private IPersonnageRepository repoPersonnage;
 
 
 	public Partie findById(Integer id) {
@@ -80,8 +84,8 @@ public List<Partie> findAllById(List<Integer> ids){
 		if (id <= 0) {
 			throw new InvalidArgsException("id");
 		}
-
-		repoPartie.deleteById(id);
+		repoPersonnage.deleteById(repoPartie.findById(id).get().getPersonnage().getId());
+		//repoPartie.deleteById(id);
 	}
 
 	public boolean existById(Integer id) {
