@@ -51,7 +51,13 @@ CREATE TABLE reponse (
   rep_force INT NULL,
   rep_covid INT NULL,
   rep_vivant BOOLEAN NULL,
-  rep_objet INT NULL
+  rep_objet INT NULL,
+  rep_cond_poids INT NULL,
+  rep_cond_argent INT NULL,
+  rep_cond_energie INT NULL,
+  rep_cond_force INT NULL,
+  rep_cond_covid BOOLEAN NULL,
+  rep_cond_objet INT NULL
 );
 
 
@@ -265,6 +271,13 @@ insert into competence(com_nom, com_des) values ('Réactivité','Réagit instant
            ALTER TABLE reponse      
             ADD CONSTRAINT FK_ReponseObjet
       FOREIGN KEY(rep_objet)
+      REFERENCES objet(obj_id)
+          ON UPDATE CASCADE
+          ON DELETE CASCADE;
+          
+          ALTER TABLE reponse      
+            ADD CONSTRAINT FK_ReponseConditionObjet
+      FOREIGN KEY(rep_cond_objet)
       REFERENCES objet(obj_id)
           ON UPDATE CASCADE
           ON DELETE CASCADE;
