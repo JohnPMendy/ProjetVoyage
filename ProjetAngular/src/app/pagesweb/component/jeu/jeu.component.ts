@@ -49,6 +49,20 @@ export class JeuComponent implements OnInit {
     else
     {inventaire.objets?.push(objetInventaire)};
   }
+
+supprimerObjetInventaire(inventaire:Inventaire ,nbr :number){
+
+//for(let i=0;i<inventaire.objets!.length;i++){
+  let i=0;
+while(i<inventaire.objets!.length){
+if(inventaire.objets![i].objet?.id===this.reponses[nbr].conditionObjet)
+{
+  inventaire.objets?.splice(i,i);
+}
+i++
+}}
+
+
   initialisation() {
     this.events.id = 1;
     this.covid = 'Non';
@@ -105,6 +119,8 @@ export class JeuComponent implements OnInit {
 
     this.ajoutObjetInventaire(this.reponses[number].objetId!,1 ,this.inventaire,number);
 
+    this.supprimerObjetInventaire(this.inventaire,number);
+this
     //console.log(Math.random());
     //if (Math.random() < this.reponses[number]!.ajoutCovid! / 100) {
     //this.personnage?.isCovided != true;
