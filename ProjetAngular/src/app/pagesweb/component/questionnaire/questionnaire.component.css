@@ -4,7 +4,72 @@
   margin: 15px 0;
   align-items: flex-start;
 }
-
 .example-radio-button {
   margin: 5px;
 }
+button {
+  background: rgb(34, 19, 240);
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 8px;
+}
+
+button {
+  transition-duration: 0.4s;
+}
+
+button:hover {
+  background-color: white;
+  color: black;
+}
+
+form {
+  padding:3px;
+}
+
+input{
+  width:100%;
+}
+
+input[type=text]{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.invalidMessage{
+  color: red;
+}
+.container {
+  position: relative;
+  box-sizing: border-box;
+  padding-top: 60px;
+  padding-right: 30px;
+  padding-left: 30px;
+  padding-bottom: 60px;
+
+  justify-content: center;
+  align-content: center;
+
+  margin-top: 5vh;
+  margin-right: 15vw;
+  margin-left: 15vw;
+  margin-bottom: 5vh;
+
+  height: 100%;
+
+  background: rgba(255, 255, 255, 0.7);
+
+  border-radius: 5px;
+
+  overflow-y: auto;
+}
+

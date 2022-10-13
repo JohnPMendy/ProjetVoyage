@@ -15,7 +15,9 @@ import { DatePipe } from '@angular/common';
 import { InscriptionComponent } from './pagesweb/component/inscription/inscription.component';
 
 import { QuestionnaireComponent } from './pagesweb/component/questionnaire/questionnaire.component';
-import { MatRadioModule } from '@angular/material/radio';
+import { MatRadioModule, MAT_RADIO_DEFAULT_OPTIONS } from '@angular/material/radio';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 
 @NgModule({
@@ -35,6 +37,7 @@ import { MatRadioModule } from '@angular/material/radio';
     HttpClientModule,
     ReactiveFormsModule,
     MatRadioModule,
+    BrowserAnimationsModule,
   ],
   providers: [
     DatePipe,
@@ -43,6 +46,7 @@ import { MatRadioModule } from '@angular/material/radio';
       useClass: AuthenticationInterceptor,
       multi: true,
     },
+
   ],
   bootstrap: [AppComponent],
 })

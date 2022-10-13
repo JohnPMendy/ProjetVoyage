@@ -55,6 +55,7 @@ export class JeuComponent implements OnInit {
 
     this.eventsService.findById(this.events.id).subscribe((data) => {
       this.events = data;
+      console.log(this.events);
     });
 
     this.reponsesService.findById(this.events.id).subscribe((data) => {
@@ -102,16 +103,18 @@ export class JeuComponent implements OnInit {
       this.reponses[number].ajoutPoids! -
       this.reponses[number].conditionPoids!;
 
-    this.ajoutObjetInventaire(number);
+    console.log(this.reponses.length);
 
-    console.log(Math.random());
-    if (Math.random() < this.reponses[number]!.ajoutCovid! / 100) {
-      this.personnage?.isCovided != true;
-      this.covid = 'Oui';
-    } else {
-      this.personnage?.isCovided != false;
-      this.covid = 'Non';
-    }
+    //this.ajoutObjetInventaire(number);
+
+    //console.log(Math.random());
+    //if (Math.random() < this.reponses[number]!.ajoutCovid! / 100) {
+    //this.personnage?.isCovided != true;
+    //this.covid = 'Oui';
+    //} else {
+    //this.personnage?.isCovided != false;
+    //this.covid = 'Non';
+    //}
 
     if (this.events.id) {
       this.eventsService.findById(this.events.id).subscribe((data) => {
